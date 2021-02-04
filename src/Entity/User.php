@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -63,6 +65,22 @@ class User implements UserInterface
      * @ORM\Column(type="blob", nullable=true)
      */
     private $avatar;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Projet::class, inversedBy="users")
+     */
+    private $UserProjet;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Plateforme::class, inversedBy="users")
+     */
+    private $UserPlateforme;
+
+    public function __construct()
+    {
+        $this->UserProjet = new ArrayCollection();
+        $this->UserPlateforme = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -210,6 +228,54 @@ class User implements UserInterface
     public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Projet[]
+     */
+    public function getUserProjet(): Collection
+    {
+        return $this->UserProjet;
+    }
+
+    public function addUserProjet(Projet $userProjet): self
+    {
+        if (!$this->UserProjet->contains($userProjet)) {
+            $this->UserProjet[] = $userProjet;
+        }
+
+        return $this;
+    }
+
+    public function removeUserProjet(Projet $userProjet): self
+    {
+        $this->UserProjet->removeElement($userProjet);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Plateforme[]
+     */
+    public function getUserPlateforme(): Collection
+    {
+        return $this->UserPlateforme;
+    }
+
+    public function addUserPlateforme(Plateforme $userPlateforme): self
+    {
+        if (!$this->UserPlateforme->contains($userPlateforme)) {
+            $this->UserPlateforme[] = $userPlateforme;
+        }
+
+        return $this;
+    }
+
+    public function removeUserPlateforme(Plateforme $userPlateforme): self
+    {
+        $this->UserPlateforme->removeElement($userPlateforme);
 
         return $this;
     }
