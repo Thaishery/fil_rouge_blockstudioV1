@@ -1,0 +1,31 @@
+ <header>
+
+     <div class="AcountFrame" style="display:flex; justify-content:space-around;">
+         <div class="TextFrame">
+
+             <h1>Bienvenue
+                  {% if app.user %}, {{app.user.login}} {% endif %} <br/>
+             </h1>
+        </div>
+
+         {# prévoir mise en place pour administration (gestion des roles) #}
+
+         <div class="logFrame">
+
+             {% if app.user %}
+                 <a href="{{ path ('app_logout') }}">Logout</a>
+                 {% if is_granted('ROLE_ADMIN') %}
+                 , 
+                 <a href="/admin/user"> Gestion des utilisateurs </a>
+
+                {% endif %} 
+             {% endif %}
+
+             {% if  not app.user %}
+                 <a href="{{ path ('app_login') }}">login</a>
+             {% endif %}
+
+         </div>
+     </div>
+
+ </header>

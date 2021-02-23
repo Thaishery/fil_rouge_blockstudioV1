@@ -1,28 +1,30 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+     {% block title %}Log in!{% endblock %}
 
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+     {% block body %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+         <form method="post">
+             {% if error %}
+                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+             {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputLogin">Login</label>
-    <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+             {% if app.user %}
+                 <div class="mb-3">
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                     You are logged in as {{ app.user.username }},
+                     <a href="{{ path('app_logout') }}">Logout</a>
+
+                 </div>
+             {% endif %}
+
+         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+             <label for="inputLogin">Login</label>
+             <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" required autofocus>
+             <label for="inputPassword">Password</label>
+             <input type="password" name="password" id="inputPassword" class="form-control" required> <br/>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -35,8 +37,13 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-{% endblock %}
+              <button class="btn btn-primary btn-lg btn-block" type="submit"> Sign in </button> </br>
+
+         </form>
+
+     <p >
+             {# Tu n'as pas encore créer de compte ? #} 
+             <a class="btn btn-secondary btn-lg btn-block" href="{{ path ('app_register') }}" target="#">Créer un compte </a>
+     </p>
+
+     {% endblock %}
