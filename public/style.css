@@ -1,7 +1,10 @@
  .btn,.btn-primary{
      background-color: orange;
  }
-
+.mainsection{
+    margin: auto;
+    min-height: 450px;
+}
  .AcountFrame{
      height: 350px;
      background-image: url("logoGrand.webp");
@@ -16,11 +19,36 @@
  .TextFrame h1 a{
      color: orange;
  }
+.navbar-nav{
+    margin: auto;
+}
+.nav-item{
+    padding: 0px 50px;
+}
+/* .navbar{
+    width: 100%;
+}
+ .navbar nav ul{
+     display: flex;
+     justify-content: space-around;
+ }
+ .navbar nav ul li{
+     list-style: none;
+ }
+ #services:hover> #dropdown{
+     display: block;
+ }
+ #dropdown{
+     display: none;
+ } */
+ 
 
+
+ 
  .footerMain{
-     position: absolute;
+     position: relative;
      width: 100%;
-     bottom: 20px;
+     /* bottom: 20px; */
      display: flex;
      justify-content: space-around;
      background-color: black;

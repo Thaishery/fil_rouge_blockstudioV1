@@ -18,11 +18,11 @@
                  </div>
              {% endif %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Please sign in </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> S'inscrire </h1>
 
              <label for="inputLogin"> Login </label>
                  <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" required autofocus>
-             <label for="inputPassword">Password</label>
+             <label for="inputPassword"> Mot de passe </label>
                  <input type="password" name="password" id="inputPassword" class="form-control" required> <br/>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -38,13 +38,13 @@
         </div>
     #}
 
-              <button class="btn btn-primary btn-lg btn-block" type="submit"> Connectez-vous </button> </br>
+              <button class="btn btn-primary btn-lg btn-block" type="submit"> Se connecter </button> </br>
 
          </form>
 
      <p>
              {# Tu n'as pas encore créer de compte ? #} 
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path ('app_register') }}" target="#"> Créer un compte </a>
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path ('app_register') }}"> Créer un compte </a>
      </p>
 
      {% endblock %}
