@@ -3,11 +3,11 @@
      <div class="AcountFrame" style="display:flex; justify-content:space-around;">
          <div class="TextFrame">
 
-             <h1>Bienvenue
-                  {% if app.user %}, {{app.user.login}} {% endif %} <br/>
+             <h1><a href="{{path('home')}}">Bienvenue</a>
+                {% if app.user %},{{app.user.login}} {% endif %} <br/>
              </h1>
-        </div>
-
+        </div>   
+		        
          {# prévoir mise en place pour administration (gestion des roles) #}
 
          <div class="logFrame">

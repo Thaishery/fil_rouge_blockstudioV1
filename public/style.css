@@ -1,6 +1,83 @@
-.btn{
-    background-color: orange;
+ .btn,.btn-primary{
+     background-color: orange;
+ }
+
+ .AcountFrame{
+     height: 350px;
+     background-image: url("logoGrand.webp");
+     background-repeat: no-repeat;
+     background-position:center;
+     background-color: black;
+     color: orange;
+ }
+ .TextFrame h1{
+     font-size: 1rem;
+ }
+ .TextFrame h1 a{
+     color: orange;
+ }
+
+ .footerMain{
+     position: absolute;
+     width: 100%;
+     bottom: 20px;
+     display: flex;
+     justify-content: space-around;
+     background-color: black;
+     color: white;
 }
-.btn-primary{
-    background-color: orange;
+
+ .footerMain h1 {
+     color: orange;
 }
+
+/* Style all font awesome icons */
+.fa {
+     margin-top: 5px;
+     text-align: center;
+     text-decoration: none;
+     padding: 20px;
+     font-size: 30px;
+     width: 64px;
+     border-radius: 50%;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+ /* YOUTUBE */
+ .fa-youtube {
+     background: #FF0000;
+     color: white;
+  }
+
+  /* INSTAGRAM */
+  .fa-instagram {
+     background: #8a17ad;
+     color: white;
+  }
+
+ /* SNAPCHAT */
+ .fa-snapchat {
+     background: rgb(255 252 0);
+     color: white;
+  }
+
+  /* FACEBOOK */
+  .fa-facebook {
+     background: rgb(24 119 242);
+     color: white;
+  }
+  
+  /* TWITTER */
+  .fa-twitter {
+     background: rgb(29, 161, 242);
+     color: white;
+  }
+
+
+
