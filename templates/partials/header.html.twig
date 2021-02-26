@@ -3,9 +3,9 @@
      <div class="AcountFrame" style="display:flex; justify-content:space-around;">
          <div class="TextFrame">
 
-             <h1><a href="{{path('home')}}">Bienvenue</a>
-                {% if app.user %},{{app.user.login}} {% endif %} <br/>
-             </h1>
+             <p> Vous etes connecté en tant que: 
+                {% if app.user %} {{app.user.login}} {% endif %} <br/>
+             </p>
         </div>   
 		        
          {# prévoir mise en place pour administration (gestion des roles) #}
@@ -13,16 +13,17 @@
          <div class="logFrame">
 
              {% if app.user %}
-                 <a href="{{ path ('app_logout') }}">Logout</a>
+                 <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
                  {% if is_granted('ROLE_ADMIN') %}
-                 , 
-                 <a href="/admin/user"> Gestion des utilisateurs </a>
+                 <br/>
+                 <a href="/admin/user"> Gestion des utilisateurs </a><br/>
+                 <a href="/admin/home/edit"> Gestion de la homepage</a>
 
                 {% endif %} 
              {% endif %}
 
              {% if  not app.user %}
-                 <a href="{{ path ('app_login') }}" >login</a>
+                 <a href="{{ path ('app_login') }}" > Se connecter </a>
              {% endif %}
 
          </div>

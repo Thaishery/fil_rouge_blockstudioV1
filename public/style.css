@@ -1,9 +1,17 @@
+ *{
+    font-family: 'Roboto', sans-serif;
+ }
+ 
  .btn,.btn-primary{
      background-color: orange;
+     margin-left: 20px;
+     margin-right: 20px;
  }
 .mainsection{
-    margin: auto;
-    min-height: 450px;
+     /* margin: auto; */
+     margin-left: 20px;
+     margin-right: 20px;
+     min-height: 450px;
 }
  .AcountFrame{
      height: 350px;
@@ -13,6 +21,11 @@
      background-color: black;
      color: orange;
  }
+
+h1 {
+    text-align: center;
+}
+
  .TextFrame h1{
      font-size: 1rem;
  }
@@ -20,11 +33,12 @@
      color: orange;
  }
 .navbar-nav{
-    margin: auto;
+     margin: auto;
 }
 .nav-item{
-    padding: 0px 50px;
+     padding: 0px 50px;
 }
+
 /* .navbar{
     width: 100%;
 }
@@ -42,9 +56,26 @@
      display: none;
  } */
  
+.carousel{
+    width: 800px;
+    margin: auto;
+}
+.greybox{
+    background-color:rgba(43, 47, 49, 0.795);
+    width: 800px;
+    position: relative; 
+    left: -120px;
+}
+.carousel-item a{
+    color: white;
+}
 
+.homeImage{
+    max-width: 800px;
+    border: orange solid 1px;
+    border-width: 2px;
+}
 
- 
  .footerMain{
      position: relative;
      width: 100%;

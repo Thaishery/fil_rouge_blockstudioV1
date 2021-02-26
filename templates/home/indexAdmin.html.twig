@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+ {% block title %}
+     Gestion de la homepage
+ {% endblock %}
+
+     {% block body %}
+
+         <h1>Gestion de la homepage</h1>
+
+     <table class="table table-dark table-hover">
+
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Titre</th>
+                 <th>Photo</th>
+                 <th>Courte description</th>
+                 <th>Longue description</th>
+                 <th>Est actif</th>
+                 <th>Actions</th>
+             </tr>
+         </thead>
+         
+         <tbody>
+         {% for home in homes %}
+            <tr>
+                <td>{{ home.id }}</td>
+                <td>{{ home.title }}</td>
+                <td>{{ home.picture }}</td>
+                <td>{{ home.shortDesc }}</td>
+                <td>{{ home.longDesc }}</td>
+                <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
+                    <a href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+             </tbody>
+             
+         </table>
+
+     <a href="{{ path('home_new') }}">Create new</a>
+
+ {% endblock %}
