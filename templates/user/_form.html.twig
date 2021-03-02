@@ -12,15 +12,18 @@
 </div>
 <div>
     {{ form_label(form.firstname) }}
+    {{ form_errors(form.firstname) }}
     {{ form_widget(form.firstname) }}
 </div>
 <div>
     {{ form_label(form.lastname) }}
+    {{ form_errors(form.lastname) }}
     {{ form_widget(form.lastname) }}
 </div>
 <div>
     {#{{ form_label(form.plainPassword) }} #}
     <label>Mot de passe</label>
+    {{ form_errors(form.plainPassword) }}
     {{ form_widget(form.plainPassword,{ 'attr':{
         'class':'inputEmail',
         'value':user.password }}) }}
@@ -41,5 +44,7 @@
     {{ form_label(form.phone) }}
     {{ form_widget(form.phone) }}
 </div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+     <button class="btn">
+         {{ button_label|default('Save') }}
+     </button>
 {{ form_end(form) }}

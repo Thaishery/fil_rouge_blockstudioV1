@@ -20,10 +20,16 @@
                  <a href="/admin/home/edit"> Gestion de la homepage</a>
 
                 {% endif %} 
+                {# Gestion de l'utilisateur actuel #}
+                {% if is_granted('ROLE_USER') %}
+                <br/>
+                <a href="#"> Gérer mon profil </a>
+                {% endif %}
              {% endif %}
 
              {% if  not app.user %}
-                 <a href="{{ path ('app_login') }}" > Se connecter </a>
+                 <a href="{{ path ('app_login') }}" > Connexion </a><br/>
+                 <a href="{{ path ('app_register') }}" > Créer un compte </a>
              {% endif %}
 
          </div>

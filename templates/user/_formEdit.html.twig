@@ -1,45 +1,174 @@
-{# {{ form_start(form) }}
 
-    {{ form_widget(form) }}
-    <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
+ {{ form_start(form) }}
+
+    <div class="container">
     
-{{ form_end(form) }} #}
+       <div class="row">
+        
+         {# PSEUDO #}
+         
+             <div class="pseudo row">
 
-{{ form_start(form) }}
-<div>
-    {{ form_label(form.login) }}
-    {{ form_widget(form.login) }}
-</div>
-<div>
-    {{ form_label(form.firstname) }}
-    {{ form_widget(form.firstname) }}
-</div>
-<div>
-    {{ form_label(form.lastname) }}
-    {{ form_widget(form.lastname) }}
-</div>
-{# <div>
-    {#{{ form_label(form.plainPassword) }} }
-    <label>Mot de passe</label>
-    {{ form_widget(form.plainPassword,{ 'attr':{
-        'class':'inputEmail',
-        'value':user.password }}) }}
-</div>  #}
-<div>
-    {{ form_label(form.roles) }}
-    {{ form_widget(form.roles) }}
-</div>
-<div>
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email) }}
-</div>
-<div>
-    {{ form_label(form.address) }}
-    {{ form_widget(form.address) }}
-</div>
-<div>
-    {{ form_label(form.phone) }}
-    {{ form_widget(form.phone) }}
-</div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+                <div class="pseudoLabel">
+                   {{ form_label(form.login, 'Pseudo :') }}
+                </div>
+
+                <div class="pseudoInput">
+                   {{ form_widget (form.login,
+                      { 'attr':{'placeholder':'Entrez un pseudo'}}
+                
+                ) }}
+                </div>
+
+             {# If Errors#}
+
+                <div class="pseudoError">
+                   {{form_errors(form.login)}}
+                </div>
+
+             </div>
+
+          {# PRENOM #}
+
+             <div class="prenom row">
+        
+                <div class="prenomLabel">
+                   {{ form_label(form.firstname, 'Prénom :') }}
+                </div>
+
+                <div class="prenomInput">
+                   {{ form_widget (form.firstname,{
+                        'attr':{'placeholder':'Entrez votre prénom'}}
+                   ) }}
+                </div>
+
+             {# If Errors#}
+
+                <div class="prenomError">
+                   {{form_errors(form.firstname)}}
+                </div>
+
+             </div>
+
+          {# NOM #}
+
+             <div class="nom row">
+
+                <div class="nomLabel">
+                   {{ form_label(form.lastname, 'Nom :') }}
+                </div>
+
+                <div class="nomInput">
+                   {{ form_widget (form.lastname,{
+                        'attr':{'placeholder':'Entrez votre Nom'}}
+                   ) }}
+                </div>
+                 
+             {# If Errors#}
+
+                <div class="nomError">
+                   {{form_errors(form.lastname)}}
+               </div>
+
+             </div>
+
+          {# ROLES #}
+
+             <div class="roles row">
+
+                <div class="rolesLabel">
+                   {{ form_label(form.roles, 'Roles :') }}
+                </div>
+
+                <div class="rolesInput">
+                   {{ form_widget(form.roles) }}
+                </div>
+
+             {# If Errors#}
+
+                <div class="rolesError">
+                   {{form_errors(form.roles)}}
+                </div>
+
+             </div>
+
+          {# EMAIL #}
+
+             <div class="email row">
+
+                <div class="emailLabel">
+                   {{ form_label(form.email, 'email :') }}
+                </div>
+
+                <div class="emailInput">
+                   {{ form_widget (form.email,{
+                        'attr':{'placeholder':'Entrez votre email'}}
+                   ) }}
+                </div>
+
+             {# If Errors#}
+
+                <div class="emailError">
+                   {{form_errors(form.email)}}
+                </div>
+
+             </div>
+
+         {# ADDRESSE #}
+
+             <div class="address row">
+
+                <div class="addressLabel">
+                   {{ form_label(form.address, 'address :') }}
+                </div>
+
+                <div class="addressInput">
+                   {{ form_widget (form.address,{
+                      'attr':{'placeholder':'Entrez votre address'}}
+                   ) }}
+                </div>
+
+             {# If Errors#}
+
+                <div class="addressError">
+                   {{form_errors(form.address)}}
+                </div>
+
+             </div>
+
+         {# TELEPHONE #}
+
+             <div class="phone row">
+
+                <div class="phoneLabel">
+                   {{ form_label(form.phone, 'Téléphone :') }}
+                </div>
+
+                <div class="phoneInput">
+                   {{ form_widget (form.phone,{
+                        'attr':{'placeholder':'Entrez votre numéro de téléphone'}}
+                   ) }}
+                </div>
+
+            {# If Errors#}
+
+                <div class="phoneError">
+                   {{form_errors(form.phone)}}
+                </div>
+                
+             </div>
+           
+            
+            {# <a class="btn" href="{{ path('user_index') }}"> Revenir à la liste </a> #}
+                 
+       </div>
+
+   </div>
+
+       <button class="btn btn-lg btn-primary">
+          {{ button_label|default('Save') }}
+       </button>
+            
+ {{ form_end(form) }}
+
+

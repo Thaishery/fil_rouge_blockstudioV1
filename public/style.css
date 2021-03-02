@@ -6,6 +6,28 @@
      background-color: orange;
      margin-left: 20px;
      margin-right: 20px;
+     min-height: 40px;
+     min-width: 200px;
+     transition-duration: 0.3s;
+ }
+
+ .btn:hover{
+    /* background-color: #4CAF50; Green */
+     color: red;
+     background-color: orange;
+}
+
+ .btn-primary, .btn-lg, .btn-block{
+    margin: auto;
+}
+ .btn a{
+    text-decoration: none;
+    color:white;
+ }
+ .btn a:hover{
+    text-decoration: none;
+    color: red;
+    background-color: orange;
  }
 .mainsection{
      /* margin: auto; */
@@ -138,5 +160,4 @@ h1 {
      color: white;
   }
 
-
-
+ 

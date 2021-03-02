@@ -1,22 +1,180 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
 
-{% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
 
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.login) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-lg btn-primary">Register</button>
-    {{ form_end(registrationForm) }}
-{% endblock %}
+     {% block title %} 
+         Inscription
+     {% endblock %}
+
+
+
+     {% block body %}
+         {% for flashError in app.flashes('verify_email_error') %}
+             <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+     {% endfor %}
+
+
+
+
+                 <h1 class="h3 mb-3 font-weight-normal"> Inscription </h1>
+
+     {{ form_start(registrationForm) }}
+
+     <div class="container">
+
+         <div class="row">
+
+         {# PSEUDO #}
+
+             <div class="pseudo row">
+
+                 <div class="pseudoLabel">
+                     {{form_label(registrationForm.login, 'Pseudo :')}}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{form_widget
+                         (registrationForm.login,{
+                            'attr': {'placeholder':'Entrez votre pseudo'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="pseudoError">
+                         {{form_errors(registrationForm.login)}}
+                     </div>
+
+             </div>
+
+         {# NOM #}
+
+             <div class="nom col">
+
+                 <div class="nomLabel">
+                     {{form_label(registrationForm.lastname, 'Nom :')}}
+                 </div>
+
+                 <div class="nomInput">
+                     {{form_widget
+                         (registrationForm.lastname, {
+                         'attr': {'placeholder':'Entrez votre nom'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+                     <div class="nomError">
+                         {{form_errors(registrationForm.lastname)}}                  
+                     </div>
+
+             </div>
+
+
+         {# PRENOM #}
+
+             <div class="prenom col">
+
+                 <div class="prenomLabel">
+                     {{form_label(registrationForm.firstname, 'Prénom :')}}
+                 </div>
+
+                 <div class="prenomInput">
+                     {{form_widget
+                         (registrationForm.firstname,{
+                            'attr': {'placeholder':'Entrez votre prénom'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="prenomError">
+                         {{form_errors(registrationForm.firstname)}}
+                     </div>
+
+             </div>
+
+         {# EMAIL #}
+
+             <div class="email row">
+
+                 <div class="emailLabel">
+                     {{form_label(registrationForm.email, 'Adresse électronique :')}}
+                 </div>
+
+                 <div class="emailInput">
+                     {{form_widget
+                         (registrationForm.email,{
+                            'attr': {'placeholder':'Entrez votre email'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="emailError">
+                         {{form_errors(registrationForm.email)}}
+                     </div>
+
+             </div>
+
+         {# MOT DE PASSE #}
+
+             <div class="password row">
+
+                 <div class="passwordLabel">
+                     {{form_label(registrationForm.plainPassword, 'Mot de passe :')}}
+                 </div>
+
+                 <div class="passwordInput">
+                     {{form_widget
+                         (registrationForm.plainPassword,{
+                            'attr': {'placeholder':'Entrez votre mot de passe'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="passwordError">
+                         {{form_errors(registrationForm.plainPassword)}}
+                     </div>
+
+             </div>
+
+             {# AGREE TERMS #}
+
+             <div class="agreeTerms row">
+
+                 <div class="agreeTermsLabel">
+                     {{form_label(registrationForm.agreeTerms, 'Veuillez accepter nos conditions :')}}
+                 </div>
+
+                 <div class="agreetermsInput">
+                    {{form_widget(registrationForm.agreeTerms)}}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="agreeTermsError">
+                         {{form_errors(registrationForm.agreeTerms)}}
+                     </div>
+
+             </div>
+
+         </div>
+
+     </div>      
+
+        <button type="submit" class="btn btn-lg btn-primary"> S'inscrire </button>
+
+     {{ form_end(registrationForm) }}
+
+ {% endblock %}
+
+        {# exemple de form_row avec label et class: #}     
+        {# {{ form_row(registrationForm.firstname, {
+                 label: 'Prénom' ,
+                 'attr': {  'placeholder'   :   'Entrez votre prénom',
+                            'class'         :   'maclass'}   
+             },
+             ) }}  #}
