@@ -51,7 +51,7 @@
 
          {# NOM #}
 
-             <div class="nom col">
+             <div class="nom col-6">
 
                  <div class="nomLabel">
                      {{form_label(registrationForm.lastname, 'Nom :')}}
@@ -74,7 +74,7 @@
 
          {# PRENOM #}
 
-             <div class="prenom col">
+             <div class="prenom col-6">
 
                  <div class="prenomLabel">
                      {{form_label(registrationForm.firstname, 'Prénom :')}}
@@ -97,15 +97,15 @@
 
          {# EMAIL #}
 
-             <div class="email row">
+             <div class="email col-6">
 
                  <div class="emailLabel">
-                     {{form_label(registrationForm.email, 'Adresse électronique :')}}
+                     {{form_label(registrationForm.email.first, 'Adresse électronique :')}}
                  </div>
 
                  <div class="emailInput">
                      {{form_widget
-                         (registrationForm.email,{
+                         (registrationForm.email.first,{
                             'attr': {'placeholder':'Entrez votre email'}}
                          ) }}
                  </div>
@@ -113,22 +113,45 @@
                  {# If Errors #}
 
                      <div class="emailError">
-                         {{form_errors(registrationForm.email)}}
+                         {{form_errors(registrationForm.email.first)}}
+                     </div>
+
+             </div>
+
+         {# CONFIRMATION DE L'EMAIL #}
+
+             <div class="email col-6">
+
+                 <div class="emailLabel">
+                     {{form_label(registrationForm.email.second, 'Confirmation adresse électronique :')}}
+                 </div>
+
+                 <div class="emailInput">
+                     {{form_widget
+                         (registrationForm.email.second,{
+                            'attr': {'placeholder':'Veuillez confirmer'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="emailError">
+                         {{form_errors(registrationForm.email.second)}}
                      </div>
 
              </div>
 
          {# MOT DE PASSE #}
 
-             <div class="password row">
+             <div class="password col-6">
 
                  <div class="passwordLabel">
-                     {{form_label(registrationForm.plainPassword, 'Mot de passe :')}}
+                     {{form_label(registrationForm.plainPassword.first, 'Mot de passe :')}}
                  </div>
 
                  <div class="passwordInput">
                      {{form_widget
-                         (registrationForm.plainPassword,{
+                         (registrationForm.plainPassword.first,{
                             'attr': {'placeholder':'Entrez votre mot de passe'}}
                          ) }}
                  </div>
@@ -136,12 +159,35 @@
                  {# If Errors #}
 
                      <div class="passwordError">
-                         {{form_errors(registrationForm.plainPassword)}}
+                         {{form_errors(registrationForm.plainPassword.first)}}
+                     </div>
+
+             </div>
+             
+         {# CONFIRMATION DU MOT DE PASSE #}    
+
+             <div class="password col-6">
+
+                 <div class="passwordLabel">
+                     {{form_label(registrationForm.plainPassword.second, 'Confirmation du mot de passe :')}}
+                 </div>
+
+                 <div class="passwordInput">
+                     {{form_widget
+                         (registrationForm.plainPassword.second,{
+                            'attr': {'placeholder':'Veuillez confirmer '}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="passwordError">
+                         {{form_errors(registrationForm.plainPassword.second)}}
                      </div>
 
              </div>
 
-             {# AGREE TERMS #}
+         {# AGREE TERMS #}
 
              <div class="agreeTerms row">
 
@@ -163,9 +209,11 @@
 
          </div>
 
-     </div>      
+         <button type="submit" class="btn btn-lg btn-primary"> 
+             S'inscrire
+         </button>
 
-        <button type="submit" class="btn btn-lg btn-primary"> S'inscrire </button>
+     </div>      
 
      {{ form_end(registrationForm) }}
 

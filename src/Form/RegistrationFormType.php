@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,11 +18,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 
-class RegistrationFormType extends AbstractType
-{
+ class RegistrationFormType extends AbstractType
+ {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
+     {
+         $builder
              ->add('lastname', TextType::class, [
                 'constraints' => [
                     new Assert\Regex([
@@ -30,6 +31,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
              ->add('firstname', TextType::class, [
                 'constraints' => [
                     new Assert\Regex([
@@ -38,15 +40,24 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
              ->add('login')
-             ->add('email', EmailType::class,[
+
+             ->add('email', RepeatedType::class,[
+                'type' => EmailType::class,
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => '/^\w*[a-zA-Z0-9-_âêîôûäëïöüéèàçÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙ]*+@\w*[a-zA-Z0-9-_âêîôûäëïöüéèàçÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙ]*+\.\w+$/',
                         'message' => 'Email invalide'
                     ])
-                ]
+                ],
+                'invalid_message' => 'The email fields must match.',
+                'options' => ['attr' => ['class' => 'email-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'email'],
+                'second_options' => ['label' => 'Repeat email'],
             ])
+            
              ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -55,32 +66,43 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe.',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit au minimum contenir {{ limit }} caractères.',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    // regex caractére spécial : 
-                    new Assert\Regex([
-                        'pattern' => '/[^A-Za-z0-9]+/',
-                        'message' => 'Vous devez saisir au moins 1 caractére spécial.'
-                    ]),
-                    //regex Majuscule : 
-                    new Assert\Regex([
-                        'pattern' => '/[A-Z]+/',
-                        'message' => 'Vous devez saisir au moins 1 Majuscule.'
-                    ]),
-                ],
-            ])
+
+            //password whit repeated type: 
+
+             ->add('plainPassword', RepeatedType::class, [
+                 'type' => PasswordType::class,
+                 'mapped' => false,
+                 'constraints' => [
+
+                     new NotBlank([
+                         'message' => 'Veuillez entrer un mot de passe.',
+                        ]),
+
+                     new Length([
+                         'min' => 6,
+                         'minMessage' => 'Votre mot de passe doit au minimum contenir {{ limit }} caractères.',
+                         // max length allowed by Symfony for security reasons
+                         'max' => 4096,
+                        ]),
+
+                     // regex caractére spécial : 
+                     new Assert\Regex([
+                         'pattern' => '/[^A-Za-z0-9]+/',
+                         'message' => 'Vous devez saisir au moins 1 caractére spécial.'
+                         ]),
+
+                     //regex Majuscule : 
+                     new Assert\Regex([
+                         'pattern' => '/[A-Z]+/',
+                         'message' => 'Vous devez saisir au moins 1 Majuscule.'
+                        ]),
+                    ],
+                'invalid_message' => 'The password fields must match.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
+            ]);
         ;
     }
 
