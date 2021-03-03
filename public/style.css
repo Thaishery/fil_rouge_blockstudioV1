@@ -48,6 +48,27 @@ h1 {
     text-align: center;
 }
 
+ /* h1 contact form */
+ #h1_contact
+     {
+         text-align: center;
+         border: groove 1px;
+         box-shadow: 1px 1px 1px orange;
+         /* background-color: palevioletred; */	 	 
+         border-radius: 3px;
+         padding: 8px;
+         margin: 16px;
+     }  
+ 
+ #img_a
+	 { 
+	     border-width: 2px;
+         border-radius: 100%;
+         /* box-shadow: 5px 5px 130px 20px orange; */ 
+         /* border: green groove 1px; */ 
+         /* box-shadow: 4px 4px 4px rgb(102 102 255); */ 
+     }	
+
  .TextFrame h1{
      font-size: 1rem;
  }

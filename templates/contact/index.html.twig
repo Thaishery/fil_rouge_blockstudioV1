@@ -9,22 +9,80 @@
      {% endblock %}
 
      {% block body %}
-         <style>
-             .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-             .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-         </style>
 
-         <div class="example-wrapper">
+         <main>
 
-             <h1> Contact </h1>
+             <article> 
 
-                 This friendly message is coming from:
+                 <!-- Div Gauche -->   
+                 <div id="bloc_gauche">
 
-         <ul>
-             <li>Your controller at <code><a href="{{ 'E:/xampp2/htdocs/fil_rouge_blockstudioV1/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-             <li>Your template at <code><a href="{{ 'E:/xampp2/htdocs/fil_rouge_blockstudioV1/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-         </ul>
+                     <!-- Photo de présentation du contact -->  
+                     <figure>	
 
-     </div>
+                         <img id="img_a" src=" { asset ('coverlexos1.jpg'}" alt="Photo de présentation du contact."/>
+                         <figcaption> Lexos Block Studio </figcaption>
+
+                     </figure>	
+
+                         </div>
+
+                 <!-- Div Droite-->   
+                 <div id="bloc_droite">
+
+                         <div>
+
+                             <!-- Titre de l'article -->                                     
+                             <h1 id="h1_contact"> Contact </h1>
+
+                                 <div>
+
+                                     <p>                                       
+                                         Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
+                                        
+                                         Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
+                                        
+                                         Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
+                                        
+                                         Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
+                                        
+                                         Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
+                                        
+                                         Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
+                                     </p>
+
+                                 </div>
+
+                                 <!-- <div>
+                                      
+                                     PlaceHolder  
+
+                                 </div> -->   
+
+                         </div>
+
+                 </div>
+
+             </article>
+
+         </main>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  {% endblock %}
