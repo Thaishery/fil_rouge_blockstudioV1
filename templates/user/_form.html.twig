@@ -1,13 +1,7 @@
-{# {{ form_start(form) }}
-
-    {{ form_widget(form) }}
-    <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
-    
-{{ form_end(form) }} #}
-
 {{ form_start(form) }}
 <div>
     {{ form_label(form.login) }}
+    {{ form_errors(form.login) }}
     {{ form_widget(form.login) }}
 </div>
 <div>
@@ -21,16 +15,29 @@
     {{ form_widget(form.lastname) }}
 </div>
 <div>
-    {#{{ form_label(form.plainPassword) }} #}
     <label>Mot de passe</label>
     {{ form_errors(form.plainPassword) }}
     {{ form_widget(form.plainPassword,{ 'attr':{
         'class':'inputEmail',
         'value':user.password }}) }}
 </div> 
-<div>
-    {{ form_label(form.roles) }}
-    {{ form_widget(form.roles) }}
+<div class="rolesFormAdmin row">
+    {{form_label(form.roles, 'Veuillez sélectionner un role :' ,{'label_attr':{'class':'col-3'}})}}
+    {# {% for role in form.roles.vars.choices %}
+    {{ dump(form.roles.vars.choices) }}
+    {{ dump (role)}} #}
+    {# {% endfor %} #}
+    {{form_widget(form.roles)}}
+
+
+    {# {{ form_label(form.roles) }} #}
+    {# {{ form_errors(form.roles) }}  #}
+    {# <div class="col-3"> #}
+    {# {{ form_row(form.roles)}}  #}
+     {# {{ form_widget(form.roles) }}  #}
+    {# </div> #}
+
+
 </div>
 <div>
     {{ form_label(form.email) }}

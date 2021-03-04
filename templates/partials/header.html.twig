@@ -1,86 +1,138 @@
  <header>
 
      <div class="AcountFrame" style="display:flex; justify-content:space-around;">
+
          <div class="TextFrame">
 
              <p> Vous etes connecté en tant que: 
-                {% if app.user %} {{app.user.login}} {% endif %} <br/>
+
+                 {% if app.user %}
+                     {{app.user.login}}
+                 {% endif %} <br/>
+
              </p>
-        </div>   
+
+         </div>   
 		        
          {# prévoir mise en place pour administration (gestion des roles) #}
 
          <div class="logFrame">
 
              {% if app.user %}
+
                  <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
-                 {% if is_granted('ROLE_ADMIN') %}
-                 <br/>
-                 <a href="/admin/user"> Gestion des utilisateurs </a><br/>
-                 <a href="/admin/home/edit"> Gestion de la homepage</a>
+ 
+                 {% if is_granted('ROLE_ADMIN') %} <br/>
+                   
+                     <a href="/admin/user"> Gestion des utilisateurs </a><br/>
+
+                     <a href="/admin/home/edit"> Gestion de la homepage</a>
 
                 {% endif %} 
+
                 {# Gestion de l'utilisateur actuel #}
-                {% if is_granted('ROLE_USER') %}
-                <br/>
-                <a href="#"> Gérer mon profil </a>
-                {% endif %}
+                {% if is_granted('ROLE_USER') %} <br/>
+               
+                     <a href="#"> Gérer mon profil </a>
+
+                 {% endif %}
+
              {% endif %}
 
              {% if  not app.user %}
-                 <a href="{{ path ('app_login') }}" > Connexion </a><br/>
-                 <a href="{{ path ('app_register') }}" > Créer un compte </a>
+
+                 <a href="{{ path ('app_login') }}"> Connexion </a><br/>
+                 <a href="{{ path ('app_register') }}"> Créer un compte </a>
+
              {% endif %}
 
          </div>
-    </div>
 
+     </div>
 
-
+     {# BARRE DE NAVIGATION  #}
 
      <div class="test">
 
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
+
+             <div class="container-fluid">
+
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
                 </button>
+
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                 <ul class="navbar-nav">
 
-                     <li class="nav-item active">
-                         <a class="nav-link" href="{{path ("home")}}"> Accueil <span class="sr-only">(current)</span></a>
-                     </li>
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                        </a>
+                         <ul class="navbar-nav">
 
-                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <li><a class="dropdown-item" href="{{path ("services")}}">ServicesController</a></li>
-                             {# prévoir boucle twig pour récuperer depuis la bdd #}
-                             {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
-                         </ul>
-                     </li>               
+                             <li class="nav-item active">
+                                 <a class="nav-link" href="{{path ("home")}}"> Accueil <span class="sr-only">(current)</span></a>
+                             </li>
 
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{path ("artistes")}}"> Les Artistes </a>
-                     </li>
+                             <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Services </a>
 
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
-                     </li>
+                                     {# prévoir boucle twig pour récuperer depuis la bdd #}
+                                     {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
 
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
-                     </li>
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#">Enregistrement</a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Mixage </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Mastering </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Vidéo </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Création graphique </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Pressage CD </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Impression </a></li>                                        
+                                     </ul>
+
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                         <li><a class="dropdown-item" href="#"> Distribution </a></li>                                        
+                                     </ul>
+
+                             </li>               
+
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("artistes")}}"> Les Artistes </a>
+                             </li>
+
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
+                             </li>
+
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
+                             </li>
                      
-                 </ul>
+                     </ul>
+
+                 </div>
+
              </div>
-             </div>
+
          </nav>
+
      </div>
+
  </header>

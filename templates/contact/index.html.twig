@@ -10,50 +10,58 @@
 
      {% block body %}
 
-        <main>
-         <div class="container">
-            <article class="contact"> 
-             <div class="row">
+         <main>
 
-                 <!-- Div Gauche -->   
-                <div class="col-6">
+             <div class="container">
 
-                     <!-- Photo de présentation du contact -->  
-                     <figure class="contactFig">	
+                 <article class="contact"> 
 
-                         <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact."/>
-                         <figcaption> Lexos Block Studio </figcaption>
+                     <div class="row">
 
-                     </figure>	
+                         <!-- Div Gauche -->   
+                         <div class="col-6">
 
-                </div>
+                             <!-- Photo de présentation du contact -->  
+                             <figure class="contactFig">	
 
-                 <!-- Div Droite-->   
-                <div class="col-6">
+                                 <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact."/>
+                                 <figcaption> Lexos Block Studio </figcaption>
 
-                     <!-- Titre de l'article -->                                     
-                     <h1 id="h1_contact"> Contact </h1>
+                             </figure>	
 
-                         
-                             <p>                                       
-                                 Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
+                         </div>
+
+                         <!-- Div Droite-->   
+                         <div class="col-6">
+
+                             <!-- Titre de l'article -->                                     
+                             <h1 id="h1_contact"> Contact </h1>
+
+                                 <p>                                       
+                                     Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
                                 
-                                 Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
+                                     Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
                                 
-                                 Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
+                                     Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
                                 
-                                 Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
+                                     Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
                                 
-                                 Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
-                                
-                                 Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
-                             </p>
-                </div>
+                                     Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
+                                 
+                                     Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
+                                 </p>
+
+                         </div>
                 
+                     </div>
+
+                 </article>
+
              </div>
-            </article>
-         </div>
-        </main>    
+
+         </main>  
+    
+     {% endblock %}
 
 
 
@@ -70,7 +78,112 @@
 
 
 
+         
+         {# Le code, ou les parties de code ci-dessous, pourront/devront etre déplacées, ou utilisées dans la catégorie "service" #}
+         
 
+          {# <!-- Texte présentation studio --> 
+             <div id="bloc_info"> 
 
+                 <h2>
+                     <b> UN SAVOIR FAIRE </b>
+                         - STUDIO D'ENREGISTREMENT
+                         - CLIP MAKER
+                 </h2>
 
- {% endblock %}
+                     <!-- Bloc enregistrement --> 
+                     <div class="info_a">
+
+                         <h3>
+                             <b> Enregistrement </b>
+                         </h3>
+
+                             <p>
+                                 L'enregistrement se fait par un ingénieur du son professionnel, 
+
+                                 <strong> avec plus de 10 ans d'expérience </strong> dans tous les types de musique.
+
+                                 Toutes vos prises de voix s'effectuent dans une cabine entiérement insonorisée.
+
+                                 Une qualité de prise de voix qui égale les plus grands studio à l'heure actuel.
+                             </p>
+
+                     </div>
+                                    
+                     <!-- Bloc Mixage --> 
+                     <div class="info_b">
+
+                         <h3>
+                             <b> Mixage </b>
+                         </h3>
+
+                             <p>
+                                 Dorénavant il est devenu facile, pour celui qui veut, d'enregistrer soit-meme ses propres prises de voix avec un minimum de matériel.
+
+                                 Neanmoins, le mixage reste une phase primordiale dans la finalisation d'un morceau, autant au niveau technique que artistique. 
+
+                                 Le BlockStudio vous propose de vous accompagner dans la réalisation de votre projet, que vous soyez passionnés de musique,
+                                 
+                                 artiste amateur ou confirmé, ou simplement professionnel de l'audiovisuel, en vous offrant <strong> un mixage audio de qualité professionnel. </strong>
+
+                                 Equipé de matériel professionnel, le Blockstudio propose une juste combinaison entre analogique et numérique,
+                                 
+                                 permettant de capter et de travailler dans ses moindres détails la couleur de son, s'adaptant à vos besoins, vos envies,
+                                 
+                                 Rap, Rnb, Zouk, acoustique, coupé décalé, salsa, bachata...
+                             </p>
+
+                     </div>
+
+                     <!-- Bloc Mastering --> 
+                     <div class="info_c">
+
+                         <h3>
+                             <b> Mastering </b>
+                         </h3>
+
+                             <p>
+                                 C'est l'art de lisser les défaults éventuels d'un mix, équilibre sonore, différence de niveau entre les titres,
+                                 
+                                 normalisations techniques selon le mode de diffusion,etc... <br/>
+
+                                 En effet, lors d'un mix en studio, on a souvent l'impression d'avoir un son de très grande envergure dù aux conditions studio, au systeme d'ecoute flatteur et souvent trompeur ! <br/>
+
+                                 Mais à la reécoute chez soi on est souvent déçu, manque de graves et d'aigus, niveau sonore trop fort ou trop faible... <br/>
+                                 
+                                 On a donc besoin d'une référence sonore fiable et stable pour juger du rendu final d'un titre ou d'un album avant sa diffusion.
+
+                                 Il faut alors faire appel à <strong> un ingénieur du son spécialisé en mastering </strong> pour que quel que soit le systeme d'écoute, 
+                                 
+                                 on retrouve le son d'envergure du mix et meme mieux... <br/>
+                                 
+                                 Nos mastering sont réalisé par un préstataire trés experimenté, ouvert depuis 2001, il travaille avec <i> Wagram, Universal, Believe... </i> 
+                                 
+                                 et de nombreux gros artistes indépendant. <br/>
+                                 
+                                 Il est équipé des meilleures machine de mastering qu'il existe sur le marché.
+
+                             </p>
+
+                     </div>
+
+                     <!-- Bloc Clip vidéo --> 
+                     <div class="info_d">
+
+                         <h3>
+                             <b> Clip vidéo </b>
+                         </h3>
+
+                             <p>
+                                 L’étroite complicité entre nos réalisateurs, techniciens et vous aboutit à des visuels de qualité 
+                                 
+                                 et nous permet d’apporter une image adaptée à tout vos univers: musical ou autres… 
+                                 
+                                 Conception, conseil, écriture de scénario, tournage, montage : nous travaillons ensemble pour réaliser au mieux
+                                 
+                                 votre projet de clip de musique ou de famille (mariage, baptême, etc...).
+                             </p>
+
+                     </div>
+
+             </div> #}

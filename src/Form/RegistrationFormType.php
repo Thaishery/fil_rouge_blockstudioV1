@@ -41,7 +41,14 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ],
             ])
 
-             ->add('login')
+             ->add('login', TextType::class,[
+                 'constraints' => [
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z0-9]*$/',
+                        'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
+                    ])
+                 ]
+             ])
 
              ->add('email', RepeatedType::class,[
                 'type' => EmailType::class,
@@ -55,7 +62,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'options' => ['attr' => ['class' => 'email-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'email'],
-                'second_options' => ['label' => 'Repeat email'],
+                'second_options' => ['label' => 'Veuillez repeter votre email'],
             ])
             
              ->add('agreeTerms', CheckboxType::class, [
@@ -100,8 +107,8 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Veullez répeter votre mot de passe'],
             ]);
         ;
     }

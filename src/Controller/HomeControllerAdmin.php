@@ -13,8 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/home/edit")
  */
+// JC_ Ont gère les accès admin via le fichier " config/packages/security.yaml" et ont a ajouter le admin 
+
 class HomeControllerAdmin extends AbstractController
 {
+
     /**
      * @Route("/", name="home_index", methods={"GET"})
      */

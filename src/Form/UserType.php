@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 // use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Length;
@@ -16,21 +17,47 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints as Assert;
 use Webmozart\Assert\Assert as AssertAssert;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('login')
+            ->add('login', TextType::class,[
+                'constraints' => [
+                   new Assert\Regex([
+                       'pattern' => '/^[a-zA-Z0-9]*$/',
+                       'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
+                   ])
+                ]
+            ])
             ->add('roles', ChoiceType::class,[
                 'choices' => [
                     'administrateur' => 'ROLE_ADMIN',
                     'artistes' => 'ROLE_USER',
                     'modérateur' => 'ROLE_MODERATEUR',
                 ],
+                'row_attr' => ['class' =>'col-6'],
+                'choice_attr' => [
+                    'administrateur' => ['class' => 'col-2'],
+                    'artistes' => ['class' => 'col-3'],
+                    'modérateur' => ['class' => 'col-3'],
+                ],
+                'label_attr' => array(
+                    'class' => 'col-2'
+                ),
+                // 'choice_label' => function ($choice, $key, $value) {
+                //     if ('administrateur' === $choice) {
+                //         return 'Definitely!';
+                //     }
+                //     return ($key);},
+                // 'label_attr' =>['class' => 'col-2'],
+                'attr' => ['class' => 'col-2'],
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'required'   => true,
+                'empty_data' => 'ROLE_USER',
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
