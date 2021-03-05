@@ -38,22 +38,22 @@ class UserType extends AbstractType
                     'artistes' => 'ROLE_USER',
                     'modérateur' => 'ROLE_MODERATEUR',
                 ],
-                'row_attr' => ['class' =>'col-6'],
+                // 'row_attr' => ['class' =>'col-6'],
                 'choice_attr' => [
-                    'administrateur' => ['class' => 'col-2'],
-                    'artistes' => ['class' => 'col-3'],
-                    'modérateur' => ['class' => 'col-3'],
+                    'administrateur' => ['class' => 'col-1'],
+                    'artistes' =>   ['class' => 'col-1'],
+                    'modérateur' => ['class' => 'col-1'],
                 ],
-                'label_attr' => array(
-                    'class' => 'col-2'
-                ),
+                // 'label_attr' => array(
+                //     'class' => 'col-2'
+                // ),
                 // 'choice_label' => function ($choice, $key, $value) {
                 //     if ('administrateur' === $choice) {
                 //         return 'Definitely!';
                 //     }
                 //     return ($key);},
                 // 'label_attr' =>['class' => 'col-2'],
-                'attr' => ['class' => 'col-2'],
+                //'attr' => ['class' => 'col-2'],
                 'multiple' => true,
                 'expanded' => true,
                 'required'   => true,
