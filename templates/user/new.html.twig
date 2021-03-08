@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
+    
+     {% block metaTitle %}
+         " Nouvel utilisateur "
+     {% endblock %}
+
+
      {% block title %}
          Nouvel utilisateur
      {% endblock %}
 
      {% block body %}
 
-         <h1> Créer un nouvel utilisateur </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Créer un nouvel utilisateur </h1>
 
 
      {{ include('user/_form.html.twig') }}

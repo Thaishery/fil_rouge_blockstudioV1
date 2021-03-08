@@ -2,6 +2,33 @@
 
      {{ form_widget(form) }}
 
+         {# TITRE #}
+             <div class="pseudo row">
+
+                 <div class="titleLabel">
+                     {{ form_label(form.login, 'Titre :') }}
+                 </div>
+
+                 <div class="titleInput">
+                     {{ form_widget(form.title,{
+                     'attr': {'placeholder':'Entrez votre titre'}})
+                     }}
+                 </div>
+
+                 <div class="titleError">
+                     {{ form_errors(form.title) }}
+                </div>
+             </div>
+
+
+
+
+
+
+
+
+
+
      <button class="btn">
          {{ button_label|default('Save') }}
      </button>

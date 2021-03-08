@@ -3,7 +3,7 @@
      <div class="AcountFrame" style="display:flex; justify-content:space-around;">
 
          <div class="TextFrame">
-
+            {% if app.user %}
              <p> Vous etes connecté en tant que: 
 
                  {% if app.user %}
@@ -11,6 +11,7 @@
                  {% endif %} <br/>
 
              </p>
+            {% endif %}
 
          </div>   
 		        
@@ -31,11 +32,12 @@
                 {% endif %} 
 
                 {# Gestion de l'utilisateur actuel #}
-                {% if is_granted('ROLE_USER') %} <br/>
-               
-                     <a href="#"> Gérer mon profil </a>
 
-                 {% endif %}
+                {% if is_granted('ROLE_USER') %} <br/>
+
+                    <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a>
+                
+                {% endif %}
 
              {% endif %}
 
