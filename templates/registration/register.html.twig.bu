@@ -1,0 +1,375 @@
+ {% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Inscription "
+     {% endblock %}
+
+
+     {% block title %} 
+         Inscription
+     {% endblock %}
+
+
+
+     {% block body %}
+         {% for flashError in app.flashes('verify_email_error') %}
+             <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+         {% endfor %}
+
+
+
+
+                 <h1 class="h3 mb-3 font-weight-normal"> Inscription </h1>
+     {{ form_start(registrationForm) }}
+
+     <div class="container ">
+         <div class="row col-9">
+         
+
+         {# PSEUDO #}
+
+             <div class="pseudo row col-9">
+
+                 <div class="pseudoLabel">
+                     {{form_label(registrationForm.login, 'Pseudo :')}}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{form_widget
+                         (registrationForm.login,{
+                            'attr': {'placeholder':'Entrez votre pseudo'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="pseudoError">
+                         {{form_errors(registrationForm.login)}}
+                     </div>
+
+             </div>
+
+         {# NOM #}
+
+             <div class="nom col-6">
+
+                 <div class="nomLabel">
+                     {{form_label(registrationForm.lastname, 'Nom :')}}
+                 </div>
+
+                 <div class="nomInput">
+                     {{form_widget
+                         (registrationForm.lastname, {
+                         'attr': {'placeholder':'Entrez votre nom'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+                     <div class="nomError">
+                         {{form_errors(registrationForm.lastname)}}                  
+                     </div>
+
+             </div>
+
+
+         {# PRENOM #}
+
+             <div class="prenom col-6">
+
+                 <div class="prenomLabel">
+                     {{form_label(registrationForm.firstname, 'Prénom :')}}
+                 </div>
+
+                 <div class="prenomInput">
+                     {{form_widget
+                         (registrationForm.firstname,{
+                            'attr': {'placeholder':'Entrez votre prénom'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="prenomError">
+                         {{form_errors(registrationForm.firstname)}}
+                     </div>
+
+             </div>
+
+         {# EMAIL #}
+
+             <div class="email col-6">
+
+                 <div class="emailLabel">
+                     {{form_label(registrationForm.email.first, 'Adresse électronique :')}}
+                 </div>
+
+                 <div class="emailInput">
+                     {{form_widget
+                         (registrationForm.email.first,{
+                            'attr': {'placeholder':'Entrez votre email'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="emailError">
+                         {{form_errors(registrationForm.email.first)}}
+                     </div>
+
+             </div>
+
+         {# CONFIRMATION DE L'EMAIL #}
+
+             <div class="email col-6">
+
+                 <div class="emailLabel">
+                     {{form_label(registrationForm.email.second, 'Confirmation adresse électronique :')}}
+                 </div>
+
+                 <div class="emailInput">
+                     {{form_widget
+                         (registrationForm.email.second,{
+                            'attr': {'placeholder':'Veuillez confirmer'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="emailError">
+                         {{form_errors(registrationForm.email.second)}}
+                     </div>
+
+             </div>
+
+         {# MOT DE PASSE #}
+
+             <div class="password col-6">
+
+                 <div class="passwordLabel">
+                     {{form_label(registrationForm.plainPassword.first, 'Mot de passe :')}}
+                 </div>
+
+                 <div class="passwordInput">
+                     {{form_widget
+                         (registrationForm.plainPassword.first,{
+                            'attr': {'placeholder':'Entrez votre mot de passe'}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="passwordError">
+                         {{form_errors(registrationForm.plainPassword.first)}}
+                     </div>
+
+             </div>
+             
+         {# CONFIRMATION DU MOT DE PASSE #}    
+
+             <div class="password col-6">
+
+                 <div class="passwordLabel">
+                     {{form_label(registrationForm.plainPassword.second, 'Confirmation du mot de passe :')}}
+                 </div>
+
+                 <div class="passwordInput">
+                     {{form_widget
+                         (registrationForm.plainPassword.second,{
+                            'attr': {'placeholder':'Veuillez confirmer '}}
+                         ) }}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="passwordError">
+                         {{form_errors(registrationForm.plainPassword.second)}}
+                     </div>
+
+             </div>
+
+            {# AGREE TERMS #}
+
+             <div class="agreeTerms row">
+
+                 <div class="agreeTermsLabel">
+                     {{form_label(registrationForm.agreeTerms, 'Veuillez accepter nos conditions :')}}
+                 </div>
+
+                 <div class="agreetermsInput">
+                    {{form_widget(registrationForm.agreeTerms)}}
+                 </div>
+
+                 {# If Errors #}
+
+                     <div class="agreeTermsError">
+                         {{form_errors(registrationForm.agreeTerms)}}
+                     </div>
+
+             </div>
+
+         </div>
+
+         <button type="submit" class="btn btn-lg btn-primary"> 
+             S'inscrire
+         </button>
+
+     </div>      
+
+     {{ form_end(registrationForm) }}
+
+ {% endblock %}
+
+        {# exemple de form_row avec label et class: #}     
+        {# {{ form_row(registrationForm.firstname, {
+                 label: 'Prénom' ,
+                 'attr': {  'placeholder'   :   'Entrez votre prénom',
+                            'class'         :   'maclass'}   
+             },
+             ) }}  #}
+
+
+
+
+
+{# 
+
+     <body class="text-center">
+    
+         <main class="form-signin">
+
+             <form>
+             {{ form_start(registrationForm) }}
+
+                 <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+
+                     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                         <label for="inputEmail" class="visually-hidden">Email address</label>
+                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+
+                         <label for="inputPassword" class="visually-hidden">Password</label>
+                         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+                         <div class="checkbox mb-3">
+
+                             <label>
+                                 <input type="checkbox" value="remember-me"> Remember me
+                             </label>
+
+                         </div>
+
+                         <button class="w-100 btn btn-lg btn-primary" type="submit">
+                             Sign in
+                         </button>
+
+                         <p class="mt-5 mb-3 text-muted">
+                             © 2017–2021
+                         </p>
+
+             </form>
+
+        
+        </main>
+        
+     </body> 
+     #}
+
+
+     {# 
+     
+     ***************************************************************************
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+     <body class="text-center">
+    
+         <main class="form-signin">
+
+
+             <form>
+             {{ form_start(registrationForm) }}
+
+
+                 <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+
+                     
+                     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                         <label for="inputEmail" class="visually-hidden">Email address</label>
+                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+
+                         <label for="inputPassword" class="visually-hidden">Password</label>
+                         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+                         <div class="checkbox mb-3">
+
+                             <label>
+                                 <input type="checkbox" value="remember-me"> Remember me
+                             </label>
+
+                         </div>
+
+                         <button class="w-100 btn btn-lg btn-primary" type="submit">
+                             Sign in
+                         </button>
+
+                         <p class="mt-5 mb-3 text-muted">
+                             © 2017–2021
+                         </p>
+
+             </form>
+
+        
+        </main>
+        
+     </body>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+      #}

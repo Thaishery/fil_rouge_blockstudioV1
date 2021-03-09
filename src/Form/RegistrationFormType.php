@@ -30,6 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Votre nom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'label_attr' => ['class' => 'form-label'],
             ])
 
              ->add('firstname', TextType::class, [
@@ -39,6 +40,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Votre prénom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'label_attr' => ['class' => 'form-label'],
             ])
 
              ->add('login', TextType::class,[
