@@ -2,7 +2,8 @@
     font-family: 'Roboto', sans-serif;
  }
  
- .btn,.btn-primary{
+ .btn,
+ .btn-primary{
      background-color: orange;
      margin-left: 20px;
      margin-right: 20px;
@@ -17,7 +18,9 @@
      background-color: orange;
 }
 
- .btn-primary, .btn-lg, .btn-block{
+ .btn-primary, 
+ .btn-lg,
+ .btn-block{
     margin: auto;
 }
  .btn a{
@@ -74,10 +77,10 @@ h1 {
  .TextFrame h1 a{
      color: orange;
  }
-.navbar-nav{
+ .navbar-nav{
      margin: auto;
 }
-.nav-item{
+ .nav-item{
      padding: 0px 50px;
 }
 
@@ -100,7 +103,7 @@ h1 {
  
 /* Style du carousel */
 
-.carousel{
+ .carousel{
     width: 800px;
     margin: auto;
 }

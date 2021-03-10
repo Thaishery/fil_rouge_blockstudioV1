@@ -6,18 +6,11 @@
      {% endblock %}
 
 
-
      {% block title %} 
          Gestion des utilisateurs
      {% endblock %}
 
      {% block body %}
-
-
-
-
-
-
 
          <h1> Gestion des utilisateurs </h1>
 
@@ -67,12 +60,13 @@
              <tr>
                  <td colspan="11">no records found</td>
              </tr>
+
          {% endfor %}
 
          </tbody>
 
-    </table>
+     </table>
 
      <a class="btn btn-lg btn-primary" href="{{ path('user_new') }}"> Créer un nouvel utilisateur </a>
 
-{% endblock %}
+ {% endblock %}

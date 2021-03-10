@@ -45,11 +45,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
              ->add('login', TextType::class,[
                  'constraints' => [
-                    new Assert\Regex([
-                        'pattern' => '/^[a-zA-Z0-9]*$/',
-                        'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
+                     new Assert\Regex([
+                         'pattern' => '/^[a-zA-Z0-9]*$/',
+                         'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
                     ])
-                 ]
+                    ],
+                 'label_attr' => ['class' => 'form-label'],
              ])
 
              ->add('email', RepeatedType::class,[
@@ -63,8 +64,8 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'invalid_message' => 'The email fields must match.',
                 'options' => ['attr' => ['class' => 'email-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'email'],
-                'second_options' => ['label' => 'Veuillez repeter votre email'],
+                'first_options'  => ['label' => 'email','label_attr' => ['class' => 'form-label']],
+                'second_options' => ['label' => 'Veuillez repeter votre email','label_attr' => ['class' => 'form-label']],
             ])
             
              ->add('agreeTerms', CheckboxType::class, [
@@ -74,6 +75,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Veuillez accepter les conditions',
                     ]),
                 ],
+                'label_attr' => ['class' => 'form-label'],
             ])
 
             //password whit repeated type: 
@@ -111,6 +113,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Veullez répeter votre mot de passe'],
+                'label_attr' => ['class' => 'form-label'],
             ]);
         ;
     }
