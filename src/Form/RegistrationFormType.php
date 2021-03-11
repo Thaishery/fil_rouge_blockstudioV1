@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,6 +16,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\File;
 
 
 
@@ -30,6 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Votre nom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'required' => false,
                 'label_attr' => ['class' => 'form-label'],
             ])
 
@@ -40,6 +43,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Votre prénom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'required' => false,
                 'label_attr' => ['class' => 'form-label'],
             ])
 
@@ -75,7 +79,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                         'message' => 'Veuillez accepter les conditions',
                     ]),
                 ],
-                'label_attr' => ['class' => 'form-label'],
+                'label_attr' => ['class' => 'form-check-label'],
             ])
 
             //password whit repeated type: 
@@ -111,11 +115,35 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Veullez répeter votre mot de passe'],
+                'first_options'  => ['label' => 'Mot de passe','label_attr' => ['class' => 'form-label']],
+                'second_options' => ['label' => 'Veullez répeter votre mot de passe','label_attr' => ['class' => 'form-label']],
                 'label_attr' => ['class' => 'form-label'],
-            ]);
-        ;
+            ])
+            ->add('address', TextType::class, [
+                'constraints' => [
+                    new Assert\Regex([
+                        'pattern' => "/[0-9]{1,4}(?:(?:(?:(?:(?:(?:(?:[b-i-s-t-e-rB-I-S-T-E-R]){0,3}[,. ]){1}[-a-zA-Z'àâäéèêëïîôöùûüç ]+)[ ]{1})[0-9]{5})[,. ]{0,1})[a-zA-Z]*)+/",
+                        'message' => 'Votre nom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
+                    ]),
+                ],
+                'label_attr' => ['class' => 'form-label'],
+                'required' => false,
+            ])
+            ->add('avatar',
+                FileType::class, [
+                        'constraints' => [
+                            new File([
+                                'maxSize' => '1024k',
+                                'mimeTypes' => [
+                                    'image/jpeg',
+                                    ]
+                            ])
+                            ],
+                            'label_attr' => ['class' => 'form-label'],
+                            'required' => false,
+                    ]
+                 )
+            ;
     }
 
 

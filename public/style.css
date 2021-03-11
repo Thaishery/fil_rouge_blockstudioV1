@@ -1,150 +1,219 @@
- *{
-    font-family: 'Roboto', sans-serif;
- }
+ *
+     {
+     font-family: 'Roboto', sans-serif;
+     }
  
  .btn,
- .btn-primary{
+ .btn-primary
+     {
      background-color: orange;
      margin-left: 20px;
      margin-right: 20px;
      min-height: 40px;
      min-width: 200px;
      transition-duration: 0.3s;
- }
+     }
 
- .btn:hover{
-    /* background-color: #4CAF50; Green */
+ .btn:hover
+     {
+     /* background-color: #4CAF50; Green */
      color: red;
      background-color: orange;
-}
+     }
 
  .btn-primary, 
  .btn-lg,
- .btn-block{
-    margin: auto;
-}
- .btn a{
-    text-decoration: none;
-    color:white;
- }
- .btn a:hover{
-    text-decoration: none;
-    color: red;
-    background-color: orange;
- }
-.mainsection{
+ .btn-block
+     {
+     margin: auto;
+     }
+
+ .btn a
+     {
+     text-decoration: none;
+     color:white;
+     }
+
+ .btn a:hover
+     {
+     text-decoration: none;
+     color: red;
+     background-color: orange;
+     }
+
+ .mainsection{
      /* margin: auto; */
      margin-left: 20px;
      margin-right: 20px;
      min-height: 450px;
-}
- .AcountFrame{
+     }
+
+ .AcountFrame
+     {
      height: 350px;
      background-image: url("logoGrand.webp");
      background-repeat: no-repeat;
      background-position:center;
      background-color: black;
      color: orange;
- }
+     }
 
-h1 {
-    text-align: center;
-}
+ h1 
+     {
+     text-align: center;
+     }
+
  /* h1 contact form */
  #h1_contact
      {
-         text-align: center;
-         border: groove 1px;
-         box-shadow: 1px 1px 1px orange;
-         /* background-color: palevioletred; */	 	 
-         border-radius: 3px;
-         padding: 8px;
-         margin: 16px;
+     text-align: center;
+     border: groove 1px;
+     box-shadow: 1px 1px 1px orange;
+     /* background-color: palevioletred; */
+     border-radius: 3px;
+     padding: 8px;
+     margin: 16px;
      }  
  
+ #p_contact
+     {
+        /* background-color: blue;	 */
+        box-shadow: 1px 1px 1px orange;
+        border-radius: 3px;
+        padding: 8px;
+        margin: 16px;
+     }
+
  #img_a
 	 { 
-	     border-width: 2px;
-         border-radius: 100%;
-         /* box-shadow: 5px 5px 130px 20px orange; */ 
-         /* border: green groove 1px; */ 
-         /* box-shadow: 4px 4px 4px rgb(102 102 255); */ 
+	 border-width: 2px;
+     border-radius: 100%;
+     /* box-shadow: 5px 5px 130px 20px orange; */ 
+     /* border: green groove 1px; */ 
+     /* box-shadow: 4px 4px 4px rgb(102 102 255); */ 
      }	
 
- .TextFrame h1{
-     font-size: 1rem;
- }
- .TextFrame h1 a{
-     color: orange;
- }
- .navbar-nav{
-     margin: auto;
-}
- .nav-item{
-     padding: 0px 50px;
-}
+ /* ****************** */
 
-/* .navbar{
-    width: 100%;
-}
- .navbar nav ul{
+     article p,
+     aside p
+     {
+         font-size: 0.8em;
+     }
+     
+     aside
+     {
+         flex: 1.2;
+         position: relative;
+         background-color: #706b64;
+         box-shadow: 0px 2px 5px #1c1a19;
+         border-radius: 5px;
+         padding: 10px;
+         color: white;
+         font-size: 0.9em;
+     }
+
+ /* ************************ */
+
+ .TextFrame h1
+     {
+     font-size: 1rem;
+     }
+
+ .TextFrame h1 a
+     {
+     color: orange;
+     }
+
+ .navbar-nav
+     {
+     margin: auto;
+     }
+
+ .nav-item
+     {
+     padding: 0px 50px;
+     }
+
+ /* .navbar
+     {
+     width: 100%;
+     }
+
+ .navbar nav ul
+     {
      display: flex;
      justify-content: space-around;
- }
- .navbar nav ul li{
+     }
+
+ .navbar nav ul li
+     {
      list-style: none;
- }
- #services:hover> #dropdown{
+     }
+
+ #services:hover> #dropdown
+     {
      display: block;
- }
- #dropdown{
+     }
+
+ #dropdown
+     {
      display: none;
- } */
+     } */
  
-/* Style du carousel */
+ /* Style du carousel */
 
- .carousel{
-    width: 800px;
-    margin: auto;
-}
-.greybox{
-    background-color:rgba(43, 47, 49, 0.795);
-    width: 800px;
-    position: relative; 
-    left: -120px;
-}
-.carousel-item a{
-    color: white;
-}
+ .carousel
+     {
+     width: 800px;
+     margin: auto;
+     }
 
-.homeImage{
-    max-width: 800px;
-    border: orange solid 1px;
-    border-width: 2px;
-}
+ .greybox
+     {
+     background-color:rgba(43, 47, 49, 0.795);
+     width: 800px;
+     position: relative; 
+     left: -120px;
+     }
 
-/* Style du formulaire de contact */
+ .carousel-item a
+     {
+     color: white;
+     }
 
-/* main {
-    min-height: 100vh;
-    background: linear-gradient(to right top, #ff780a, rgb(0 0 0));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+ .homeImage
+     {
+     max-width: 800px;
+     border: orange solid 1px;
+     border-width: 2px;
+     }
 
-.main_section{
-    background: whitesmoke;
-    min-height: 80vh;
-    width: 60%;
-    background: linear-gradient(
-        to right bottom, 
-            rgba(255,255,255, 0.8),
-            rgba(255,255,255, 0.2));
-    border-radius: 3rem;
-} */
+ /* Style du formulaire de contact */
 
- .footerMain{
+ /* main 
+     {
+     min-height: 100vh;
+     background: linear-gradient(to right top, #ff780a, rgb(0 0 0));
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     }
+
+ .main_section
+     {
+     background: whitesmoke;
+     min-height: 80vh;
+     width: 60%;
+     background: linear-gradient(
+         to right bottom, 
+             rgba(255,255,255, 0.8),
+             rgba(255,255,255, 0.2));
+     border-radius: 3rem;
+     } */
+
+ .footerMain
+     {
      position: relative;
      width: 100%;
      /* bottom: 20px; */
@@ -152,14 +221,16 @@ h1 {
      justify-content: space-around;
      background-color: black;
      color: white;
-}
+     }
 
- .footerMain h1 {
+ .footerMain h1 
+     {
      color: orange;
-}
+     }
 
-/* Style all font awesome icons */
-.fa {
+ /* Style all font awesome icons */
+ .fa
+     {
      margin-top: 5px;
      text-align: center;
      text-decoration: none;
@@ -167,43 +238,49 @@ h1 {
      font-size: 30px;
      width: 64px;
      border-radius: 50%;
-  }
+     }
   
   /* Add a hover effect if you want */
-  .fa:hover {
-    opacity: 0.7;
-  }
-  
-  /* Set a specific color for each brand */
+ .fa:hover 
+     {
+     opacity: 0.7;
+     }
+    
+ /* Set a specific color for each brand */
   
  /* YOUTUBE */
- .fa-youtube {
+ .fa-youtube 
+     {
      background: #FF0000;
      color: white;
-  }
+     }
 
   /* INSTAGRAM */
-  .fa-instagram {
+  .fa-instagram 
+     {
      background: #8a17ad;
      color: white;
-  }
+     }
 
  /* SNAPCHAT */
- .fa-snapchat {
+ .fa-snapchat 
+     {
      background: rgb(255 252 0);
      color: white;
-  }
+     }
 
   /* FACEBOOK */
-  .fa-facebook {
+  .fa-facebook
+     {
      background: rgb(24 119 242);
      color: white;
-  }
+     }
   
   /* TWITTER */
-  .fa-twitter {
+  .fa-twitter 
+     {
      background: rgb(29, 161, 242);
      color: white;
-  }
+     }
 
  

@@ -22,6 +22,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $avatar = $user->getAvatar();
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -31,7 +32,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $avatarname = md5(uniqid()).'.'.$avatar->guessExtension();
+            $avatar->move($this->getParameter('avatar_directory'), $avatarname);
+            $user->setAvatar($avatarname);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
