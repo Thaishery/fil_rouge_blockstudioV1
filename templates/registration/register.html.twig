@@ -74,12 +74,22 @@
 
                              {# *** INPUT *** #}
 
+                             {# {{form_widget
+                                 (registrationForm.login,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre pseudo',
+                                     'class':'form-control',
+                                     'pattern':'[a-zA-Z0-9]',
+                                     'title':'Votre pseudo dois etre composer uniquement de chiffres et de lettre, majuscules accepté.'
+                                   }}
+                                 ) 
+                             }} #}
                              {{form_widget
                                  (registrationForm.login,
                                    {
                                      'attr': {'placeholder':'Entrez votre pseudo',
                                      'class':'form-control',
-                                   }}
+                                     }}
                                  ) 
                              }}
 
@@ -362,7 +372,8 @@
                             
                           </div>
 
-                         <button class="w-100 btn btn-primary btn-lg" type="submit">
+                         {# <button class="w-100 btn btn-primary btn-lg" type="submit"> #}
+                         <button class="btn btn-primary btn-lg btn-block" type="submit">                     
                            S'incrire
                          </button>
                          

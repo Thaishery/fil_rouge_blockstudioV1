@@ -12,12 +12,12 @@
 
      {% block body %}
 
-         <h1> Gestionnaire d'utilisateur </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestionnaire d'utilisateur </h1>
 
 
      {{ include('user/_formEdit.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-         <button class="btn btn-lg btn-primary">
+         <button class="btn btn-primary btn-lg btn-block">
              <a href="{{ path('user_index') }}"> Retour à la liste </a>
          </button>
 

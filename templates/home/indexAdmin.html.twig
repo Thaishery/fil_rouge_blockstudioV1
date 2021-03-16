@@ -12,47 +12,54 @@
 
      {% block body %}
 
-         <h1> Gestion de la page d'accueil </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestion de la page d'accueil </h1>
 
-     <table class="table table-dark table-hover">
+             <table class="table table-dark table-hover">
 
-         <thead>
-             <tr>
-                 <th>Id</th>
-                 <th>Titre</th>
-                 <th>Photo</th>
-                 <th>Courte description</th>
-                 <th>Longue description</th>
-                 <th>Est actif</th>
-                 <th>Actions</th>
-             </tr>
-         </thead>
-         
-         <tbody>
-         {% for home in homes %}
-            <tr>
-                <td>{{ home.id }}</td>
-                <td>{{ home.title }}</td>
-                <td>{{ home.picture }}</td>
-                <td>{{ home.shortDesc }}</td>
-                <td>{{ home.longDesc }}</td>
-                <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
-                    <a href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-             </tbody>
-             
-         </table>
+                 <thead class="thead-light">
 
-     <a class="btn btn-lg btn-primary" href="{{ path('home_new') }}"> Créer article </a>
-         {# A_traduire  #}
+                     <tr>
+                         <th>Id</th>
+                         <th>Titre</th>
+                         <th>Photo</th>
+                         <th>Courte description</th>
+                         <th>Longue description</th>
+                         <th>Est actif</th>
+                         <th>Actions</th>
+                     </tr>
+
+                 </thead>
+                 
+                 <tbody>
+
+                 {% for home in homes %}
+
+                     <tr>
+                         <td>{{ home.id }}</td>
+                         <td>{{ home.title }}</td>
+                         <td>{{ home.picture }}</td>
+                         <td>{{ home.shortDesc }}</td>
+                         <td>{{ home.longDesc }}</td>
+                         <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
+                         <td>
+                             <a href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
+                             <a href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+                         </td>
+                     </tr>
+
+                 {% else %}
+
+                     <tr>
+                         <td colspan="7">no records found</td>
+                     </tr>
+
+                 {% endfor %}
+
+                     </tbody>
+                      
+                 </table>
+
+     <a class="btn btn-lg btn-primary" href="{{ path('home_new') }}"> Créer un nouvel article </a>
 
  {% endblock %}
 

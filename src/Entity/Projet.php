@@ -35,23 +35,49 @@ class Projet
     private $nb_of_tracks;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sample;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $link;
+    private $linkone;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="UserProjet")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $users;
+    private $linktwo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkthree;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cover;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $createur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="projetsfeat")
+     */
+    private $feat;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->feat = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,26 +121,86 @@ class Projet
         return $this;
     }
 
-    public function getSample()
+    public function getSample(): ?string
     {
         return $this->sample;
     }
 
-    public function setSample($sample): self
+    public function setSample(?string $sample): self
     {
         $this->sample = $sample;
 
         return $this;
     }
 
-    public function getLink(): ?string
+    public function getLinkone(): ?string
     {
-        return $this->link;
+        return $this->linkone;
     }
 
-    public function setLink(?string $link): self
+    public function setLinkone(?string $linkone): self
     {
-        $this->link = $link;
+        $this->linkone = $linkone;
+
+        return $this;
+    }
+
+    public function getLinktwo(): ?string
+    {
+        return $this->linktwo;
+    }
+
+    public function setLinktwo(?string $linktwo): self
+    {
+        $this->linktwo = $linktwo;
+
+        return $this;
+    }
+
+    public function getLinkthree(): ?string
+    {
+        return $this->linkthree;
+    }
+
+    public function setLinkthree(?string $linkthree): self
+    {
+        $this->linkthree = $linkthree;
+
+        return $this;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?string $cover): self
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCreateur(): ?User
+    {
+        return $this->createur;
+    }
+
+    public function setCreateur(?User $createur): self
+    {
+        $this->createur = $createur;
 
         return $this;
     }
@@ -122,26 +208,23 @@ class Projet
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getFeat(): Collection
     {
-        return $this->users;
+        return $this->feat;
     }
 
-    public function addUser(User $user): self
+    public function addFeat(User $feat): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addUserProjet($this);
+        if (!$this->feat->contains($feat)) {
+            $this->feat[] = $feat;
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeFeat(User $feat): self
     {
-        if ($this->users->removeElement($user)) {
-            $user->removeUserProjet($this);
-        }
+        $this->feat->removeElement($feat);
 
         return $this;
     }

@@ -12,69 +12,69 @@
 
      {% block body %}
 
-         <h1> Informations utilisateur </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Informations utilisateur </h1>
 
-     <table class="table table-dark">
+         <table class="table table-dark">
 
-         <tbody>
+             <tbody>
 
-             <tr>
-                 <th> Id </th>
-                 <td>{{ user.id }}</td>
-             </tr>
+                 <tr>
+                     <th> Id </th>
+                     <td>{{ user.id }}</td>
+                 </tr>
 
-             <tr>
-                <th> Pseudo </th>
-                <td>{{ user.login }}</td>
-             </tr>
+                 <tr>
+                    <th> Pseudo </th>
+                    <td>{{ user.login }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Nom </th>
-                 <td>{{ user.lastname }}</td>
-             </tr>
+                 <tr>
+                     <th> Nom </th>
+                     <td>{{ user.lastname }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Prénom </th>
-                 <td>{{ user.firstname }}</td>
-             </tr>
+                 <tr>
+                     <th> Prénom </th>
+                     <td>{{ user.firstname }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Addresse </th>
-                 <td>{{ user.address }}</td>
-             </tr>
+                 <tr>
+                     <th> Addresse </th>
+                     <td>{{ user.address }}</td>
+                 </tr>
 
-             <tr>
-                 <th>Téléphone </th>
-                 <td>{{ user.phone }}</td>
-             </tr>
+                 <tr>
+                     <th> Téléphone </th>
+                     <td>{{ user.phone }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Email </th>
-                 <td>{{ user.email }}</td>
-             </tr>
+                 <tr>
+                     <th> Email </th>
+                     <td>{{ user.email }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Avatar </th>
-                 <td>{{ user.avatar }}</td>
-             </tr>
+                 <tr>
+                     <th> Avatar </th>
+                     <td>{{ user.avatar }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Roles </th>
-                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-             </tr>
+                 <tr>
+                     <th> Roles </th>
+                     <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                 </tr>
 
-             <tr>
-                 <th> Mot de passe </th>
-                 <td>{{ user.password }}</td>
-             </tr>
+                 <tr>
+                     <th> Mot de passe </th>
+                     <td>{{ user.password }}</td>
+                 </tr>
 
-         </tbody>
+             </tbody>
 
-     </table>
+         </table>
 
-     <a class="btn" href="{{ path('user_index') }}"> Revenir à la liste </a>
-
-     <a class="btn" href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
+             <a class="btn" href="{{ path('user_index') }}"> Revenir à la liste </a>
+        
+             <a class="btn" href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
 
      {{ include('user/_delete_form.html.twig') }}
 

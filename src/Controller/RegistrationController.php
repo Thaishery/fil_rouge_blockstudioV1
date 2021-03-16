@@ -32,9 +32,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            if ($avatar != null){
             $avatarname = md5(uniqid()).'.'.$avatar->guessExtension();
             $avatar->move($this->getParameter('avatar_directory'), $avatarname);
             $user->setAvatar($avatarname);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

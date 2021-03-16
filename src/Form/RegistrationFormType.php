@@ -55,6 +55,7 @@ use Symfony\Component\Validator\Constraints\File;
                     ])
                     ],
                  'label_attr' => ['class' => 'form-label'],
+                 'required' => true,
              ])
 
              ->add('email', RepeatedType::class,[

@@ -27,6 +27,8 @@
                    
                      <a href="/admin/user"> Gestion des utilisateurs </a><br/>
 
+                     <a href="/admin/projet"> Gestion des projets </a><br/>
+
                      <a href="/admin/home/edit"> Gestion de la homepage</a>
 
                 {% endif %} 
@@ -35,7 +37,9 @@
 
                 {% if is_granted('ROLE_USER') %} <br/>
 
-                    <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a>
+                    <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a> <br/>
+
+                    {# <a href="{{path ('projet_index_user', { 'login': app.user.login})}}"> Gérer mes projets </a> #}
                 
                 {% endif %}
 
