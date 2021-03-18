@@ -27,6 +27,7 @@ class User implements UserInterface
      */
     private $login;
 
+
     /**
      * @ORM\Column(type="json")
      */

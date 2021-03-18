@@ -1,3 +1,4 @@
+{# _GD copier depuis index.html pour fork les liens. lignes:  57,58,75  #}
  {% extends 'base.html.twig' %}
 
 
@@ -53,8 +54,8 @@
                          <td>{{ projet.description }}</td>
 
                              <td>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_show', {'id': projet.id}) }}"> Voir </a>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_edit', {'id': projet.id}) }}"> Modifier </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('projet_show_user', {'id': projet.id, 'login': app.user.login}) }}"> Voir </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('projet_edit_user', {'id': projet.id, 'login': app.user.login}) }}"> Modifier </a>
                             </td>
 
                      </tr>
@@ -71,6 +72,6 @@
 
              </table>
 
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_new') }}"> Créer un nouveau projet </a>
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_new_user', {'login': app.user.login}) }}"> Créer un nouveau projet </a>
 
  {% endblock %}

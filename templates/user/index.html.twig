@@ -36,38 +36,36 @@
 
                  <tbody>
 
-         {% for user in users %}
+                     {% for user in users %}
 
-             <tr>
-                 <td>{{ user.id }}</td>
-                 <td>{{ user.login }}</td>
-                 <td>{{ user.lastname }}</td>
-                 <td>{{ user.firstname }}</td>
-                 <td>{{ user.address }}</td>
-                 <td>{{ user.phone }}</td>
-                 <td>{{ user.email }}</td>     
-                 <td>{{ user.avatar }}</td>
-                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                 {# <td>{{ user.password }}</td> #}
+                         <tr>
+                             <td>{{ user.id }}</td>
+                             <td>{{ user.login }}</td>
+                             <td>{{ user.lastname }}</td>
+                             <td>{{ user.firstname }}</td>
+                             <td>{{ user.address }}</td>
+                             <td>{{ user.phone }}</td>
+                             <td>{{ user.email }}</td>     
+                             <td>{{ user.avatar }}</td>
+                             <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                             {# <td>{{ user.password }}</td> #}
 
-                     <td>
+                                 <td>
 
-                         <a href="{{ path('user_show', {'id': user.id}) }}"> Voir </a>
-                         <a href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
+                                     <a class="btn btn-outline-primary" href="{{ path('user_show', {'id': user.id}) }}"> Voir </a>
+                                     <a class="btn btn-outline-primary" href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
 
-                     </td>
+                                 </td>
 
-             </tr>
+                         </tr>
 
-         {% else %}
+                     {% else %}
 
-                     <tr>
+                         <tr>
+                             <td colspan="11"> Aucune correspondance </td>
+                         </tr>
 
-                         <td colspan="11">no records found</td>
-
-                     </tr>
-
-         {% endfor %}
+                     {% endfor %}
 
                  </tbody>
 

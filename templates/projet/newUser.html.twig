@@ -16,6 +16,6 @@
 
          {{ include('projet/_form.html.twig') }}
 
-         <a class="btn" href="{{ path('projet_index') }}"> Retour à la liste </a>
+         <a class="btn" href="{{ path('projet_index_user', {'login': app.user.login}) }}"> Retour à la liste </a>
 
      {% endblock %}

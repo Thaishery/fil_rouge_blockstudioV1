@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Webmozart\Assert\Assert as AssertAssert;
 
-class ProjetType extends AbstractType
+class ProjetTypeUser extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,7 +29,7 @@ class ProjetType extends AbstractType
                     ])
                  ]
             ])
-            ->add('years')
+            //->add('years')
             ->add('nb_of_tracks', NumberType::class)
             ->add('sample', 
                 FileType::class, [
@@ -103,17 +103,11 @@ class ProjetType extends AbstractType
                             ])
                             ],
                         'required'   => false,
+                        'data_class' => null,
                     ]
                 )
-            ->add('description')
 
-            ->add('createur', EntityType::class, [
-                'class' => User::class,
-                'multiple' => false,
-                'expanded' => true,
-                'choice_label' => 'login'
-            ],
-                )
+            ->add('description')
 
             ->add('feat', EntityType::class, [
                 'class' => User::class,

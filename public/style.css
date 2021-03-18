@@ -44,8 +44,10 @@
 
 
 
-
-
+ .logFrame
+     {
+         /* background-color: #8a17ad;  */
+     }
 
  .mainsection{
      /* margin: auto; */
@@ -229,9 +231,10 @@
      color: white;
      }
 
- .footerMain h1 
+ .footerMain h1, h2 
      {
      color: orange;
+     margin-top: 5px;
      }
 
  /* Style all font awesome icons */
@@ -283,10 +286,18 @@
      }
   
   /* TWITTER */
-  .fa-twitter 
+ .fa-twitter 
      {
      background: rgb(29, 161, 242);
      color: white;
      }
 
- 
+ .SocialNav 
+     {
+         /* background-color: blanchedalmond; */
+     }
+
+ .ReservationNav
+     {
+     /* background-color: pink; */
+     }

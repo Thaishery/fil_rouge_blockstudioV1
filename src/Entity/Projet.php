@@ -69,6 +69,7 @@ class Projet
      * @ORM\JoinColumn(nullable=false)
      */
     private $createur;
+    
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="projetsfeat")
@@ -169,12 +170,23 @@ class Projet
         return $this;
     }
 
-    public function getCover(): ?string
+    // public function getCover(): ?string
+    // {
+    //     return $this->cover;
+    // }
+
+    // public function setCover(?string $cover): self
+    // {
+    //     $this->cover = $cover;
+
+    //     return $this;
+    // }
+    public function getCover()
     {
         return $this->cover;
     }
 
-    public function setCover(?string $cover): self
+    public function setCover($cover): self
     {
         $this->cover = $cover;
 
