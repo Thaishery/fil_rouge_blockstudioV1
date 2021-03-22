@@ -18,9 +18,110 @@
 
          </div>   
 
-          {# BARRE DE NAVIGATION  #}
+          
+        
+                     
 
-             <div class="test">
+
+
+         {# prévoir mise en place pour administration (gestion des roles) #}
+
+             {# ***** CONTENEUR ACCORDEON ***** #}
+             <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                 {# ***** ELEMENT N°1 ***** #}
+                 <div class="accordion-item">
+
+                     {# *** TITRE DE L'ELEMENT N°1 *** #}
+                     <h2 class="accordion-header" id="flush-headingOne">
+                         
+                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                             Interface d'administration
+                         </button>
+              
+                     </h2>
+
+                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+
+                         {# *** CONTENU DE L'ELEMENT N°1 *** #}
+                         <div class="accordion-body">
+                             
+                            <div class="logFrame">
+
+                                 {% if app.user %}
+           
+                                     <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
+                     
+                                     {% if is_granted('ROLE_ADMIN') %} <br/>
+                                      
+                                             <hr>
+           
+                                         <a href="/admin/home/edit"> Gestion de l'accueil </a><br/>
+                                      
+                                         <a href="/admin/user"> Gestion des utilisateurs </a><br/>
+           
+                                         <a href="/admin/projet"> Gestion des projets </a>
+           
+                                             <hr>
+           
+                                 {% endif %} 
+
+                         </div>
+
+                     </div>
+
+                 </div>
+             
+                 {# ***** ELEMENT N°2 ***** #}
+                 <div class="accordion-item">
+
+                         {# *** TITRE DE L'ELEMENT N°2 *** #}
+                         <h2 class="accordion-header" id="flush-headingTwo">      
+
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                 Gestion du compte
+                             </button>      
+
+                         </h2>
+
+                         {# *** CONTENU DE L'ELEMENT N°2 *** #}
+                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+
+                             <div class="accordion-body">
+                                 
+                                 {# Gestion de l'utilisateur actuel #}
+
+                                     {% if is_granted('ROLE_USER') %} 
+           
+                                         <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a><br/>
+           
+                                         <a href="{{path ('projet_index_user', { 'login': app.user.login})}}"> Gérer mes projets </a>
+                                       
+                                     {% endif %}
+
+                             </div>
+
+                         </div>
+
+
+                             {% endif %}
+            
+                                 {% if  not app.user %}
+            
+                                     <a href="{{ path ('app_login') }}"> Connexion </a><br/>
+                                     <a href="{{ path ('app_register') }}"> Créer un compte </a>
+
+                                 {% endif %}
+
+                 </div>
+                 </div>
+                 </div>
+                 </div>
+
+
+         {# BARRE DE NAVIGATION  #}
+
+             <div class="test row">
         
                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
@@ -29,8 +130,9 @@
                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                              <span class="navbar-toggler-icon"></span>
                         </button>
-        
-                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
                              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
@@ -55,7 +157,7 @@
         
                                                  {# *** Enregistrement *** #}    
                                                      <li>
-                                                         <a class="dropdown-item" href="#">Enregistrement</a>
+                                                         <a class="dropdown-item" href="#"> Enregistrement </a>
                                                      </li>   
             
                                                  {# *** Mixage *** #}
@@ -121,102 +223,6 @@
                  </nav>
         
              </div>
-
-
-
-         {# prévoir mise en place pour administration (gestion des roles) #}
-
-             {# ***** CONTENEUR ACCORDEON ***** #}
-             <div class="accordion accordion-flush" id="accordionFlushExample">
-
-                 {# ***** ELEMENT N°1 ***** #}
-                 <div class="accordion-item">
-
-                     {# *** TITRE DE L'ELEMENT N°1 *** #}
-                     <h2 class="accordion-header" id="flush-headingOne">
-                         
-                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                             Interface d'administration
-                         </button>
-              
-                     </h2>
-
-                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-
-                         {# *** CONTENU DE L'ELEMENT N°1 *** #}
-                         <div class="accordion-body">
-                             
-                            <div class="logFrame">
-
-                                 {% if app.user %}
-           
-                                     <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
-                     
-                                     {% if is_granted('ROLE_ADMIN') %} <br/>
-                                      
-                                             <hr>
-           
-                                         <a href="/admin/home/edit"> Gestion de la page d'accueil </a><br/>
-                                      
-                                         <a href="/admin/user"> Gestion des utilisateurs </a><br/>
-           
-                                         <a href="/admin/projet"> Gestion des projets </a>
-           
-                                             <hr>
-           
-                                 {% endif %} 
-
-                         </div>
-
-                     </div>
-
-                 </div>
-             
-                 {# ***** ELEMENT N°2 ***** #}
-                 <div class="accordion-item">
-
-                         {# *** TITRE DE L'ELEMENT N°2 *** #}
-                         <h2 class="accordion-header" id="flush-headingTwo">      
-
-                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                 Gestion du compte
-                             </button>      
-
-                         </h2>
-
-                         {# *** CONTENU DE L'ELEMENT N°2 *** #}
-                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-
-                             <div class="accordion-body">
-                                 
-                                 {# Gestion de l'utilisateur actuel #}
-
-                                     {% if is_granted('ROLE_USER') %} 
-           
-                                         <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a><br/>
-           
-                                         <a href="{{path ('projet_index_user', { 'login': app.user.login})}}"> Gérer mes projets </a>
-                                       
-                                     {% endif %}
-
-                             </div>
-
-                         </div>
-
-
-                                     {% endif %}
-            
-                                         {% if  not app.user %}
-            
-                                             <a href="{{ path ('app_login') }}"> Connexion </a><br/>
-                                             <a href="{{ path ('app_register') }}"> Créer un compte </a>
-
-                                         {% endif %}
-
-                 </div>
-
-             </div>
-
              
 
  </header>  

@@ -192,7 +192,10 @@ class Projet
 
         return $this;
     }
-
+    // public function __toString()
+    // {
+    //     return $this->cover;
+    // }
     public function getDescription(): ?string
     {
         return $this->description;

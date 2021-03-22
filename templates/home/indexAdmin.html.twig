@@ -2,13 +2,15 @@
 
 
      {% block metaTitle %}
-         " Gestion de la homepage "
+         " Gestion de la page d'accueil"
      {% endblock %}
 
 
      {% block title %}
-         Gestion de la homepage
+         Gestion de la page d'accueil
      {% endblock %}
+
+     {# ***** ***** ***** ***** ***** #}
 
      {% block body %}
 
@@ -42,15 +44,17 @@
                          <td>{{ home.longDesc }}</td>
                          <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
                          <td>
+
                              <a href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
                              <a href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+
                          </td>
                      </tr>
 
                  {% else %}
 
                      <tr>
-                         <td colspan="7">no records found</td>
+                         <td colspan="7"> Aucun résultat </td>
                      </tr>
 
                  {% endfor %}
