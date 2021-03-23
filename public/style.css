@@ -301,9 +301,18 @@
      {
      /* background-color: pink; */
      }
+     
      .test{
          display: block;
          position: relative;
          flex:none;
-
+         max-width: 100%;
      }
+     header{
+        background-color: #f8f9fa!important;
+     }
+     .modal{
+        display: block;
+        position: relative;
+      }
+

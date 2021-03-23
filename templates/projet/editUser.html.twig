@@ -13,7 +13,7 @@
      {% block body %}
        
          <h1 class="h3 mb-3 font-weight-normal"> Gestionnaire de projet </h1>
-         {{dump(projet)}}
+         
          {{ include('projet/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
              <a href="{{ path('projet_index_user' , {'login': app.user.login}) }}"> Retour à la liste </a>

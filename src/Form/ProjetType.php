@@ -103,6 +103,7 @@ class ProjetType extends AbstractType
                             ])
                             ],
                         'required'   => false,
+                        'mapped' => false,
                     ]
                 )
             ->add('description')

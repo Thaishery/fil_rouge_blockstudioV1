@@ -243,4 +243,24 @@ class Projet
 
         return $this;
     }
+
+    /**
+     * Get the value of nb_of_tracks
+     */ 
+    public function getNb_of_tracks()
+    {
+        return $this->nb_of_tracks;
+    }
+
+    /**
+     * Set the value of nb_of_tracks
+     *
+     * @return  self
+     */ 
+    public function setNb_of_tracks($nb_of_tracks)
+    {
+        $this->nb_of_tracks = $nb_of_tracks;
+
+        return $this;
+    }
 }

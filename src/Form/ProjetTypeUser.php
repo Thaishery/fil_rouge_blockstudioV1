@@ -103,7 +103,8 @@ class ProjetTypeUser extends AbstractType
                             ])
                             ],
                         'required'   => false,
-                        'data_class' => null,
+                        // 'data_class' => null,
+                        'mapped' => false,
                     ]
                 )
 

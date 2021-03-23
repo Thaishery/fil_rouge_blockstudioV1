@@ -8,6 +8,7 @@ use App\Form\ProjetTypeUser;
 use App\Repository\ProjetRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\UserRepository;
+use App\Service\CoverFileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,52 +33,58 @@ class ProjetControllerUser extends AbstractController
      */
     public function index(ProjetRepository $projetRepository,User $user, string $login): Response
     {
-        //$id=$this->getUser()->getid();
-        $user=$this->getUser();
-        return $this->render('projet/indexUser.html.twig', [
-            // 'id' => $user->getid(),
-            // 'login' => $login,
-            'user' => $user,
-            'projets' => $projetRepository->findBy(array('createur'=>$user->getid())),
-        ]);
-    }
+         //$id=$this->getUser()->getid();
+         $user=$this->getUser();
+         return $this->render('projet/indexUser.html.twig', [
+             // 'id' => $user->getid(),
+             // 'login' => $login,
+             'user' => $user,
+             'projets' => $projetRepository->findBy(array('createur'=>$user->getid())),
+         ]);
+     }
 
-    /**
+     /**
      * @Route("/new", name="projet_new_user", methods={"GET","POST"})
      */
-    public function new(Request $request, User $user): Response
-    {
-        $user=$this->getUser();
-        $projet = new Projet();
-        $form = $this->createForm(ProjetTypeUser::class, $projet);
-        $form->handleRequest($request);
-        $projet ->setCreateur($user);
-        $projet ->setYears(new \DateTime('now'));
-        $cover = $projet->getCover();
+     public function new(Request $request, User $user, CoverFileUploader $coverFileUploader): Response
+     {
+         $user=$this->getUser();
+         $projet = new Projet();
+         $form = $this->createForm(ProjetTypeUser::class, $projet);
+         $form->handleRequest($request);
+         $projet ->setCreateur($user);
+         $projet ->setYears(new \DateTime('now'));
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            
-            if ($cover != null){
-                $covername = md5(uniqid()).'.'.$cover->guessExtension();
-                $cover->move($this->getParameter('cover_directory'), $covername);
-                $projet->setCover($covername);
-                }
-            if ($cover == null){
-                $covername = 'placeholder.jpg';
-                $projet -> setCover($covername);
-            }
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($projet);
-            $entityManager->flush();
+         if ($form->isSubmitted() && $form->isValid())
+             {
 
-            return $this->redirectToRoute('projet_index_user',['login' => $user->getlogin()] );
-        }
-        return $this->render('projet/newUser.html.twig', [
-            'user' => $user,
-            'projet' => $projet,
-            'form' => $form->createView(),
-        ]);
-    }
+                 $cover = $form->get('cover')->getData();
+
+                     if ($cover)
+                         {
+                         $coverName = $coverFileUploader->upload($cover);
+                         $projet->setCover($coverName);
+                         }
+
+                     else
+                         {
+                         $projet->setCover('placeholder.jpg');
+                         }
+
+                 $entityManager = $this->getDoctrine()->getManager();
+                 $entityManager->persist($projet);
+                 $entityManager->flush();
+
+                 return $this->redirectToRoute('projet_index_user',['login' => $user->getlogin()] );
+
+             }
+
+                 return $this->render('projet/newUser.html.twig', [
+                     'user' => $user,
+                     'projet' => $projet,
+                     'form' => $form->createView(),
+                 ]);
+     }
 
     /**
      * @Route("/{id}", name="projet_show_user", methods={"GET"})
@@ -94,37 +101,22 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/{id}/edit", name="projet_edit_user", methods={"GET","POST"})
      */
-    public function edit(Request $request, Projet $projet): Response
+    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader ): Response
     {
         $user = $this ->getUser();
         $form = $this ->createForm(ProjetTypeUser::class, $projet);
         $form->handleRequest($request);
-        // $cover = $projet->getCover();
-        // $coverold = $cover;
-        // var_dump($cover);
+
         if ($form->isSubmitted() && $form->isValid()) {
-             // Si on rentre un nouveau fichier dans le formulaire
-            //  if ($form->get('cover')->getData() !== null){
-                 // on renomme le fichier qui va être stocké dans l'application
-                 
-                 $newcover = $form->get('cover')->getData();
-                 var_dump($newcover);
-                 if( !$newcover ) {
-                    $cover = $projet->getCover();
-                    $cover->guessExtension();
-                    $projet->setCover($projet->getCover());
-                     
-                 
-             
-             } else {
-                 
-                 $extension = $newcover->guessExtension();
-                     $newcoverName = md5(uniqid()).'.'.$extension;
-                     $newcover->move($this->getParameter('cover_directory'), $newcoverName);
-                     $projet->setCover($newcoverName);
-                 
-             }
-             
+            $file = $form->get('cover')->getData();
+            
+            if($file) {
+                $fileName = $fileUploader->upload($file);
+                $projet->setCover($fileName);
+            } else {
+                $file = $projet->getCover();
+                $projet->setCover($file);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('projet_index_user', ['login' => $user->getlogin(),
