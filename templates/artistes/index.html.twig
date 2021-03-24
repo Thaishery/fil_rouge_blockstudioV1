@@ -12,75 +12,112 @@
 
      {% block body %}
 
-         {{ dump(projet) }}
-
              {# *** ALBUM CARD *** #}
  
-                 <div class="row">
+                <div class="row mainFrame col-10">
                  
-                     {% for projets in projet %}
+                    {% for projets in projet %}
+                    <div class="flip-card card col-12 cold-md3" >
+
+                        <div class="flip-card-inner">
+
+                            <div class="flip-card-front col-12 cold-md3">
+                                <h1>{{projets.title}}</h1>
+                                <img src="/uploads/cover/{{projets.cover}}" alt="Cover" style="width:300px;height:300px; max-width:300px">
+                                <text>
+                                    Artiste: {{projets.createur.login}}
+                                </text>
+                                <text>
+                                    Tracks: {{projets.nb_of_tracks}}
+                                </text>
+                                <text>
+                                    Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
+                                </text>
+                                
+                            </div>
+
+                            <div class="flip-card-back col-12 cold-md3">
+
+                            <h1>John Doe</h1>
+
+                            <p>Architect & Engineer</p>
+
+                            <p>We love that guy</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
                      
-                         <div class="card col-4 shadow-sm">
+                         {# <div class="card col-12 col-md-3" id="{{projets.id}}"> #}
                            
                              {# *** Nom du projet *** #}
-                                 <h1> {{projets.title}} </h1>
+                                 {# <h1> {{projets.title}} </h1> #}
     
                              {# *** Cover du projet *** #}
-                                 <img src="/uploads/cover/{{projets.cover}}" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" style="min-height: 240px; max-height: 240px">
+                                 {# <img src="/uploads/cover/{{projets.cover}}" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"  > #}
                                  
-                                 <rect width="100%" height="100%" fill="#55595c"></rect>
+                                 {# <rect width="100%" height="100%" fill="#55595c"></rect> #}
 
                              {# *** Nom de l'artiste *** #}
-                                 <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                                     Artiste: {{projets.createur.login}}
-                                 </text>
+                                 {# <text x="50%" y="50%" fill="#eceeef" dy=".3em"> #}
+                                     {# Artiste: {{projets.createur.login}} #}
+                                 {# </text> #}
                              
                              {# *** Nombre de tracks du projet *** #}
-                                 <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                                 {# <text x="50%" y="50%" fill="#eceeef" dy=".3em">
                                      Nombre de pistes: {{projets.nb_of_tracks}}
                                  </text>
 
-
-                                     <div class="card-body">
+                                     <div class="card-body"> #}
                                          
                                          {# *** Description du projet *** #}
-                                             <p class="card-text">
-                                                 Description: {{projets.description}}
-                                             </p>
+                                             {# <p class="card-text">
+                                                 Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
+                                             </p> #}
 
-                                         <div class="d-flex justify-content-between align-items-center">
+                                         {# <div class="d-flex justify-content-between align-items-center">
 
-                                             <div class="btn-group">
+                                             <div class="" role="group">
 
-                                                 <button type="button" class="">
+                                                 <button type="button" class="btn btn-primary" id="button-plus-{{projets.id}}">
                                                      Plus d'info: 
                                                  </button>
-
-                                                 <button type="button" class="">
+                                                <br/>
+                                                 <button type="button" class="btn btn-primary">
                                                      Ecouter un extrait. 
                                                  </button>
                                                  
-                                             </div>
+                                             </div> #}
                                             
                                                  {# *** Date de publication du projet *** #}
-                                                     <small class="text-muted">
+                                                     {# <small class="text-muted"> #}
                                                          {# {{projets.years.date}} #}
-                                                     </small>
+                                                     {# </small> #}
                                            
-                                         </div>
+                                         {# </div> #}
                                          
-                                     </div>
+                                     {# </div> #}
 
-
-
-                         </div>
+                         {# </div> #}
 
                      {% endfor %}
 
                  </div>
-  
-     {% endblock %}
 
-               
+                 <nav aria-label="...">
 
-    
+                     <div class="pagination justify-content-center">
+                         {{ knp_pagination_render(projet, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+                         {# {{ knp_pagination_render(projet) }} #}
+                     </div>
+
+                 </nav>
+
+
+{# *** TEST *** #}
+
+         
+     {% endblock %}     
