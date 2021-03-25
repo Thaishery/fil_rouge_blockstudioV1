@@ -14,43 +14,67 @@
 
              {# *** ALBUM CARD *** #}
  
-                <div class="row mainFrame col-10">
-                 
+                 <div class="row mainFrame col-10">
+                 <div class="row">
                     {% for projets in projet %}
-                    <div class="flip-card card col-12 cold-md3" >
+                    <div class="flip-card card col-12 col-md-3 " style="height:500px; min-width:25%" >
 
                         <div class="flip-card-inner">
 
-                            <div class="flip-card-front col-12 cold-md3">
-                                <h1>{{projets.title}}</h1>
-                                <img src="/uploads/cover/{{projets.cover}}" alt="Cover" style="width:300px;height:300px; max-width:300px">
-                                <text>
-                                    Artiste: {{projets.createur.login}}
-                                </text>
-                                <text>
-                                    Tracks: {{projets.nb_of_tracks}}
-                                </text>
-                                <text>
-                                    Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
-                                </text>
+                            <div class="flip-card-front" >
+
+                                 <h1 class="col-12">{{projets.title}}</h1>
+
+                                 <img class="col-12" src="/uploads/cover/{{projets.cover}}" alt="Cover"  >
+
+                                 <text>
+                                     Artiste: {{projets.createur.login}}
+                                 </text>
+                                 
+                                <br/>
                                 
-                            </div>
+                                 <text>
+                                     Tracks: {{projets.nb_of_tracks}}
+                                 </text>
+                                 
+                                <br/>
+                                
+                                 <text>
+                                     Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
+                                 </text>
+                                                          
+                             </div>
 
-                            <div class="flip-card-back col-12 cold-md3">
+                             <div class="flip-card-back col-12 col-md-3 ">
 
-                            <h1>John Doe</h1>
+                                 <h2 class="lead"> {{projets.title}} </h2>
 
-                            <p>Architect & Engineer</p>
+                                 <h2> {{projets.createur.login}} </h2>
+     
+                                 <p> {{projets.description}} </p>
+                                
+                                 {% if projets.linkone %}
+                                     Lien N°1: <a href="{{projets.linkone}}">{{projets.linkone|length > 30 ? projets.linkone|slice(0,30)~'...' : projets.linkone}}</a>
+                                 {% endif %}
 
-                            <p>We love that guy</p>
+                                 {% if projets.linktwo %}
+                                     Lien N°2: <a href="{{projets.linktwo}}">{{projets.linktwo|length > 30 ? projets.linktwo|slice(0,30)~'...' : projets.linktwo}}</a>
+                                 {% endif %}
 
+                                 {% if projets.linkthree %}
+                                     Lien N°3: <a href="{{projets.linkthree}}">{{projets.linkthree|length > 30 ? projets.linkthree|slice(0,30)~'...' : projets.linkthree}}</a>
+                                 {% endif %}
+
+                                     <br/>  
+
+                                     <p> Espace Réserver pour le player </p>
+
+                             </div>
+                            
                         </div>
 
                     </div>
 
-                </div>
-
-                     
                          {# <div class="card col-12 col-md-3" id="{{projets.id}}"> #}
                            
                              {# *** Nom du projet *** #}
@@ -104,6 +128,8 @@
                          {# </div> #}
 
                      {% endfor %}
+                    </div>
+                 </div>
 
                  </div>
 
@@ -115,9 +141,5 @@
                      </div>
 
                  </nav>
-
-
-{# *** TEST *** #}
-
          
      {% endblock %}     

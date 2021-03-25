@@ -14,8 +14,9 @@
         
          <h1 class="h3 mb-3 font-weight-normal"> Créer un nouveau projet </h1>
 
+
          {{ include('projet/_form.html.twig') }}
 
-         <a class="btn" href="{{ path('projet_index') }}"> Retour à la liste </a>
+         <a href="{{ path('projet_index') }}"> Retour à la liste </a>
 
      {% endblock %}

@@ -1,7 +1,6 @@
  *
      {
          font-family: 'Roboto', sans-serif;
-         list-style: none;
      }
  
 /* *** Style des titres *** */
@@ -76,7 +75,7 @@
          color: orange;
      }
  
-/* *** Style du carousel *** */
+ /* *** Style du carousel *** */
      
  .carousel
      {
@@ -106,10 +105,10 @@
 
  /* *** Style des cartes projets *** */
 
- .card
+ /* .card
      {
          justify-content: space-around;
-     }
+     } */
 
  .card img
      {
@@ -134,7 +133,12 @@
          border-radius: 100%;
      }	
 
+ /* *** Style des liens *** */
 
+ li 
+     {
+         list-style: none !important;
+     }
  /* *** Style des boutons *** */
 
  .btn,
@@ -342,13 +346,14 @@
      }
   
  /* Style the back side */
-  .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
-    transform: rotateY(180deg);
-  }
+ .flip-card-back 
+     {
+         background-color: dodgerblue;
+         color: white;
+         transform: rotateY(180deg);
+     }
 
-   /* *** Code en vrac/test *** */
+ /* *** Code en vrac/test *** */
 
  /* Style du formulaire de contact */
 

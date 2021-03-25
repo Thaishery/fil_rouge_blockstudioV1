@@ -41,8 +41,15 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        $avatar = $user->getAvatar();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($avatar != null){
+                $avatarname = md5(uniqid()).'.'.$avatar->guessExtension();
+                $avatar->move($this->getParameter('avatar_directory'), $avatarname);
+                $user->setAvatar($avatarname);
+                }
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
