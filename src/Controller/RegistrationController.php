@@ -37,6 +37,11 @@ class RegistrationController extends AbstractController
             $avatar->move($this->getParameter('avatar_directory'), $avatarname);
             $user->setAvatar($avatarname);
             }
+            //mise en place du placeholder:
+            if($avatar == null){
+                $avatarname = 'placeholder.jpg';
+                $user->setAvatar($avatarname);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

@@ -10,7 +10,7 @@
          text-align: center;
      }
 
-#h1_contact
+ #h1_contact
      {
          text-align: center;
          border: groove 1px;
@@ -29,6 +29,32 @@
      {
          color: orange;
      }
+
+ /* ***** NEW ***** */
+
+ h2 
+     {
+         font-size: 24px;
+         text-transform: uppercase;
+         color: #303030;
+         font-weight: 600;
+         margin-bottom: 30px;
+      }
+
+ h4 
+      {
+         font-size: 19px;
+         line-height: 1.375em;
+         color: #303030;
+         font-weight: 400;
+         margin-bottom: 30px;
+      }  
+
+
+
+
+
+
 
  /* *** Style de la barre de navigation *** */
 
@@ -398,8 +424,22 @@
      {
      display: block;
      }
-
- #dropdown
+/*  */
+ /* #dropdown
      {
      display: none;
-     } */
+     }  */
+.navbar-nav{
+    min-width: 100%;
+}
+.nav-item{
+    min-width: 20%;
+}
+.connection{
+    position:relative;
+    right:-60px;
+}
+
+
+
+ 

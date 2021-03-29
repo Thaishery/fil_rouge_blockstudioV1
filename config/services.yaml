@@ -34,4 +34,5 @@ services:
     App\Service\CoverFileUploader:
             arguments:
                 $coverTargetDirectory: '%cover_directory%'
+                # $avatarTargetDirectory: '%avatar_directory%'
     # App\Service\AvatarFileUploader:

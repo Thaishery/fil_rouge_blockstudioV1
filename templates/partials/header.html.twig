@@ -1,10 +1,10 @@
- <!DOCTYPE html>
 
-     
      {% block metaTitle %}
+         {# MENU DE CONNEXION #}
      {% endblock %}
 
      {% block title %}   
+         {# MENU DE CONNEXION #}
      {% endblock %}
 
      
@@ -35,7 +35,7 @@
                      {% if app.user %}
                 
                      {# ***** CONTENEUR ACCORDEON ***** #}
-                     <div class="accordion accordion-flush" id="accordionFlushExample">
+                     <div class="accordion accordion-flush col-2" id="accordionFlushExample">
                      
                          {# ***** ELEMENT N°1 ***** #}
                          <div class="accordion-item">
@@ -93,7 +93,7 @@
                          {% if app.user %}
 
                              {# ***** BLOC GESTION DU COMPTE ***** #}
-                             <div class="accordion-item">
+                             <div class="accordion-item ">
          
                                          {# *** TITRE DE L'ELEMENT N°2 *** #}
                                          <h2 class="accordion-header" id="flush-headingTwo">      
@@ -139,12 +139,9 @@
                                      {% if not app.user %}
                                
                                  {# *** BLOC CONNEXION & CREER UN COMPTE *** #}
-                                 <div>
-
-                                         <div class="">
-                                             <a href="{{ path ('app_login') }}" id="connexion"> Connexion </a><br/>
-                                             <a href="{{ path ('app_register') }}" id="register"> Créer un compte </a>
-                                         </div>
+                                        
+                                             {% include 'partials/modal.html.twig' %}
+                                         
 
                                          {% endif %} 
          
@@ -154,9 +151,9 @@
 
                          </div>
 
-                     {# </div> #}
+                     </div>
 
-                 {# </div> #}
+                 </div>
 
              </div>                             
          
@@ -171,7 +168,7 @@
                                  </button>
                 
                                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         
+                                
                                          <ul class="navbar-nav">
                 
                                              <li class="nav-item active">
@@ -237,7 +234,7 @@
                                              </li>               
                 
                                                  {# *** LES ARTISTES *** #}
-                                                     <li class="nav-item">
+                                                     <li class="nav-item ">
                                                      <a class="nav-link" href="{{path ("artistes")}}"> Les Artistes </a>
                                                      </li>
                 
@@ -260,5 +257,6 @@
                          </nav>   
          
          </header>  
+         
 
-     {% endblock %}
+                      {% endblock %}

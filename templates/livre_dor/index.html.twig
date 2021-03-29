@@ -10,23 +10,65 @@
          Livre d'or
      {% endblock %}
 
+
+
      {% block body %}
-         <style>
-             .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-             .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-         </style>
 
-         <div class="example-wrapper">
+         <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-             <h1 class="h3 mb-3 font-weight-normal"> Livre d'or </h1>
+             <div class="example-wrapper">
 
-                 This friendly message is coming from:
+                 <h1 class="h3 mb-3 font-weight-normal"> Livre d'or </h1>
 
-             <ul>
-                 <li>Your controller at <code><a href="{{ 'E:/xampp2/htdocs/fil_rouge_blockstudioV1/src/Controller/LivreDorController.php'|file_link(0) }}">src/Controller/LivreDorController.php</a></code></li>
-                 <li>Your template at <code><a href="{{ 'E:/xampp2/htdocs/fil_rouge_blockstudioV1/templates/livre_dor/index.html.twig'|file_link(0) }}">templates/livre_dor/index.html.twig</a></code></li>
-             </ul>
+             </div>
+         
+         {# *** CAROUSSEL COMMENTAIRES *** #}
 
-         </div>
+             {# * Titre de la section * #}
+             <h2> Ce que dit notre clientèle </h2>
+
+                 {# * Conteneur * #}
+                 <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
+                     <!-- Indicators -->
+                     <ol class="carousel-indicators">
+                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                         <li data-target="#myCarousel" data-slide-to="1"></li>
+                         <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+               
+                     <!-- Wrapper for slides -->
+                     <div class="carousel-inner" role="listbox">
+
+                     <div class="item active">
+                         <h4>"Le meilleur studio du monde. Je suis trop content du résultat!"<br><span>Michael Roe, Artiste: rappeur, Essonne </span></h4>
+                     </div>
+
+                     <div class="item">
+                         <h4>"Un mot... WOW!!"<br><span>John Doe, Artiste: beatmaker, Paris </span></h4>
+                     </div>
+
+                     <div class="item">
+                         <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Singer, Texas</span></h4>
+                     </div>
+
+                     </div>
+               
+                     <!-- Left and right controls -->
+                     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                         <span class="sr-only"> Précédent </span>
+                     </a>
+
+                     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                         <span class="sr-only"> Suivant </span>
+                     </a>
+
+                 </div>
+
+             {# </div> #}
+
+         </body>
 
  {% endblock %}

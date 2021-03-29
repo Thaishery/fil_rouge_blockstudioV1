@@ -24,6 +24,7 @@ class ArtistesController extends AbstractController
             $request->query->getInt('page',1),
             12
         );
+
         return $this->render('artistes/index.html.twig', [
             'controller_name' => 'ArtistesController',
             'projet' => $projetList,
