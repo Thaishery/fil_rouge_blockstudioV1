@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LivreDorController extends AbstractController
 {
     /**
-     * @Route("/livre/dor", name="livre_dor")
+     * @Route("/livre_dor", name="livre_dor")
      */
     public function index(): Response
     {

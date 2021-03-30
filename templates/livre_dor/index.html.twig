@@ -1,74 +1,92 @@
  {% extends 'base.html.twig' %}
 
-
      {% block metaTitle %}
          "livre_dor"
      {% endblock %}
-
 
      {% block title %}
          Livre d'or
      {% endblock %}
 
-
-
      {% block body %}
 
-         <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+         {# ***** Début de l'élement: CAROUSSEL *****  #}
+         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
 
-             <div class="example-wrapper">
+             {# *** Conteneur, intérieur *** #}
+             <div class="carousel-inner">
+             
+                 {# * Elément / Commentaire n° 1 * #}
+                 <div class="carousel-item active">
 
-                 <h1 class="h3 mb-3 font-weight-normal"> Livre d'or </h1>
+                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">          
+                        <br/><br/><br/>   
+                     <div class="carousel-caption d-none d-md-block">          
 
-             </div>
-         
-         {# *** CAROUSSEL COMMENTAIRES *** #}
-
-             {# * Titre de la section * #}
-             <h2> Ce que dit notre clientèle </h2>
-
-                 {# * Conteneur * #}
-                 <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-
-                     <!-- Indicators -->
-                     <ol class="carousel-indicators">
-                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                         <li data-target="#myCarousel" data-slide-to="1"></li>
-                         <li data-target="#myCarousel" data-slide-to="2"></li>
-                     </ol>
-               
-                     <!-- Wrapper for slides -->
-                     <div class="carousel-inner" role="listbox">
-
-                     <div class="item active">
-                         <h4>"Le meilleur studio du monde. Je suis trop content du résultat!"<br><span>Michael Roe, Artiste: rappeur, Essonne </span></h4>
-                     </div>
-
-                     <div class="item">
-                         <h4>"Un mot... WOW!!"<br><span>John Doe, Artiste: beatmaker, Paris </span></h4>
-                     </div>
-
-                     <div class="item">
-                         <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Singer, Texas</span></h4>
-                     </div>
+                         <h4> " C'est le meilleur studio. Je suis très satisfait du résultat!"
+                         <br> Michel, Rappeur, Val-De-Marne </h4>  
 
                      </div>
-               
-                     <!-- Left and right controls -->
-                     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                         <span class="sr-only"> Précédent </span>
-                     </a>
+                     
+                 </div>
 
-                     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                         <span class="sr-only"> Suivant </span>
-                     </a>
+                 {# * Elément / Commentaire n° 2 * #}
+                 <div class="carousel-item">
+
+                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
+
+                         <br/><br/><br/>
+                     
+                     <div class="carousel-caption d-none d-md-block">
+
+                         <h4>"Un mot... WOW!!"<br>
+                         <br> Salma, Chanteuse , Paris</h4>
+                         
+                     </div>
 
                  </div>
 
-             {# </div> #}
+                 {# * Elément / Commentaire n° 3 * #}
+                 <div class="carousel-item">
 
-         </body>
+                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
 
- {% endblock %}
+                         <br/><br/><br/>
+
+                     <div class="carousel-caption d-none d-md-block">
+                     
+                         <h4> "Pourrais-je... Etre plus heureux avec ce studio?" 
+                         <br> Chandler Bing, Beatmaker, Essonne </h4>
+                         
+                     </div>
+
+                 </div>
+
+             </div>
+
+         </div>
+
+     {% endblock %}
+
+ {# <h2>What our customers say</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+
+     <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+      </div>
+    </div> #}

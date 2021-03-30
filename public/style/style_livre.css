@@ -1,42 +1,39 @@
- .jumbotron 
+ /* .carousel-control.right, .carousel-control.left 
      {
-         background-color: #f4511e;
-         color: #fff;
-         padding: 100px 25px;
-         font-family: Montserrat, sans-serif;
-     }
-
- .carousel-control.right, .carousel-control.left {
          background-image: none;
          color: #f4511e;
- }
+     }
 
- .carousel-indicators li {
+ .carousel-indicators li
+     {
          border-color: #f4511e;
- }
+     }
 
- .carousel-indicators li.active {
+ .carousel-indicators li.active 
+     {
          background-color: #f4511e;
- }
+     }
 
- .item h4 {
+ .item h4
+     {
          font-size: 19px;
          line-height: 1.375em;
          font-weight: 400;
          font-style: italic;
          margin: 70px 0;
- }
+     }
 
- .item span {
+ .item span 
+     {
          font-style: normal;
- }
+     }
 
  footer .glyphicon
      {
          font-size: 20px;
          margin-bottom: 20px;
          color: #f4511e;
-    }
+     }
 
  .slideanim {visibility:hidden;}
  .slide 
@@ -100,4 +97,4 @@
                font-size: 150px;
              }
      }
- 
+  */
