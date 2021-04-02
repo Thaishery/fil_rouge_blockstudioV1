@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Projet;
 use App\Form\ProjetTypeUser;
+use App\Form\SearchProjetType;
 use App\Repository\ProjetRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\UserRepository;
 use App\Service\CoverFileUploader;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +22,9 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 // généré par copier coller de ProjetController.php, modification ligne 34 pour n'afficher que la liste des projet de l'utilisateur actuel.
 // modification des path pour les templates. 
 
-
+//_GD route de base : @Route("/user/projet/{login}", methods={"GET"})
 /**
- * @Route("/user/projet/{login}", methods={"GET"})
+ * @Route("/user/projet/{login}")
  * @IsGranted("ROLE_USER")
  */
 class ProjetControllerUser extends AbstractController
@@ -48,7 +50,9 @@ class ProjetControllerUser extends AbstractController
      */
      public function new(Request $request, User $user, CoverFileUploader $coverFileUploader): Response
      {
+         //GD_ ajout de l'utilisateur
          $user=$this->getUser();
+         // Crud de base
          $projet = new Projet();
          $form = $this->createForm(ProjetTypeUser::class, $projet);
          $form->handleRequest($request);
@@ -57,9 +61,8 @@ class ProjetControllerUser extends AbstractController
 
          if ($form->isSubmitted() && $form->isValid())
              {
-
                  $cover = $form->get('cover')->getData();
-
+                 //dd($projet);
                      if ($cover)
                          {
                          $coverName = $coverFileUploader->upload($cover);
@@ -70,7 +73,6 @@ class ProjetControllerUser extends AbstractController
                          {
                          $projet->setCover('placeholder.jpg');
                          }
-
                  $entityManager = $this->getDoctrine()->getManager();
                  $entityManager->persist($projet);
                  $entityManager->flush();
@@ -85,6 +87,45 @@ class ProjetControllerUser extends AbstractController
                      'form' => $form->createView(),
                  ]);
      }
+
+ // *** _GD a mettre en 1er pour eviter confusion avec l'id. ***
+
+     /**
+     *  @Route("/search_projet_user", name="projet_search_user")
+     */
+
+    public function searchProjet (ProjetRepository $projetRepository, PaginatorInterface $paginator, Request $request,User $user)
+    {
+        $user= $this->getUser();
+        $search_form = $this->createForm(SearchProjetType::class);
+        $search_form -> handleRequest($request);
+
+        if ($search_form->isSubmitted() && $search_form->isValid())
+             {
+                 $value = $search_form->getData();
+                //  dd($value);
+                $dataList = $projetRepository->findByName($value);
+                $projetList = $paginator->paginate(
+                    $dataList,
+                    $request->query->getInt('page',1),
+                    5
+                );
+                return $this->render('projet/indexUser.html.twig', [
+                    // 'id' => $user->getid(),
+                    // 'login' => $login,
+                    'user' => $user,
+                    'projets' => $projetList,
+                ]);
+             }
+
+        return $this -> render('search_projet/searchProjet.html.twig', [
+            //  'projet' => $projet,
+            'login' => $user->getlogin(),
+            'user' => $user,
+            'form' => $search_form -> createView(),
+       ]);
+
+    }
 
     /**
      * @Route("/{id}", name="projet_show_user", methods={"GET"})
@@ -134,15 +175,17 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/{id}", name="projet_delete_user", methods={"DELETE"})
      */
-    public function delete(Request $request, Projet $projet): Response
-    {
-        $user = $this ->getUser();
-        if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($projet);
-            $entityManager->flush();
-        }
+     public function delete(Request $request, Projet $projet): Response
+     {
+         $user = $this ->getUser();
+         if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->remove($projet);
+             $entityManager->flush();
+         }
 
-        return $this->redirectToRoute('projet_index_user',['login' => $user->getlogin()]);
-    }
-}
+         return $this->redirectToRoute('projet_index_user',['login' => $user->getlogin()]);
+     }
+
+
+ }
