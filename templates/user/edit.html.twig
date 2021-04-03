@@ -1,18 +1,25 @@
 {% extends 'base.html.twig' %}
 
+
+     {% block metaTitle %}
+         " Gestionnaire d'utilisateur "
+     {% endblock %}
+
+
      {% block title %}
-         Gestionnaire d'utilisateurs
+         Gestionnaire d'utilisateur
      {% endblock %}
 
      {% block body %}
 
-         <h1> Gestionnaire d'utilisateur </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestionnaire d'utilisateur </h1>
 
 
-     {{ include('user/_formEdit.html.twig', {'button_label': 'Update'}) }}
-     <button class="btn btn-lg btn-primary">
-          <a href="{{ path('user_index') }}"> Retour à la liste </a>
-       </button>
+     {{ include('user/_formEdit.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+         <button class="btn btn-primary btn-lg btn-block">
+             <a href="{{ path('user_index') }}"> Retour à la liste </a>
+         </button>
 
          {# <a class="btn btn-secondary btn-sm" href="{{ path('user_index') }}"> Retour à la liste </a> #}
 

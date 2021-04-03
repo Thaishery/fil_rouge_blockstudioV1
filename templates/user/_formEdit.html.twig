@@ -5,8 +5,8 @@
     
        <div class="row">
         
-         {# PSEUDO #}
-         
+          {# PSEUDO #}     
+
              <div class="pseudo row">
 
                 <div class="pseudoLabel">
@@ -16,8 +16,7 @@
                 <div class="pseudoInput">
                    {{ form_widget (form.login,
                       { 'attr':{'placeholder':'Entrez un pseudo'}}
-                
-                ) }}
+                   ) }}
                 </div>
 
              {# If Errors#}
@@ -165,10 +164,12 @@
 
    </div>
 
-       <button class="btn btn-lg btn-primary">
+       <button class="btn btn-primary btn-lg btn-block">
           {{ button_label|default('Save') }}
        </button>
             
+
+
  {{ form_end(form) }}
 
 

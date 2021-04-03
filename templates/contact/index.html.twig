@@ -10,17 +10,17 @@
 
      {% block body %}
 
-         <main>
+         <main class="container">
 
-             <article> 
+             <article class="row"> 
 
                  <!-- Div Gauche -->   
-                 <div id="bloc_gauche">
+                 <div id="bloc_gauche" class="col-3">
 
                      <!-- Photo de présentation du contact -->  
                      <figure>	
 
-                         <img id="img_a" src=" { asset ('coverlexos1.jpg'}" alt="Photo de présentation du contact."/>
+                         <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact." style="max-width:100%; max-height:100%;"/>
                          <figcaption> Lexos Block Studio </figcaption>
 
                      </figure>	
@@ -28,7 +28,7 @@
                          </div>
 
                  <!-- Div Droite-->   
-                 <div id="bloc_droite">
+                 <div id="bloc_droite" class="col-9">
 
                          <div>
 
@@ -66,23 +66,5 @@
              </article>
 
          </main>    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  {% endblock %}

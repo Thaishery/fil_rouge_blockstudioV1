@@ -27,6 +27,7 @@ class User implements UserInterface
      */
     private $login;
 
+
     /**
      * @ORM\Column(type="json")
      */
@@ -64,25 +65,29 @@ class User implements UserInterface
     private $phone;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $avatar;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Projet::class, inversedBy="users")
+     * @ORM\OneToMany(targetEntity=Projet::class, mappedBy="createur")
      */
-    private $UserProjet;
+    private $projets;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Plateforme::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Projet::class, mappedBy="feat")
      */
-    private $UserPlateforme;
+    private $projetsfeat;
 
     public function __construct()
     {
-        $this->UserProjet = new ArrayCollection();
-        $this->UserPlateforme = new ArrayCollection();
+        $this->projets = new ArrayCollection();
+        $this->projetsfeat = new ArrayCollection();
     }
+
+
+
+
 
     public function getId(): ?int
     {
@@ -237,48 +242,59 @@ class User implements UserInterface
     /**
      * @return Collection|Projet[]
      */
-    public function getUserProjet(): Collection
+    public function getProjets(): Collection
     {
-        return $this->UserProjet;
+        return $this->projets;
     }
 
-    public function addUserProjet(Projet $userProjet): self
+    public function addProjet(Projet $projet): self
     {
-        if (!$this->UserProjet->contains($userProjet)) {
-            $this->UserProjet[] = $userProjet;
+        if (!$this->projets->contains($projet)) {
+            $this->projets[] = $projet;
+            $projet->setCreateur($this);
         }
 
         return $this;
     }
 
-    public function removeUserProjet(Projet $userProjet): self
+    public function removeProjet(Projet $projet): self
     {
-        $this->UserProjet->removeElement($userProjet);
+        if ($this->projets->removeElement($projet)) {
+            // set the owning side to null (unless already changed)
+            if ($projet->getCreateur() === $this) {
+                $projet->setCreateur(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @return Collection|Plateforme[]
+     * @return Collection|Projet[]
      */
-    public function getUserPlateforme(): Collection
+    public function getProjetsfeat(): Collection
     {
-        return $this->UserPlateforme;
+        return $this->projetsfeat;
     }
 
-    public function addUserPlateforme(Plateforme $userPlateforme): self
+    public function addProjetsfeat(Projet $projetsfeat): self
     {
-        if (!$this->UserPlateforme->contains($userPlateforme)) {
-            $this->UserPlateforme[] = $userPlateforme;
+        if (!$this->projetsfeat->contains($projetsfeat)) {
+            $this->projetsfeat[] = $projetsfeat;
+            $projetsfeat->addFeat($this);
         }
 
         return $this;
     }
 
-    public function removeUserPlateforme(Plateforme $userPlateforme): self
+    public function removeProjetsfeat(Projet $projetsfeat): self
     {
-        $this->UserPlateforme->removeElement($userPlateforme);
+        if ($this->projetsfeat->removeElement($projetsfeat)) {
+            $projetsfeat->removeFeat($this);
+        }
 
         return $this;
     }
+
+    
 }

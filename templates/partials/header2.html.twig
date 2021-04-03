@@ -1,0 +1,170 @@
+ <header>
+
+             <div class="AcountFrame" style="display:flex; justify-content:space-around;">
+
+                 <div class="TextFrame">
+
+                    {% if app.user %}
+
+                         <p> Vous etes connecté en tant que: 
+    
+                             {% if app.user %}
+                                 {{app.user.login}}
+                             {% endif %} <br/>
+    
+                         </p>
+
+                    {% endif %}
+
+                 </div>   
+		        
+                 {# prévoir mise en place pour administration (gestion des roles) #}
+
+                 <div class="logFrame">
+
+                     {% if app.user %}
+
+                         <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
+          
+                         {% if is_granted('ROLE_ADMIN') %} <br/>
+                           
+                                 <hr>
+
+                             <a href="/admin/home/edit"> Gestion de l'accueil </a><br/>
+                           
+                             <a href="/admin/user"> Gestion des utilisateurs </a><br/>
+
+                             <a href="/admin/projet"> Gestion des projets </a>
+
+                                 <hr>
+
+                     {% endif %} 
+
+                         {# Gestion de l'utilisateur actuel #}
+
+                     {% if is_granted('ROLE_USER') %} 
+
+                            <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a><br/>
+
+                            <a href="{{path ('projet_index_user', { 'login': app.user.login})}}"> Gérer mes projets </a>
+                        
+                     {% endif %}
+
+                     {% endif %}
+
+                         {% if  not app.user %}
+
+                         <a href="{{ path ('app_login') }}"> Connexion </a><br/>
+                         <a href="{{ path ('app_register') }}"> Créer un compte </a>
+
+                     {% endif %}
+
+                 </div>
+
+             </div>
+
+     {# BARRE DE NAVIGATION  #}
+
+     <div class="test">
+
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+             <div class="container-fluid">
+
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                         <ul class="navbar-nav">
+
+                             <li class="nav-item active">
+                                 <a class="nav-link" href="{{path ("home")}}"> Accueil <span class="sr-only">(current)</span></a>
+                             </li>
+
+                             <li class="nav-item dropdown">
+
+                                 {# *** SERVICES *** #}
+                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Services 
+                                 </a>
+
+                                     {# prévoir boucle twig pour récuperer depuis la bdd #}
+                                     {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
+
+                                     {# ***** Liste du Menu déroulant: SERVICES ***** #}
+                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                         {# *** Enregistrement *** #}    
+                                             <li>
+                                                 <a class="dropdown-item" href="#">Enregistrement</a>
+                                             </li>   
+    
+                                         {# *** Mixage *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Mixage </a>
+                                             </li>   
+
+                                         {# *** Mastering *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Mastering </a>
+                                             </li>  
+
+                                         {# *** Vidéo *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Vidéo </a>
+                                             </li>  
+
+                                         {# *** Création graphique *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Création graphique </a>
+                                             </li>                                        
+                                  
+                                         {# *** Pressage CD *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Pressage CD </a>
+                                             </li>                                        
+                                
+                                         {# *** Impression *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Impression </a>
+                                             </li>                                        
+                                     
+                                         {# *** Distribution *** #}
+                                             <li>
+                                                 <a class="dropdown-item" href="#"> Distribution </a>
+                                             </li>                                        
+              
+                                     </ul>
+           
+                             </li>               
+
+                             {# *** LES ARTISTES *** #}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("artistes")}}"> Les Artistes </a>
+                             </li>
+
+                             {# *** LIVRE D'OR *** #}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
+                             </li>
+
+                             {# *** CONTACT *** #}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
+                             </li>
+                     
+                     </ul>
+
+                 </div>
+
+             </div>
+
+         </nav>
+
+     </div>
+        
+ </header>

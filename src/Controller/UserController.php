@@ -11,10 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+
 
 /**
  * @Route("/admin/user")
+ * @IsGranted("ROLE_ADMIN")
  */
 class UserController extends AbstractController
 {
@@ -36,8 +41,15 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        $avatar = $user->getAvatar();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($avatar != null){
+                $avatarname = md5(uniqid()).'.'.$avatar->guessExtension();
+                $avatar->move($this->getParameter('avatar_directory'), $avatarname);
+                $user->setAvatar($avatarname);
+                }
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(

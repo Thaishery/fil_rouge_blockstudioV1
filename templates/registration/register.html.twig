@@ -1,180 +1,379 @@
  {% extends 'base.html.twig' %}
 
 
-
-
+     {% block metaTitle %}
+         " Inscription "
+     {% endblock %}
 
      {% block title %} 
          Inscription
      {% endblock %}
 
-
-
      {% block body %}
-         {% for flashError in app.flashes('verify_email_error') %}
-             <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-     {% endfor %}
+<link rel="stylesheet" href="style/style_register.css">
+         {# Balise div pour remplacer balise body de l'exemple: https://getbootstrap.com/docs/5.0/examples/sign-in/ #}
+         <div id="body" class="text-center"> 
 
+             <main class="col-9">
+                {{ form_start(registrationForm,
+                         {'attr':{
+                         'class':'needs-validation',
+                         'novalidate':''
+                         }})
+                     }}
+                 {# Conteneur du titre du formulaire #}
+                 <div class="py-5 text-center">
 
+                   {# Image du formulaire #}
+                   <img class="d-block mx-auto mb-4" src="/logoGrand.webp" alt="Logo du site" width="72" height="57">
 
+                     {# Titre du formulaire  #}
+                     <h2> Formulaire d'Inscription </h2>
 
-                 <h1 class="h3 mb-3 font-weight-normal"> Inscription </h1>
+                       {# Phrase d'accroche du formulaire #}
+                       <p class="lead"> 
+                         Inscrivez-vous gratuitement pour créer un compte et accéder au contenu du site. 
+                       </p>
 
-     {{ form_start(registrationForm) }}
-
-     <div class="container">
-
-         <div class="row">
-
-         {# PSEUDO #}
-
-             <div class="pseudo row">
-
-                 <div class="pseudoLabel">
-                     {{form_label(registrationForm.login, 'Pseudo :')}}
+                 {# Fin du Conteneur: titre du formulaire #}
                  </div>
 
-                 <div class="pseudoInput">
-                     {{form_widget
-                         (registrationForm.login,{
-                            'attr': {'placeholder':'Entrez votre pseudo'}}
-                         ) }}
-                 </div>
+                   {# Conteneur du champ titre  #}
+                   <div class="col-12">
 
-                 {# If Errors #}
+                     <h4 class="mb-3"> Votre profil </h4>
 
-                     <div class="pseudoError">
-                         {{form_errors(registrationForm.login)}}
-                     </div>
+                     <div class="row g-3">
 
-             </div>
+                     {# ********** CHAMP PSEUDO ********** #}
 
-         {# NOM #}
+                         <div class="col-12">   
+                                
+                             {# *** LABEL *** #}
 
-             <div class="nom col">
+                             {{form_label
+                                 (registrationForm.login,
+                                     'Pseudo'
+                                 )
+                             }}
 
-                 <div class="nomLabel">
-                     {{form_label(registrationForm.lastname, 'Nom :')}}
-                 </div>
+                           <div class="input-group has-validation">
+                            
+                             <span class="input-group-text"> @ </span>
 
-                 <div class="nomInput">
-                     {{form_widget
-                         (registrationForm.lastname, {
-                         'attr': {'placeholder':'Entrez votre nom'}}
-                         ) }}
-                 </div>
+                             {# *** INPUT *** #}
 
-                 {# If Errors #}
-                     <div class="nomError">
-                         {{form_errors(registrationForm.lastname)}}                  
-                     </div>
+                             {# {{form_widget
+                                 (registrationForm.login,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre pseudo',
+                                     'class':'form-control',
+                                     'pattern':'[a-zA-Z0-9]',
+                                     'title':'Votre pseudo dois etre composer uniquement de chiffres et de lettre, majuscules accepté.'
+                                   }}
+                                 ) 
+                             }} #}
+                             {{form_widget
+                                 (registrationForm.login,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre pseudo',
+                                     'class':'form-control',
+                                     }}
+                                 ) 
+                             }}
 
-             </div>
+                              <div class="invalid-feedback">
+                                  Le champ pseudo est requis.
+                                   {{form_errors(registrationForm.login)}}
+                              </div>
+                              {{form_errors(registrationForm.login)}}
+                           
+                           </div>
 
+                         </div>
 
-         {# PRENOM #}
+                     {# ********** CHAMP PRENOM ********** #}   
+                      
+                         <div class="col-sm-6">   
+                                
+                             {# *** LABEL *** #}
+                             {{form_label
+                                 (registrationForm.firstname,
+                                     'Prénom'
+                                 )
+                             }}
 
-             <div class="prenom col">
+                             {# *** INPUT *** #}
+                             {{form_widget
+                                 (registrationForm.firstname,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre prénom',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
-                 <div class="prenomLabel">
-                     {{form_label(registrationForm.firstname, 'Prénom :')}}
-                 </div>
+                             {# *** IF ERROR *** #}
 
-                 <div class="prenomInput">
-                     {{form_widget
-                         (registrationForm.firstname,{
-                            'attr': {'placeholder':'Entrez votre prénom'}}
-                         ) }}
-                 </div>
+                             <div class="invalid-feedback">
+                               Le champ prénom est requis.
+                               {{form_errors(registrationForm.firstname)}}
+                             </div>
+                             {{form_errors(registrationForm.firstname)}}
+                    
+                         </div>
 
-                 {# If Errors #}
+                     {# ********** CHAMP NOM ********** #}
+                   
+                         <div class="col-sm-6">
+                         
+                             {# *** LABEL *** #}
 
-                     <div class="prenomError">
-                         {{form_errors(registrationForm.firstname)}}
-                     </div>
+                               {{form_label
+                                 (registrationForm.lastname,
+                                     'Nom'
+                                 )
+                               }}
 
-             </div>
+                             {# *** INPUT *** #}
 
-         {# EMAIL #}
+                             {{form_widget
+                                 (registrationForm.lastname,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre Nom',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
-             <div class="email row">
+                             {# *** IF ERROR *** #}
 
-                 <div class="emailLabel">
-                     {{form_label(registrationForm.email, 'Adresse électronique :')}}
-                 </div>
+                               <div class="invalid-feedback">
+                                 Le champ nom est requis.
+                                 {{form_errors(registrationForm.lastname)}}
+                               </div>
+                                {{form_errors(registrationForm.lastname)}}
+                                                        
+                         </div>
+                   
+                       {# ********** CHAMP EMAIL ********** #}
+                        
+                         <div class="col-sm-6">
+                         
+                         {# *** LABEL *** #}
 
-                 <div class="emailInput">
-                     {{form_widget
-                         (registrationForm.email,{
-                            'attr': {'placeholder':'Entrez votre email'}}
-                         ) }}
-                 </div>
+                               {{form_label
+                                 (registrationForm.email.first,
+                                     'Adresse électronique'
+                                 )
+                               }}
 
-                 {# If Errors #}
+                         {# *** INPUT *** #}
 
-                     <div class="emailError">
-                         {{form_errors(registrationForm.email)}}
-                     </div>
+                             {{form_widget
+                                 (registrationForm.email.first,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre adresse électronique',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
-             </div>
+                         {# *** IF ERROR *** #}
 
-         {# MOT DE PASSE #}
+                             <div class="invalid-feedback">
+                               Le champ email est requis.
+                               {{form_errors(registrationForm.email.first)}}
+                             </div>
+                              {{form_errors(registrationForm.email.first)}}
+                      
+                         </div>
 
-             <div class="password row">
+                         {# ********** CHAMP EMAIL CONFIRMATION ********** #}
+                       
+                         <div class="col-sm-6">
+                         
+                         {# *** LABEL *** #}
 
-                 <div class="passwordLabel">
-                     {{form_label(registrationForm.plainPassword, 'Mot de passe :')}}
-                 </div>
+                               {{form_label
+                                 (registrationForm.email.second,
+                                     'Confirmer votre email'
+                                 )
+                               }}
 
-                 <div class="passwordInput">
-                     {{form_widget
-                         (registrationForm.plainPassword,{
-                            'attr': {'placeholder':'Entrez votre mot de passe'}}
-                         ) }}
-                 </div>
+                         {# *** INPUT *** #}
 
-                 {# If Errors #}
+                             {{form_widget
+                                 (registrationForm.email.second,
+                                   {
+                                     'attr': {'placeholder':'Confirmer votre adresse électronique',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
-                     <div class="passwordError">
-                         {{form_errors(registrationForm.plainPassword)}}
-                     </div>
+                         {# *** IF ERROR *** #}
 
-             </div>
+                             <div class="invalid-feedback">
+                               Le champ Email est requis.
+                               {{form_errors(registrationForm.email.second)}}
+                             </div>
+                              {{form_errors(registrationForm.email.second)}}
+                                    
+                         </div>
 
-             {# AGREE TERMS #}
+                        {# ********** CHAMP PASSWORD ********** #}
 
-             <div class="agreeTerms row">
+                         <div class="col-sm-6">
+                         
+                         {# *** LABEL *** #}
 
-                 <div class="agreeTermsLabel">
-                     {{form_label(registrationForm.agreeTerms, 'Veuillez accepter nos conditions :')}}
-                 </div>
+                               {{form_label
+                                 (registrationForm.plainPassword.first,
+                                     'Mot de passe'
+                                 )
+                               }}
 
-                 <div class="agreetermsInput">
-                    {{form_widget(registrationForm.agreeTerms)}}
-                 </div>
+                         {# *** INPUT *** #}
 
-                 {# If Errors #}
+                             {{form_widget
+                                 (registrationForm.plainPassword.first,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre mot de passe',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
-                     <div class="agreeTermsError">
-                         {{form_errors(registrationForm.agreeTerms)}}
-                     </div>
+                         {# *** IF ERROR *** #}
 
-             </div>
+                             <div class="invalid-feedback">
+                               Le champ mot de passe est requis.
+                               {{form_errors(registrationForm.plainPassword.first)}}
+                             </div>
+                              {{form_errors(registrationForm.plainPassword.first)}}
+                                              
+                         </div>
 
-         </div>
+                         {# ********** CHAMP PASSWORD CONFIRMATION ********** #}
+                    
+                         <div class="col-sm-6">
+                         
+                         {# *** LABEL *** #}
 
-     </div>      
+                               {{form_label
+                                 (registrationForm.plainPassword.second,
+                                     'Confirmer votre mot de passe'
+                                 )
+                               }}
 
-        <button type="submit" class="btn btn-lg btn-primary"> S'inscrire </button>
+                         {# *** INPUT *** #}
 
-     {{ form_end(registrationForm) }}
+                             {{form_widget
+                                 (registrationForm.plainPassword.second,
+                                   {
+                                     'attr': {'placeholder':'Confirmer votre mot de passe',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
 
- {% endblock %}
+                         {# *** IF ERROR *** #}
 
-        {# exemple de form_row avec label et class: #}     
-        {# {{ form_row(registrationForm.firstname, {
-                 label: 'Prénom' ,
-                 'attr': {  'placeholder'   :   'Entrez votre prénom',
-                            'class'         :   'maclass'}   
-             },
-             ) }}  #}
+                             <div class="invalid-feedback">
+                               Le champ confirmer votre mot de passe est requis.
+                               {{form_errors(registrationForm.plainPassword.second)}}
+                             </div>
+                              {{form_errors(registrationForm.plainPassword.second)}}
+                                            
+                         </div>
+
+                       {# ********** CHAMP ADRESSE **********
+                         
+                         {# *** LABEL *** #}
+
+                                {{form_label
+                                 (registrationForm.address,
+                                     'Adresse'
+                                 )
+                               }}
+
+                         {# *** INPUT *** #}
+
+                               {{form_widget
+                                 (registrationForm.address,
+                                   {
+                                     'attr': {'placeholder':'Entrez votre adresse. Exemple: 123 Rue de la liberté 00000 VILLE',
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
+
+                          {# *** IF ERROR *** #}
+
+                             <div class="invalid-feedback">
+                               Le champ adresse est requis.
+                               {{form_errors(registrationForm.address)}}
+                             </div>
+                             
+                             {{form_errors(registrationForm.address)}}                                               
+
+                       {# ********** CHAMP ADRESSE ********** #}
+
+                         <hr class="my-4">
+
+                       {# ********** CHAMP AVATAR ********** #}
+
+                        {{form_label(registrationForm.avatar, ' Photo de profil')}}
+
+                                {{form_widget
+                                 (registrationForm.avatar,
+                                   {
+                                     'attr': {
+                                     'class':'form-control',
+                                   }}
+                                 ) 
+                             }}
+                            
+                         <hr class="my-4">                                           
+
+                         <div class="col-12">
+                          
+                       {# ********** CHAMP AGREE TERMS ********** #}
+
+                            {{form_label(registrationForm.agreeTerms, 'Veuillez accepter nos conditions :')}}
+
+                                {{form_widget
+                                 (registrationForm.agreeTerms,
+                                   {
+                                     'attr': {
+                                     'class':'form-check-input',
+                                   }}
+                                 ) 
+                             }}
+
+                                {# If Errors #}
+                              <div class="invalid-feedback">
+                               Le champ validation des conditions est requis.
+                               {{form_errors(registrationForm.agreeTerms)}}
+                             </div>
+                             {{form_errors(registrationForm.agreeTerms)}}
+                            
+                          </div>
+
+                         {# <button class="w-100 btn btn-primary btn-lg" type="submit"> #}
+                         <button class="btn btn-primary btn-lg btn-block" type="submit">                     
+                           S'incrire
+                         </button>
+                         
+                         {{ form_end(registrationForm) }}
+
+                         </div>              
+
+            </main>
+
+        </div>
+
+        <script src="form-validation.js"></script>
+
+     {% endblock %}

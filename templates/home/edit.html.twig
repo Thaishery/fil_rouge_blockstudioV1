@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+
+     {% block metaTitle %}
+         " Gestionnaire d'article "
+     {% endblock %}
+
+
      {% block title %} 
          Gestionnaire d'article 
      {% endblock %}
@@ -9,9 +15,11 @@
           <h1> Gestionnaire d'article </h1>
 
 
-     {{ include('home/_form.html.twig', {'button_label': 'Update'}) }}
+     {{ include('home/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
          <a href="{{ path('home_index') }}"> Retour à la liste </a>
+
+
 
      {{ include('home/_delete_form.html.twig') }}
 

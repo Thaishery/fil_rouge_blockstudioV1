@@ -1,50 +1,175 @@
-{# {{ form_start(form) }}
+ {{ form_start(form) }}
+ <div class="container">
 
-    {{ form_widget(form) }}
-    <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
-    
-{{ form_end(form) }} #}
+         <div class="row">
 
-{{ form_start(form) }}
-<div>
-    {{ form_label(form.login) }}
-    {{ form_widget(form.login) }}
+             {# PSEUDO #}
+             <div class="pseudo row">
+
+                 <div class="pseudoLabel">
+                     {{ form_label(form.login, 'Pseudo :') }}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{ form_widget(form.login,{
+                         'attr': {'placeholder':'Entrez votre pseudo'}})
+                     }}
+                </div>
+
+                 <div class="pseudoError">
+                     {{ form_errors(form.login) }}
+                </div>
+
+             </div>
+
+             {# NOM #}
+             <div class="pseudo row">
+
+                 <div class="pseudoLabel">
+                     {{ form_label(form.lastname, 'Nom :') }}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{ form_widget(form.lastname,{
+                         'attr': {'placeholder':'Entrez votre nom'}})
+                     }}
+                </div>
+
+                 <div class="pseudoError">
+                     {{ form_errors(form.lastname) }}
+                 </div>
+
+             </div>
+                       
+             {# PRENOM #}
+             <div class="pseudo row">
+
+                 <div class="pseudoLabel">
+                     {{ form_label(form.firstname, 'Prenom :') }}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{ form_widget(form.firstname,{
+                         'attr': {'placeholder':'Entrez votre Prenom'}})
+                     }}
+                 </div>
+
+                 <div class="pseudoError">
+                     {{ form_errors(form.firstname) }}
+                 </div>
+
+             </div>
+
+             {# EMAIL #}
+             <div class="email row">
+
+                  <div class="emailLabel">
+                     {{form_label(form.email, 'Adresse électronique :')}}
+                 </div>
+
+                 <div class="emailInput">
+                     {{form_widget (form.email,{
+                         'attr': {'placeholder':'Entrez votre email'}}
+                      ) }}
+                 </div>
+
+                 {# If Errors #}
+                 <div class="emailError">
+                     {{form_errors(form.email)}}
+                 </div>
+
+             </div>
+
+            {# MOT DE PASSE #}
+             <div class="pseudo row">
+
+                 <div class="pseudoLabel">
+                     {{ form_label(form.plainPassword, 'Mot de passe :') }}
+                 </div>
+
+                 <div class="pseudoInput">
+                     {{ form_widget(form.plainPassword,{
+                         'attr': {'placeholder':'Entrez votre mot de passe'}})
+                     }}
+                </div>
+
+                 <div class="pseudoError">
+                     {{ form_errors(form.plainPassword) }}
+                 </div>
+
+            </div>
+
+            {# <div>
+                <label>Mot de passe</label>
+                {{ form_errors(form.plainPassword) }}
+                {{ form_widget(form.plainPassword,{ 'attr':{
+                    'class':'inputEmail',
+                    'value':user.password }}) }}
+            </div>  #}
+
+             {# _GD fonctionnel mais je ne suis pas fan du code que j'ai produit :  #}
+             <div class="rolesFormAdmin">
+                 {{form_label(form.roles,
+                     'Veuillez sélectionner un role :' ,{'label_attr':{'class':'row'}})
+                 }}
+
+                 {# le form_errors ne sert a rien car nous utilison plus bas le form_widget avec un display:none ce qui a pour effet de ne pas afficher le message d'erreurs #}
+                 {{form_errors(form.roles)}}
+
+                     {# on initialise une variable i pour stoquer notre avancée dans la boucle. #}
+                     {% set i = 0 %}
+
+                     {# on boucle sur les choix possible (dans notre cas 3) #}
+                     {% for role in form.roles.vars.choices %}
+                      
+                     {# {{dump (i)}} #}
+
+                 <div class="row">
+
+                     <label for="{{form.roles.vars.id}}_{{i}}" class="col-2">{{role.label}}</label>
+                     {# on recréer a la main l'input en reprenant les paramétre de form_widget via .vars #}
+                         <input 
+                             type="checkbox" 
+                             id="{{form.roles.vars.id}}_{{i}}" 
+                             name="{{form.roles.vars.full_name}}[]" 
+                             class="{{role.attr.class}}" 
+                             value="{{role.value}}"
+
+                             {% if role.value == form.roles.vars.data[0] %}
+                             checked="checked"
+                             {% endif %}
+                         >
+
+                    {# {{dump (form.roles.vars)}} #}
+                    {# {{dump (role)}}  #}
+                    {# on incrémente i #}
+                             {% set i = i + 1 %}
+                 </div>
+
+                {% endfor %}
+                {# on cache le rendu de base, je n'aime pas cette méthode mais le formulaire nous impose l'utilisation du champ form.roles, de plus il est reserver a l'admin
+                et cela ne devrais donc pas poser de problémes. #}
+                <div class="hiden" style="display:none;">
+                {{form_widget(form.roles)}}
+                </div>
+
+
+            </div>
+            {# <div>
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+            <div>
+                {{ form_label(form.address) }}
+                {{ form_widget(form.address) }}
+            </div>
+            <div>
+                {{ form_label(form.phone) }}
+                {{ form_widget(form.phone) }}
+            </div> #}
+                 <button class="btn btn-primary btn-lg btn-block">
+                     {{ button_label|default('Save') }}
+                 </button>
+            {{ form_end(form) }}
 </div>
-<div>
-    {{ form_label(form.firstname) }}
-    {{ form_errors(form.firstname) }}
-    {{ form_widget(form.firstname) }}
 </div>
-<div>
-    {{ form_label(form.lastname) }}
-    {{ form_errors(form.lastname) }}
-    {{ form_widget(form.lastname) }}
-</div>
-<div>
-    {#{{ form_label(form.plainPassword) }} #}
-    <label>Mot de passe</label>
-    {{ form_errors(form.plainPassword) }}
-    {{ form_widget(form.plainPassword,{ 'attr':{
-        'class':'inputEmail',
-        'value':user.password }}) }}
-</div> 
-<div>
-    {{ form_label(form.roles) }}
-    {{ form_widget(form.roles) }}
-</div>
-<div>
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email) }}
-</div>
-<div>
-    {{ form_label(form.address) }}
-    {{ form_widget(form.address) }}
-</div>
-<div>
-    {{ form_label(form.phone) }}
-    {{ form_widget(form.phone) }}
-</div>
-     <button class="btn">
-         {{ button_label|default('Save') }}
-     </button>
-{{ form_end(form) }}

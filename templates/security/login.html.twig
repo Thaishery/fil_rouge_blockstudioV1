@@ -1,65 +1,65 @@
  {% extends 'base.html.twig' %}
 
    
-   
+     {% block metaTitle %}
+         " Se connecter "
+     {% endblock %}
    
    
      {% block title %}
          Se connecter
      {% endblock %}
 
-
-
      {% block body %}
 
-         <form method="post">
+         <body id="loginStyle" class="text-center">
+    
+         <main class="form-signin">
 
-             {% if error %}
+             <form method="post">
 
-                 <div class="alert alert-danger">
-                     {{ error.messageKey|trans(error.messageData, 'security') }} 
-                 </div>
+                 {% if error %}
 
-             {% endif %}
+                     <div class="alert alert-danger">
+                         {{ error.messageKey|trans(error.messageData, 'security') }} 
+                     </div>
 
-             {% if app.user %}
+                 {% endif %}
 
-                 <div class="mb-3">
+                 {% if app.user %}
+    
+                     <div class="mb-3">
+    
+                         Vous etes connecter en tant que {{ app.user.username }},
+                         <a href="{{ path('app_logout') }}"> Se déconnecter </a>
+    
+                     </div>
+    
+                 {% endif %}
+    
+                 <img class="mb-4" src="/logoGrand.webp" alt="" width="72" height="57">
+                 
+                     <h1 class="h3 mb-3 font-weight-normal"> Se connecter </h1>
 
-                     Vous etes connecter en tant que {{ app.user.username }},
-                     <a href="{{ path('app_logout') }}"> Se déconnecter </a>
+                         <label for="inputLogin" class="visually-hidden"> Pseudo </label>
+                         <input  type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control"  placeholder="Email address" required autofocus>
+                                 
+                         <label for="inputPassword" class="visually-hidden"> Mot de passe </label>
+                         <input  type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required=""> 
+   
+                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                 </div>
+                         <button class="btn btn-primary btn-lg btn-block" type="submit"> 
+                             Se connecter 
+                         </button> </br>            
 
-             {% endif %}
+                         <p>
+                                 {# Tu n'as pas encore créer de compte ? #} 
+                                 <a class="btn btn-primary btn-lg btn-block" href="{{ path ('app_register') }}"> Créer un compte </a>
+                         </p>
 
-         <h1 class="h3 mb-3 font-weight-normal"> Se connecter </h1>
+             </form>
 
-             <label for="inputLogin"> Pseudo </label>
-                 <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" required autofocus>
-             <label for="inputPassword"> Mot de passe </label>
-                 <input type="password" name="password" id="inputPassword" class="form-control" required> <br/>
-
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-              <button class="btn btn-primary btn-lg btn-block" type="submit"> Se connecter </button> </br>            
-
-         </form>
-
-     <p>
-             {# Tu n'as pas encore créer de compte ? #} 
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path ('app_register') }}"> Créer un compte </a>
-     </p>
+         </main>
 
      {% endblock %}

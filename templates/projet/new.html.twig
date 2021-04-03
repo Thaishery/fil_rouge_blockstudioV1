@@ -1,0 +1,22 @@
+ {% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Créer un nouveau projet "
+     {% endblock %}
+
+
+     {% block title %}
+         Créer un nouveau projet
+     {% endblock %}
+
+     {% block body %}
+        
+         <h1 class="h3 mb-3 font-weight-normal"> Créer un nouveau projet </h1>
+
+
+         {{ include('projet/_form.html.twig') }}
+
+         <a href="{{ path('projet_index') }}"> Retour à la liste </a>
+
+     {% endblock %}

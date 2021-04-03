@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
+
+     {% block metaTitle %}
+         " Créer une publication "
+     {% endblock %}
+
+
      {% block title %}
-         New Home
+         Créer une publication
      {% endblock %}
 
      {% block body %}
+
          <h1> Créer une publication </h1>
-            {# A valider: le titre H1 #}
+         
+             {{ include('home/_form.html.twig') }}
 
-      {{ include('home/_form.html.twig') }}
+             <a href="{{ path('home_index') }}"> Retour à la liste </a>
 
-     <a href="{{ path('home_index') }}"> Retour à la liste </a>
      {% endblock %}
