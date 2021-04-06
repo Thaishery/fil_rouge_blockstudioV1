@@ -1,0 +1,23 @@
+ {% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Gestionnaire de plateforme "
+     {% endblock %}
+
+
+     {% block title %}
+         Gestionnaire de plateforme
+     {% endblock %}
+     
+     {% block body %}
+
+         <h1 class="h3 mb-3 font-weight-normal"> Gestionnaire de plateforme </h1>
+     
+             {{ include('plateforme/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+     
+             <a href="{{ path('plateforme_index', {'login': app.user.login}) }}"> Retour à la liste </a>
+     
+             {{ include('plateforme/_delete_form.html.twig') }}
+
+     {% endblock %}

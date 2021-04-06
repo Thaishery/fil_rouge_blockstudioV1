@@ -79,10 +79,16 @@ class User implements UserInterface
      */
     private $projetsfeat;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Plateforme::class, mappedBy="PlateformeUser")
+     */
+    private $plateformes;
+
     public function __construct()
     {
         $this->projets = new ArrayCollection();
         $this->projetsfeat = new ArrayCollection();
+        $this->plateformes = new ArrayCollection();
     }
 
 
@@ -291,6 +297,36 @@ class User implements UserInterface
     {
         if ($this->projetsfeat->removeElement($projetsfeat)) {
             $projetsfeat->removeFeat($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Plateforme[]
+     */
+    public function getPlateformes(): Collection
+    {
+        return $this->plateformes;
+    }
+
+    public function addPlateforme(Plateforme $plateforme): self
+    {
+        if (!$this->plateformes->contains($plateforme)) {
+            $this->plateformes[] = $plateforme;
+            $plateforme->setPlateformeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlateforme(Plateforme $plateforme): self
+    {
+        if ($this->plateformes->removeElement($plateforme)) {
+            // set the owning side to null (unless already changed)
+            if ($plateforme->getPlateformeUser() === $this) {
+                $plateforme->setPlateformeUser(null);
+            }
         }
 
         return $this;

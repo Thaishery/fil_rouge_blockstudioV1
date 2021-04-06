@@ -1,19 +1,19 @@
 <?php
-// src/Service/FileUploader.php
+
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class CoverFileUploader
+class PictureFileUploader
 {
-    private $coverTargetDirectory;
+    private $pictureTargetDirectory;
     private $slugger;
 
-    public function __construct($coverTargetDirectory, SluggerInterface $slugger)
+    public function __construct($pictureTargetDirectory, SluggerInterface $slugger)
     {
-        $this->coverTargetDirectory = $coverTargetDirectory;
+        $this->pictureTargetDirectory = $pictureTargetDirectory;
         $this->slugger = $slugger;
     }
 
@@ -34,7 +34,7 @@ class CoverFileUploader
 
     public function getTargetDirectory()
     {
-        return $this->coverTargetDirectory;
+        return $this->pictureTargetDirectory;
     }
 
 }

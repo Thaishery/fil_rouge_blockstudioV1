@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Créer une nouvelle plateforme "
+     {% endblock %}
+ 
+
+     {% block title %}
+         Nouvelle plateforme
+     {% endblock %}
+     
+     {% block body %}
+
+         <h1 class="h3 mb-3 font-weight-normal"> Créer nouvelle plateforme </h1>
+     
+         {{ include('plateforme/_form.html.twig') }}
+     
+         <a href="{{ path ('plateforme_index',{'login': app.user.login}) }}"> Retour à la liste </a>
+
+     {% endblock %}

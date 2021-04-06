@@ -6,6 +6,7 @@
 parameters:
     avatar_directory: '%kernel.project_dir%/public/uploads/avatar'
     cover_directory: '%kernel.project_dir%/public/uploads/cover'
+    picture_directory: '%kernel.project_dir%/public/uploads/picture'
 
 services:
     # default configuration for services in *this* file
@@ -36,3 +37,6 @@ services:
                 $coverTargetDirectory: '%cover_directory%'
                 # $avatarTargetDirectory: '%avatar_directory%'
     # App\Service\AvatarFileUploader:
+    App\Service\PictureFileUploader:
+            arguments:
+                $pictureTargetDirectory: '%picture_directory%'

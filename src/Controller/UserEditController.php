@@ -25,7 +25,8 @@ class UserEditController extends AbstractController
      {
          $form = $this->createForm(UserTypeEditCurrent::class, $user);
          $form->handleRequest($request);
-        //  $id = $this->getUser()->getUsername();
+
+         //  $id = $this->getUser()->getUsername();
  
          if ($form->isSubmitted() && $form->isValid()) {
              // $user->setPassword(
@@ -38,6 +39,7 @@ class UserEditController extends AbstractController
  
              return $this->redirectToRoute('user_index');
          }
+
          if ($id === $this->getUser()->getid()){
          return $this->render('user/editCurent.html.twig', [
              'id' => $user->getid(),

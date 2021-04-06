@@ -6,10 +6,11 @@ use App\Entity\Projet;
 use App\Entity\User;
 use App\Form\ProjetType;
 use App\Repository\ProjetRepository;
+use App\Service\CoverFileUploader;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Service\CoverFileUploader;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
@@ -95,6 +96,7 @@ class ProjetController extends AbstractController
                      $file = $projet->getCover();
                      $projet->setCover($file);
                  }
+
                  $this->getDoctrine()->getManager()->flush();
 
                  return $this->redirectToRoute('projet_index');
