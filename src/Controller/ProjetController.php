@@ -6,6 +6,7 @@ use App\Entity\Projet;
 use App\Entity\User;
 use App\Form\ProjetType;
 use App\Repository\ProjetRepository;
+use App\Repository\ServicesRepository;
 use App\Service\CoverFileUploader;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,17 +24,18 @@ class ProjetController extends AbstractController
     /**
      * @Route("/", name="projet_index", methods={"GET"})
      */
-    public function index(ProjetRepository $projetRepository): Response
+    public function index(ProjetRepository $projetRepository,ServicesRepository $services): Response
     {
         return $this->render('projet/index.html.twig', [
             'projets' => $projetRepository->findAll(),
+            'services' => $services->findAll(),
         ]);
     }
 
     /**
      * @Route("/new", name="projet_new", methods={"GET","POST"})
      */
-     public function new(Request $request, CoverFileUploader $coverFileUploader): Response
+     public function new(Request $request, CoverFileUploader $coverFileUploader,ServicesRepository $services): Response
      {
         //  $user=$this->getUser();
          $projet = new Projet();
@@ -59,29 +61,33 @@ class ProjetController extends AbstractController
                  $entityManager->persist($projet);
                  $entityManager->flush();
 
-            return $this->redirectToRoute('projet_index');
+            return $this->redirectToRoute('projet_index',[
+                'services' => $services->findAll(),
+            ]);
         }
 
         return $this->render('projet/new.html.twig', [
             'projet' => $projet,
             'form' => $form->createView(),
+            'services' => $services->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="projet_show", methods={"GET"})
      */
-    public function show(Projet $projet): Response
+    public function show(Projet $projet,ServicesRepository $services): Response
     {
         return $this->render('projet/show.html.twig', [
             'projet' => $projet,
+            'services' => $services->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="projet_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader): Response
+    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader,ServicesRepository $services): Response
          {
          $form = $this->createForm(ProjetType::class, $projet);
          $form->handleRequest($request);
@@ -99,20 +105,23 @@ class ProjetController extends AbstractController
 
                  $this->getDoctrine()->getManager()->flush();
 
-                 return $this->redirectToRoute('projet_index');
+                 return $this->redirectToRoute('projet_index',[
+                    'services' => $services->findAll(),
+                 ]);
 
          }
 
         return $this->render('projet/edit.html.twig', [
             'projet' => $projet,
             'form' => $form->createView(),
+            'services' => $services->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="projet_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Projet $projet): Response
+    public function delete(Request $request, Projet $projet,ServicesRepository $services): Response
     {
         if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -120,7 +129,9 @@ class ProjetController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('projet_index');
+        return $this->redirectToRoute('projet_index',[
+            'services' => $services->findAll(),
+        ]);
     }
 
 

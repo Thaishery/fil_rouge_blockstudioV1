@@ -12,45 +12,47 @@
 
      {% block body %}
 
-         <h1> Accueil </h1>
 
-     <table class="table table-dark table-hover">
 
-         <tbody>
+                 <h1 class="h3 mb-3 font-weight-normal"> Accueil </h1>
 
-             <tr>
-                 <th> Id </th>
-                 <td> {{ home.id }} </td>
-             </tr>
+                     <table class="table table-dark table-hover">
 
-             <tr>
-                 <th> Titre </th>
-                 <td> {{ home.title }} </td>
-             </tr>
+                         <tbody>
 
-             <tr>
-                 <th> Photo </th>
-                 <td> {{ home.picture }} </td>
-             </tr>
+                             <tr>
+                                 <th> Id </th>
+                                 <td> {{ home.id }} </td>
+                             </tr>
 
-             <tr>
-                 <th> Courte description </th>
-                 <td> {{ home.shortDesc }} </td>
-             </tr>
+                             <tr>
+                                 <th> Titre </th>
+                                 <td> {{ home.title }} </td>
+                             </tr>
 
-             <tr>
-                 <th> Longue description </th>
-                 <td> {{ home.longDesc }} </td>
-             </tr>
+                             <tr>
+                                 <th> Photo </th>
+                                 <td> {{ home.picture }} </td>
+                             </tr>
 
-             <tr>
-                 <th> Est actif </th>
-                 <td> {{ home.isActive ? 'Oui' : 'Non' }} </td>
-             </tr>
+                             <tr>
+                                 <th> Courte description </th>
+                                 <td> {{ home.shortDesc }} </td>
+                             </tr>
 
-         </tbody>
+                             <tr>
+                                 <th> Longue description </th>
+                                 <td> {{ home.longDesc }} </td>
+                             </tr>
 
-     </table>
+                             <tr>
+                                 <th> Est actif </th>
+                                 <td> {{ home.isActive ? 'Oui' : 'Non' }} </td>
+                             </tr>
+
+                         </tbody>
+
+                     </table>
 
 
          

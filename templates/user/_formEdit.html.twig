@@ -3,9 +3,8 @@
 
     <div class="container">
     
-       <div class="row">
-        
-          {# PSEUDO #}     
+       <div class="row">  
+          {# *** PSEUDO *** #}     
 
              <div class="pseudo row">
 
@@ -19,7 +18,7 @@
                    ) }}
                 </div>
 
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="pseudoError">
                    {{form_errors(form.login)}}
@@ -27,7 +26,7 @@
 
              </div>
 
-          {# PRENOM #}
+          {# *** PRÉNOM *** #}
 
              <div class="prenom row">
         
@@ -41,7 +40,7 @@
                    ) }}
                 </div>
 
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="prenomError">
                    {{form_errors(form.firstname)}}
@@ -49,7 +48,7 @@
 
              </div>
 
-          {# NOM #}
+          {# *** NOM *** #}
 
              <div class="nom row">
 
@@ -63,7 +62,7 @@
                    ) }}
                 </div>
                  
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="nomError">
                    {{form_errors(form.lastname)}}
@@ -71,7 +70,7 @@
 
              </div>
 
-          {# ROLES #}
+          {# *** ROLES *** #}
 
              <div class="roles row">
 
@@ -83,7 +82,7 @@
                    {{ form_widget(form.roles) }}
                 </div>
 
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="rolesError">
                    {{form_errors(form.roles)}}
@@ -91,7 +90,7 @@
 
              </div>
 
-          {# EMAIL #}
+          {# *** EMAIL *** #}
 
              <div class="email row">
 
@@ -105,7 +104,7 @@
                    ) }}
                 </div>
 
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="emailError">
                    {{form_errors(form.email)}}
@@ -113,7 +112,7 @@
 
              </div>
 
-         {# ADDRESSE #}
+          {# *** ADDRESSE *** #}
 
              <div class="address row">
 
@@ -127,7 +126,7 @@
                    ) }}
                 </div>
 
-             {# If Errors#}
+             {# *** If Errors *** #}
 
                 <div class="addressError">
                    {{form_errors(form.address)}}
@@ -135,7 +134,7 @@
 
              </div>
 
-         {# TELEPHONE #}
+          {# *** TÉLÉPHONE *** #}
 
              <div class="phone row">
 
@@ -149,27 +148,22 @@
                    ) }}
                 </div>
 
-            {# If Errors#}
+            {# *** If Errors *** #}
 
                 <div class="phoneError">
                    {{form_errors(form.phone)}}
                 </div>
                 
              </div>
-           
-            
-            {# <a class="btn" href="{{ path('user_index') }}"> Revenir à la liste </a> #}
-                 
+                           
        </div>
 
-   </div>
+    </div>
 
        <button class="btn btn-primary btn-lg btn-block">
-          {{ button_label|default('Save') }}
+          {{ button_label|default('Sauvegarder') }}
        </button>
-            
-
-
+         
  {{ form_end(form) }}
 
 

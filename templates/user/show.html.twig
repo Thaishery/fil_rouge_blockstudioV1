@@ -1,14 +1,14 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
 
      {% block metaTitle %}
      " Informations utilisateur "
      {% endblock %}
 
-
      {% block title %}
          Informations utilisateur
      {% endblock %}
+
 
      {% block body %}
 
@@ -20,42 +20,42 @@
 
                  <tr>
                      <th> Id </th>
-                     <td>{{ user.id }}</td>
+                     <td> {{ user.id }} </td>
                  </tr>
 
                  <tr>
                     <th> Pseudo </th>
-                    <td>{{ user.login }}</td>
+                    <td> {{ user.login }} </td>
                  </tr>
 
                  <tr>
                      <th> Nom </th>
-                     <td>{{ user.lastname }}</td>
+                     <td> {{ user.lastname }} </td>
                  </tr>
 
                  <tr>
                      <th> Prénom </th>
-                     <td>{{ user.firstname }}</td>
+                     <td> {{ user.firstname }} </td>
                  </tr>
 
                  <tr>
                      <th> Addresse </th>
-                     <td>{{ user.address }}</td>
+                     <td> {{ user.address }} </td>
                  </tr>
 
                  <tr>
                      <th> Téléphone </th>
-                     <td>{{ user.phone }}</td>
+                     <td> {{ user.phone }} </td>
                  </tr>
 
                  <tr>
                      <th> Email </th>
-                     <td>{{ user.email }}</td>
+                     <td> {{ user.email }} </td>
                  </tr>
 
                  <tr>
                      <th> Avatar </th>
-                     <td>{{ user.avatar }}</td>
+                     <td> {{ user.avatar }} </td>
                  </tr>
 
                  <tr>
@@ -73,13 +73,13 @@
          </table>
 
              <button class="btn btn-primary btn-lg btn-block">
-                 <a href="{{ path('user_index') }}"> Revenir à la liste </a>
-             </button>
-
-             <button class="btn btn-primary btn-lg btn-block">
                  <a href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
              </button>
 
              {{ include('user/_delete_form.html.twig') }}
+
+              <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('user_index') }}"> Revenir à la liste </a>
+             </button>
              
  {% endblock %}

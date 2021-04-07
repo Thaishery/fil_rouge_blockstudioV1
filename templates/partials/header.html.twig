@@ -1,7 +1,10 @@
 
+
+
      {% block metaTitle %}
          {# MENU DE CONNEXION #}
      {% endblock %}
+
 
      {% block title %}   
          {# MENU DE CONNEXION #}
@@ -9,7 +12,7 @@
 
      
      {% block body %}
-<!-- Button trigger modal -->
+     <!-- Button trigger modal -->
 
          <header>
          
@@ -65,19 +68,19 @@
                                                      <ul>
 
                                                          <li>
-                                                             <a href="/admin/home/"> Gestion de l'accueil </a><br/>     
+                                                             <a href="{{path ("home_index")}}"> Gestion de l'accueil </a><br/>     
                                                          </li>  
 
                                                          <li>
-                                                            <a href="/admin/services"> Gestion des services </a> <br/>
+                                                            <a href="{{path ("services_index")}}"> Gestion des services </a> <br/>
                                                          </li>
 
                                                          <li>                                           
-                                                             <a href="/admin/user"> Gestion des utilisateurs </a><br/>     
+                                                             <a href="{{path ("user_index")}}"> Gestion des utilisateurs </a><br/>     
                                                          </li>   
 
                                                          <li>     
-                                                             <a href="/admin/projet"> Gestion des projets </a>
+                                                             <a href="{{path ("projet_index")}}"> Gestion des projets </a>
                                                          </li> 
 
                                                      </ul>
@@ -202,42 +205,11 @@
                                                              <li>
                                                                  <a class="dropdown-item" href="#"> Enregistrement </a>
                                                              </li>   
-                    
-                                                             {# *** Mixage *** #}
+                                                            {% for service in services %}
                                                              <li>
-                                                                 <a class="dropdown-item" href="#"> Mixage </a>
-                                                             </li>   
-                
-                                                             {# *** Mastering *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Mastering </a>
-                                                             </li>  
-                
-                                                             {# *** Vidéo *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Vidéo </a>
-                                                             </li>  
-                
-                                                             {# *** Création graphique *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Création graphique </a>
-                                                             </li>                                        
-                                                  
-                                                             {# *** Pressage CD *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Pressage CD </a>
-                                                             </li>                                        
-                                                
-                                                             {# *** Impression *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Impression </a>
-                                                             </li>                                        
-                                                     
-                                                             {# *** Distribution *** #}
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Distribution </a>
-                                                             </li>                                        
-                              
+                                                                 <a class="dropdown-item" href="{{path ("service_user", {'id': service.id})}}"> {{service.title}}</a>
+                                                             </li>
+                                                             {% endfor %}
                                                          </ul>
                            
                                              </li>               

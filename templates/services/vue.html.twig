@@ -1,0 +1,40 @@
+ {% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Services"
+     {% endblock %}
+
+     {% block title %}
+         Services
+     {% endblock %}
+
+
+     {% block body %}
+
+          <div class="example-wrapper">
+
+                 <h1 class="h3 mb-3 font-weight-normal"> Nos services </h1>
+
+                     <article>
+         
+                         <h2> {{ service.title }} </h2>
+         
+                             <div class="row">
+         
+                                 <div class="col">
+                                    <img class="homeImage" src="/uploads/picture/{{service.picture}} ">
+                                 </div>
+         
+                                 <div class="col">
+                                     <p class ="homeShortDesc"> {{ service.shortDesc }} </p>
+                                 </div>
+         
+                             </div>
+         
+                             <p class ="homeLongDesc"> {{ service.longDesc }} </p>
+         
+                     </article>
+             </div>
+     
+     {% endblock %}

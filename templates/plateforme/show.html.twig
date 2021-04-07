@@ -37,9 +37,9 @@
              
          </table>
      
-         <a class="btn" href="{{ path('plateforme_index', {'login': app.user.login}) }}"> Retour à la liste </a>
+         <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_index', {'login': app.user.login}) }}"> Retour à la liste </a>
      
-         <a class="btn" href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
+         <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
      
          {{ include('plateforme/_delete_form.html.twig') }}
          

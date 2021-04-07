@@ -16,6 +16,6 @@
      
          {{ include('plateforme/_form.html.twig') }}
      
-         <a href="{{ path ('plateforme_index',{'login': app.user.login}) }}"> Retour à la liste </a>
+         <a class="btn btn-primary btn-lg btn-block" href="{{ path ('plateforme_index',{'login': app.user.login}) }}"> Retour à la liste </a>
 
      {% endblock %}

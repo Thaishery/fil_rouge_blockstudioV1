@@ -1,43 +1,67 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}Services index{% endblock %}
+   
+     {% block metaTitle %}
+         " Gestionnaire de services "
+     {% endblock %}
 
-{% block body %}
-    <h1>Services index</h1>
+     {% block title %}
+         Gestionnaire de services
+     {% endblock %}
+     
+     {% block body %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Picture</th>
-                <th>Short_desc</th>
-                <th>Long_desc</th>
-                <th>Carousel_rank</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for service in services %}
-            <tr>
-                <td>{{ service.id }}</td>
-                <td>{{ service.title }}</td>
-                <td>{{ service.picture }}</td>
-                <td>{{ service.shortDesc }}</td>
-                <td>{{ service.longDesc }}</td>
-                <td>{{ service.carouselRank }}</td>
-                <td>
-                    <a href="{{ path('services_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('services_edit', {'id': service.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestion des services </h1>
+     
+         <table class="table table-dark table-hover">
 
-    <a href="{{ path('services_new') }}">Create new</a>
-{% endblock %}
+             <thead>
+
+                 <tr>
+                     <th> Id </th>
+                     <th> Titre </th>
+                     <th> Photo </th>
+                     <th> Courte description </th>
+                     <th> Longue description </th>
+                     <th> Carousel rang </th>
+                     <th> Actions </th>
+                 </tr>
+
+             </thead>
+
+             <tbody>
+
+                 {% for service in services %}
+
+                     <tr>
+                         <td> {{ service.id }} </td>
+                         <td> {{ service.title }} </td>
+                         <td> {{ service.picture }} </td>
+                         <td> {{ service.shortDesc }} </td>
+                         <td> {{ service.longDesc }} </td>
+                         <td> {{ service.carouselRank }} </td>
+
+                             <td>
+                                 <a href="{{ path('services_show', {'id': service.id}) }}"> Voir </a>
+                                 <a href="{{ path('services_edit', {'id': service.id}) }}"> Modifier </a>
+                             </td>
+
+                     </tr>
+
+                 {% else %}
+
+                 <tr>
+                     <td colspan="7"> Aucun résultat </td>
+                 </tr>
+
+             {% endfor %}
+
+             </tbody>
+
+         </table>
+     
+             <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('services_new') }}"> Créer un nouveau service </a>
+             </button>
+
+     {% endblock %}

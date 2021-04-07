@@ -2,58 +2,64 @@
 
 
      {% block metaTitle %}
-         " Plateforme index "
+         " Gestionnaire de plateforme "
      {% endblock %}
 
 
      {% block title %}
-         Plateforme index
+         Gestionnaire de plateforme
      {% endblock %}
      
      {% block body %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Plateforme index </h1>
+
+
+
+
+
+
+         <h1 class="h3 mb-3 font-weight-normal"> Gestion des plateformes </h1>
      
-         <table class="table table-dark table-hover">
+             <table class="table table-dark table-hover">
 
-             <thead class="thead-light">
-
-                 <tr>
-                     <th> Id </th>
-                     <th> Nom </th>
-                     <th> Lien </th>
-                     <th> Actions </th>
-                 </tr>
-
-             </thead>
-
-             <tbody>
-
-                 {% for plateforme in plateformes %}
-
-                 <tr>
-                     <td> {{ plateforme.id }} </td>
-                     <td> {{ plateforme.name }} </td>
-                     <td> {{ plateforme.link }} </td>
-
-                         <td>
-                             <a href="{{ path('plateforme_show', {'id': plateforme.id, 'login': app.user.login}) }}"> Voir </a>
-                             <a href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
-                         </td>
-
-                 </tr>
-                   
-                 {% else %}
+                 <thead class="thead-light">
 
                      <tr>
-                         <td colspan="11"> Aucun résultat </td>
+                         <th> Id </th>
+                         <th> Nom </th>
+                         <th> Lien </th>
+                         <th> Actions </th>
                      </tr>
 
-                 {% endfor %}
+                 </thead>
 
-             </tbody>
+                 <tbody>
 
-         </table>
+                     {% for plateforme in plateformes %}
+
+                     <tr>
+                         <td> {{ plateforme.id }} </td>
+                         <td> {{ plateforme.name }} </td>
+                         <td> {{ plateforme.link }} </td>
+
+                             <td>
+                                 <a href="{{ path('plateforme_show', {'id': plateforme.id, 'login': app.user.login}) }}"> Voir </a>
+                                 <a href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
+                             </td>
+
+                     </tr>
+                       
+                     {% else %}
+
+                         <tr>
+                             <td colspan="11"> Aucun résultat </td>
+                         </tr>
+
+                     {% endfor %}
+
+                 </tbody>
+
+             </table>
      
              <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_new', {'login': app.user.login}) }}"> Créer un nouveau lien </a>
     

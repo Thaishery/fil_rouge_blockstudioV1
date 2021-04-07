@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Projet;
 use App\Entity\User;
 use App\Form\SearchProjetType;
+use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
@@ -18,7 +19,7 @@ class ArtistesController extends AbstractController
     /**
      * @Route("/artistes", name="artistes")
      */
-    public function index(PaginatorInterface $paginator, Request $request, UserRepository $userRepository): Response
+    public function index(PaginatorInterface $paginator, Request $request, UserRepository $userRepository, ServicesRepository $services): Response
     {
         // $search_form = $this->createForm(SearchProjetType::class);
         // $search_form -> handleRequest($request);
@@ -49,6 +50,7 @@ class ArtistesController extends AbstractController
         return $this->render('artistes/index.html.twig', [
             'controller_name' => 'ArtistesController',
             'users' => $userList,
+            'services' =>$services->findAll(),
             // 'form' => $search_form -> createView(),
         ]);
     }

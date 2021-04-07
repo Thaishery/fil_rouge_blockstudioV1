@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\UserTypeEditCurrent;
 use App\Form\UserType;
 use App\Form\UserTypeEdit;
+use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,7 +22,7 @@ class UserEditController extends AbstractController
      * @Route("user/{id}/edit", name="user_edit_current", methods={"GET","POST"})
      */
      //public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
-     public function edit(Request $request, User $user, int $id): Response
+     public function edit(Request $request, User $user, int $id,ServicesRepository $services): Response
      {
          $form = $this->createForm(UserTypeEditCurrent::class, $user);
          $form->handleRequest($request);
@@ -37,16 +38,21 @@ class UserEditController extends AbstractController
              // );
              $this->getDoctrine()->getManager()->flush();
  
-             return $this->redirectToRoute('user_index');
+             return $this->redirectToRoute('user_index',[
+                'services' => $services->findAll(),
+             ]);
          }
 
          if ($id === $this->getUser()->getid()){
          return $this->render('user/editCurent.html.twig', [
              'id' => $user->getid(),
              'user' => $user,
+             'services' => $services->findAll(),
              'form' => $form->createView(),
          ]);
          }
-         return $this->render('user/forbiden.html.twig');
+         return $this->render('user/forbiden.html.twig',[
+            'services' => $services->findAll(),
+         ]);
      }
 }

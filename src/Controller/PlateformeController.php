@@ -6,7 +6,7 @@ use App\Entity\User;
 use App\Entity\Plateforme;
 use App\Form\PlateformeType;
 use App\Repository\PlateformeRepository;
-
+use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +22,7 @@ class PlateformeController extends AbstractController
     /**
      * @Route("/", name="plateforme_index", methods={"GET"})
      */
-    public function index(PlateformeRepository $plateformeRepository,User $user): Response
+    public function index(PlateformeRepository $plateformeRepository,User $user, ServicesRepository $services): Response
      {
          $user=$this->getUser();   
  
@@ -30,13 +30,14 @@ class PlateformeController extends AbstractController
              'user' => $user,
              'plateformes' => $plateformeRepository-> findBy(array('PlateformeUser'=>$user->getid())),     
             // 'plateformes' => $plateformeRepository-> findAll(),
+            'services' => $services->findAll(),
             ]);
      }
 
     /**
      * @Route("/new", name="plateforme_new", methods={"GET","POST"})
      */
-     public function new(Request $request, User $user ): Response
+     public function new(Request $request, User $user, ServicesRepository $services ): Response
      {
          $user=$this->getUser(); 
          $plateforme = new Plateforme();
@@ -51,30 +52,34 @@ class PlateformeController extends AbstractController
              $entityManager->persist($plateforme);
              $entityManager->flush();
 
-             return $this->redirectToRoute('plateforme_index',['login' => $user->getlogin()]);
+             return $this->redirectToRoute('plateforme_index',[
+                 'login' => $user->getlogin(),
+                 'services' => $services->findAll(),]);
          }
        
          return $this->render('plateforme/new.html.twig', [
              
              'plateforme' => $plateforme,
              'form' => $form->createView(),
+             'services' => $services->findAll(),
          ]);
      }
 
      /**
      * @Route("/{id}", name="plateforme_show", methods={"GET"})
      */
-     public function show(Plateforme $plateforme): Response
+     public function show(Plateforme $plateforme, ServicesRepository $services): Response
      {
          return $this->render('plateforme/show.html.twig', [
              'plateforme' => $plateforme,
+             'services' => $services->findAll(),
          ]);
      }
 
     /**
      * @Route("/{id}/edit", name="plateforme_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Plateforme $plateforme): Response
+    public function edit(Request $request, Plateforme $plateforme, ServicesRepository $services): Response
     {
         $form = $this->createForm(PlateformeType::class, $plateforme);
         $form->handleRequest($request);
@@ -82,19 +87,22 @@ class PlateformeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('plateforme_index');
+            return $this->redirectToRoute('plateforme_index',[
+                'services' => $services->findAll(),
+            ]);
         }
 
         return $this->render('plateforme/edit.html.twig', [
             'plateforme' => $plateforme,
             'form' => $form->createView(),
+            'services' => $services->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="plateforme_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Plateforme $plateforme, User $user): Response
+    public function delete(Request $request, Plateforme $plateforme, User $user, ServicesRepository $services): Response
     {
         $user = $this->getUser();
         if ($this->isCsrfTokenValid('delete'.$plateforme->getId(), $request->request->get('_token'))) {
@@ -103,6 +111,9 @@ class PlateformeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('plateforme_index',['login' => $user->getlogin()]);
+        return $this->redirectToRoute('plateforme_index',[
+            'login' => $user->getlogin(),
+            'services' => $services->findAll(),
+            ]);
     }
 }

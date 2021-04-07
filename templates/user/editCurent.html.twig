@@ -2,28 +2,21 @@
 
 
      {% block metaTitle %}
-         " Gérer mon profil "
+         " Gestionnaire de profil "
      {% endblock %}
 
-
      {% block title %}
-         Gérer mon profil
+         Gestionnaire de profil
      {% endblock %}
 
      {% block body %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Gérer mon profil </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestion du profil </h1>
 
-
-     {{ include('user/_formEditCurrent.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-         {# <button class="btn btn-lg btn-primary">
-             <a href="{{ path('user_index') }}"> Retour à la liste </a>
-         </button> #}
-
-         {# <a class="btn btn-secondary btn-sm" href="{{ path('user_index') }}"> Retour à la liste </a> #}
-
-     {{ include('user/_delete_form.html.twig') }}
+           
+             {{ include('user/_formEditCurrent.html.twig', {'button_label': 'Mettre à jour'}) }}
+           
+             {{ include('user/_delete_form.html.twig') }}
 
      {% endblock %}
  

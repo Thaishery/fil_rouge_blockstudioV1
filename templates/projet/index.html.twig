@@ -2,17 +2,17 @@
 
 
      {% block metaTitle %}
-         " Gestion des Projets "
+         " Gestionnaire de projets "
      {% endblock %}
 
 
      {% block title %}
-         Gestion des Projets
+         Gestionnaire de projets
      {% endblock %}
 
      {% block body %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Gestion des Projets </h1>
+         <h1 class="h3 mb-3 font-weight-normal"> Gestion des projets </h1>
 
              <table class="table table-dark table-hover">
 
@@ -71,6 +71,9 @@
 
              </table>
 
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_new') }}"> Créer un nouveau projet </a>
+
+             <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('projet_new') }}"> Créer un nouveau projet </a>
+             </button>  
 
  {% endblock %}

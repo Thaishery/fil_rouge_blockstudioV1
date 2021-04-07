@@ -5,17 +5,19 @@
          " Nouvel utilisateur "
      {% endblock %}
 
-
      {% block title %}
          Nouvel utilisateur
      {% endblock %}
+
 
      {% block body %}
 
          <h1 class="h3 mb-3 font-weight-normal"> Créer un nouvel utilisateur </h1>
 
-     {{ include('user/_form.html.twig') }}
+             <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('user_index') }}"> Retour à la liste </a>                
+             </button> 
 
-     <a href="{{ path('user_index') }}"> Retour à la liste </a>
+             {{ include('user/_form.html.twig') }}
 
  {% endblock %}

@@ -27,13 +27,14 @@ class ServicesController extends AbstractController
     {
         return $this->render('services/index.html.twig', [
             'services' => $servicesRepository->findAll(),
+            
         ]);
     }
 
     /**
      * @Route("/new", name="services_new", methods={"GET","POST"})
      */
-    public function new(Request $request, PictureFileUploader $fileUploader): Response
+    public function new(Request $request, PictureFileUploader $fileUploader,ServicesRepository $servicesRepository): Response
     {
 
         $services = new Services();
@@ -61,6 +62,7 @@ class ServicesController extends AbstractController
 
         return $this->render('services/new.html.twig', [
             'service' => $services,
+            'services' => $servicesRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -68,10 +70,11 @@ class ServicesController extends AbstractController
     /**
      * @Route("/{id}", name="services_show", methods={"GET"})
      */
-    public function show(Services $service): Response
-    {
+    public function show(Services $service,ServicesRepository $services): Response
+    {{}
         return $this->render('services/show.html.twig', [
             'service' => $service,
+            'services' => $services->findAll(),
         ]);
     }
 
@@ -80,7 +83,7 @@ class ServicesController extends AbstractController
     /**
      * @Route("/{id}/edit", name="services_edit", methods={"GET","POST"})
      */
-     public function edit(Request $request, Services $service, PictureFileUploader $fileUploader): Response
+     public function edit(Request $request, Services $service, PictureFileUploader $fileUploader,ServicesRepository $services): Response
      {
          $form = $this->createForm(ServicesType::class, $service);
          $form->handleRequest($request);
@@ -98,11 +101,14 @@ class ServicesController extends AbstractController
 
              $this->getDoctrine()->getManager()->flush();
 
-             return $this->redirectToRoute('services_index');
+             return $this->redirectToRoute('services_index',[
+                'services' => $services->findAll(),
+             ]);
          }
 
         return $this->render('services/edit.html.twig', [
             'service' => $service,
+            'services' => $services->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -110,7 +116,7 @@ class ServicesController extends AbstractController
     /**
      * @Route("/{id}", name="services_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Services $service): Response
+    public function delete(Request $request, Services $service,ServicesRepository $services): Response
     {
         if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -118,6 +124,8 @@ class ServicesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('services_index');
+        return $this->redirectToRoute('services_index',[
+            'services' => $services->findAll(),
+        ]);
     }
 }

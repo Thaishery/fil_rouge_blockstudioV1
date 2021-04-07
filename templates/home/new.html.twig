@@ -12,10 +12,12 @@
 
      {% block body %}
 
-         <h1> Créer une publication </h1>
+
+
+         <h1 class="h3 mb-3 font-weight-normal"> Créer une publication </h1>
          
              {{ include('home/_form.html.twig') }}
 
-             <a href="{{ path('home_index') }}"> Retour à la liste </a>
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('home_index') }}"> Retour à la liste </a>
 
      {% endblock %}

@@ -11,6 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Home;
 use App\Form\HomeType;
 use App\Repository\HomeRepository;
+use App\Repository\ServicesRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 // fin de prévision. 
@@ -20,14 +21,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(HomeRepository $homeRepository, AuthenticationUtils $authenticationUtils): Response
+    public function index(HomeRepository $homeRepository, AuthenticationUtils $authenticationUtils, ServicesRepository $services): Response
     {
     
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+        
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'homes' => $homeRepository->findAll(),
+            'services' => $services->findAll(),
         ]);
         }
         
