@@ -40,10 +40,11 @@
                 
                      {# ***** CONTENEUR ACCORDEON ***** #}
                      <div class="accordion accordion-flush col-2" id="accordionFlushExample">
-                     
+                     {# *** Partie: Interface d'administration *** #}                                          
+                        {% if is_granted('ROLE_ADMIN') %} <br/>
                          {# ***** ELEMENT N°1 ***** #}
                          <div class="accordion-item">
-         
+                                
                                          {# *** TITRE DE L'ELEMENT N°1 *** #}
                                          <h2 class="accordion-header" id="flush-headingOne">
                                              
@@ -53,46 +54,42 @@
                                        
                                          </h2>
          
-                             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
          
-                                         {# *** CONTENU DE L'ELEMENT N°1 *** #}
-                                         <div class="accordion-body">
-                                     
-                                             {# ***** BLOC IDENTIFICATION ***** #}
-                                             <div class="logFrame">
+                                                     {# *** CONTENU DE L'ELEMENT N°1 *** #}
+                                                     <div class="accordion-body">
+                                                 
+                                                         {# ***** BLOC IDENTIFICATION ***** #}
+                                                         <div class="logFrame">
+                                                                                                                       
+                                                                 <ul>
+            
+                                                                     <li>
+                                                                         <a href="{{path ("home_index")}}"> Gestion de l'accueil </a><br/>     
+                                                                     </li>  
+            
+                                                                     <li>
+                                                                        <a href="{{path ("services_index")}}"> Gestion des services </a> <br/>
+                                                                     </li>
+            
+                                                                     <li>                                           
+                                                                         <a href="{{path ("user_index")}}"> Gestion des utilisateurs </a><br/>     
+                                                                     </li>   
+            
+                                                                     <li>     
+                                                                         <a href="{{path ("projet_index")}}"> Gestion des projets </a>
+                                                                     </li> 
+            
+                                                                 </ul>                                             
 
-                                                 {# *** Partie: Interface d'administration *** #}                                          
-                                                 {% if is_granted('ROLE_ADMIN') %} <br/>
-                                          
-                                                 {# {# <hr> #}
-                                                     <ul>
-
-                                                         <li>
-                                                             <a href="{{path ("home_index")}}"> Gestion de l'accueil </a><br/>     
-                                                         </li>  
-
-                                                         <li>
-                                                            <a href="{{path ("services_index")}}"> Gestion des services </a> <br/>
-                                                         </li>
-
-                                                         <li>                                           
-                                                             <a href="{{path ("user_index")}}"> Gestion des utilisateurs </a><br/>     
-                                                         </li>   
-
-                                                         <li>     
-                                                             <a href="{{path ("projet_index")}}"> Gestion des projets </a>
-                                                         </li> 
-
-                                                     </ul>
-                                                 {# <hr> #}
-
-                                                 {% endif %}
+                                                 
          
-                                             </div>
+                                                            </div>
          
-                                         </div>
+                                                         </div>
          
-                             </div>
+                                            </div>
+                                            {% endif %}
 
                      {% endif %}
                      
@@ -200,11 +197,7 @@
                 
                                                      {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
                                                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                                                             {# *** Enregistrement *** #}    
-                                                             <li>
-                                                                 <a class="dropdown-item" href="#"> Enregistrement </a>
-                                                             </li>   
+
                                                             {% for service in services %}
                                                              <li>
                                                                  <a class="dropdown-item" href="{{path ("service_user", {'id': service.id})}}"> {{service.title}}</a>

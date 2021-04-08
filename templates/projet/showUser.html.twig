@@ -72,11 +72,11 @@
          </tbody>
 
      </table>
-
-             <a class="btn" href="{{ path('projet_index_user',{'login':app.user.login}) }}"> Retour à la liste </a>
-
-             <a class="btn" href="{{ path('projet_edit_user', {'id': projet.id, 'login':app.user.login}) }}"> Modifier </a>
+ 
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_edit_user', {'id': projet.id, 'login':app.user.login}) }}"> Modifier </a>
 
              {{ include('projet/_delete_form.html.twig') }}
+
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_index_user',{'login':app.user.login}) }}"> Retour à la liste </a>                     
  
  {% endblock %}

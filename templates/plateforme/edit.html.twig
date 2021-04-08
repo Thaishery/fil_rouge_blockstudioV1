@@ -16,8 +16,8 @@
      
              {{ include('plateforme/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
      
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_index', {'login': app.user.login}) }}"> Retour à la liste </a>
-     
              {{ include('plateforme/_delete_form.html.twig') }}
+
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_index', {'login': app.user.login}) }}"> Retour à la liste </a>     
 
      {% endblock %}

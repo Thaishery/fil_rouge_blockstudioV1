@@ -20,6 +20,7 @@
     
                      <tr>
                          <th> Id </th>
+                         <th> Créateur </th>
                          <th> Titre </th>
                          <th> Année </th>
                          <th> Nombre de tracks  </th>
@@ -41,16 +42,17 @@
 
                      <tr>
 
-                         <td>{{ projet.id }}</td>
-                         <td>{{ projet.title }}</td>
-                         <td>{{ projet.years ? projet.years|date('Y-m-d') : '' }}</td>
-                         <td>{{ projet.nbOfTracks }}</td>
-                         <td>{{ projet.sample }}</td>
-                         <td>{{ projet.linkone }}</td>
-                         <td>{{ projet.linktwo }}</td>
-                         <td>{{ projet.linkthree }}</td>
-                         <td>{{ projet.cover }}</td>
-                         <td>{{ projet.description }}</td>
+                         <td> {{ projet.id }} </td>
+                         <td> {{ projet.createur.id }} </td> 
+                         <td> {{ projet.title }} </td>
+                         <td> {{ projet.years ? projet.years|date('Y-m-d') : '' }} </td>
+                         <td> {{ projet.nbOfTracks }} </td>
+                         <td> {{ projet.sample }} </td>
+                         <td> {{ projet.linkone }} </td>
+                         <td> {{ projet.linktwo }} </td>
+                         <td> {{ projet.linkthree }} </td>
+                         <td> {{ projet.cover }} </td>
+                         <td> {{ projet.description }} </td>
 
                              <td>
                                  <a href="{{ path('projet_show', {'id': projet.id}) }}"> Voir </a>
