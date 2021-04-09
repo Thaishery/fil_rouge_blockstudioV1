@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class UserTypeEditCurrent extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    { 
         $builder
             ->add('login')
             ->add('email', EmailType::class)
@@ -26,7 +26,8 @@ class UserTypeEditCurrent extends AbstractType
             ->add('lastname')
             ->add('address')
             ->add('phone')
-
+           
+            
             // ->add('avatar',
             // FileType::class, [
             //         'constraints' => [
