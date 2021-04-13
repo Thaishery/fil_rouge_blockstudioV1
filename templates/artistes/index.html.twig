@@ -12,6 +12,16 @@
 
      {% block body %}
   
+
+     {# *** Test implémentation fonction rechercher *** #}
+
+     {# <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> #}
+
+
+         <!-- Titre de l'article -->                                     
+         <h1 class="h3 mb-3 font-weight-normal" id="h1_artistes"> Artistes </h1>
+
+
              {# *** ALBUM CARD *** #}
  
                  <div class="row mainFrame col-10">
@@ -46,6 +56,7 @@
                     
                     
                     </div>
+
                  </div>
 
                  </div>
@@ -58,6 +69,45 @@
 
                  </nav>
          
+
+     {# *** Script: JavaScript bouton rechercher (test ) *** #}
+
+     {# <script>
+
+         function myFunction() {
+
+             // On déclare la variable
+                 var input, filter, table, tr, td, i, txtValue;
+                 input = document.getElementById("myInput");
+                 filter = input.value.toUpperCase();
+                 table = document.getElementById("myTable");
+                 tr = table.getElementsByTagName("tr");
+         
+             //  Loop through all table rows, and hide those who don't match the search query
+
+                 for (i = 0; i < tr.length; i++) {
+                     td = tr[i].getElementsByTagName("td")[0];
+
+                 if (td) {
+                     txtValue = td.textContent || td.innerText;
+
+                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                     tr[i].style.display = "";
+
+                 } else
+               
+                 {
+                     tr[i].style.display = "none";
+                 }
+
+             }
+
+           }
+
+         }
+
+     </script> #}
+
      {% endblock %}     
 
 

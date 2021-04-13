@@ -1,6 +1,7 @@
 *
 {
-    font-family: 'Roboto', sans-serif;
+     /* font-family: 'Roboto', sans-serif; */
+     font-family: 'Jura', sans-serif;
 }
 
 /* *** Style des titres *** */
@@ -10,15 +11,21 @@ h1
     text-align: center;
 }
 
-#h1_contact
-{
-    text-align: center;
-    border: groove 1px;
-    box-shadow: 1px 1px 1px orange;
-    border-radius: 3px;
-    padding: 8px;
-    margin: 16px;
-}  
+ #h1_accueil,
+ #h1_services_a, 
+ #h1_projets,
+ #h1_artistes,
+ #h1_livre_or, 
+ #h1_contact
+     {
+         text-align: center;
+         border: groove 1px;
+         box-shadow: 1px 1px 1px orange;
+         border-radius: 3px;
+         padding: 8px;
+         margin: 16px;
+     }  
+    
 
 .TextFrame h1
 {
@@ -50,13 +57,11 @@ h4
     margin-bottom: 30px;
  }  
 
+
  h5 
      {
          list-style: none;
      }
-
-
-
 
 
 /* *** Style de la barre de navigation *** */
@@ -131,7 +136,9 @@ header
     border: orange solid 1px;
     border-width: 2px;
 }
-
+.projetTitle{
+    height: 56px;
+}
 
 /* *** Style du carousel du livre d'or ***
 
@@ -422,7 +429,29 @@ Nous avons ajouté la propriété 'border' pour démontrer que le flip lui meme 
     transform: rotateY(180deg);
 }
 
+.navbar-nav{
+    min-width: 100%;
+    }
+    .nav-item{
+    min-width: 16.77%;
+    }
+    .login-position{
+    position:relative;
+    bottom:40%;
+    left: 40%;
+    }
+    
+    
+
+
+
+
 /* *** Code en vrac/test *** */
+
+
+
+
+
 
 /* Style du formulaire de contact */
 
@@ -472,17 +501,5 @@ display: block;
 {
 display: none;
 }  */
-.navbar-nav{
-min-width: 100%;
-}
-.nav-item{
-min-width: 16.77%;
-}
-.login-position{
-position:relative;
-bottom:40%;
-left:40%;
-}
-
 
 

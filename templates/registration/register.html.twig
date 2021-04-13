@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="style/style_register.css">
          {# Balise div pour remplacer balise body de l'exemple: https://getbootstrap.com/docs/5.0/examples/sign-in/ #}
          <div id="body" class="text-center"> 
+            <div class="container">
 
              <main class="col-9">
                 {{ form_start(registrationForm,
@@ -44,7 +45,7 @@
                      <h4 class="mb-3"> Votre profil </h4>
 
                      <div class="row g-3">
-
+                    
                      {# ********** CHAMP PSEUDO ********** #}
 
                          <div class="col-12">   
@@ -58,8 +59,8 @@
                              }}
 
                            <div class="input-group has-validation">
-                            
                              <span class="input-group-text"> @ </span>
+                            
 
                              {# *** INPUT *** #}
 
@@ -81,14 +82,17 @@
                                      }}
                                  ) 
                              }}
-
+                            
                               <div class="invalid-feedback">
                                   Le champ pseudo est requis.
                                    {{form_errors(registrationForm.login)}}
                               </div>
-                              {{form_errors(registrationForm.login)}}
+                            </div>
+                              
+                              <span class="text-danger">{{form_errors(registrationForm.login)}}</span>
+                              
                            
-                           </div>
+                           
 
                          </div>
 
@@ -119,7 +123,7 @@
                                Le champ prénom est requis.
                                {{form_errors(registrationForm.firstname)}}
                              </div>
-                             {{form_errors(registrationForm.firstname)}}
+                             <span class="text-danger">{{form_errors(registrationForm.firstname)}}</span>
                     
                          </div>
 
@@ -152,7 +156,7 @@
                                  Le champ nom est requis.
                                  {{form_errors(registrationForm.lastname)}}
                                </div>
-                                {{form_errors(registrationForm.lastname)}}
+                                <span class="text-danger">{{form_errors(registrationForm.lastname)}}</span>
                                                         
                          </div>
                    
@@ -185,7 +189,7 @@
                                Le champ email est requis.
                                {{form_errors(registrationForm.email.first)}}
                              </div>
-                              {{form_errors(registrationForm.email.first)}}
+                              <span class="text-danger">{{form_errors(registrationForm.email.first)}}</span>
                       
                          </div>
 
@@ -218,7 +222,7 @@
                                Le champ Email est requis.
                                {{form_errors(registrationForm.email.second)}}
                              </div>
-                              {{form_errors(registrationForm.email.second)}}
+                              <span class="text-danger">{{form_errors(registrationForm.email.second)}}</span>
                                     
                          </div>
 
@@ -251,7 +255,7 @@
                                Le champ mot de passe est requis.
                                {{form_errors(registrationForm.plainPassword.first)}}
                              </div>
-                              {{form_errors(registrationForm.plainPassword.first)}}
+                              <span class="text-danger">{{form_errors(registrationForm.plainPassword.first)}}</span>
                                               
                          </div>
 
@@ -284,7 +288,7 @@
                                Le champ confirmer votre mot de passe est requis.
                                {{form_errors(registrationForm.plainPassword.second)}}
                              </div>
-                              {{form_errors(registrationForm.plainPassword.second)}}
+                              <span class="text-danger">{{form_errors(registrationForm.plainPassword.second)}}</span>
                                             
                          </div>
 
@@ -316,7 +320,7 @@
                                {{form_errors(registrationForm.address)}}
                              </div>
                              
-                             {{form_errors(registrationForm.address)}}                                               
+                             <span class="text-danger">{{form_errors(registrationForm.address)}}</span>
 
                        {# ********** CHAMP ADRESSE ********** #}
 
@@ -357,7 +361,7 @@
                                Le champ validation des conditions est requis.
                                {{form_errors(registrationForm.agreeTerms)}}
                              </div>
-                             {{form_errors(registrationForm.agreeTerms)}}
+                             <span class="text-danger">{{form_errors(registrationForm.agreeTerms)}}</span>
                             
                           </div>
 
@@ -373,7 +377,7 @@
             </main>
 
         </div>
-
-        <script src="form-validation.js"></script>
+        </div>
+        <script src="js/form-validation.js"></script>
 
      {% endblock %}

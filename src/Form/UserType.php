@@ -28,14 +28,16 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('login', TextType::class,[
-                'constraints' => [
-                   new Assert\Regex([
-                       'pattern' => '/^[a-zA-Z0-9]*$/',
-                       'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
-                   ])
-                ]
-            ])
+        ->add('login', TextType::class,[
+            'constraints' => [
+                new Assert\Regex([
+                    'pattern' => '/^[a-zA-Z0-9]*$/',
+                    'message' => 'Votre login ne peut comporter que des caractéres alphanumérique.'
+               ])
+               ],
+            'label_attr' => ['class' => 'form-label'],
+            'required' => true,
+        ])
             ->add('roles', ChoiceType::class,[
                 'choices' => [
                     'administrateur' => 'ROLE_ADMIN',
@@ -92,7 +94,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class,[
                 'constraints' => [
                     new Assert\Regex([
-                        'pattern' => '/^\S+@\S+\.\S+$/',
+                        'pattern' => '/^\w*[a-zA-Z0-9-_âêîôûäëïöüéèàçÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙ]*+@\w*[a-zA-Z0-9-_âêîôûäëïöüéèàçÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙ]*+\.\w+$/',
                         'message' => 'Email invalide'
                     ])
                 ]
@@ -104,7 +106,10 @@ class UserType extends AbstractType
                         'message' => 'Votre prénom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'required' => false,
+                'label_attr' => ['class' => 'form-label'],
             ])
+
             ->add('lastname', TextType::class, [
                 'constraints' => [
                     new Assert\Regex([
@@ -112,7 +117,10 @@ class UserType extends AbstractType
                         'message' => 'Votre nom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
+                'required' => false,
+                'label_attr' => ['class' => 'form-label'],
             ])
+
              ->add('address')
              ->add('phone')
              
@@ -123,9 +131,17 @@ class UserType extends AbstractType
                                 'maxSize' => '1024k',
                                 'mimeTypes' => [
                                     'image/jpeg',
+                                    'image/bmp',
+                                    'image/gif',
+                                    'image/png',
+                                    'image/svg+xml',
+                                    'image/tiff',
+                                    'image/webp',
                                     ]
                             ])
-                        ]
+                                ],
+                                'required'   => false,
+                        'mapped' => false,
                     ]
                  );
 

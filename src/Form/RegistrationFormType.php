@@ -97,7 +97,7 @@ use Symfony\Component\Validator\Constraints\File;
                      new Length([
                          'min' => 6,
                          'minMessage' => 'Votre mot de passe doit au minimum contenir {{ limit }} caractères.',
-                         // max length allowed by Symfony for security reasons
+                         // Longueur maximale autorisée poru raisons de sécurité
                          'max' => 4096,
                         ]),
 
@@ -124,7 +124,7 @@ use Symfony\Component\Validator\Constraints\File;
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => "/[0-9]{1,4}(?:(?:(?:(?:(?:(?:(?:[b-i-s-t-e-rB-I-S-T-E-R]){0,3}[,. ]){1}[-a-zA-Z'àâäéèêëïîôöùûüç ]+)[ ]{1})[0-9]{5})[,. ]{0,1})[a-zA-Z]*)+/",
-                        'message' => 'Votre nom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
+                        'message' => 'Votre Adresse est invalide, elle dois être au formats suivant : Numéro (bis,ter...) Rue CP ville exemple : 9 rue de la libertée 75000 Paris',
                     ]),
                 ],
                 'label_attr' => ['class' => 'form-label'],
@@ -137,6 +137,12 @@ use Symfony\Component\Validator\Constraints\File;
                                 'maxSize' => '1024k',
                                 'mimeTypes' => [
                                     'image/jpeg',
+                                    'image/bmp',
+                                    'image/gif',
+                                    'image/png',
+                                    'image/svg+xml',
+                                    'image/tiff',
+                                    'image/webp',
                                     ]
                             ])
                             ],

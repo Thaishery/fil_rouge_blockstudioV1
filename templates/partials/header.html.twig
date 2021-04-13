@@ -79,10 +79,12 @@
                                                                      <li>     
                                                                          <a href="{{path ("projet_index")}}"> Gestion des projets </a>
                                                                      </li> 
+
+                                                                     <li>
+                                                                        <a href="{{path ("plateforme_index_admin")}}"> Gestion des plateformes </a>
+                                                                    </li>
             
                                                                  </ul>                                             
-
-                                                 
          
                                                             </div>
          
@@ -199,9 +201,11 @@
                                                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                                             {% for service in services %}
+
                                                              <li>
                                                                  <a class="dropdown-item" href="{{path ("service_user", {'id': service.id})}}"> {{service.title}}</a>
                                                              </li>
+
                                                              {% endfor %}
                                                          </ul>
                            

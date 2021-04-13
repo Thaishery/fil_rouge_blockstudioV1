@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\ServicesRepository;
 use App\Security\AppAuthAuthenticator;
+use App\Service\AvatarFileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,12 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthAuthenticator $authenticator,ServicesRepository $services): Response
+    public function register(AvatarFileUploader $avatarFileUploader,Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthAuthenticator $authenticator,ServicesRepository $services): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-        $avatar = $user->getAvatar();
+        // $avatar = $user->getAvatar();
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -33,16 +34,14 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            if ($avatar != null){
-            $avatarname = md5(uniqid()).'.'.$avatar->guessExtension();
-            $avatar->move($this->getParameter('avatar_directory'), $avatarname);
-            $user->setAvatar($avatarname);
-            }
-            //mise en place du placeholder:
-            if($avatar == null){
-                $avatarname = 'placeholder.jpg';
-                $user->setAvatar($avatarname);
-            }
+            $avatar = $form->get('avatar')->getData();
+                 if ($avatar){
+                     $coverName = $avatarFileUploader->upload($avatar);
+                     $user->setAvatar($coverName);
+                 }
+                 else{
+                     $user->setAvatar('placeholder.jpg');
+                 }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

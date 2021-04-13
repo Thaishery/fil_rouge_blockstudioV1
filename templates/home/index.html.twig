@@ -18,8 +18,7 @@
 
 
 
-
-             <h1 class="h3 mb-3 font-weight-normal"> Accueil </h1>
+             <h1 class="h3 mb-3 font-weight-normal" id="h1_accueil"> Accueil </h1>
 
                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
@@ -114,41 +113,56 @@
 
                      </div>
 
-                 {# boucle sur les entité de home pour trouver l'active #}
-                 {% for home in homes %}
+                
 
-                     {# ne prend que la homepage active #}
-                     {% if home.isActive == true %}
+                         <article class="container">
 
-                         <article>
+                        {# *** Boucle sur les " Entité " de home pour trouver l'active *** #}
+                         {% for home in homes %}
 
-                             <h2> {{ home.title }} </h2>
+                         {# ne prend que la homepage active #}
+                         {% if home.isActive == true %}  
 
-                             <div class="row">
+                             <h2 class="col-12 justify-content-center"> {{ home.title }} </h2>
+                                {# *** Partie image du conteneur *** #}
+                                <div class="container row">
 
-                                 <div class="col">
-                                    <img class="homeImage" src="{{ home.picture }}">
-                                 </div>
+                                    <img class="homeImage col-4" src="{{ home.picture }}" alt=""
+                                     {# width="100%" height="360" 
+                                     role="img"  #}
+                                     {# aria-label="Placeholder: A personnaliser" 
+                                     preserveAspectRatio="xMidYMid slice"  #}
+                                     {# focusable="true" #}
+                                     >      
 
-                                 <div class="col">
-                                     <p class ="homeShortDesc">{{ home.shortDesc }}</p>
-                                 </div>
-
-                             </div>
-
-                             <p class ="homeLongDesc">{{ home.longDesc }}</p>
-
-                         </article>
-
+                                {# *** Partie texte du conteneur *** #} 
+                                    <p class ="homeShortDesc col-6"> {{ home.shortDesc }} </p>
+                                    <div class="col-12">
+                                        <div>
+                                            <p class ="homeLongDesc"> {{ home.longDesc }} </p>
+                                        </div>                                
+                                    </div>
+                                </div>
                      {% endif %}
 
                  {% endfor %}
-                 
-             
+                 </article>
          </div>
-
-
-
 
      {% endblock %}
 
+ {# *** to do
+ 
+ 1. mise en place edition avatar. edituser + admin => OK!
+2. verification regex sur formInscription ( + unification des regex). =>ok. => voir sur les edit! 
+3. mise en 'rouge' des messages d'erreures lors de la création de compte. =>
+4. mise en place champ tel sur register.
+5. mise en forme home page.
+6. traduction short_desc long_desc dans labelles services.
+7. rendre nullable le champ feat dans la création de projets. 
+8. mise en place gestion des plateform pour l'admin.
+9. changer placeholder login pour stipuler login et non mail.
+10. projet: sur vue=> prévoir titre sur 2 ligne (taille fixe) + trunc si + de X caractéres. pour aligner images. 
+11. remetre js sur forminscription
+
+ *** #}

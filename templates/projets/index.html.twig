@@ -1,4 +1,4 @@
- {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 
      {% block metaTitle %}
@@ -11,26 +11,36 @@
      {% endblock %}
 
      {% block body %}
+
+
+         <!-- Titre de l'article -->                                     
+         <h1 class="h3 mb-3 font-weight-normal" id="h1_projets"> Projets  </h1> 
+
          {{ form_start(form)}}
-     <div class="row">
-        {{form_widget
-            (form.val,
-            {
-            'attr': {'placeholder':'rechercher un projet',
-            'class':'col-9',
-            }}
-            ) 
-            }}
-        {{form_widget
-            (form.Rechercher,
-            {
-            'attr':{
-            'class':'col-2 btn',
-            }}
-            )
-        }}
-    </div>
-    {{ form_end(form)}}
+
+             <div class="row">
+
+                {{form_widget
+                    (form.val,
+                    {
+                    'attr': {'placeholder':'Rechercher un projet',
+                    'class':'col-9',
+                    }}
+                    ) 
+                    }}
+                {{form_widget
+                    (form.Rechercher,
+                    {
+                    'attr':{
+                    'class':'col-2 btn',
+                    }}
+                    )
+                }}
+
+            </div>
+
+         {{ form_end(form)}}
+
              {# *** ALBUM CARD *** #}
  
                  <div class="row mainFrame col-10">
@@ -44,7 +54,7 @@
 
                             <div class="flip-card-front" >
 
-                                 <h1 class="col-12">{{projets.title}}</h1>
+                                 <h2 class="col-12 projetTitle">{{projets.title|length > 25 ? projets.title|slice(0,25)~'...' : projets.title}}</h2>
 
                                  <img class="col-12" src="/uploads/cover/{{projets.cover}}" alt="Cover"  >
 

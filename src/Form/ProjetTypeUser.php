@@ -115,6 +115,7 @@ class ProjetTypeUser extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'choice_label' => 'login'
+                
                 ])
         ;
     }

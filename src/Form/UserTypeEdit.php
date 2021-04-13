@@ -31,24 +31,32 @@ class UserTypeEdit extends AbstractType
                 'expanded' => true
             ])
              ->add('email', EmailType::class)
-             ->add('firstname')
+             ->add('firstname') 
              ->add('lastname')
              ->add('address')
              ->add('phone')
 
-             //->add('avatar')
-            //  ->add('avatar',
-            //  FileType::class, [
-            //          'constraints' => [
-            //              new File([
-            //                  'maxSize' => '1024k',
-            //                  'mimeTypes' => [
-            //                      'image/jpeg',
-            //                      ]
-            //              ])
-            //          ]
-            //      ]
-            //   );
+            //  ->add('avatar')
+             ->add('avatar',
+                 FileType::class, [
+                     'constraints' => [
+                            new File([
+                                'maxSize' => '1024k',
+                                'mimeTypes' => [
+                                    'image/jpeg',
+                                    'image/bmp',
+                                    'image/gif',
+                                    'image/png',
+                                    'image/svg+xml',
+                                    'image/tiff',
+                                    'image/webp',
+                                    ]
+                            ])
+                        ],
+                        'required'   => false,
+                        'mapped' => false,
+                    ]
+                 )
 
             //->add('UserProjet')
             //->add('UserPlateforme')

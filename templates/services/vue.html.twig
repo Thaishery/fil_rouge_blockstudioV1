@@ -12,29 +12,48 @@
 
      {% block body %}
 
-          <div class="example-wrapper">
+         {# <div class="example-wrapper"> #}
 
-                 <h1 class="h3 mb-3 font-weight-normal"> Nos services </h1>
+             <h1 class="h3 mb-3 font-weight-normal" id="h1_services_a"> Services: {{ service.title }} </h1>
 
+                 <section >
+                    
+                     {# <article > #}
+                    
+                         {# <h2> {{ service.title }} </h2> #}
+                    
+                         {# <div class="container"> #}
+                    
+                             {# <div class="row"> #}
+                          
+                             {# <div class="col-4"> #}
+                                 <img  src="/uploads/picture/{{service.picture}} ">
+                             {# </div> #}
+                    
+                             {# </div> #}
+                    
+                     {# </article>    #}
+                    
                      <article>
-         
-                         <h2> {{ service.title }} </h2>
-         
-                             <div class="row">
-         
-                                 <div class="col">
-                                    <img class="homeImage" src="/uploads/picture/{{service.picture}} ">
-                                 </div>
-         
-                                 <div class="col">
-                                     <p class ="homeShortDesc"> {{ service.shortDesc }} </p>
-                                 </div>
-         
-                             </div>
-         
-                             <p class ="homeLongDesc"> {{ service.longDesc }} </p>
-         
+
+                         <h4> {{ service.shortDesc }} </h4>
+                         {# <div class="col-8"> #}
+                             <p class ="homeShortDesc"> {{ service.longDesc }} </p>
+                             {# <p class ="homeShortDesc"> {{ service.shortDesc }} </p> #}
+                         {# </div> #}
+
                      </article>
-             </div>
+ 
+                 </section>  
+
+                         {# </div> #}
+         
+                          {# <p class ="homeLongDesc"> {{ service.longDesc }} </p> #}
+
+                     {# </div> #}
+
+                 {# </article> #}
+
+         {# </div> #}
      
      {% endblock %}

@@ -120,7 +120,8 @@ class ProjetType extends AbstractType
                 'class' => User::class,
                 'multiple' => true,
                 'expanded' => false,
-                'choice_label' => 'login'
+                'choice_label' => 'login',
+                'required'   => false,
                 ])
         ;
     }
