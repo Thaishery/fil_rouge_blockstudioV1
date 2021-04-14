@@ -45,8 +45,8 @@
                          <td> {{ plateforme.link }} </td>
 
                              <td>
-                                 <a href="{{ path('plateforme_show_admin', {'id': plateforme.id}) }}"> Voir </a>
-                                 <a href="{{ path('plateforme_edit_admin', {'id': plateforme.id}) }}"> Modifier </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('plateforme_show_admin', {'id': plateforme.id}) }}"> Voir </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('plateforme_edit_admin', {'id': plateforme.id}) }}"> Modifier </a>
                              </td>
 
                      </tr>
@@ -63,6 +63,7 @@
 
              </table>
      
+             {# <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_new_admin') }}"> Créer un nouveau lien </a> #}
              <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_new_admin') }}"> Créer un nouveau lien </a>
     
      {% endblock %}

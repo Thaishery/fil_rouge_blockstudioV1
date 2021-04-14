@@ -50,8 +50,8 @@
                          <td> {{ home.isActive ? 'Oui' : 'Non' }} </td>
                          <td>
 
-                             <a href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
-                             <a href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+                             <a class="btn btn-outline-primary" href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
+                             <a class="btn btn-outline-primary" href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
 
                          </td>
                      </tr>
@@ -75,10 +75,10 @@
 
 
 
+             
 
 
-
-             <a class="btn btn-lg btn-primary" href="{{ path('home_new') }}"> Créer un nouvel article </a>
+             <a class="btn btn-primary btn-lg btn-block" href="{{ path('home_new') }}"> Créer un nouvel article </a>
 
 
      {% endblock %}

@@ -8,6 +8,7 @@ use App\Form\UserTypeEdit;
 use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use App\Service\AvatarFileUploader;
+// use App\Service\FileUploader;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 

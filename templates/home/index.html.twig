@@ -13,11 +13,7 @@
      {% block body %}
 
          <div class="example-wrapper">
-
-
-
-
-
+         
              <h1 class="h3 mb-3 font-weight-normal" id="h1_accueil"> Accueil </h1>
 
                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -115,19 +111,24 @@
 
                 
 
-                         <article class="container">
 
+
+
+
+                         <article class="container">
                         {# *** Boucle sur les " Entité " de home pour trouver l'active *** #}
                          {% for home in homes %}
 
                          {# ne prend que la homepage active #}
                          {% if home.isActive == true %}  
-
+                            
                              <h2 class="col-12 justify-content-center"> {{ home.title }} </h2>
-                                {# *** Partie image du conteneur *** #}
-                                <div class="container row">
 
-                                    <img class="homeImage col-4" src="{{ home.picture }}" alt=""
+                                 {# *** Partie image du conteneur *** #}
+                                 <div class="container row">
+ 
+
+                                     <img class="homeImage col-4" src="{{ home.picture }}" alt=""
                                      {# width="100%" height="360" 
                                      role="img"  #}
                                      {# aria-label="Placeholder: A personnaliser" 
@@ -136,16 +137,22 @@
                                      >      
 
                                 {# *** Partie texte du conteneur *** #} 
-                                    <p class ="homeShortDesc col-6"> {{ home.shortDesc }} </p>
-                                    <div class="col-12">
-                                        <div>
-                                            <p class ="homeLongDesc"> {{ home.longDesc }} </p>
-                                        </div>                                
-                                    </div>
+                                     <div class ="homeShortDesc col-6">
+                                         {% autoescape false %}{{ home.shortDesc }}{% endautoescape %}
+                                     </div>
+
+                                     <div class="col-12">
+                                         <div>
+                                             <p class ="homeLongDesc"> {% autoescape false %}{{ home.longDesc }}{% endautoescape %} </p>
+                                         </div>                                
+                                     </div>
+
                                 </div>
+                                
                      {% endif %}
 
                  {% endfor %}
+
                  </article>
          </div>
 

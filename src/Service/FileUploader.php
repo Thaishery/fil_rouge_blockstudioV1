@@ -19,6 +19,7 @@ class FileUploader
 
     public function upload(UploadedFile $file, $directory)
     {
+        $directory = $this->$directory;
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
         $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
@@ -32,9 +33,10 @@ class FileUploader
         return $fileName;
     }
 
-    public function getTargetDirectory()
+    public function getTargetDirectory($directory)
     {
-        return $this->targetDirectory;
+        $targetDirectory = $this->targetDirectory;
+        
+       return $directory.$targetDirectory;
     }
-
 }

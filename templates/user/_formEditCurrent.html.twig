@@ -135,12 +135,34 @@
                 </div>
                 
              </div>
+
+             {# *** AVATAR *** #}
+
+             <div class="avatar row">
+
+                <div class="avatarLabel">
+                   {{ form_label(form.avatar, 'Avatar :') }}
+                </div>
+
+                <div class="avatarInput">
+                   {{ form_widget (form.avatar,{
+                        'attr':{'placeholder':'Ajouter une image'}}
+                   ) }}
+                </div>
+
+            {# *** If Errors *** #}
+
+                <div class="avatarError">
+                   {{form_errors(form.avatar)}}
+                </div>
+                
+             </div>            
                             
        </div>
 
     </div>
 
-       <button class="btn btn-lg btn-primary">
+       <button class="btn btn-primary btn-lg btn-block">
           {{ button_label|default('Sauvegarder') }}
        </button>
             

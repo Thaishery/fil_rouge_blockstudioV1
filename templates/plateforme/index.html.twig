@@ -43,8 +43,8 @@
                          <td> {{ plateforme.link }} </td>
 
                              <td>
-                                 <a href="{{ path('plateforme_show', {'id': plateforme.id, 'login': app.user.login}) }}"> Voir </a>
-                                 <a href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('plateforme_show', {'id': plateforme.id, 'login': app.user.login}) }}"> Voir </a>
+                                 <a class="btn btn-outline-primary" href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
                              </td>
 
                      </tr>

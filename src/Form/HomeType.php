@@ -6,6 +6,8 @@ use App\Entity\Home;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+
 
 class HomeType extends AbstractType
 {
@@ -14,7 +16,9 @@ class HomeType extends AbstractType
         $builder
             ->add('title')
             ->add('picture')
-            ->add('short_desc')
+            ->add('short_desc', CKEditorType::class, array(
+                'label' => 'Déscription courte',
+            ))
             ->add('long_desc')
             ->add('is_active')
         ;

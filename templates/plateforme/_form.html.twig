@@ -2,21 +2,8 @@
 
      {{ form_widget(form) }}
 
+         <button class="btn btn-primary btn-lg btn-block">
+             {{ button_label|default('Sauvegarder') }}
+         </button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-     <button class="btn btn-primary btn-lg btn-block">
-         {{ button_label|default('Sauvegarder') }}
-     </button>
-
- {{ form_end(form) }}
+     {{ form_end(form) }}
