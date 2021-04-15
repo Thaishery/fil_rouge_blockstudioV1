@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
 class ServicesType extends AbstractType
@@ -16,6 +17,7 @@ class ServicesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('carousel_rank')
             ->add('title')
             ->add('picture',
                  FileType::class, [
@@ -39,9 +41,13 @@ class ServicesType extends AbstractType
                      ]
                  )
 
-            ->add('short_desc')
-            ->add('long_desc')
-            ->add('carousel_rank')
+             ->add('short_desc')
+
+            ->add('long_desc', CKEditorType::class, array(
+                'label' => 'Description longue',
+             ))
+
+            
         ;
     }
 

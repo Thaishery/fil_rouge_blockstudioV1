@@ -34,12 +34,13 @@
                  {% for service in services %}
 
                      <tr>
+                         
                          <td> {{ service.id }} </td>
                          <td> {{ service.title }} </td>
                          <td> {{ service.picture }} </td>
                          <td> {{ service.shortDesc }} </td>
                          <td> {{ service.longDesc }} </td>
-                         <td> {{ service.carouselRank }} </td>
+                         <td> {{ service.carouselRank }} </td>                    
 
                              <td>
                                  <a class="btn btn-outline-primary" href="{{ path('services_show', {'id': service.id}) }}"> Voir </a>

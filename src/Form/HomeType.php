@@ -16,10 +16,12 @@ class HomeType extends AbstractType
         $builder
             ->add('title')
             ->add('picture')
-            ->add('short_desc', CKEditorType::class, array(
-                'label' => 'Déscription courte',
-            ))
-            ->add('long_desc')
+            ->add('short_desc')
+
+            ->add('long_desc', CKEditorType::class, array(
+                'label' => 'Description longue',
+             ))
+
             ->add('is_active')
         ;
     }

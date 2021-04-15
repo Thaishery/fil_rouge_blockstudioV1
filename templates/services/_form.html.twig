@@ -1,85 +1,110 @@
  {{ form_start(form) }}
 
-    <div class="container">
+     <div class="container">
 
-        <div class="row">
+         <div class="row">
         
-        {# *** TITRE *** #}
-            <div class="title row">
-                <div class="titleLabel">
-                    {{form_label(form.title, 'Titre :')}}
-                </div>
-                <div class="titleInput">
-                    {{form_widget(form.title,{
-                        'attr':{'placeholder':'entrer le titre du projet'}
-                    })}}
-                </div>
-                <div class="titleError">
-                    {{form_errors(form.title)}}
-                </div>
-            </div>
-        {# *** Image *** #}
-            <div class="picture row">
-                <div class="pictureLabel">
-                    {{form_label(form.picture, 'Image du service :')}}
-                </div>
-                <div class="pictureInput">
-                    {{form_widget(form.picture,{
-                        'attr':{'placeholder':'veuilleuz téléverser l\'image du service'}
-                    })}}
-                </div>
-                <div class="pictureError">
-                    {{form_errors(form.picture)}}
-                </div>
-            </div>    
-        {# *** description courte *** #}
-            <div class="title row">
-                <div class="short_descLabel">
-                    {{form_label(form.short_desc, 'description courte du service :')}}
-                </div>
-                <div class="short_descInput">
-                    {{form_widget(form.short_desc,{
-                        'attr':{'placeholder':'Entrer une description courte du service, elle aparaitra a droite de l\'image'}
-                    })}}
-                </div>
-                <div class="short_descError">
-                    {{form_errors(form.short_desc)}}
-                </div>
-            </div>
-        {# *** description longue  *** #}
-            <div class="long_desc row">
-                <div class="long_descLabel">
-                    {{form_label(form.long_desc, 'description longue du service :')}}
-                </div>
-                <div class="long_descInput">
-                    {{form_widget(form.long_desc,{
-                        'attr':{'placeholder':'Entrer une description longue de service, elle aparaitra en dessou de l\'image '}
-                    })}}
-                </div>
-                <div class="long_descError">
-                    {{form_errors(form.long_desc)}}
-                </div>
-            </div>
-        {# *** TITRE *** #}
-            <div class="carousel_rank row">
-                <div class="carousel_rankLabel">
-                    {{form_label(form.carousel_rank, 'rang dans le carousel :')}}
-                </div>
-                <div class="carousel_rankInput">
-                    {{form_widget(form.carousel_rank,{
-                        'attr':{'placeholder':'entrer le rang de cet element dans le carousel de la page d\acceuil'}
-                    })}}
-                </div>
-                <div class="carousel_rankError">
-                    {{form_errors(form.carousel_rank)}}
-                </div>
-            </div>
-        </div>
-    </div>
+             {# *** RANK DU SERVICE *** #}
+                 <div class="carousel_rank row">
 
+                     <div class="carousel_rankLabel">
+                         {{form_label(form.carousel_rank, 'Position dans le carousel (rank):')}}
+                     </div>
 
-         <button class="btn btn-primary btn-lg btn-block">
-             {{ button_label|default('Sauvegarder') }}
-         </button>
+                     <div class="carousel_rankInput">
+                         {{form_widget(form.carousel_rank,{
+                             'attr':{'placeholder':'Entrer le rang de cet élément dans le carousel de la page d\acceuil'}
+                         })}}
+                     </div>
+
+                     <div class="carousel_rankError">
+                         {{form_errors(form.carousel_rank)}}
+                     </div>
+
+                 </div>
+
+             {# *** TITRE DU SERVICE *** #}
+                 <div class="title row">
+
+                     <div class="titleLabel">
+                         {{form_label(form.title, 'Titre du service:')}}
+                     </div>
+
+                     <div class="titleInput">
+                         {{form_widget(form.title,{
+                             'attr':{'placeholder':'Entrer le titre du projet'}
+                         })}}
+                     </div>
+
+                     <div class="titleError">
+                         {{form_errors(form.title)}}
+                     </div>
+
+                 </div>
+
+             {# *** IMAGE DU SERVICE *** #}
+                 <div class="picture row">
+
+                     <div class="pictureLabel">
+                         {{form_label(form.picture, 'Image du service:')}}
+                     </div>
+
+                     <div class="pictureInput">
+                         {{form_widget(form.picture,{
+                             'attr':{'placeholder':'Veuillez téléverser l\'image du service'}
+                         })}}
+                     </div>
+
+                     <div class="pictureError">
+                         {{form_errors(form.picture)}}
+                     </div>
+
+                 </div>  
+
+             {# *** DESCRIPTION COURTE DU SERVICE *** #}
+                <div class="title row">
+
+                    <div class="short_descLabel">
+                        {{form_label(form.short_desc, 'Description courte:')}}
+                    </div>
+
+                    <div class="short_descInput">
+                        {{form_widget(form.short_desc,{
+                            'attr':{'placeholder':'Entrer une description courte du service, elle apparaitra a droite de l\'image'}
+                        })}}
+                    </div>
+
+                    <div class="short_descError">
+                        {{form_errors(form.short_desc)}}
+                    </div>
+
+                </div>
+
+             {# *** DESCRIPTION LONGUE DU SERVICE  *** #}
+                 <div class="long_desc row">
+
+                     <div class="long_descLabel">
+                         {{form_label(form.long_desc, 'Description longue:')}}
+                     </div>
+
+                     <div class="long_descInput">
+                         {{form_widget(form.long_desc,{
+                             'attr':{'placeholder':'Entrer une description longue de service, elle apparaitra en dessous de l\'image '}
+                         })}}
+                     </div>
+
+                     <div class="long_descError">
+                         {{form_errors(form.long_desc)}}
+                     </div>
+
+                </div>
+
+         </div>
+
+     </div>
+
+     <button class="btn btn-primary btn-lg btn-block">
+         {{ button_label|default('Sauvegarder') }}
+     </button>
 
  {{ form_end(form) }}

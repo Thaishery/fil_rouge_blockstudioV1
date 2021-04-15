@@ -48,12 +48,12 @@
                          <td> {{ home.shortDesc }} </td>
                          <td> {{ home.longDesc }} </td>
                          <td> {{ home.isActive ? 'Oui' : 'Non' }} </td>
-                         <td>
 
-                             <a class="btn btn-outline-primary" href="{{ path('home_show', {'id': home.id}) }}"> Voir </a>
-                             <a class="btn btn-outline-primary" href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+                             <td>
+                                 <a class="btn btn-outline-primary" href="{{ path('home_show', {'id': home.id}) }}"> Voir </a> <br/>
+                                 <a class="btn btn-outline-primary" href="{{ path('home_edit', {'id': home.id}) }}"> Modifier </a>
+                             </td>
 
-                         </td>
                      </tr>
 
                  {% else %}

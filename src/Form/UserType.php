@@ -71,23 +71,23 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez entrer un mot de passe.',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit comprendre au minimum {{ limit }} caractères.',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                     // regex caractére spécial : 
                     new Assert\Regex([
                         'pattern' => '/[^A-Za-z0-9]+/',
-                        'message' => 'Vous devez saisir au moins 1 caractére spécial.'
+                        'message' => 'Votre mot de passe doit comprendre au moins 1 caractére spécial.'
                     ]),
                     //regex Majuscule : 
                     new Assert\Regex([
                         'pattern' => '/[A-Z]+/',
-                        'message' => 'Vous devez saisir au moins 1 Majuscule.'
+                        'message' => 'Votre mot de passe doit comprendre au moins 1 majuscule.'
                     ])
                 ],
             ])
@@ -103,7 +103,7 @@ class UserType extends AbstractType
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => '/^[A-Z][\p{L}-]*$/',
-                        'message' => 'Votre prénom est invalide, il ne dois pas comporter de nombres ou d\'espace et commencer par une majuscule.',
+                        'message' => 'Votre prénom est invalide, il ne doit pas inclure de nombres ou d\'espace et commencer par une majuscule.',
                     ]),
                 ],
                 'required' => false,

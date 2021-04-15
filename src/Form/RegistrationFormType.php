@@ -66,11 +66,11 @@ use Symfony\Component\Validator\Constraints\File;
                         'message' => 'Email invalide'
                     ])
                 ],
-                'invalid_message' => 'The email fields must match.',
+                'invalid_message' => 'Les champs email doivent correspondre.',
                 'options' => ['attr' => ['class' => 'email-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'email','label_attr' => ['class' => 'form-label']],
-                'second_options' => ['label' => 'Veuillez repeter votre email','label_attr' => ['class' => 'form-label']],
+                'second_options' => ['label' => 'Veuillez répéter votre email','label_attr' => ['class' => 'form-label']],
             ])
             
              ->add('agreeTerms', CheckboxType::class, [
@@ -113,18 +113,18 @@ use Symfony\Component\Validator\Constraints\File;
                          'message' => 'Vous devez saisir au moins 1 Majuscule.'
                         ]),
                     ],
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les champs mot de passe doivent correspondre',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe','label_attr' => ['class' => 'form-label']],
-                'second_options' => ['label' => 'Veullez répeter votre mot de passe','label_attr' => ['class' => 'form-label']],
+                'second_options' => ['label' => 'Veuillez répéter votre mot de passe','label_attr' => ['class' => 'form-label']],
                 'label_attr' => ['class' => 'form-label'],
             ])
             ->add('address', TextType::class, [
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => "/[0-9]{1,4}(?:(?:(?:(?:(?:(?:(?:[b-i-s-t-e-rB-I-S-T-E-R]){0,3}[,. ]){1}[-a-zA-Z'àâäéèêëïîôöùûüç ]+)[ ]{1})[0-9]{5})[,. ]{0,1})[a-zA-Z]*)+/",
-                        'message' => 'Votre Adresse est invalide, elle dois être au formats suivant : Numéro (bis,ter...) Rue CP ville exemple : 9 rue de la libertée 75000 Paris',
+                        'message' => 'Votre adresse est invalide, elle doit être au format suivant : numéro (bis,ter...), rue, code postal, ville (exemple: 9 rue de la libertée 75000 Paris)',
                     ]),
                 ],
                 'label_attr' => ['class' => 'form-label'],

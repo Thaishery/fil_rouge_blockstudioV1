@@ -18,7 +18,7 @@
 
              <form method="post">
 
-                 {% if error %}
+                 {% if error.messageKey is defined %}
 
                      <div class="alert alert-danger">
                          {{ error.messageKey|trans(error.messageData, 'security') }} 
@@ -30,7 +30,7 @@
     
                      <div class="mb-3">
     
-                         Vous etes connecter en tant que {{ app.user.username }},
+                         Vous etes connecté en tant que {{ app.user.username }},
                          <a href="{{ path('app_logout') }}"> Se déconnecter </a>
     
                      </div>

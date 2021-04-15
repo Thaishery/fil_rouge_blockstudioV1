@@ -40,8 +40,10 @@
                 
                      {# ***** CONTENEUR ACCORDEON ***** #}
                      <div class="accordion accordion-flush col-2" id="accordionFlushExample">
+
                      {# *** Partie: Interface d'administration *** #}                                          
                         {% if is_granted('ROLE_ADMIN') %} <br/>
+
                          {# ***** ELEMENT N°1 ***** #}
                          <div class="accordion-item">
                                 
@@ -210,30 +212,33 @@
                                                          </ul>
                            
                                              </li>               
+
                                                  {# *** LES PROJETS *** #}
                                                     <li class="nav-item ">
-                                                    <a class="nav-link" href="{{path ("projets")}}"> Les Projets </a>
+                                                         <a class="nav-link" href="{{path ("projets")}}"> Projets </a>
                                                     </li>
                                                     
                                                  {# *** LES ARTISTES *** #}
                                                      <li class="nav-item ">
-                                                     <a class="nav-link" href="{{path ("artistes")}}"> Les Artistes </a>
+                                                         <a class="nav-link" href="{{path ("artistes")}}"> Artistes </a>
                                                      </li>
                 
                                                  {# *** LIVRE D'OR *** #}
                                                      <li class="nav-item">
-                                                     <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
+                                                         <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
                                                      </li>
                 
                                                  {# *** CONTACT *** #}
                                                      <li class="nav-item">
-                                                     <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
+                                                         <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
                                                      </li>
                                      
                                          </ul>
                 
                                  </div>
                 
+                             </div>
+                             </div>
                              </div>
                 
                          </nav>   
