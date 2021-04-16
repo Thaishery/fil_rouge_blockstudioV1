@@ -12,35 +12,48 @@
 
      {% block body %}
 
-
+        <link rel="stylesheet" href="{{asset ('style/searchbar.css')}}">
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
          <!-- Titre de l'article -->                                     
-         <h1 class="h3 mb-3 font-weight-normal" id="h1_projets"> Projets  </h1> 
+         <h1 class="h3 mb-3 font-weight-normal col-12" id="h1_projets"> Projets  </h1> 
 
          {{ form_start(form)}}
 
              <div class="row">
+                
+                <div class="container h-100">
+                  <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar" id="searchbar">
+                      {# <input class="search_input" type="text" name="" placeholder="Search..."> #}
+                      {# <a href="#" class="search_icon"><i class="fas fa-search"></i></a> #}
+                    
+                         {{form_widget
+                             (form.val,
+                             {
+                             'attr': {'placeholder':'Rechercher un projet',
+                             'class':'col-9 search_input',
+                             }}
+                             ) 
+                             }}
+                         {{form_widget
+                             (form.Rechercher,
+                             {
+                             'attr':{ 
+                             
+                             'class':'search_icon',
+                             }}
+                             )
+                         }}
 
-                {{form_widget
-                    (form.val,
-                    {
-                    'attr': {'placeholder':'Rechercher un projet',
-                    'class':'col-9',
-                    }}
-                    ) 
-                    }}
-                {{form_widget
-                    (form.Rechercher,
-                    {
-                    'attr':{
-                    'class':'col-2 btn',
-                    }}
-                    )
-                }}
+                    </div>
+                  </div>
+                </div>
 
             </div>
 
          {{ form_end(form)}}
-
+         {# ***** Script: JavaScript pour la barre de recherche:  ***** #}
+             <script src="{{asset ('js/recherche.js')}}"></script>
              {# *** ALBUM CARD *** #}
  
                  <div class="row mainFrame col-10">
