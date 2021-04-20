@@ -41,6 +41,7 @@
                  border-radius: 3px;
                  padding: 8px;
                  margin: 16px;
+                 /* width: 640px; */
              }  
     
          .TextFrame h1
@@ -122,8 +123,7 @@
       /* Lien normal et non visité. */
          nav .nav-link
              { 
-                 position: relative;
-                 /* background-color: orange;  */
+                 position: relative;              
                  background-color: white;
                  border: none;
                  border-radius: 4px;  
