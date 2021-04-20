@@ -1,609 +1,773 @@
- *
-     {
-         /* font-family: 'Roboto', sans-serif; */
-         font-family: 'Jura', sans-serif;
-     }
+ 
+ /* **************************************************************************** */ 
+ /* ***** Feuille de style principale de notre document Fil-Rouge - BlockStudioV1 */
+ /* **************************************************************************** */ 
+ 
+ /* *** Style de tout le document *** */
 
- /* *** Style de l'horloge *** */
- #horloge
-     {
-         
-         background-color:silver;
-         color: #1C1C1C
-        
-     }
+     *
+         {
+             /* font-family: 'Roboto', sans-serif; */
+             font-family: 'Jura', sans-serif;
+         }
+
+ /* *** Style de l'horloge (optionnel: voir si ont veut ajouter cette fonctionnalité plus tard.*** */
+
+     #horloge
+         {
+             background-color:silver;
+             color: #1C1C1C;          
+         }
 
  /* *** Style des titres *** */
 
- h1 
-     {
-         text-align: center;
-     }
+     /* Titre de niveau 1 */
+         h1 
+             {
+                 text-align: center;
+                 
+             }
 
- #h1_accueil,
- #h1_services_a, 
- #h1_projets,
- #h1_artistes,
- #h1_livre_or, 
- #h1_contact
-     {
-         text-align: center;
-         border: groove 1px;
-         box-shadow: 1px 1px 1px orange;
-         border-radius: 3px;
-         padding: 8px;
-         margin: 16px;
-     }  
+         #h1_accueil,
+         #h1_services_a, 
+         #h1_projets,
+         #h1_artistes,
+         #h1_livre_or, 
+         #h1_contact
+             {
+                 text-align: center;
+                 border: groove 1px;
+                 box-shadow: 1px 1px 1px orange;
+                 border-radius: 3px;
+                 padding: 8px;
+                 margin: 16px;
+             }  
     
+         .TextFrame h1
+             {
+                 font-size: 1rem;
+             }
+             
+         .TextFrame h1 a
+             {
+                 color: orange;
+             }
 
-.TextFrame h1
-     {
-         font-size: 1rem;
-     }
+ /* ***** Style des titres (individuelle) ***** */
+
+     /* Titre de niveau 2 */
+         h2 
+             {
+                 font-size: 24px;
+                 text-transform: uppercase;
+                 color: #303030;
+                 font-weight: 600;      
+              }
      
-.TextFrame h1 a
-     {
-         color: orange;
-     }
-
- /* ***** Style des titres (individuelle) ***** */
-
- h2 
-     {
-         font-size: 24px;
-         text-transform: uppercase;
-         color: #303030;
-         font-weight: 600;      
-      }
-
- h3 
-      {
-         background: white;    	  
-         color:  rgba(0,0,0,0.92);      
-         padding: 5px; 		 
-         margin-left: 27px;	    
-         padding: 8px; 	
-         margin: 16px;	 
-       }
-
- h4 
-     {
-         font-size: 19px;
-         line-height: 1.375em;
-         color: #303030;
-         font-weight: 400;        
-     }  
-
- h5 
-     {
-         list-style: none;
-     }
-
- /* ***** Style des titres (individuelle) ***** */
-
- h2,
- h4 
-     {
-         margin-bottom: 30px;
-     }
+     /* Titre de niveau 3 */         
+         h3 
+              {
+                 background: white;    	  
+                 color:  rgba(0,0,0,0.92);      
+                 padding: 5px; 		 
+                 margin-left: 27px;	    
+                 padding: 8px; 	
+                 margin: 16px;	 
+               }
          
+     /* Titre de niveau 4 */          
+         h4 
+             {
+                 font-size: 19px;
+                 line-height: 1.375em;
+                 color: #303030;
+                 font-weight: 400;        
+             }  
+     
+     /* Titre de niveau 5 */        
+         h5 
+             {
+                 list-style: none;
+             }
+     
+ /* ***** Style des titres (individuelle) ***** */
+
+         h2,
+         h4 
+             {
+                 margin-bottom: 30px;
+             }
+                  
  /* ***** Style de la barre de navigation ***** */
 
- .navbar-nav
-     {
-         margin: auto;
-     }
-
- .nav-item
-     {
-         padding: 0px 50px;
-     }
-
+         .navbar-nav
+             {
+                 margin: auto;
+             }
+         
+         .nav-item
+             {
+                 padding: 0px 50px;
+             }
+     
  /* *** Style de l'entete *** */
 
- header
-     {
-         background-color: #f8f9fa!important;
-     }
+         header
+             {
+                 background-color: #f8f9fa!important;
+             }
+
+ /* *** Style des barre de navigation (Nav) *** */
+
+      /* Lien normal et non visité. */
+         nav .nav-link
+             { 
+                 position: relative;
+                 /* background-color: orange;  */
+                 background-color: white;
+                 border: none;
+                 border-radius: 4px;  
+                 padding: 0;
+                 width: auto;
+                 max-width: none;
+                 text-align: center;
+                 -webkit-transition-duration: 0.4s; /* Safari */
+                 transition-duration: 0.4s;
+                 text-decoration: none;
+                 overflow: hidden;
+             }
+
+     /* Lien quand lien a été visité. */
+         nav .nav-link:visited
+             {
+             background-color: rgb(78, 36, 205/ 0.2);
+             }
+       
+     /* Lien quand il est survolé. */        
+         nav .nav-link:hover
+             {          
+                 background:#fff;
+                 box-shadow:0px 2px 10px 5px #97B1BF;
+                 color:#000;           
+                 border-bottom: none;                
+        
+                 /* Effet animation: Zoom */
+                     -webkit-transform:scale(1.13); /* Safari et Chrome */
+                     -moz-transform:scale(1.13); /* Firefox */
+                     -ms-transform:scale(1.13); /* Internet Explorer 9 */
+                     -o-transform:scale(1.13); /* Opera */
+                     transform:scale(1.13);
+             }
+       
+     /* Lien quand il à le focus. */            
+         nav .nav-link:focus
+             {
+                 /* background-color: royalblue;   */
+                 /* background-color: #00FF41;  */
+                 background-color: darkorange;              
+             }
+       
+     /* Lien quand il est cliqué. */       
+         nav .nav-link:active
+             {
+                 /* background-color: #00FF41;    */
+                 background-color: #f4511e;                        
+                 /* background-color:  rgb(0 255 255); */
+             }
+           
+     /* ??? le :after je ne comprends pas trop à quoi il sert pour l'instant, je me suis "inspiré" d'un modèle sur un site */           
+         /* nav .nav-link:after 
+             {
+                 content: "";
+                 background: #f1c40f;
+                 display: block;
+                 position: absolute;
+                 padding-top: 300%;
+                 padding-left: 350%;
+                 margin-left: -20px !important;
+                 margin-top: -120%;
+                 opacity: 0;
+                 transition: all 0.8s  
+             } */
+
+     /*          
+         nav .nav-link:active:after 
+             {
+                 padding: 0;
+                 margin: 0;
+                 opacity: 1;
+                 transition: 0s
+             }    */
+
+
+     /* *** Animation des boutons de la 'nav' *** */
+         /* ??? Accident sympa! C'est pas l'animation que je voulais faire... Mais ca passe =) */
+             /* Source: https://codepen.io/CTNieves/details/pbLGZW */
+
+                 nav .nav-link::before, nav .nav-link::after {
+                         content: '';
+                         position: absolute;
+                         width: 100%;
+                         height: 100%;
+                         bottom: 0;
+                         left: 0;
+                         z-index: 1;
+                         transition: all 0.3s;
+                         border: 1px solid rgba(255, 255, 255, 0.5);
+                       }
+
+                 nav .nav-link:hover::after {
+                        animation-name: rotatecw;
+                        animation-duration: 2s;
+                      }
+
+                 nav .nav-link:hover::before {
+                        animation-name: rotateccw; 
+                        animation-duration: 3s;
+                      }
+
+                 nav .nav-link:hover::after, nav .nav-link:hover::before {
+                        left: 96px;
+                        width: 64px;
+                        
+                        animation-iteration-count: infinite;
+                        animation-timing-function: linear;
+                      }
+                      
+                 @keyframes rotatecw 
+                     {
+                         from {transform: rotate(0deg);}
+                         to {transform: rotate(360deg);}
+                     }
+                      
+                 @keyframes rotateccw {
+                          from {transform: rotate(0deg);}
+                          to {transform: rotate(-360deg);}
+                      }
+              
+
+              
+     /*  ???  */
+     /* Bouton télécharger */
+         button.btn-outline-primary:hover 
+             { 
+             background-color: white;
+             /* border-color: #0d6efd;  */
+       
+                 /* Effet animation: Zoom */
+                 -webkit-transform:scale(1.13); /* Safari et Chrome */
+                 -moz-transform:scale(1.13); /* Firefox */
+                 -ms-transform:scale(1.13); /* Internet Explorer 9 */
+                 -o-transform:scale(1.13); /* Opera */
+                 transform:scale(1.13);
+             } 
 
  /* *** Style de la section principale *** */
 
- .mainsection
-     { 
-         margin-left: 20px;
-         margin-right: 20px;
-         min-height: 450px;
-         margin-top: 20px;
-     }
-
- .mainFrame
-     {
-         margin-top: 20px;
-         margin:auto;
-     }
-
- .AcountFrame
-     {
-         height: 350px;
-         background-image: url("../logoGrand.webp");
-         background-repeat: no-repeat;
-         background-position:center;
-         background-color: black;
-         color: orange;
-     }
-
+         .mainsection
+             { 
+                 margin-left: 20px;
+                 margin-right: 20px;
+                 min-height: 450px;
+                 margin-top: 20px;
+             }
+         
+         .mainFrame
+             {
+                 margin-top: 20px;
+                 margin:auto;
+             }
+         
+         .AcountFrame
+             {
+                 height: 350px;
+                 background-image: url("../logoGrand.webp");
+                 background-repeat: no-repeat;
+                 background-position:center;
+                 background-color: black;
+                 color: orange;
+             }        
+ 
  /* *** Style du carousel *** */
 
- .carousel
-     {
-         width: 800px;
-         margin: auto;
-     }
+         .carousel
+             {
+                 width: 800px;
+                 margin: auto;
+             }
+         
+         .greybox
+             {
+                 background-color:rgba(43, 47, 49, 0.795);
+                 width: 800px;
+                 position: relative; 
+                 left: -120px;
+             }
+         
+         .carousel-item a
+             {
+                 color: white;
+             }
+         
+         .homeImage
+             {
+                 max-width: 800px;
+                 border: orange solid 1px;
+                 border-width: 2px;
+             }
+         
+         .projetTitle
+             {
+                 height: 56px;
+             }
 
- .greybox
-     {
-         background-color:rgba(43, 47, 49, 0.795);
-         width: 800px;
-         position: relative; 
-         left: -120px;
-     }
+ /* *** Style du carousel du livre d'or ***  */
 
- .carousel-item a
-     {
-         color: white;
-     }
-
- .homeImage
-     {
-         max-width: 800px;
-         border: orange solid 1px;
-         border-width: 2px;
-     }
-
- .projetTitle
-     {
-         height: 56px;
-     }
-
- /* *** Style du carousel du livre d'or *** 
-
- .carousel-control.right, .carousel-control.left
-     {
-         background-image: none;
-         color: #f4511e;
-     }
-     
- .carousel-indicators li
-     {
-         border-color: #f4511e;
-     }
-     
- .carousel-indicators li.active
-     {
-         background-color: #f4511e;
-     }
-      
- .item h4 
-     {
-         font-size: 19px;
-         line-height: 1.375em;
-         font-weight: 400;
-         font-style: italic;
-         margin: 70px 0;
-     }
-     
- .item span 
-     {
-         font-style: normal;
-     }
-     
- .glyphicon 
-     {
-         font-size: 20px;
-         margin-bottom: 20px;
-         color: #f4511e;
-     } 
-     
-  */
-     
+         .carousel-control.right, .carousel-control.left
+             {
+                 background-image: none;
+                 color: #f4511e;
+             }
+             
+         .carousel-indicators li
+             {
+                 border-color: #f4511e;
+             }
+             
+         .carousel-indicators li.active
+             {
+                 background-color: #f4511e;
+             }
+              
+         .item h4 
+             {
+                 font-size: 19px;
+                 line-height: 1.375em;
+                 font-weight: 400;
+                 font-style: italic;
+                 margin: 70px 0;
+             }
+             
+         .item span 
+             {
+                 font-style: normal;
+             }
+             
+         .glyphicon 
+             {
+                 font-size: 20px;
+                 margin-bottom: 20px;
+                 color: #f4511e;
+             } 
+               
  /* *** Style des cartes projets *** */
      
-     /* .card
-     {
-         justify-content: space-around;
-     } */
+     /*
+         .card
+             {
+                 justify-content: space-around;
+             } 
+     */
      
- .card img
-     {
-         min-height: 300px;
-         max-height: 300px;
-         padding-bottom: 5px;
-     }
+         .card img
+             {
+                 min-height: 300px;
+                 max-height: 300px;
+                 padding-bottom: 5px;
+             }
 
  /* *** Style du formulaire de contact *** */
 
- #p_contact
-     {
-         box-shadow: 1px 1px 1px orange;
-         border-radius: 3px;
-         padding: 8px;
-         margin: 16px;
-     }
-
- #img_a
-     { 
-         border-width: 2px;
-         border-radius: 100%;
-     }	
-
+         #p_contact
+             {
+                 box-shadow: 1px 1px 1px orange;
+                 border-radius: 3px;
+                 padding: 8px;
+                 margin: 16px;
+             }
+         
+         #img_a
+             { 
+                 border-width: 2px;
+                 border-radius: 100%;
+             }	
+         
  /* *** Style des liens *** */
 
- li 
-     {
-         list-style: none !important;
-     }
+         li 
+             {
+                 list-style: none !important;
+             }
 
  /* *** Style des boutons *** */
 
- .btn,
- .btn-primary
-     {
-         background-color: orange;
-         margin-left: 20px;
-         margin-right: 20px;
-         min-height: 40px;
-         min-width: 200px;
-         transition-duration: 0.3s;
-     }
-
- .btn:hover
-     {
-         color: red;
-         background-color: orange;
-     }
-
- .btn-primary, 
- .btn-lg,
- .btn-block
-     {
-         margin: auto;
-     }
-
- .btn a
-     {
-         text-decoration: none;
-         color:white;
-     }
-
- .btn a:hover
-     {
-         text-decoration: none;
-         color: red;
-         background-color: orange;
-     }
-
+         .btn,
+         .btn-primary
+             {
+                 background-color: orange;
+                 margin-left: 20px;
+                 margin-right: 20px;
+                 min-height: 40px;
+                 min-width: 200px;
+                 transition-duration: 0.3s;
+             }
+         
+         .btn:hover
+             {
+                 color: red;
+                 background-color: orange;
+             }
+         
+         .btn-primary, 
+         .btn-lg,
+         .btn-block
+             {
+                 margin: auto;
+             }
+         
+         .btn a
+             {
+                 text-decoration: none;
+                 color:white;
+             }
+         
+         .btn a:hover
+             {
+                 text-decoration: none;
+                 color: red;
+                 background-color: orange;
+             }
+         
  /* ****************** */
 
- article p,
- aside p
-     {
-         font-size: 0.8em;
-     }
-
- aside
-     {
-         flex: 1.2;
-         position: relative;
-         background-color: #706b64;
-         box-shadow: 0px 2px 5px #1c1a19;
-         border-radius: 5px;
-         padding: 10px;
-         color: white;
-         font-size: 0.9em;
-     }
+         article p,
+         aside p
+             {
+                 font-size: 0.8em;
+             }
+         
+         /* aside
+             {
+                 flex: 1.2;
+                 position: relative;
+                 background-color: #706b64;
+                 box-shadow: 0px 2px 5px #1c1a19;
+                 border-radius: 5px;
+                 padding: 10px;
+                 color: white;
+                 font-size: 0.9em;
+             } */
 
  /* *** Style de l'élément pagination *** */
 
- .pagination
-     {
-         margin-top: 10px;
-     }
-
+         .pagination
+             {
+                 margin-top: 10px;
+             }
+       
  /* *** Style du: FOOTER *** */
 
- .footerMain
-     {
-         position: relative;
-         width: 100%;
-         display: flex;
-         justify-content: space-around;
-         background-color: black;
-         color: white;
-     }
-
- .footerMain h1, h2 
-     {
-         color: orange;
-         margin-top: 5px;
-     }
+         .footerMain
+             {
+                 position: relative;
+                 width: 100%;
+                 display: flex;
+                 justify-content: space-around;
+                 background-color: black;
+                 color: white;
+             }
+         
+         .footerMain h1, h2 
+             {
+                 color: orange;
+                 margin-top: 5px;
+             }
 
  /* *** Style des liens (réseaux sociaux) *** */   
 
- .fa
-     {
-         margin-top: 5px;
-         text-align: center;
-         text-decoration: none;
-         padding: 20px;
-         font-size: 30px;
-         width: 64px;
-         border-radius: 50%;
-     }
+         .fa
+             {
+                 margin-top: 5px;
+                 text-align: center;
+                 text-decoration: none;
+                 padding: 20px;
+                 font-size: 30px;
+                 width: 64px;
+                 border-radius: 50%;
+             }
 
  /* * Add a hover effect if you want */
- .fa:hover 
-     {
-         opacity: 0.7;
-     }
+         .fa:hover 
+             {
+                 opacity: 0.7;
+             }
 
  /* * Set a specific color for each brand */
 
- /* YOUTUBE */
- .fa-youtube 
-     {
-         background: #FF0000;
-         color: white;
-     }
+     /* YOUTUBE */
+         .fa-youtube 
+             {
+                 background: #FF0000;
+                 color: white;
+             }
 
- /* INSTAGRAM */
- .fa-instagram 
-     {
-         background: #8a17ad;
-         color: white;
-     }
-
- /* SNAPCHAT */
- .fa-snapchat 
-     {
-         background: rgb(255 252 0);
-         color: white;
-     }
-
- /* FACEBOOK */
- .fa-facebook
-     {
-         background: rgb(24 119 242);
-         color: white;
-     }
-     
- /* TWITTER */
- .fa-twitter 
-     {
-         background: rgb(29, 161, 242);
-         color: white;
-     }
-
- .test
-     {
-         display: block;
-         position: relative;
-         flex:none;
-         max-width: 100%;
-     }
-
- #magazine
-     {
-       width: 800px;
-       height: 400px;
-     }
-
- #magazine .turn-page 
-     {
-         width: 400px;
-         height: 400px;
-         background-color: #ccc;
-     }
+     /* INSTAGRAM */
+         .fa-instagram 
+             {
+                 background: #8a17ad;
+                 color: white;
+             }
+         
+     /* SNAPCHAT */
+         .fa-snapchat 
+             {
+                 background: rgb(255 252 0);
+                 color: white;
+             }
+         
+     /* FACEBOOK */
+         .fa-facebook
+             {
+                 background: rgb(24 119 242);
+                 color: white;
+             }
+             
+     /* TWITTER */
+         .fa-twitter 
+             {
+                 background: rgb(29, 161, 242);
+                 color: white;
+             }
+         
+     /* ??? WTF */
+         .test
+             {
+                 display: block;
+                 position: relative;
+                 flex:none;
+                 max-width: 100%;
+             }
+         
+         #magazine
+             {
+               width: 800px;
+               height: 400px;
+             }
+         
+         #magazine .turn-page 
+             {
+                 width: 400px;
+                 height: 400px;
+                 background-color: #ccc;
+             }
 
  /* *** Style des card*** */
 
- /* *Le conteneur 'flip card' configure la hauteur et la largeur souhaitez.
- Nous avons ajouté la propriété 'border' pour démontrer que le flip lui meme sort de la box au survol.
- (supprimez perspective si vous ne souhaitez pas l'effet 3D */
+     /* *Le conteneur 'flip card' configure la hauteur et la largeur souhaitez.
+     Nous avons ajouté la propriété 'border' pour démontrer que le flip lui meme sort de la box au survol.
+     (supprimez perspective si vous ne souhaitez pas l'effet 3D */
 
- .flip-card 
-     {
-         background-color: transparent;
-         width: 300px;
-         height: 200px;
-         border: 1px solid #f1f1f1;
-         perspective: 1000px; /* Supprimez ceci si vous ne souhaitez pas l'effet 3D */
-     }
+         .flip-card 
+             {
+                 background-color: transparent;
+                 width: 300px;
+                 height: 200px;
+                 border: 1px solid #f1f1f1;
+                 perspective: 1000px; /* Supprimez ceci si vous ne souhaitez pas l'effet 3D */
+             }
 
  /* * Ce conteneur est nécessaire pour positionner le coté avant et arrière.  */
- .flip-card-inner 
-     {
-         position: relative;
-         width: 100%;
-         height: 100%;
-         text-align: center;
-         transition: transform 0.8s;
-         transform-style: preserve-3d;
-     }
+         .flip-card-inner 
+             {
+                 position: relative;
+                 width: 100%;
+                 height: 100%;
+                 text-align: center;
+                 transition: transform 0.8s;
+                 transform-style: preserve-3d;
+             }
 
  /* * Fait une trnaslation horizontal quand vous déplacez la souris par dessus le conteneur 'flip box' */
- .flip-card:hover .flip-card-inner
-     {
-         transform: rotateY(180deg);
-     }
-
+         .flip-card:hover .flip-card-inner
+             {
+                 transform: rotateY(180deg);
+             }
+         
  /* * Positionne le coté avant et arrière */
- .flip-card-front, .flip-card-back
-     {
-         position: absolute;
-         width: 100%;
-         height: 100%;
-         -webkit-backface-visibility: hidden; /* Safari */
-         backface-visibility: hidden;
-     }
+         .flip-card-front, .flip-card-back
+             {
+                 position: absolute;
+                 width: 100%;
+                 height: 100%;
+                 -webkit-backface-visibility: hidden; /* Safari */
+                 backface-visibility: hidden;
+             }
 
  /* * Style du coté avant (Solution de rechange si l'image et manquante) */
- .flip-card-front
-     {
-         background-color: #bbb;
-         color: black;
-     }
+         .flip-card-front
+             {
+                 background-color: #bbb;
+                 color: black;
+             }
 
  /* * Style the back side */
- .flip-card-back 
-     {
-         background-color: dodgerblue;
-         color: white;
-         transform: rotateY(180deg);
-     }
-
- .navbar-nav
-     {
-         min-width: 100%;
-     }
-
- .nav-item
-     {
-         min-width: 16.77%;
-     }
-     
- .login-position
-     {
-         position:relative;
-         bottom:40%;
-         left: 40%;
-     }
-    
-    
-
+         .flip-card-back 
+             {
+                 background-color: dodgerblue;
+                 color: white;
+                 transform: rotateY(180deg);
+             }
+         
+         .navbar-nav
+             {
+                 min-width: 100%;
+             }
+         
+         .nav-item
+             {
+                 min-width: 16.77%;
+             }
+             
+         .login-position
+             {
+                 position:relative;
+                 bottom:40%;
+                 left: 40%;
+             } 
 
  /* ***  2nd carousel *** */
  
-/* {
-    box-sizing: border-box;
-  } */
+        /* 
+             {
+                 box-sizing: border-box;
+             } 
+         */
   
  /* * Positionne le conteneur de l'image (requis pour positionner les flèches droite gauche) */
- .container 
-     {
-         position: relative;
-     }
-  
+         .container 
+             {
+                 position: relative;
+             }
+          
  /* * Masque l'image par défault * */
- .mySlides
-     {
-         display: none;
-     }
+         .mySlides
+             {
+                 display: none;
+             }
   
  /* * Ajoute un pinteur quand ont survole les vignettes (images) * */
- .cursor
-     {
-         cursor: pointer;
-     }
-  
+         .cursor
+             {
+                 cursor: pointer;
+             }
+          
  /* * Boutons suivant et précédent * */
- .prev,
- .next 
-     {
-         cursor: pointer;
-         text-decoration: none;
-         position: absolute;
-         top: 40%;
-         width: auto;
-         padding: 16px;
-         margin-top: -50px;
-         color: rgb(255, 255, 255);
-         background-color: rgb(255, 74, 19);
-         font-weight: bold;
-         font-size: 20px;
-         border-radius: 0 3px 3px 0;
-         user-select: none;
-             -webkit-user-select: none;
-     }
+         .prev,
+         .next 
+             {
+                 cursor: pointer;
+                 text-decoration: none;
+                 position: absolute;
+                 top: 40%;
+                 width: auto;
+                 padding: 16px;
+                 margin-top: -50px;
+                 color: rgb(255, 255, 255);
+                 background-color: rgb(255, 74, 19);
+                 font-weight: bold;
+                 font-size: 20px;
+                 border-radius: 0 3px 3px 0;
+                 user-select: none;
+                     -webkit-user-select: none;
+             }
+
  /* * Positionne le bouton " bouton suivant " sur la droite * */
- .next
-     {
-         right: 12px;
-         border-radius: 3px 0 0 3px;
-     }
+         .next
+             {
+                 right: 12px;
+                 border-radius: 3px 0 0 3px;
+             }
   
  /* * Au survole, ajoute un fond de couleur noir avec un peu de transparence * */
- .prev:hover,
- .next:hover 
-     {
-         background-color: rgb(255, 102, 0);
-     }
+         .prev:hover,
+         .next:hover 
+             {
+                 background-color: rgb(255, 102, 0);
+             }
   
  /* * Nombre texte (1/3 etc) * */
- .numbertext 
-     {
-         color: #f2f2f2;
-         font-size: 12px;
-         padding: 8px 12px;
-         position: absolute;
-         top: 0;
-     }
+         .numbertext 
+             {
+                 color: #f2f2f2;
+                 font-size: 12px;
+                 padding: 8px 12px;
+                 position: absolute;
+                 top: 0;
+             }
   
  /* * Conteneur pour le texte de l'image * */
- .caption-container
-     {
-         text-align: center;
-         background-color: #222;
-         padding: 2px 16px;
-         color: white;
-     }
-.caption-container > p {
-    padding-top: 10px;
-}
-.caption-container > p >a{
-    color: orange;
-}
+         .caption-container
+             {
+                 text-align: center;
+                 background-color: #222;
+                 padding: 2px 16px;
+                 color: white;
+             }
 
- .carouselMini
-     {
-         all: initial !important;
-         padding-left: 0px;
-         --bs-gutter-x: 0rem;
-     }
-.mySlides > img{
-    height: 600px;
-    object-fit: cover;
-}
- .row:after 
-     {
-         content: "";
-         display: table;
-         clear: both;
-     }
+         .caption-container > p 
+             {
+                 padding-top: 10px;
+             }
+
+         .caption-container > p >a
+             {
+                color: orange;
+             }
+
+         .carouselMini
+             {
+                 all: initial !important;
+                 padding-left: 0px;
+                 --bs-gutter-x: 0rem;
+             }
+
+         .mySlides > img
+             {
+                height: 600px;
+                object-fit: cover;
+             }
+
+         .row:after 
+             {
+                 content: "";
+                 display: table;
+                 clear: both;
+             }
      
-  /* * Six colonne coté-à-cote * */
- .column 
-     {
-         float: left;
-         /* width: 16.66%; */
-         margin: none;
-         padding: none;
-     }
+ /* * Six colonne coté-à-cote * */
+         .column 
+             {
+                 float: left;
+                 /* width: 16.66%; */
+                 margin: none;
+                 padding: none;
+             }
 
- .column > img
-     {
-         height: 130px;
-         object-fit: cover;
-     }
+         .column > img
+             {
+                 height: 130px;
+                 object-fit: cover;
+             }
 
   /* * Ajoute un effet de transparence sur les vignettes images * */
- .demo 
-     {
-         opacity: 0.6;
-     }
+         .demo 
+             {
+                 opacity: 0.6;
+             }
   
- .active,
- .demo:hover 
-     {
-         opacity: 1;
-     }
+         .active,
+         .demo:hover 
+             {
+                 opacity: 1;
+             }
 

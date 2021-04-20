@@ -12,102 +12,60 @@
 
      {% block body %}
   
+         {# *** Test implémentation fonction rechercher *** #}
+            {# <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> #}
 
-     {# *** Test implémentation fonction rechercher *** #}
+         {# ***** Titre de l'article ***** #}
+             <h1 class="h3 mb-3 font-weight-normal" id="h1_artistes"> Artistes </h1>
 
-     {# <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> #}
-
-
-         <!-- Titre de l'article -->                                     
-         <h1 class="h3 mb-3 font-weight-normal" id="h1_artistes"> Artistes </h1>
-
-
-             {# *** ALBUM CARD *** #}
+         {# *** ALBUM CARD *** #}
  
-                 <div class="row mainFrame col-10">
+             <div class="row mainFrame col-10">
+
                  <div class="row">
-                 
-                    {% for user in users %}
+                                                
+                     {% for user in users %}
                     
-                    <div class="flip-card card col-12 col-md-3 " style="height:500px; min-width:25%" >
+                         <div class="flip-card card col-12 col-md-3 " style="height:500px; min-width:25%" >
 
-                        <div class="flip-card-inner">
+                             <div class="flip-card-inner">    
 
-                            <div class="flip-card-front" >
-
-                                 <h2 class="col-12"> {{user.login}} </h2>
-
-                                 <img class="col-12" src="/uploads/avatar/{{user.avatar}}" alt="avatar">
-    
+                                 {# *** Carte > Image De l'artiste / utilisateur *** #}
+                                     <div class="flip-card-front" >
+     
+                                         <h2 class="col-12"> {{user.login}} </h2>
+     
+                                             <img class="col-12" src="/uploads/avatar/{{user.avatar}}" alt="avatar">
+         
+                                     </div>
+     
+                                 {# *** Carte > Partie: Nom de l'artiste / utilisateur *** #}
+                                     <div class="flip-card-back col-12 col-md-3 ">
+     
+                                         <h2 class="lead"> {{user.login}} </h2>
+     
+                                     </div>
+                                 
                              </div>
-
-                             <div class="flip-card-back col-12 col-md-3 ">
-
-                                 <h2 class="lead"> {{user.login}} </h2>
-
-                             </div>
-                            
-                        </div>
-
-                    </div>
-
+     
+                         </div>
                          
-                     {% endfor %}
+                     {% endfor %}                    
                     
-                    
-                    </div>
-
                  </div>
 
-                 </div>
+             </div>
 
-                 <nav aria-label="...">
+         </div>
 
-                     <div class="pagination justify-content-center">
-                         {{ knp_pagination_render(users, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
-                     </div>
+         <nav aria-label="...">
 
-                 </nav>
-         
+             <div class="pagination justify-content-center">
+                 {{ knp_pagination_render(users, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+             </div>
 
-     {# *** Script: JavaScript bouton rechercher (test ) *** #}
-
-     {# <script>
-
-         function myFunction() {
-
-             // On déclare la variable
-                 var input, filter, table, tr, td, i, txtValue;
-                 input = document.getElementById("myInput");
-                 filter = input.value.toUpperCase();
-                 table = document.getElementById("myTable");
-                 tr = table.getElementsByTagName("tr");
-         
-             //  Loop through all table rows, and hide those who don't match the search query
-
-                 for (i = 0; i < tr.length; i++) {
-                     td = tr[i].getElementsByTagName("td")[0];
-
-                 if (td) {
-                     txtValue = td.textContent || td.innerText;
-
-                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                     tr[i].style.display = "";
-
-                 } else
-               
-                 {
-                     tr[i].style.display = "none";
-                 }
-
-             }
-
-           }
-
-         }
-
-     </script> #}
-
+         </nav>
+        
      {% endblock %}     
 
 

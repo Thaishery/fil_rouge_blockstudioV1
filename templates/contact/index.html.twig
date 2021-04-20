@@ -2,7 +2,7 @@
 
 
      {% block metaTitle %}
-         "page de contact"
+         "Page de contact"
      {% endblock %}
 
 
@@ -10,76 +10,108 @@
          Contact 
      {% endblock %}
 
+
      {% block body %}
 
-         <main class="container">
+             <main class="container">
 
-             <article class="row"> 
+                 {# *** Titre de l'article *** #}
+                 <h1 class="h3 mb-3 font-weight-normal" id="h1_contact"> Contact </h1>
 
-                 <!-- Div Gauche -->   
-                 <div id="bloc_gauche" class="col-3">
+                     {# *** Le style place l'image en "float" sur la gauche par rapport au texte #}
+                     {# <article style="float:left"> #}
 
-                     <!-- Photo de présentation du contact -->  
-                     <figure>	
+                         {#  *** Photo de présentation du contact *** #}
+                         {# <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact: Lexos Block Studio" style="max-width:50%; max-height:50%;"/> #}
+ 
+                     {# </article> #}
 
-                         <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact." style="max-width:100%; max-height:100%;"/>
-                             <figcaption>
-                                 Lexos Block Studio
-                             </figcaption>
+                     <p>                                       
+                         Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. <br/>
+                         
+                         Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
+                        
+                         Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
+                        
+                         Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
+                        
+                         Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
+                        
+                         Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
+                        
+                         Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
+                     </p>
 
-                     </figure>	
+                     {# <div style="clear:both"></div> #}
 
-                 </div>
+             </main> 
 
-                 <!-- Div Droite-->   
-                 <div id="bloc_droite" class="col-9">
 
-                         <div>
+         {# *** Partie: Mappemonde - Carte, Emplacement du studio (GoogleMap) *** #}
+             <article>
+              
+                     <div class="row">
 
-                             <!-- Titre de l'article -->                                     
-                             <h1 class="h3 mb-3 font-weight-normal" id="h1_contact"> Contact </h1>
+                         <article class="col-8">
 
-                                 <div>
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1372.152298507109!2d2.482557!3d48.613103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5e12ac46cf043%3A0x5a933e873e3d5ca9!2sBlockstudio!5e1!3m2!1sfr!2sau!4v1618882426527!5m2!1sfr!2sau" 
+                                     width="800" 
+                                     height="450" 
+                                     style="border:0;" 
+                                     allowfullscreen="" 
+                                     loading="lazy"
+                                     satellite="true"
+                                     lang="fr">
+                                     </iframe>
 
-                                     <p>                                       
-                                         Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
-                                        
-                                         Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
-                                        
-                                         Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
-                                        
-                                         Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
-                                        
-                                         Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
-                                        
-                                         Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
-                                     </p>
+                         </article>
 
-                                 </div>
+                         <div class="col-4">
+
+                             <section class="col-12">
+
+                                 <h2 class="col-12 justify-content-center"> Nous trouver: nos studios </h2>
+
+                             </section>  
+
+                             <p>                    
+                                 Subsequent columns continue along the new line.
+                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                 Ut venenatis laoreet felis, ut rhoncus tellus. 
+                                 Aliquam vitae consectetur erat, vitae ornare augue. 
+                                 Praesent augue est, rhoncus at mattis ac, ultricies ac risus. 
+                                 Fusce et quam sit amet metus ornare malesuada id sed sapien. 
+                                 Nullam tincidunt sem eget bibendum mattis. 
+                                 Fusce in finibus nulla. Sed a nunc dolor. 
+                                 Sed ut malesuada leo. Praesent varius nec turpis quis aliquet.
+                                 Maecenas lobortis ante at sapien maximus efficitur.                                  
+                                 Nulla feugiat, neque eu feugiat iaculis, magna orci pellentesque nibh, 
+                                 vitae sodales neque tellus nec ipsum. Ut est sem, hendrerit ut fringilla quis,
+                                 fringilla id est.                                                      
+                                 Morbi vitae maximus est, ac interdum arcu. 
+                                 Maecenas velit nisl, pharetra sed felis ut, imperdiet ornare libero. 
+                                 Donec pretium odio at enim egestas imperdiet. 
+                                 Curabitur elementum, purus et venenatis mollis, id tristique urna magna id sapien. 
+                                 Nam iaculis semper lacus quis efficitur. 
+                                 Proin congue mattis risus, in ornare mi ultricies a. 
+                                 Cras a augue sed magna ultricies blandit et elementum tellus. 
+                                 Morbi vitae maximus est, ac interdum arcu. 
+                                 Maecenas velit nisl, pharetra sed felis ut, imperdiet ornare libero. 
+                                 Donec pretium odio at enim egestas imperdiet. 
+                                 Curabitur elementum, purus et venenatis mollis, id tristique urna magna id sapien. 
+                                 Nam iaculis semper lacus quis efficitur. 
+                                 Proin congue mattis risus, in ornare mi ultricies a.                                 
+                             </p>
 
                          </div>
 
-                 </div>
-
+                     </div>
+                  
              </article>
 
-         </main>    
-
-         <section>
-
-            
-
-         </section>
 
 
+     {% endblock %}
 
 
-
-
-
-
-
-
-
-
-         {% endblock %}
+     

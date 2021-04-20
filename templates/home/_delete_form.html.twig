@@ -2,8 +2,60 @@
      <input type="hidden" name="_method" value="DELETE">
      <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ home.id) }}">
 
-         <button class="btn btn-primary btn-lg btn-block"> 
+         {# <button class="btn btn-primary btn-lg btn-block"> 
+             Supprimer
+         </button> #}
+
+         <button for="switch" class="buttonGlitch" class="btn btn-primary btn-lg btn-block"> 
              Supprimer
          </button>
 
  </form>
+
+         {# <label for="switch" class="buttonGlitch">
+             <a href="#"> CodeMyUI.com </a>
+         </label> #}
+
+
+
+     {# * TEST! ANIMATION BOUTON SUPPRIMER * #}
+         {# animation sur notre ' delete form ' mais j'ai pas réussi à utiliser JS notamment le 'onload' #}
+
+         {#
+              <div class="cont">
+
+                 <div class="paper"></div>
+
+                     <button class="btn btn-primary btn-lg btn-block">
+                     
+                         <div class='loader'>
+
+                             <div></div>
+                             <div></div>
+                             <div></div>
+                             <div></div>
+                             <div></div>
+                             <div></div>
+
+                         </div> Supprimer
+
+                     </button>
+
+                         <div class="g-cont">
+ 
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+                             <div class="garbage"></div>
+
+                 </div>
+
+             </div>
+
+         #}
+
+        

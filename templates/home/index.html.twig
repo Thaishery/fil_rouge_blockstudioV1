@@ -16,9 +16,9 @@
   
              <h1 class="h3 mb-3 font-weight-normal" id="h1_accueil"> Accueil </h1>
 
+
                  {# *** Mise en place du slideshow pour remplacer notre 1er carousel *** #}
-                 <!-- Container for the image gallery -->
-                    
+                 <!-- Container for the image gallery -->                
                  <div class="container">
                             
                      {# *** Images pleine largeur avec nombre texte *** #}                    
@@ -37,10 +37,14 @@
                                  {% endif %}
                                  {% endfor %}
     
-                     {# *** Bouton: Précédent > Suivant *** #}
+                     {# *** Bouton: Précédent *** #}
                          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                         {# <a class="prev" onclick="plusSlides(-1)"> ↩️ </a> #}
+
+                     {# *** Bouton: Suivant *** #}
                          <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        
+                         {# <a class="next" onclick="plusSlides(1)"> ↪️ </a> #}
+                                
                      {# *** Images texte *** #}
                      
                          <div class="caption-container">                                    
@@ -62,7 +66,8 @@
                                                  src="/uploads/picture/{{service.Picture}}" 
                                                  style="width:100%" id="{{service.id}}" 
                                                  onclick="currentSlide({{service.id}})" 
-                                                 alt="{{service.Title}}">
+                                                 alt="{{service.Title}}"
+                                         >
 
                                      </div>
                                  
@@ -115,151 +120,13 @@
     
          </div>
         
-             {# ***** Partie: Carte Home Page ***** #}
-             <section>
 
-                 {# *** Conteneur *** #}
-                 <div class="container">
-             
-                     {# *** Définit la position du conteneur *** #}
-             	     <div class="row mbr-justify-content-center">
-             
-                         {# ***** Bloc-1 ***** #}
 
-                             {# *** Définit la taille du conteneur *** #}
-                             <div class="col-lg-6 mbr-col-md-10">
-
-                                 {# *** Définit que l'élément est Flexible *** #}
-                                 <div class="wrap">
-
-                                     {# *** Icone *** #}
-                                     <div class="ico-wrap">
-                                         <span class="mbr-iconfont fa-volume-up fa"></span>
-                                     </div>
-
-                                     {# *** Définit que le texte est centré *** #}   
-                                     <div class="text-wrap vcenter">
-
-                                         {# *** Titre *** #}
-                                         <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-                                             Stay <span>Successful</span>
-                                         </h2>
-
-                                         {# *** Paragraphe *** #}
-                                         <p class="mbr-fonts-style text1 mbr-text display-6">
-                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                         </p>
-
-                                     </div>
-
-                                 </div>
-
-                             </div>
-
-                         {# ***** Bloc-2 ***** #}
-
-                             {# *** Définit la taille du conteneur *** #}
-                             <div class="col-lg-6 mbr-col-md-10">
-
-                                 {# *** Définit que l'élément est Flexible *** #}
-                                 <div class="wrap">
-
-                                     {# *** Icone *** #}
-                                     <div class="ico-wrap">
-                                         <span class="mbr-iconfont fa-calendar fa"></span>
-                                     </div>
-
-                                     {# *** Définit que le texte est centré *** #}   
-                                     <div class="text-wrap vcenter">
-
-                                         {# *** Titre *** #}
-                                         <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Create
-                                             <span>An Effective Team</span>
-                                         </h2>
-
-                                         {# *** Paragraphe *** #}
-                                         <p class="mbr-fonts-style text1 mbr-text display-6">
-                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                         </p>
-
-                                     </div>
-
-                                 </div>
-
-                             </div>
-
-                         {# ***** Bloc-3 ***** #}
-
-                             {# *** Définit la taille du conteneur *** #}
-                             <div class="col-lg-6 mbr-col-md-10">
-
-                                 {# *** Définit que l'élément est Flexible *** #}
-                                 <div class="wrap">
-
-                                     {# *** Icone *** #}
-                                     <div class="ico-wrap">
-                                         <span class="mbr-iconfont fa-globe fa"></span>
-                                     </div>
-
-                                     {# *** Définit que le texte est centré *** #}   
-                                     <div class="text-wrap vcenter">                           
-
-                                         {# *** Titre *** #}
-                                         <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Launch
-                                             <span>A Unique Project</span>
-                                         </h2>
-
-                                         {# *** Paragraphe *** #}
-                                         <p class="mbr-fonts-style text1 mbr-text display-6">
-                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                         </p>
-
-                                     </div>
-
-                                 </div>
-
-                             </div>
-
-                         {# *** Bloc-4 *** #}
-
-                             {# *** Définit la taille du conteneur *** #}
-                             <div class="col-lg-6 mbr-col-md-10">
-
-                                 {# *** Définit que l'élément est Flexible *** #}
-                                 <div class="wrap">
-
-                                     {# *** Icone *** #}
-                                     <div class="ico-wrap">
-                                         <span class="mbr-iconfont fa-trophy fa"></span>
-                                     </div>
-
-                                     {# *** Définit que le texte est centré *** #}   
-                                     <div class="text-wrap vcenter">
-
-                                         {# *** Titre *** #}
-                                         <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-                                             Achieve <span>Your Targets</span>
-                                         </h2>
-
-                                         {# *** Paragraphe *** #}
-                                         <p class="mbr-fonts-style text1 mbr-text display-6">
-                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                         </p>
-
-                                     </div>
-
-                                 </div>
-
-                             </div>
-                           
-                     </div>
-             
-                 </div>
-             
-             </section>
-
-         {# ***** Script: JavaScript ***** #}
+         {# ***** Script: JavaScript - Carousel ***** #}
              <script src="{{asset ('js/carousel.js')}}"></script>
+         
+         {# ***** Script: JavaScript - Carousel ***** #}
+             {# <script src="{{asset ('js/arrow_carousel.js')}}"></script> #}
 
      {% endblock %}
 

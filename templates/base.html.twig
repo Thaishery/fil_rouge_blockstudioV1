@@ -7,7 +7,7 @@
              NOM DU DOCUMENT : PROJET FIL ROUGE 
              REALISATION INFORMATIQUE : Guillaume Debucquet (_GD), Jordan Carmont (_JD)
              DATE DE CREATION : 13/01/2021
-             DATE DE DERNIERE MODIFICATION : 07/04/2021 
+             DATE DE DERNIERE MODIFICATION : 18/04/2021 
 
          #}
 
@@ -28,56 +28,49 @@
             
              {% block stylesheets %}
 
-
-                 {# ***** Bootstrap: Carte Home Page ***** #}
-                 {# _gd : non! la version de bootstrap est 4.1 dans cette parti de code, nous utilisons la version 5+ en local, cela nous crée des érreurs #}
-                 {# <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> #}
-                 {# ***** CSS: Carte Home Page ***** #}
-                 <link href="{{asset ('style/style_homeCard.css')}}" rel="stylesheet">
-
-
-                 {# *****  Bootstrap ***** #}
+                 {# *****  Script: Bootstrap ***** #}
                  <link rel="stylesheet" href="{{ asset ('bootstrap/css/bootstrap.min.css') }}">
                  <script src="{{asset ('bootstrap/js/bootstrap.bundle.min.js')}}" ></script>
-                 {# ***** Script jQuery ***** #}
+                 {# ***** Script: jQuery ***** #}
                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                  {# ***** Font Awesome ***** #}
                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-                 {# ***** Script JS ***** #}
+                 {# ***** Script: JS - Fonctionnalité Modal ***** #}
                  <script src="{{asset ('js/modal.js')}}"></script>
+                 
+                 {# ***** TEST ! Script Css: pour bouton supprimer ***** #}
+                 {# <link href="{{asset ('style/style_button_delete.css')}}" rel="stylesheet"> #}
+
                  {# ***** Script Css ***** #}
                  <link href="{{asset ('style/style.css')}}" rel="stylesheet">
-                 {# ***** police custom ***** #}
+                 {# ***** Police Custom ***** #}
                  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
                 
-                 {# ***** Test! Script: Horloge digitale ***** #}
-                 <script type="text/javascript"> 
+                 {# ***** Script: Horloge digitale ***** #}
+                     {# <script type="text/javascript"> 
 
-                     function refresh()
-                         {
-                             var t = 1000; // rafraîchissement en millisecondes
-                             setTimeout('showDate()',t)
-                         }
+                         function refresh()
+                             {
+                                 var t = 1000;                            
+                                 setTimeout('showDate()',t)
+                             }
+                         
+                         function showDate() 
+                             {
+                                 var date = new Date()
+                                 var h = date.getHours();
+                                 var m = date.getMinutes();
+                                 var s = date.getSeconds();
+                                 if( h < 10 ){ h = '0' + h; }
+                                 if( m < 10 ){ m = '0' + m; }
+                                 if( s < 10 ){ s = '0' + s; }
+                                 var time = h + ':' + m + ':' + s
+                                 document.getElementById('horloge').innerHTML = time;
+                                 refresh();
+                             }
+
+                     </script> #}
                      
-                     function showDate() 
-                         {
-                             var date = new Date()
-                             var h = date.getHours();
-                             var m = date.getMinutes();
-                             var s = date.getSeconds();
-                             if( h < 10 ){ h = '0' + h; }
-                             if( m < 10 ){ m = '0' + m; }
-                             if( s < 10 ){ s = '0' + s; }
-                             var time = h + ':' + m + ':' + s
-                             document.getElementById('horloge').innerHTML = time;
-                             refresh();
-                         }
-
-                 </script>
-                 
 
              {% endblock %}
 
@@ -86,23 +79,52 @@
 
          </head>
 
-         <body onload=showDate();>
+         <body> 
+         {# <body onload=showDate();> #}
 
-             <span id='horloge'></span>
-           
+             {# <span id='horloge'></span> #}
+    
                  {% include 'partials/header.html.twig' %}
 
-                     <div class="mainsection">
-
+                     {# <div class="mainsection"> #}
+                      <div class="container">
+                    
                          {% block body %}
-
+                      
                             
                          {% endblock %}
 
                     </div>
   
+             
+
                  {% include 'partials/footer.html.twig' %}
 
          </body>
 
      </html>
+
+           
+     {# * WIDGET HORLOGE * #}
+
+         {# 
+             <div style="text-align:center;padding:1em 0;"> 
+                  
+                 <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&size=small&timezone=Europe%2FParis"
+                           width="100%" 
+                           height="90" 
+                           frameborder="0" 
+                           seamless>
+                 </iframe>
+
+                 <p>
+                     <a href="#" class="pe-auto"></a>
+                 </p>
+
+             </div>
+             
+          #}
+
+
+
+             
