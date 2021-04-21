@@ -12,136 +12,150 @@
 
      {% block body %}
 
-        <link rel="stylesheet" href="{{asset ('style/searchbar.css')}}">
+         {# *** Style de la barre de recherche *** #}
+         <link rel="stylesheet" href="{{asset ('style/searchbar.css')}}">
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-         <!-- Titre de l'article -->                                     
-         <h1 class="h3 mb-3 font-weight-normal col-12" id="h1_projets"> Projets  </h1> 
 
-         {{ form_start(form)}}
+         <main class="container">
 
-             <div class="row">
-                
-                <div class="container h-100">
-                  <div class="d-flex justify-content-center h-100">
-                    <div class="searchbar" id="searchbar">
-                      {# <input class="search_input" type="text" name="" placeholder="Search..."> #}
-                      {# <a href="#" class="search_icon"><i class="fas fa-search"></i></a> #}
-                    
-                         {{form_widget
-                             (form.val,
-                             {
-                             'attr': {'placeholder':'Rechercher un projet',
-                             'class':'col-9 search_input',
-                             }}
-                             ) 
-                             }}
-                         {{form_widget
-                             (form.Rechercher,
-                             {
-                             'attr':{ 
-                             
-                             'class':'search_icon',
-                             }}
-                             )
-                         }}
-
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-
-         {{ form_end(form)}}
-
-
-         {# ************************************************** #}
-
-             {# ***** Script: JavaScript pour la barre de recherche  ***** #}
-
-                 <script src="{{asset ('js/recherche.js')}}"></script>
-
-         {# ************************************************** #}
-
-                 {# *** ALBUM CARD *** #}
- 
-                     <div class="row mainFrame col-10">
-                     
-                         <div class="row">
-                     
-                             {% for projets in projet %}
-                                
-                                 <div class="flip-card card col-12 col-md-3 " style="height:500px; min-width:25%" >
-
-                                     <div class="flip-card-inner">
-
-                                         <div class="flip-card-front" >
-
-                                             <h2 class="col-12 projetTitle">{{projets.title|length > 25 ? projets.title|slice(0,25)~'...' : projets.title}}</h2>
-
-                                                 <img class="col-12" src="/uploads/cover/{{projets.cover}}" alt="Cover"  >
-
-                                                 <text>
-                                                     Artiste: {{projets.createur.login}}
-                                                 </text>
-                                             
-                                                     <br/>
-                                             
-                                                 <text>
-                                                     Tracks: {{projets.nb_of_tracks}}
-                                                 </text>
-                                             
-                                                     <br/>
-                                            
-                                                 <text>
-                                                     Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
-                                                 </text>
-                                                                      
-                                         </div>
-
-                                         <div class="flip-card-back col-12 col-md-3 ">
-
-                                             <h2 class="lead"> {{projets.title}} </h2>
-
-                                             <h2> {{projets.createur.login}} </h2>
-     
-                                             <p> {{projets.description}} </p>
-                                            
-                                             {% if projets.linkone %}
-                                                 Lien N°1: <a href="{{projets.linkone}}">{{projets.linkone|length > 30 ? projets.linkone|slice(0,30)~'...' : projets.linkone}}</a>
-                                             {% endif %}
-
-                                             {% if projets.linktwo %}
-                                                 Lien N°2: <a href="{{projets.linktwo}}">{{projets.linktwo|length > 30 ? projets.linktwo|slice(0,30)~'...' : projets.linktwo}}</a>
-                                             {% endif %}
-
-                                             {% if projets.linkthree %}
-                                                 Lien N°3: <a href="{{projets.linkthree}}">{{projets.linkthree|length > 30 ? projets.linkthree|slice(0,30)~'...' : projets.linkthree}}</a>
-                                             {% endif %}
-
-                                                 <br/>  
-
-                                                 <p> Espace Réserver pour le player </p>
-
-                                         </div>
-                                        
-                                     </div>
-
-                                 </div>
-                      
-                             {% endfor %}                    
+             {# *** Titre de l'article *** #}
+             <h1 class="h3 mb-3 font-weight-normal" id="h1_projets"> Projets  </h1> 
+        
+                 {{ form_start(form)}}
+        
+                     <div class="row">
                         
+                         <div class="container h-100">
+
+                             <div class="d-flex justify-content-center h-100">
+
+                                 <div class="searchbar" id="searchbar">
+                                 {# <input class="search_input" type="text" name="" placeholder="Search..."> #}
+                                 {# <a href="#" class="search_icon"><i class="fas fa-search"></i></a> #}
+                                 
+                                     {{ form_widget
+                                         (form.val,
+                                             {
+                                                 'attr': 
+                                                     {
+                                                         'placeholder':'Rechercher un projet',
+                                                         'class':'col-9 search_input',
+                                                     }
+                                             }
+                                         ) 
+                                     }}
+
+                                     {{ form_widget
+                                         (form.Rechercher,
+                                             {
+                                                 'attr':
+                                                     {                                           
+                                                         'class':'search_icon',
+                                                     }
+                                             }
+                                         )
+                                     }}
+        
+                                 </div>
+
+                             </div>
+
                          </div>
-
+        
                      </div>
-
-                 </div>
-
-                 <nav aria-label="...">
-
-                     <div class="pagination justify-content-center">
-                         {{ knp_pagination_render(projet, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}                        
-                     </div>
-
-                 </nav>
+        
+                 {{ form_end(form)}}
+        
+                 {# ************************************************** #}
+        
+                     {# ***** Script: JavaScript pour la barre de recherche  ***** #}
+        
+                         <script src="{{asset ('js/recherche.js')}}"></script>
+        
+                 {# ************************************************** #}
+        
+                         {# *** ALBUM CARD *** #}
          
+                             <div class="row mainFrame col-10">
+                             
+                                 <div class="row">
+                             
+                                     {% for projets in projet %}
+                                        
+                                         <div class="flip-card card col-12 col-md-3 " style="height:500px; min-width:25%" >
+        
+                                             <div class="flip-card-inner">
+        
+                                                 <div class="flip-card-front" >
+        
+                                                     <h2 class="col-12 projetTitle">{{projets.title|length > 25 ? projets.title|slice(0,25)~'...' : projets.title}}</h2>
+        
+                                                         <img class="col-12" src="/uploads/cover/{{projets.cover}}" alt="Cover"  >
+        
+                                                         <text>
+                                                             Artiste: {{projets.createur.login}}
+                                                         </text>
+                                                     
+                                                             <br/>
+                                                     
+                                                         <text>
+                                                             Tracks: {{projets.nb_of_tracks}}
+                                                         </text>
+                                                     
+                                                             <br/>
+                                                    
+                                                         <text>
+                                                             Description: {{projets.description|length > 50 ? projets.description|slice(0,50)~'...' : projets.description}}
+                                                         </text>
+                                                                              
+                                                 </div>
+        
+                                                 <div class="flip-card-back col-12 col-md-3 ">
+        
+                                                     <h2 class="lead"> {{projets.title}} </h2>
+        
+                                                     <h2> {{projets.createur.login}} </h2>
+             
+                                                     <p> {{projets.description}} </p>
+                                                    
+                                                     {% if projets.linkone %}
+                                                         Lien N°1: <a href="{{projets.linkone}}">{{projets.linkone|length > 30 ? projets.linkone|slice(0,30)~'...' : projets.linkone}}</a>
+                                                     {% endif %}
+        
+                                                     {% if projets.linktwo %}
+                                                         Lien N°2: <a href="{{projets.linktwo}}">{{projets.linktwo|length > 30 ? projets.linktwo|slice(0,30)~'...' : projets.linktwo}}</a>
+                                                     {% endif %}
+        
+                                                     {% if projets.linkthree %}
+                                                         Lien N°3: <a href="{{projets.linkthree}}">{{projets.linkthree|length > 30 ? projets.linkthree|slice(0,30)~'...' : projets.linkthree}}</a>
+                                                     {% endif %}
+        
+                                                         <br/>  
+        
+                                                         <p> Espace Réserver pour le player </p>
+        
+                                                 </div>
+                                                
+                                             </div>
+        
+                                         </div>
+                              
+                                     {% endfor %}                    
+                                
+                                 </div>
+        
+                             </div>
+        
+                         </div>
+        
+                         <nav aria-label="...">
+        
+                             <div class="pagination justify-content-center">
+                                 {{ knp_pagination_render(projet, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}                        
+                             </div>
+        
+                         </nav>
+         
+         </main>
+
      {% endblock %}     

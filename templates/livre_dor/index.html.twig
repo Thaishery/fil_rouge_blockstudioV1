@@ -10,64 +10,73 @@
 
      {% block body %}
 
-         <!-- Titre de l'article -->                                     
-         <h1 class="h3 mb-3 font-weight-normal" id="h1_livre_or"> Livre d'or </h1>
+         <main class="container">
 
-         {# ***** Début de l'élement: CAROUSSEL *****  #}
-         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+             {# *** Titre de l'article *** #}
+             <h1 class="h3 mb-3 font-weight-normal" id="h1_livre_or"> Livre d'or </h1>
 
-             {# *** Conteneur, intérieur *** #}
-             <div class="carousel-inner">
-             
-                 {# * Elément / Commentaire n° 1 * #}
-                 <div class="carousel-item active">
+                 {# ***** Début de l'élement: CAROUSSEL *****  #}
+                 {# <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"> #}
 
-                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">          
-                        <br/><br/><br/>   
-                     <div class="carousel-caption d-none d-md-block">          
+                     {# *** Conteneur, intérieur *** #}
+                     {# <div class="carousel-inner"> #}
+                     
+                         {# * Elément / Commentaire n° 1 * #}
+                         {# <div class="carousel-item active">
 
-                         <h4> " C'est le meilleur studio. Je suis très satisfait du résultat!"
-                         <br> Michel, Rappeur, Val-De-Marne </h4>  
+                             <img src="{{ asset ('Photos/grey.jpg') }}"
+                                  class="d-block w-100" 
+                                  alt="..."
+                             >    
+        
+                                <br/><br/><br/>  
+                                
+                             <div class="carousel-caption d-none d-md-block">          
+
+                                 <h4> " C'est le meilleur studio. Je suis très satisfait du résultat!"
+                                 <br> Michel, Rappeur, Val-De-Marne </h4>  
+
+                             </div>
+                             
+                         </div> #}
+
+                         {# * Elément / Commentaire n° 2 * #}
+                         {# <div class="carousel-item">
+
+                             <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
+
+                                 <br/><br/><br/>
+                             
+                             <div class="carousel-caption d-none d-md-block">
+
+                                 <h4>"Un mot... WOW!!"<br>
+                                 <br> Salma, Chanteuse , Paris</h4>
+                                 
+                             </div>
+
+                         </div> #}
+
+                         {# * Elément / Commentaire n° 3 * #}
+                         {# <div class="carousel-item">
+
+                             <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
+
+                                 <br/><br/><br/>
+
+                             <div class="carousel-caption d-none d-md-block">
+                             
+                                 <h4> "Pourrais-je... Etre plus heureux avec ce studio?" 
+                                 <br> Chandler Bing, Beatmaker, Essonne </h4>
+                                 
+                             </div>
+
+                         </div>
 
                      </div>
-                     
-                 </div>
 
-                 {# * Elément / Commentaire n° 2 * #}
-                 <div class="carousel-item">
+                 </div> #}
 
-                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
-
-                         <br/><br/><br/>
-                     
-                     <div class="carousel-caption d-none d-md-block">
-
-                         <h4>"Un mot... WOW!!"<br>
-                         <br> Salma, Chanteuse , Paris</h4>
-                         
-                     </div>
-
-                 </div>
-
-                 {# * Elément / Commentaire n° 3 * #}
-                 <div class="carousel-item">
-
-                     <img src="{{ asset ('Photos/grey.jpg') }}" class="d-block w-100" alt="...">
-
-                         <br/><br/><br/>
-
-                     <div class="carousel-caption d-none d-md-block">
-                     
-                         <h4> "Pourrais-je... Etre plus heureux avec ce studio?" 
-                         <br> Chandler Bing, Beatmaker, Essonne </h4>
-                         
-                     </div>
-
-                 </div>
-
-             </div>
-
-         </div>
+         </main>
 
      {% endblock %}
 

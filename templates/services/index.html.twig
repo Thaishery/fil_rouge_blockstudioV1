@@ -11,58 +11,62 @@
      
      {% block body %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Gestion des services </h1>
+         <div class="example-wrapper">
+
+                 <h1 class="h3 mb-3 font-weight-normal"> Gestion des services </h1>
      
-         <table class="table table-dark table-hover">
+                 <table class="table table-dark table-hover">
 
-             <thead>
+                     <thead>
 
-                 <tr>
-                     <th> Id </th>
-                     <th> Titre </th>
-                     <th> Photo </th>
-                     <th> Courte description </th>
-                     <th> Longue description </th>
-                     <th> Carousel rang </th>
-                     <th> Actions </th>
-                 </tr>
+                         <tr>
+                             <th> Id </th>
+                             <th> Titre </th>
+                             <th> Photo </th>
+                             <th> Courte description </th>
+                             <th> Longue description </th>
+                             <th> Carousel rang </th>
+                             <th> Actions </th>
+                         </tr>
 
-             </thead>
+                     </thead>
 
-             <tbody>
+                     <tbody>
 
-                 {% for service in services %}
+                         {% for service in services %}
 
-                     <tr>
-                         
-                         <td> {{ service.id }} </td>
-                         <td> {{ service.title }} </td>
-                         <td> {{ service.picture }} </td>
-                         <td> {{ service.shortDesc }} </td>
-                         <td> {{ service.longDesc }} </td>
-                         <td> {{ service.carouselRank }} </td>                    
+                             <tr>
+                                 
+                                 <td> {{ service.id }} </td>
+                                 <td> {{ service.title }} </td>
+                                 <td> {{ service.picture }} </td>
+                                 <td> {{ service.shortDesc }} </td>
+                                 <td> {{ service.longDesc }} </td>
+                                 <td> {{ service.carouselRank }} </td>                    
 
-                             <td>
-                                 <a class="btn btn-outline-primary" href="{{ path('services_show', {'id': service.id}) }}"> Voir </a>
-                                 <a class="btn btn-outline-primary" href="{{ path('services_edit', {'id': service.id}) }}"> Modifier </a>
-                             </td>
+                                     <td>
+                                         <a class="btn btn-outline-primary" href="{{ path('services_show', {'id': service.id}) }}"> Voir </a>
+                                         <a class="btn btn-outline-primary" href="{{ path('services_edit', {'id': service.id}) }}"> Modifier </a>
+                                     </td>
 
-                     </tr>
+                             </tr>
 
-                 {% else %}
+                         {% else %}
 
-                 <tr>
-                     <td colspan="7"> Aucun résultat </td>
-                 </tr>
+                         <tr>
+                             <td colspan="7"> Aucun résultat </td>
+                         </tr>
 
-             {% endfor %}
+                     {% endfor %}
 
-             </tbody>
+                     </tbody>
 
-         </table>
+                 </table>
      
-             <button class="btn btn-primary btn-lg btn-block">
-                 <a href="{{ path('services_new') }}"> Créer un nouveau service </a>
-             </button>
+                     <button class="btn btn-primary btn-lg btn-block">
+                         <a href="{{ path('services_new') }}"> Créer un nouveau service </a>
+                     </button>
+
+         </div>
 
      {% endblock %}
