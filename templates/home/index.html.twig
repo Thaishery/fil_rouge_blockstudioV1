@@ -16,117 +16,181 @@
   
              <h1 class="h3 mb-3 font-weight-normal" id="h1_accueil"> Accueil </h1>
 
+                 {# *************************************************** #}
+                 {# ********** PARTIE: SLIDESHOW / CAROUSEL *********** #}
+                 {# *************************************************** #}
 
-                 {# *** Mise en place du slideshow pour remplacer notre 1er carousel *** #}
-                 <!-- Container for the image gallery -->                
-                 <div class="container">
-                            
-                     {# *** Images pleine largeur avec nombre texte *** #}                    
-                     
-                         {% for service in services %}
-                            
-                             {% if service.getCarouselRank != null %}
+                     {# *** Conteneur pour la galerie d'image *** #}
 
-                                 <div class="mySlides">
+                         <main class="container">
+                                    
+                             {# *** Images pleine largeur avec nombre texte *** #}                    
+                             
+                                 {% for service in services %}
+                                
+                                     {% if service.getCarouselRank != null %}
+
+                                         <div class="mySlides">
     
-                                     <div class="numbertext"></div>
-                                     <img src="/uploads/picture/{{service.Picture}}" style="width:100%">
+                                             <div class="numbertext"></div>
+                                             <img src="/uploads/picture/{{service.Picture}}" style="width:100%">
     
-                                 </div>
+                                         </div>
     
-                                 {% endif %}
+                                     {% endif %}
+
                                  {% endfor %}
     
-                     {# *** Bouton: Précédent *** #}
-                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                         {# <a class="prev" onclick="plusSlides(-1)"> ↩️ </a> #}
+                             {# *** Bouton: Précédent *** #}
+                                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>                               
 
-                     {# *** Bouton: Suivant *** #}
-                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                         {# <a class="next" onclick="plusSlides(1)"> ↪️ </a> #}
-                                
-                     {# *** Images texte *** #}
-                     
-                         <div class="caption-container">                                    
-                                <p id="caption"></p>                                                                                                             
-                         </div>
-                        
-                     {# *** Images vignettes *** #}
-
-                         <div class="row carouselMini">
-                         
-                             {% for service in services %}
-                     
-                                 {% if service.getCarouselRank != null %}
-                        
-                                 {# *** Vignettes *** #}
-                                     <div class="column">
-
-                                         <img    class="demo cursor" 
-                                                 src="/uploads/picture/{{service.Picture}}" 
-                                                 style="width:100%" id="{{service.id}}" 
-                                                 onclick="currentSlide({{service.id}})" 
-                                                 alt="{{service.Title}}"
-                                         >
-
-                                     </div>
-                                 
-                                    {% endif %}
-                                    {% endfor %}
-    
-                         </div>
-
-                     <br/><br/> 
-
-                 </div>                    
-                             
-                 <article class="container">
-                    
-                     {# *** Boucle sur les " Entité " de home pour trouver l'active *** #}
-                         {% for home in homes %}
-                    
-                             {# *** Ne prend que la homepage active *** #}
-                                 {% if home.isActive == true %}  
-                                    
-                                     <h2 class="col-12 justify-content-center"> {{ home.title }} </h2>
-                    
-                                         {# *** Partie image du conteneur *** #}
-                                             <div class="container row">
-                     
-                                                 <img class="homeImage col-4" src="{{ home.picture }}" alt="">      
-                    
-                                                 {# *** Partie texte du conteneur *** #} 
-                    
-                                                     {# * Description courte * #}
-                                                     <div class ="homeShortDesc col-6">
-                                                         {% autoescape false %}{{ home.shortDesc }}{% endautoescape %}
-                                                     </div>
-                    
-                    
-                                                     {# * Description longue * #}
-                                                     <div class="col-12">                           
-                                                         <div>
-                                                             <p class ="homeLongDesc"> {% autoescape false %}{{ home.longDesc }}{% endautoescape %} </p>
-                                                         </div>  
-                                                     </div>
-                    
-                                             </div>
+                             {# *** Bouton: Suivant *** #}
+                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                                         
-                                 {% endif %}
-                    
-                         {% endfor %}
-                    
-                 </article>
-    
-         </div>
-        
+                             {# *** Images texte *** #}
+                             
+                                 <div class="caption-container">                                    
+                                        <p id="caption"></p>                                                                                                             
+                                 </div>
+                                
+                             {# *** Images vignettes *** #}
 
+                                 <div class="row carouselMini">
+                                 
+                                     {% for service in services %}
+                             
+                                         {% if service.getCarouselRank != null %}
+                                
+                                             {# *** Vignettes *** #}
+                                                 <div class="column">
+
+                                                     <img    class="demo cursor" 
+                                                             src="/uploads/picture/{{service.Picture}}" 
+                                                             style="width:100%" id="{{service.id}}" 
+                                                             onclick="currentSlide({{service.id}})" 
+                                                             alt="{{service.Title}}"
+                                                     >
+
+                                                 </div>
+                                             
+                                         {% endif %}
+
+                                     {% endfor %}
+    
+                                 </div>
+
+                             <br/>
+                             <br/> 
+
+                         </main>                    
+
+                 {# *************************************************** #}
+                 {# ******* PARTIE: VIDEO DE LA PAGE D'ACCUEIL ******* #}
+                 {# *************************************************** #}
+
+                         <article class="container mt-3">
+
+                             {# <h2> Vidéo promotionnelle du studio </h2> #}
+
+                                 {# 
+                                     Create a media object with the .media and .media-body classes:
+                                 #}
+
+                                 <div class="media border p-3">
+
+                                     {# <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;"> #}
+
+                                     <video width="100%" height="400px" style="border:0;" alt="John Doe" class="mr-3 mt-3 " controls>
+                                         <source src="/uploads/videos/VideoCoverStudio1.mp4">                                           
+                                     </video>
+
+                                     {# 
+                                         <div class="media-body">
+
+                                             <h4>
+                                                 Pablo
+
+                                                     <small>
+                                                         <i> Posté le 21 Avril, 2021 </i> 
+                                                     </small> 
+                                             </h4>
+
+                                             <p> 
+                                                 Blockstudio toujours ouvert à vos projet.
+
+                                                 #blockstudio #enregistrement #mixage #mastering #musique 
+                                                 
+                                                 #studiomusic #promotion #beatmaker #clipvideo #graphisme
+                                                 
+                                                 #edition #productionmusicale #artistes
+                                             </p>     
+                                               
+                                         </div> 
+                                     #}
+
+                                 </div>
+
+                         </article>
+
+                 {# *************************************************** #}
+                 {# ******* PARTIE: ARTICLE DE LA PAGE D'ACCUEIL ****** #}
+                 {# *************************************************** #}
+
+                         <article class="container">
+                            
+                             {# *** Boucle sur les " Entité " de home pour trouver l'active *** #}
+                                 {% for home in homes %}
+                            
+                                     {# *** Ne prend que la homepage active *** #}
+                                         {% if home.isActive == true %}  
+                                            
+                                             <h2 class="col-12 justify-content-center"> {{ home.title }} </h2>
+                            
+                                                 {# *** Partie image du conteneur *** #}
+                                                     <div class="container row">
+                             
+                                                         <img class="homeImage col-4" src="{{ home.picture }}" alt="">      
+                            
+                                                         {# *** Partie texte du conteneur *** #} 
+                            
+                                                             {# * Description courte * #}
+                                                                 <div class ="homeShortDesc col-6">
+                                                                     {% autoescape false %}{{ home.shortDesc }}{% endautoescape %}
+                                                                 </div>
+                            
+                            
+                                                             {# * Description longue * #}
+                                                                 <div class="col-12">   
+
+                                                                     <div>
+                                                                         <p class ="homeLongDesc"> 
+                                                                             {% autoescape false %}{{ home.longDesc }}{% endautoescape %} 
+                                                                         </p>
+                                                                     </div>  
+
+                                                                 </div>
+                            
+                                                     </div>
+                                                
+                                         {% endif %}
+                            
+                                 {% endfor %}
+                            
+                         </article>
+    
+                 
+
+
+
+
+
+
+
+         </div>
 
          {# ***** Script: JavaScript - Carousel ***** #}
              <script src="{{asset ('js/carousel.js')}}"></script>
          
-         {# ***** Script: JavaScript - Carousel ***** #}
-             {# <script src="{{asset ('js/arrow_carousel.js')}}"></script> #}
 
      {% endblock %}
 
@@ -135,12 +199,12 @@
      1. mise en place edition avatar. edituser + admin => OK!
      2. verification regex sur formInscription ( + unification des regex). =>ok. => voir sur les edit! 
      3. mise en 'rouge' des messages d'erreures lors de la création de compte. =>
-     4. mise en place champ tel sur register.
-     5. mise en forme home page.
+    
+    
      6. traduction short_desc long_desc dans labelles services.
      7. rendre nullable le champ feat dans la création de projets. 
-     8. mise en place gestion des plateform pour l'admin.
-     9. changer placeholder login pour stipuler login et non mail.
+     
+    
      10. projet: sur vue=> prévoir titre sur 2 ligne (taille fixe) + trunc si + de X caractéres. pour aligner images. 
      11. remetre js sur forminscription
 

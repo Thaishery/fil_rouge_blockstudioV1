@@ -40,7 +40,10 @@
 
                      </main> 
 
-                     {# *** Partie: Mappemonde - Carte, Emplacement du studio (GoogleMap) *** #}       
+                 {# ********************************************************************* #}
+                 {# *** Partie: Mappemonde - Carte, Emplacement du studio (GoogleMap) *** #}
+                 {# ********************************************************************* #}   
+
                      <article class="container"> 
                          
                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1372.152298507109!2d2.482557!3d48.613103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5e12ac46cf043%3A0x5a933e873e3d5ca9!2sBlockstudio!5e1!3m2!1sfr!2sau!4v1618882426527!5m2!1sfr!2sau" 
@@ -57,11 +60,66 @@
 
          </div>
 
-        
-
-
-
+       
      {% endblock %}
+
+
+
+         {# 
+             <div class="container">
+
+                 <div style="text-align:center">
+
+                     <h2> Contact Us </h2>
+
+                         <p> 
+                            Pour faire une demande de réservations, ou simplement nous laisser un message:                      
+                         </p>
+
+                 </div>
+
+                 <div class="row">
+
+                     <div class="column">
+                       <img src="/w3images/map.jpg" style="width:100%">
+                     </div>
+
+                     <div class="column">
+
+                         <form action="/action_page.php">
+
+                             <label for="pseudo"> Pseudo </label>
+                             <input type="text" id="pseudo" name=" Pseudo " placeholder="Votre Pseudo...">
+
+                             <label for="email"> Email </label>
+                             <input type="text" id="email" name=" Email " placeholder="Votre Email...">
+
+                             <label for="sujet"> Sujet: </label>
+                             <textarea id="sujet" name="Sujet" placeholder="Le sujet de votre message" style="height:170px"></textarea>
+                             
+                             <input type="submit" value="Submit"> 
+
+                             
+                                 <label for="country"> Pays </label>
+                                 <input type="text" id="pays" name="Pays" placeholder="Your last name..">
+                                 
+                                     <select id="country" name="country">                          
+                                         <option value="australia"> Australia </option>
+                                         <option value="canada"> Canada </option>
+                                         <option value="usa"> USA </option>                      
+                                     </select>
+                            
+    
+                         </form>
+
+                     </div>
+
+                 </div>
+
+             </div> 
+
+         #}
+
 
 
      
