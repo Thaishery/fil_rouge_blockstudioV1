@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+// use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
 
@@ -21,9 +21,9 @@ class ContactType extends AbstractType
              $builder
                  ->add('login')            
                  ->add('email', EmailType::class); 
-                 ->add('long_desc', CKEditorType::class, array(
-                    'label' => 'Description longue',
-                 ))                    
+                //  ->add('long_desc', CKEditorType::class, array(
+                //     'label' => 'Description longue',
+                //  ))                    
          }
 
     public function configureOptions(OptionsResolver $resolver)

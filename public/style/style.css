@@ -7,17 +7,16 @@
 
      *
          {
-             /* font-family: 'Roboto', sans-serif; */
              font-family: 'Jura', sans-serif;
          }
 
  /* *** Style de l'horloge (optionnel: voir si ont veut ajouter cette fonctionnalité plus tard.*** */
 
-     #horloge
+     /* #horloge
          {
              background-color:silver;
              color: #1C1C1C;          
-         }
+         } */
 
  /* *** Style des titres *** */
 
@@ -226,7 +225,8 @@
                         animation-duration: 3s;
                       }
 
-                 nav .nav-link:hover::after, nav .nav-link:hover::before {
+                 nav .nav-link:hover::after, 
+                 nav .nav-link:hover::before {
                         left: 96px;
                         width: 64px;
                         
@@ -280,7 +280,9 @@
          
          .AcountFrame
              {
-                 height: 350px;
+                 /* height: 350px; */
+                 /* height: 613px; */
+                 height: 853px;
                  background-image: url("../logoGrand.webp");
                  background-repeat: no-repeat;
                  background-position:center;
@@ -397,6 +399,7 @@
          li 
              {
                  list-style: none !important;
+                 /* text-decoration: none;  */
              }
 
  /* *** Style des boutons *** */
@@ -458,12 +461,19 @@
                  font-size: 0.9em;
              } */
 
+
+
+
+
+
+
  /* *** Style de l'élément pagination *** */
 
          .pagination
              {
                  margin-top: 10px;
              }
+             
        
  /* *** Style du: FOOTER *** */
 
@@ -540,7 +550,7 @@
              }
       
 
-     /* ??? WTF */
+     /* ??? */
          .test
              {
                  display: block;
