@@ -1,69 +1,17 @@
-
- {{ form_start(form) }}
-
-    <div class="container">
-    
-       <div class="row">  
-
-          {# *** PSEUDO *** #}     
-
-             <div class="pseudo row">
-
-                <div class="pseudoLabel">
-                   {{ form_label(form.login, 'Pseudo :') }}
-                </div>
-
-                <div class="pseudoInput">
-                   {{ form_widget (form.login,
-                      { 'attr':{'placeholder':'Entrez un pseudo'}}
-                   ) }}
-                </div>
-
-             {# *** If Errors *** #}
-
-                <div class="pseudoError">
-                   {{form_errors(form.login)}}
-                </div>
-
-             </div>
-
-          {# *** EMAIL *** #}
-
-             <div class="email row">
-
-                <div class="emailLabel">
-                   {{ form_label(form.email, 'email :') }}
-                </div>
-
-                <div class="emailInput">
-                   {{ form_widget (form.email,{
-                        'attr':{'placeholder':'Entrez votre email'}}
-                   ) }}
-                </div>
-
-             {# *** If Errors *** #}
-
-                <div class="emailError">
-                   {{form_errors(form.email)}}
-                </div>
-
-             </div>
-
-           {#  todo: rajouter partie pour le texte  #}
+ {% extends 'base.html.twig' %}
 
 
-       </div>
-
-    </div>
-
-       <button class="btn btn-primary btn-lg btn-block">
-          {{ button_label|default('Sauvegarder') }}
-       </button>
-         
+    {% block metaTitle %}
+         "Page contact controller admin"
+    {% endblock %}
 
 
+    {% block title %}
+         Page contact controller admin
+    {% endblock %}
 
-         
- {{ form_end(form) }}
+    {% block body %}
 
+      
 
+    {% endblock %}  

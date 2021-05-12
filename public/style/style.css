@@ -399,7 +399,7 @@
          li 
              {
                  list-style: none !important;
-                 /* text-decoration: none;  */
+                 /* text-decoration: none;  */           
              }
 
  /* *** Style des boutons *** */
@@ -448,24 +448,6 @@
              {
                  font-size: 0.8em;
              }
-         
-         /* aside
-             {
-                 flex: 1.2;
-                 position: relative;
-                 background-color: #706b64;
-                 box-shadow: 0px 2px 5px #1c1a19;
-                 border-radius: 5px;
-                 padding: 10px;
-                 color: white;
-                 font-size: 0.9em;
-             } */
-
-
-
-
-
-
 
  /* *** Style de l'élément pagination *** */
 
