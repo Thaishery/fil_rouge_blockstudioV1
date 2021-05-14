@@ -24,7 +24,7 @@
          h1 
              {
                  text-align: center;
-                 
+              
              }
 
          #h1_accueil,
@@ -43,6 +43,11 @@
                  /* width: 640px; */
              }  
     
+         .TextFrame 
+             {
+                 margin: 21px;              
+             }
+
          .TextFrame h1
              {
                  font-size: 1rem;
@@ -64,6 +69,12 @@
                  font-weight: 600;      
               }
      
+         /* #titleblock
+              {
+                 font-family: 'Lacquer', cursive;
+              } */
+
+
      /* Titre de niveau 3 */         
          h3 
               {
@@ -458,19 +469,21 @@
              
        
  /* *** Style du: FOOTER *** */
-
+    
          .footerMain
              {
-                 position: relative;
-                 width: 100%;
-                 display: flex;
-                 justify-content: space-around;
                  background-color: black;
-                 color: white;
+                 color: white;   
+                 /* display: flex; */
+                 /* position: relative; */
+                 /* padding: 20px; */
+                 /* margin: 0; */
+                 /* width: 100%;       */
+                 /* justify-content: space-around; */                                             
              }
          
          .footerMain h1, h2 
-             {
+             {             
                  color: orange;
                  margin-top: 5px;
              }
