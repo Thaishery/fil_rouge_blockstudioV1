@@ -17,24 +17,63 @@
          <header>   
          
              <div class="AcountFrame" style="display:flex; justify-content:space-around;">
-                      
-                     {# ***** BLOC AUTHENTIFICATION ***** #}
-                     <div class="TextFrame">
-                            
-                         {% if app.user %}
+                                    
+                 {# ***** BLOC AUTHENTIFICATION ***** #}
+                 <div class="TextFrame">
 
-                             <p> Vous etes connecté en tant que: 
+                     {% if app.user %}
 
-                                 {% if app.user %}
-                                     {{app.user.login}}
-                                 {% endif %} <br/>
+                         <div class="d-flex text-muted pt-3">
+ 
+                             {# ? _JC : Ont pourrais donner la possibilité au gens de rajouter une photo de profil #}
+                             {# ? qui viendrait s'afficher à la place du carré bleu #}
 
-                             </p>
+                             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                 <title> Placeholder </title>
+                                 <rect width="100%" height="100%" fill="#007bff"> </rect>
+                                 <text x="50%" y="50%" fill="#007bff" dy=".3em"> 32x32 </text>                                                      
+                             </svg>
 
-                         {% endif %}
-                            
-                     </div>      
-                    
+                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+
+                                     {% if app.user %}
+   
+                                         <div class="d-flex justify-content-between">
+
+                                             <strong class="text-gray-dark">
+                                                 {# Full Name #}
+                                                 {# <i class="bi bi-person-circle"></i> #}
+                                                 {{app.user.login}}
+                                             </strong>
+
+                                         </div>
+
+                                     {# ? Possiblité de rajouter un pseudo en plus éventuellement en dessous du nom classique #}
+                                         <span class="d-block">
+                                             @pseudo                                          
+                                         </span>
+
+                                     {% endif %} <br/>
+
+                                 </div>
+
+                         </div>  
+                                  
+                     {% endif %}
+
+                 </div> 
+
+
+
+
+
+
+
+
+
+
+
+
                      {# prévoir mise en place pour administration (gestion des roles) #}
                      {% if app.user %}
                 
@@ -67,24 +106,28 @@
                                                                  <ul>
             
                                                                      <li>
-                                                                         <a href="{{path ("home_index")}}"> Gestion de l'accueil </a><br/>     
+                                                                         <a href="{{path ("home_index")}}" style="text-decoration:none"> Gestion de l'accueil </a><br/>     
                                                                      </li>  
             
                                                                      <li>
-                                                                        <a href="{{path ("services_index")}}"> Gestion des services </a> <br/>
+                                                                        <a href="{{path ("services_index")}}" style="text-decoration:none"> Gestion des services </a> <br/>
                                                                      </li>
             
                                                                      <li>                                           
-                                                                         <a href="{{path ("user_index")}}"> Gestion des utilisateurs </a><br/>     
+                                                                         <a href="{{path ("user_index")}}" style="text-decoration:none"> Gestion des utilisateurs </a><br/>     
                                                                      </li>   
             
                                                                      <li>     
-                                                                         <a href="{{path ("projet_index")}}"> Gestion des projets </a>
+                                                                         <a href="{{path ("projet_index")}}" style="text-decoration:none"> Gestion des projets </a>
                                                                      </li> 
 
                                                                      <li>
-                                                                        <a href="{{path ("plateforme_index_admin")}}"> Gestion des plateformes </a>
-                                                                    </li>
+                                                                        <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none"> Gestion des plateformes </a>
+                                                                     </li>
+
+                                                                     <li>
+                                                                        <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> Gestion des contacts </a>
+                                                                     </li>  
             
                                                                  </ul>                                             
          
@@ -115,8 +158,8 @@
                                          </h2>
          
                                          {# *** CONTENU DE L'ELEMENT N°2 *** #}
-                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-         
+                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">                                         
+
                                              <div class="accordion-body">
                                                  
                                                  {# *** Partie: Gestion du compte (utilisateur actuel) *** #}
@@ -125,25 +168,37 @@
                                                      <ul>
                                                      
                                                          <li>
-                                                             <a href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon compte</a><br/>   
+                                                             <a href="{{path ('user_edit_current', { 'id': app.user.id })}}" style="text-decoration:none"> 
+                                                                 Gérer mon compte
+                                                             </a> <br/>  
                                                          </li>  
 
                                                          <li>  
-                                                             <a href="{{path ('projet_index_user', { 'login': app.user.login})}}"> Gérer mes projets </a><br/>
-                                                         </li>  
-
-                                                          <li>  
-                                                             <a href="{{path ('plateforme_index', { 'login': app.user.login})}}"> Gérer mes plateformes </a><br/>
+                                                             <a href="{{path ('projet_index_user', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                                                 Gérer mes projets 
+                                                             </a> <br/>
                                                          </li>  
 
                                                          <li>  
+                                                             <a href="{{path ('plateforme_index', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                                                 Gérer mes plateformes 
+                                                             </a> <br/>
+                                                         </li>  
+
+                                                         {# <li>  
                                                              <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
-                                                         </li> 
+                                                         </li>  #}
 
                                                      </ul>
 
                                                  {% endif %}
          
+                                                         <li>  
+                                                             <a href="{{ path ('app_logout') }}" style="text-decoration:none"> 
+                                                                 <i class="bi bi-power"></i> Se déconnecter 
+                                                             </a>
+                                                         </li> 
+
                                              </div>
          
                                          </div>
@@ -194,7 +249,7 @@
                 
                                                      {# *** SERVICES *** #}
                                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                              Services 
+                                                            Services <i id="arrow_drop" class="bi bi-chevron-compact-down"></i>                                                 
                                                          </a>
                 
                                                      {# prévoir boucle twig pour récuperer depuis la bdd #}
@@ -229,11 +284,58 @@
                                                          <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
                                                      </li>
                 
+                                             {# Todo: Mettre en place menu déroulant #}
+
+                                             {# ***** MENU DEROULANT **** #}
+                                             <li class="nav-item dropdown">
+
                                                  {# *** CONTACT *** #}
-                                                     <li class="nav-item">
-                                                         <a class="nav-link" href="{{path ("contact")}}"> Contact </a>
-                                                     </li>
-                                     
+                                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                         Contact 
+                                                     </a>
+
+                                                 {# prévoir boucle twig pour récuperer depuis la bdd #}
+                                                     {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
+
+                                                 {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
+                                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                                         {# {% for contact in contact_admin %}
+
+                                                             <li>
+                                                                 <a class="dropdown-item" href="{{path ("contact", {'id': contact.id})}}"> {{contact.title}} </a>
+                                                             </li>
+                                                            
+                                                         {% endfor %} #}
+                                                             
+                                                             {# ! Pas fini. Reste encore à créer les controllers pour les nouvelles pages. ! #}
+                                                             {# !Il y a des path qui ne sont pas correct... C'est normal =) JC_ #}
+
+                                                             <li>
+                                                                 <a class="nav-link" href="{{path ("contact")}}"> Contact </a>     
+                                                             </li>
+ 
+                                                             {# todo: créer les controller et les vues des nouvelles pages JC_ #}
+
+                                                             <li>
+                                                                 <a class="nav-link" href="{{path ("contact")}}"> Tarifs </a>     
+                                                             </li>
+
+                                                             <li>
+                                                                 <a class="nav-link" href="{{path ("contact")}}"> Réservations </a>     
+                                                             </li>
+
+                                                         {# {% endfor %} #}
+
+                                                     </ul>
+
+                                                 {# *** CONTACT *** #}
+                                                     {# <li class="nav-item">
+                                                         <a class="nav-link" href="{{path ("contact")}}"> Contact </a>                                    
+                                                     </li> #}
+ 
+                                             </li>    
+
                                          </ul>
                 
                                  </div>

@@ -18,26 +18,36 @@
     
                          <article class="row">
     
-                             <div id="bloc_droite">
+                             {# <div id="bloc_droite"> #}
+                             <section>
     
                                  <h3> {{ service.shortDesc }} </h3>
                                  
                                      <div class ="homeShortDesc"> {% autoescape false %}{{ service.longDesc }}{% endautoescape %} </div>
                                      {# <p class ="homeShortDesc"> {{ service.shortDesc }} </p> #}
                                       
-                               </div>
+                             </section>
     
-                             <div id="bloc_gauche">
+                             {# <div id="bloc_gauche"> #}
+                             <div>
     
-                                 <figure>	
-                                     <img class="mastering_picture" src="/uploads/picture/{{service.picture}}" alt="Photo/Image du service" >
+                                 <figure>
+
+                                     <img class="mastering_picture" 
+                                          src="/uploads/picture/{{service.picture}}"
+                                          alt="Photo/Image du service" 
+                                          width="100%" 
+                                          height="400px"                                  
+                                          style="border:0;"           
+                                     >
+
                                  </figure>	
     
                              </div>   
 
                          </article>
 
-                 <main/>        
+                 </main>        
 
      {% endblock %}
 

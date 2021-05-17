@@ -10,108 +10,422 @@
          Contact 
      {% endblock %}
 
-
      {% block body %}
 
-             <main class="container">
+         <div class="container">
 
-                 {# *** Titre de l'article *** #}
+             {# *** Titre de l'article *** #}
                  <h1 class="h3 mb-3 font-weight-normal" id="h1_contact"> Contact </h1>
-
-                     {# *** Le style place l'image en "float" sur la gauche par rapport au texte #}
-                     {# <article style="float:left"> #}
-
+ 
+                     <main class="container">
+                           
                          {#  *** Photo de présentation du contact *** #}
                          {# <img id="img_a" src=" {{ asset ('Photos/coverlexos1.jpg')}}" alt="Photo de présentation du contact: Lexos Block Studio" style="max-width:50%; max-height:50%;"/> #}
- 
-                     {# </article> #}
-
-                     <p>                                       
-                         Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. <br/>
-                         
-                         Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
                         
-                         Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
-                        
-                         Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
-                        
-                         Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
-                        
-                         Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
-                        
-                         Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
-                     </p>
-
-                     {# <div style="clear:both"></div> #}
-
-             </main> 
-
-
-         {# *** Partie: Mappemonde - Carte, Emplacement du studio (GoogleMap) *** #}
-             <article>
-              
-                     <div class="row">
-
-                         <article class="col-8">
-
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1372.152298507109!2d2.482557!3d48.613103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5e12ac46cf043%3A0x5a933e873e3d5ca9!2sBlockstudio!5e1!3m2!1sfr!2sau!4v1618882426527!5m2!1sfr!2sau" 
-                                     width="800" 
-                                     height="450" 
-                                     style="border:0;" 
-                                     allowfullscreen="" 
-                                     loading="lazy"
-                                     satellite="true"
-                                     lang="fr">
-                                     </iframe>
-
-                         </article>
-
-                         <div class="col-4">
-
-                             <section class="col-12">
-
-                                 <h2 class="col-12 justify-content-center"> Nous trouver: nos studios </h2>
-
-                             </section>  
-
-                             <p>                    
-                                 Subsequent columns continue along the new line.
-                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                 Ut venenatis laoreet felis, ut rhoncus tellus. 
-                                 Aliquam vitae consectetur erat, vitae ornare augue. 
-                                 Praesent augue est, rhoncus at mattis ac, ultricies ac risus. 
-                                 Fusce et quam sit amet metus ornare malesuada id sed sapien. 
-                                 Nullam tincidunt sem eget bibendum mattis. 
-                                 Fusce in finibus nulla. Sed a nunc dolor. 
-                                 Sed ut malesuada leo. Praesent varius nec turpis quis aliquet.
-                                 Maecenas lobortis ante at sapien maximus efficitur.                                  
-                                 Nulla feugiat, neque eu feugiat iaculis, magna orci pellentesque nibh, 
-                                 vitae sodales neque tellus nec ipsum. Ut est sem, hendrerit ut fringilla quis,
-                                 fringilla id est.                                                      
-                                 Morbi vitae maximus est, ac interdum arcu. 
-                                 Maecenas velit nisl, pharetra sed felis ut, imperdiet ornare libero. 
-                                 Donec pretium odio at enim egestas imperdiet. 
-                                 Curabitur elementum, purus et venenatis mollis, id tristique urna magna id sapien. 
-                                 Nam iaculis semper lacus quis efficitur. 
-                                 Proin congue mattis risus, in ornare mi ultricies a. 
-                                 Cras a augue sed magna ultricies blandit et elementum tellus. 
-                                 Morbi vitae maximus est, ac interdum arcu. 
-                                 Maecenas velit nisl, pharetra sed felis ut, imperdiet ornare libero. 
-                                 Donec pretium odio at enim egestas imperdiet. 
-                                 Curabitur elementum, purus et venenatis mollis, id tristique urna magna id sapien. 
-                                 Nam iaculis semper lacus quis efficitur. 
-                                 Proin congue mattis risus, in ornare mi ultricies a.                                 
+                             <p>                                       
+                                 Nos studios sont situés en plein centre-ville de Corbeil-Essonnes dans une rue commerçante. <br/>
+                                 
+                                 Notre équipe vous accueuil dans des locaux entièrement insonorisés de 80 m², avec deux contrôle room de 20 m² et 15m², deux cabines d'enregistrement de 7 m² chacune. Nous vous proposons la possibilité de faire du mixage et du mastering pour finaliser vos morceaux, afin de donner à vos créations un aspect professionnel.
+                                
+                                 Nos studios sont destinés aux projets en équipe réduite 5 personnes maximum, idéals pour les voix et les petits instruments.
+                                
+                                 Pour votre confort, nous mettons à votre disposition une télévision, cafetière, réseau WiFi...
+                                
+                                 Nos ingénieurs du son sont très compétents dans des styles très variés hip-hop, R&B, dancehall, musique africaine, latina…
+                                
+                                 Ils sont à votre écoute pour donner à vos titres le son qu’ils méritent.
+                                
+                                 Grâce à des forfaits adaptés à tous les budgets, la clientèle du studio comprend aussi bien des artistes amateurs que confirmés ainsi que de nombreux labels, DJ, et producteurs indépendants.
                              </p>
+
+                     </main> 
+
+                 {# ********************************************************************* #}
+                 {# *** Partie: Mappemonde - Carte, Emplacement du studio (GoogleMap) *** #}
+                 {# ********************************************************************* #}   
+
+                     <article class="container"> 
+                         
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1372.152298507109!2d2.482557!3d48.613103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5e12ac46cf043%3A0x5a933e873e3d5ca9!2sBlockstudio!5e1!3m2!1sfr!2sau!4v1618882426527!5m2!1sfr!2sau" 
+                                 width="100%" 
+                                 height="400px"                                  
+                                 style="border:0;" 
+                                 allowfullscreen="" 
+                                 loading="lazy"
+                                 satellite="true"
+                                 lang="fr">
+                         </iframe>
+
+                     </article>
+
+         </div>
+
+ 
+ {# ********************************************************************* #}   
+
+         {# ! TEST ! #}
+ 
+             <div class="col-md-5 col-lg-4 order-md-last">
+
+                 {# *** Titre *** #}
+
+                     <h4 class="d-flex justify-content-between align-items-center mb-3">
+                         <span class="text-muted"> A personnaliser  </span>
+                         <span class="badge bg-secondary rounded-pill"> 3 </span>
+                     </h4>
+ 
+                         {# *** Début Liste *** #}
+
+                             <ul class="list-group mb-3">
+
+                                 {# *** Liste partie n° 1: a *** #}
+
+                                     <li class="list-group-item d-flex justify-content-between lh-sm">
+
+                                         <div>
+
+                                             <h6 class="my-0"> A personnaliser </h6>                                                                                           
+                                             <small class="text-muted"> A personnaliser </small>
+
+                                         </div>
+
+                                         <span class="text-muted"> $12 </span>
+
+                                     </li>
+
+                                 {# *** Liste partie n° 1: b *** #}
+
+                                     <li class="list-group-item d-flex justify-content-between lh-sm">
+
+                                         <div>
+
+                                             <h6 class="my-0"> A personnaliser </h6>
+                                             <small class="text-muted"> A personnaliser </small>
+
+                                         </div>
+
+                                         <span class="text-muted"> $8 </span>
+
+                                     </li>
+
+                                 {# *** Liste partie n° 1: c *** #}
+
+                                     <li class="list-group-item d-flex justify-content-between lh-sm">
+
+                                         <div>
+
+                                             <h6 class="my-0"> A personnaliser </h6>
+                                             <small class="text-muted"> A personnaliser </small>
+
+                                         </div>
+
+                                         <span class="text-muted"> $5 </span>
+
+                                     </li>
+
+                                 {# *** Liste Partie 2: a *** #}
+
+                                     <li class="list-group-item d-flex justify-content-between bg-light">
+
+                                         <div class="text-success">
+
+                                             <h6 class="my-0"> A personnaliser  </h6>
+                                             <small> EXAMPLECODE </small>
+
+                                         </div>
+
+                                         <span class="text-success"> -$5 </span>
+
+                                     </li>
+ 
+                                 {# *** Liste Partie 2: b *** #}
+
+                                     <li class="list-group-item d-flex justify-content-between">
+
+                                         <span> A personnaliser (USD)</span>
+                                         <strong> $20 </strong>
+
+                                     </li>
+
+                             </ul>
+
+                             {# *** Liste Partie 3 *** #}
+
+                             <form class="card p-2">
+
+                                 <div class="input-group">
+
+                                     <input type="text" class="form-control" placeholder="A personnaliser ">
+
+                                         <button type="submit" class="btn btn-secondary">
+                                             A personnaliser 
+                                         </button>
+
+                                 </div>
+
+                             </form>
+
+                         </div>
+
+ {# ********************************************************************* #}  
+
+     {# ! TEST TARIFS / PRICING ! #}
+
+         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+         
+             {# *** Partie: Heure de studio avec ingénieur du son *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Heure de studio avec ingénieur du son </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €25.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
 
                          </div>
 
                      </div>
-                  
-             </article>
 
+                 </div>
 
+             {# *** Partie: Mixage à distance *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Mixage à distance </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €50.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Mastering stéréo *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Mastering stéréo </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €30.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Sortie digitale single *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Sortie digitale single </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €30.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Sortie album digitale *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Sortie album digitale </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €50.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Création de pochette *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                           <h4 class="my-0 fw-normal"> Création de pochette </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €80.00 </h1>
+                              
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Clip (tournage + montage) *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                           <h4 class="my-0 fw-normal"> Clip (tournage + montage) </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €250.00 </h1>
+                              
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             {# *** Partie: Clip (tournage OPTION DRONE + montage) *** #}
+
+                 <div class="col">
+
+                     <div class="card mb-4 rounded-3 shadow-sm">
+
+                         <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal"> Clip (tournage OPTION DRONE + montage) </h4>
+                         </div>
+
+                         <div class="card-body">
+
+                             <h1 class="card-title pricing-card-title"> €350.00 </h1>
+                           
+                                 <button type="button" class="w-100 btn btn-lg btn-primary">
+                                     Achat immédiat
+                                 </button>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+         </div>
+
+ {# ********************************************************************* #}   
 
      {% endblock %}
+
+         {# 
+             <div class="container">
+
+                 <div style="text-align:center">
+
+                     <h2> Contact Us </h2>
+
+                         <p> 
+                            Pour faire une demande de réservations, ou simplement nous laisser un message:                      
+                         </p>
+
+                 </div>
+
+                 <div class="row">
+
+                     <div class="column">
+                       <img src="/w3images/map.jpg" style="width:100%">
+                     </div>
+
+                     <div class="column">
+
+                         <form action="/action_page.php">
+
+                             <label for="pseudo"> Pseudo </label>
+                             <input type="text" id="pseudo" name=" Pseudo " placeholder="Votre Pseudo...">
+
+                             <label for="email"> Email </label>
+                             <input type="text" id="email" name=" Email " placeholder="Votre Email...">
+
+                             <label for="sujet"> Sujet: </label>
+                             <textarea id="sujet" name="Sujet" placeholder="Le sujet de votre message" style="height:170px"></textarea>
+                             
+                             <input type="submit" value="Submit"> 
+
+                             
+                                 <label for="country"> Pays </label>
+                                 <input type="text" id="pays" name="Pays" placeholder="Your last name..">
+                                 
+                                     <select id="country" name="country">                          
+                                         <option value="australia"> Australia </option>
+                                         <option value="canada"> Canada </option>
+                                         <option value="usa"> USA </option>                      
+                                     </select>
+                            
+    
+                         </form>
+
+                     </div>
+
+                 </div>
+
+             </div> 
+
+         #}
+
 
 
      
