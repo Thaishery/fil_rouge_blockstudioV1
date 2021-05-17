@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Projet;
 use App\Entity\User;
 use App\Form\SearchProjetType;
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\Paginator;
@@ -19,7 +20,7 @@ class ArtistesController extends AbstractController
     /**
      * @Route("/artistes", name="artistes")
      */
-    public function index(PaginatorInterface $paginator, Request $request, UserRepository $userRepository, ServicesRepository $services): Response
+    public function index(PaginatorInterface $paginator, Request $request, UserRepository $userRepository, ServicesRepository $services, ContactRepository $contacts): Response
     {
         // $search_form = $this->createForm(SearchProjetType::class);
         // $search_form -> handleRequest($request);
@@ -51,6 +52,7 @@ class ArtistesController extends AbstractController
             'controller_name' => 'ArtistesController',
             'users' => $userList,
             'services' =>$services->findAll(),
+            'contacts' => $contacts->findAll(),
             // 'form' => $search_form -> createView(),
         ]);
     }

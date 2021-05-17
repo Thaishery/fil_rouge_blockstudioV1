@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\UserTypeEdit;
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use App\Service\AvatarFileUploader;
@@ -33,18 +34,19 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository,ServicesRepository $services): Response
+    public function index(UserRepository $userRepository,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function new(Request $request,AvatarFileUploader $avatarFileUploader, UserPasswordEncoderInterface $passwordEncoder,ServicesRepository $services): Response
+    public function new(Request $request,AvatarFileUploader $avatarFileUploader, UserPasswordEncoderInterface $passwordEncoder,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -79,17 +81,19 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      */
-    public function show(User $user,ServicesRepository $services): Response
+    public function show(User $user,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('user/show.html.twig', [
             'user' => $user,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
@@ -97,7 +101,7 @@ class UserController extends AbstractController
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
      //public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
-    public function edit(Request $request,AvatarFileUploader $fileUploader, User $user,ServicesRepository $services): Response
+    public function edit(Request $request,AvatarFileUploader $fileUploader, User $user,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $form = $this->createForm(UserTypeEdit::class, $user);
         $form->handleRequest($request);
@@ -124,12 +128,14 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('user_index',[
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
         }
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -137,7 +143,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, User $user,ServicesRepository $services): Response
+    public function delete(Request $request, User $user,ServicesRepository $services, ContactRepository $contacts): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -147,6 +153,7 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index',[
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 }

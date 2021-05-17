@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Home;
 use App\Form\HomeType;
+use App\Repository\ContactRepository;
 use App\Repository\HomeRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,18 +23,19 @@ class HomeControllerAdmin extends AbstractController
     /**
      * @Route("/", name="home_index", methods={"GET"})
      */
-    public function index(HomeRepository $homeRepository,ServicesRepository $services): Response
+    public function index(HomeRepository $homeRepository,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('home/indexAdmin.html.twig', [
             'homes' => $homeRepository->findAll(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/new", name="home_new", methods={"GET","POST"})
      */
-    public function new(Request $request,ServicesRepository $services): Response
+    public function new(Request $request,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $home = new Home();
         $form = $this->createForm(HomeType::class, $home);
@@ -46,6 +48,7 @@ class HomeControllerAdmin extends AbstractController
 
             return $this->redirectToRoute('home_index', [
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
         }
 
@@ -53,24 +56,26 @@ class HomeControllerAdmin extends AbstractController
             'home' => $home,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="home_show", methods={"GET"})
      */
-    public function show(Home $home,ServicesRepository $services): Response
+    public function show(Home $home,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('home/show.html.twig', [
             'home' => $home,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="home_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Home $home,ServicesRepository $services): Response
+    public function edit(Request $request, Home $home,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $form = $this->createForm(HomeType::class, $home);
         $form->handleRequest($request);
@@ -80,6 +85,7 @@ class HomeControllerAdmin extends AbstractController
 
             return $this->redirectToRoute('home_index', [
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
         }
 
@@ -87,13 +93,14 @@ class HomeControllerAdmin extends AbstractController
             'home' => $home,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="home_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Home $home,ServicesRepository $services): Response
+    public function delete(Request $request, Home $home,ServicesRepository $services, ContactRepository $contacts): Response
     {
         if ($this->isCsrfTokenValid('delete'.$home->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -103,6 +110,7 @@ class HomeControllerAdmin extends AbstractController
 
         return $this->redirectToRoute('home_index', [
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 }

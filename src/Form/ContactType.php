@@ -17,14 +17,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-         {
-             $builder
-                 ->add('login')            
-                 ->add('email', EmailType::class); 
-                //  ->add('long_desc', CKEditorType::class, array(
-                //     'label' => 'Description longue',
-                //  ))                    
-         }
+    {
+        $builder
+            ->add('title')
+            ->add('picture')
+            ->add('short_desc')
+            ->add('long_desc')
+        ;
+    }
 
     public function configureOptions(OptionsResolver $resolver)
     {

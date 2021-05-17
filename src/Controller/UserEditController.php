@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\UserTypeEditCurrent;
 use App\Form\UserType;
 use App\Form\UserTypeEdit;
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use App\Repository\UserRepository;
 use App\Service\AvatarFileUploader;
@@ -23,7 +24,7 @@ class UserEditController extends AbstractController
      * @Route("user/{id}/edit", name="user_edit_current", methods={"GET","POST"})
      */
      //public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
-     public function edit(Request $request,AvatarFileUploader $fileUploader, User $user, int $id,ServicesRepository $services): Response
+     public function edit(Request $request,AvatarFileUploader $fileUploader, User $user, int $id,ServicesRepository $services, ContactRepository $contacts): Response
      {
          $form = $this->createForm(UserTypeEditCurrent::class, $user);
          $form->handleRequest($request);
@@ -52,6 +53,7 @@ class UserEditController extends AbstractController
  
              return $this->redirectToRoute('home',[
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
                 
              ]);
          }

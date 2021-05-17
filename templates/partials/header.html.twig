@@ -28,11 +28,13 @@
                              {# ? _JC : Ont pourrais donner la possibilité au gens de rajouter une photo de profil #}
                              {# ? qui viendrait s'afficher à la place du carré bleu #}
 
-                             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                             {# <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                                  <title> Placeholder </title>
                                  <rect width="100%" height="100%" fill="#007bff"> </rect>
                                  <text x="50%" y="50%" fill="#007bff" dy=".3em"> 32x32 </text>                                                      
-                             </svg>
+                             </svg> #}
+                             
+                             <img class="bd-placeholder-img flex-shrink-0 me-2 rounded avatarHeader" src="{{asset ('uploads/avatar/')}}{{app.user.avatar}}"/>
 
                                  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 
@@ -43,14 +45,18 @@
                                              <strong class="text-gray-dark">
                                                  {# Full Name #}
                                                  {# <i class="bi bi-person-circle"></i> #}
-                                                 {{app.user.login}}
+                                                 {% if app.user.firstname %}
+                                                 {{app.user.firstname}}
+                                                 {% else %}
+                                                 bienvenue
+                                                 {% endif %}
                                              </strong>
 
                                          </div>
 
                                      {# ? Possiblité de rajouter un pseudo en plus éventuellement en dessous du nom classique #}
                                          <span class="d-block">
-                                             @pseudo                                          
+                                             @{{app.user.login}}                                         
                                          </span>
 
                                      {% endif %} <br/>
@@ -299,40 +305,23 @@
 
                                                  {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
                                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                                         {# {% for contact in contact_admin %}
-
-                                                             <li>
-                                                                 <a class="dropdown-item" href="{{path ("contact", {'id': contact.id})}}"> {{contact.title}} </a>
-                                                             </li>
+                                                     
+                                                            <li>
+                                                                <a class="dropdown-item" href="/contact/">Contact</a>
+                                                            </li>
                                                             
-                                                         {% endfor %} #}
-                                                             
-                                                             {# ! Pas fini. Reste encore à créer les controllers pour les nouvelles pages. ! #}
-                                                             {# !Il y a des path qui ne sont pas correct... C'est normal =) JC_ #}
+                                                                 {% for contact in contacts %}
 
-                                                             <li>
-                                                                 <a class="nav-link" href="{{path ("contact")}}"> Contact </a>     
-                                                             </li>
- 
-                                                             {# todo: créer les controller et les vues des nouvelles pages JC_ #}
+                                                                     <li>
+                                                                         {# <a class="dropdown-item" href="{{path ("contact_show", {'id': contact.id})}}"> {{contact.title}} </a> #}
+                                                                         <a class="dropdown-item" href="{{contact.id}}"> {{contact.title}} </a>
 
-                                                             <li>
-                                                                 <a class="nav-link" href="{{path ("contact")}}"> Tarifs </a>     
-                                                             </li>
+                                                                     </li> 
+                                                                                                                               
+                                                                 {% endfor %}
 
-                                                             <li>
-                                                                 <a class="nav-link" href="{{path ("contact")}}"> Réservations </a>     
-                                                             </li>
 
-                                                         {# {% endfor %} #}
-
-                                                     </ul>
-
-                                                 {# *** CONTACT *** #}
-                                                     {# <li class="nav-item">
-                                                         <a class="nav-link" href="{{path ("contact")}}"> Contact </a>                                    
-                                                     </li> #}
+                                                     </ul>                                              
  
                                              </li>    
 

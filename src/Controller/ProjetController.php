@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Projet;
 use App\Entity\User;
 use App\Form\ProjetType;
+use App\Repository\ContactRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\ServicesRepository;
 use App\Service\CoverFileUploader;
@@ -24,18 +25,19 @@ class ProjetController extends AbstractController
     /**
      * @Route("/", name="projet_index", methods={"GET"})
      */
-    public function index(ProjetRepository $projetRepository,ServicesRepository $services): Response
+    public function index(ProjetRepository $projetRepository,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('projet/index.html.twig', [
             'projets' => $projetRepository->findAll(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/new", name="projet_new", methods={"GET","POST"})
      */
-     public function new(Request $request, CoverFileUploader $coverFileUploader,ServicesRepository $services): Response
+     public function new(Request $request, CoverFileUploader $coverFileUploader,ServicesRepository $services, ContactRepository $contacts): Response
      {
         //  $user=$this->getUser();
          $projet = new Projet();
@@ -63,6 +65,7 @@ class ProjetController extends AbstractController
 
             return $this->redirectToRoute('projet_index',[
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
         }
 
@@ -70,24 +73,26 @@ class ProjetController extends AbstractController
             'projet' => $projet,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="projet_show", methods={"GET"})
      */
-    public function show(Projet $projet,ServicesRepository $services): Response
+    public function show(Projet $projet,ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('projet/show.html.twig', [
             'projet' => $projet,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="projet_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader,ServicesRepository $services): Response
+    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader,ServicesRepository $services, ContactRepository $contacts): Response
          {
          $form = $this->createForm(ProjetType::class, $projet);
          $form->handleRequest($request);
@@ -107,6 +112,7 @@ class ProjetController extends AbstractController
 
                  return $this->redirectToRoute('projet_index',[
                     'services' => $services->findAll(),
+                    'contacts' => $contacts->findAll(),
                  ]);
 
          }
@@ -115,13 +121,14 @@ class ProjetController extends AbstractController
             'projet' => $projet,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="projet_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Projet $projet,ServicesRepository $services): Response
+    public function delete(Request $request, Projet $projet,ServicesRepository $services, ContactRepository $contacts): Response
     {
         if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -131,6 +138,7 @@ class ProjetController extends AbstractController
 
         return $this->redirectToRoute('projet_index',[
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 

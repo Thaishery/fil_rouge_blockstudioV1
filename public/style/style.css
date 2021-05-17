@@ -140,6 +140,10 @@
              {
                  background-color: #f8f9fa!important;
              }
+        .avatarHeader{
+            height:32px;
+            width:32px;
+        }
 
  /* ************************************************** */            
 

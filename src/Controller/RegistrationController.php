@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use App\Security\AppAuthAuthenticator;
 use App\Service\AvatarFileUploader;
@@ -19,7 +20,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(AvatarFileUploader $avatarFileUploader,Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthAuthenticator $authenticator,ServicesRepository $services): Response
+    public function register(AvatarFileUploader $avatarFileUploader,Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthAuthenticator $authenticator,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -58,6 +59,7 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 }

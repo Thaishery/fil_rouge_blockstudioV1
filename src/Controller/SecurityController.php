@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, ServicesRepository $services): Response
+    public function login(AuthenticationUtils $authenticationUtils, ServicesRepository $services, ContactRepository $contacts): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -27,6 +28,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             'error' => $error,
             ]);
         // return $this->render('login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);

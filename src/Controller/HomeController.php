@@ -10,6 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use App\Entity\Home;
 use App\Form\HomeType;
+use App\Repository\ContactRepository;
 use App\Repository\HomeRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(HomeRepository $homeRepository, AuthenticationUtils $authenticationUtils, ServicesRepository $services): Response
+    public function index(HomeRepository $homeRepository, AuthenticationUtils $authenticationUtils, ServicesRepository $services, ContactRepository $contacts): Response
     {
     
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -31,6 +32,7 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'homes' => $homeRepository->findAll(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
         }
         

@@ -1,0 +1,54 @@
+ {% extends 'base.html.twig' %}
+
+
+     {% block metaTitle %}
+         " Contact "
+     {% endblock %}
+
+     {% block title %}
+         Contact
+     {% endblock %}
+
+
+     {% block body %}
+
+             <main class="container">
+
+                 <h1 class="h3 mb-3 font-weight-normal" id="h1_services_a"> Contact: {{ contact.title }} </h1>
+    
+                         <article class="row">
+    
+                             {# <div id="bloc_droite"> #}
+                             <section>
+    
+                                 <h3> {{ contact.shortDesc }} </h3>
+                                 
+                                     <div class ="homeShortDesc"> {% autoescape false %}{{ contact.longDesc }}{% endautoescape %} </div>
+                                     {# <p class ="homeShortDesc"> {{ service.shortDesc }} </p> #}
+                                      
+                             </section>
+    
+                             {# <div id="bloc_gauche"> #}
+                             <div>
+    
+                                 <figure>
+
+                                     <img class="mastering_picture" 
+                                          src="{{contact.picture}}"
+                                          alt="Photo/Image du service" 
+                                          width="100%" 
+                                          height="400px"                                  
+                                          style="border:0;"           
+                                     >
+
+                                 </figure>	
+    
+                             </div>   
+
+                         </article>
+
+                 </main>        
+
+     {% endblock %}
+
+

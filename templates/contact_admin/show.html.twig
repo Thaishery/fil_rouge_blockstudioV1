@@ -9,30 +9,30 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ contact.id }}</td>
+                <td>{{ contacte.id }}</td>
             </tr>
             <tr>
                 <th>Title</th>
-                <td>{{ contact.title }}</td>
+                <td>{{ contacte.title }}</td>
             </tr>
             <tr>
                 <th>Picture</th>
-                <td>{{ contact.picture }}</td>
+                <td>{{ contacte.picture }}</td>
             </tr>
             <tr>
                 <th>Short_desc</th>
-                <td>{{ contact.shortDesc }}</td>
+                <td>{{ contacte.shortDesc }}</td>
             </tr>
             <tr>
                 <th>Long_desc</th>
-                <td>{{ contact.longDesc }}</td>
+                <td>{{ contacte.longDesc }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('contact_admin_index') }}">back to list</a>
 
-    <a href="{{ path('contact_admin_edit', {'id': contact.id}) }}">edit</a>
+    <a href="{{ path('contact_admin_edit', {'id': contacte.id}) }}">edit</a>
 
     {{ include('contact_admin/_delete_form.html.twig') }}
 {% endblock %}

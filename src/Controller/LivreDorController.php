@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ContactRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,11 +13,12 @@ class LivreDorController extends AbstractController
     /**
      * @Route("/livre_dor", name="livre_dor")
      */
-    public function index(ServicesRepository $services): Response
+    public function index(ServicesRepository $services, ContactRepository $contacts): Response
     {
         return $this->render('livre_dor/index.html.twig', [
             'controller_name' => 'LivreDorController',
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 }

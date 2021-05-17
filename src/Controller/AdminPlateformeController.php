@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Plateforme;
 use App\Form\PlateformeType;
+use App\Repository\ContactRepository;
 use App\Repository\PlateformeRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,7 @@ class AdminPlateformeController extends AbstractController
     /**
      * @Route("/", name="plateforme_index_admin", methods={"GET"})
      */
-    public function index(PlateformeRepository $plateformeRepository, ServicesRepository $services): Response
+    public function index(PlateformeRepository $plateformeRepository, ServicesRepository $services, ContactRepository $contacts): Response
      {
          $user=$this->getUser();   
  
@@ -31,13 +32,14 @@ class AdminPlateformeController extends AbstractController
             //  'plateformes' => $plateformeRepository-> findBy(array('PlateformeUser'=>$user->getid())),     
             'plateformes' => $plateformeRepository-> findAll(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             ]);
      }
 
     /**
      * @Route("/new", name="plateforme_new_admin", methods={"GET","POST"})
      */
-     public function new(Request $request,  ServicesRepository $services ): Response
+     public function new(Request $request,  ServicesRepository $services, ContactRepository $contacts ): Response
      {
          $user=$this->getUser(); 
          $plateforme = new Plateforme();
@@ -54,7 +56,10 @@ class AdminPlateformeController extends AbstractController
 
              return $this->redirectToRoute('plateforme_index_admin',[
                  'login' => $user->getlogin(),
-                 'services' => $services->findAll(),]);
+                 'services' => $services->findAll(),
+                 'contacts' => $contacts->findAll(),
+                 ]);
+                 
          }
        
          return $this->render('plateforme/newAdmin.html.twig', [
@@ -62,24 +67,26 @@ class AdminPlateformeController extends AbstractController
              'plateforme' => $plateforme,
              'form' => $form->createView(),
              'services' => $services->findAll(),
+             'contacts' => $contacts->findAll(),
          ]);
      }
 
      /**
      * @Route("/{id}", name="plateforme_show_admin", methods={"GET"})
      */
-     public function show(Plateforme $plateforme, ServicesRepository $services): Response
+     public function show(Plateforme $plateforme, ServicesRepository $services, ContactRepository $contacts): Response
      {
          return $this->render('plateforme/show.html.twig', [
              'plateforme' => $plateforme,
              'services' => $services->findAll(),
+             'contacts' => $contacts->findAll(),
          ]);
      }
 
     /**
      * @Route("/{id}/edit", name="plateforme_edit_admin", methods={"GET","POST"})
      */
-    public function edit(Request $request, Plateforme $plateforme, ServicesRepository $services): Response
+    public function edit(Request $request, Plateforme $plateforme, ServicesRepository $services, ContactRepository $contacts): Response
     {
         $form = $this->createForm(PlateformeType::class, $plateforme);
         $form->handleRequest($request);
@@ -89,6 +96,7 @@ class AdminPlateformeController extends AbstractController
 
             return $this->redirectToRoute('plateforme_index_admin',[
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
         }
 
@@ -96,13 +104,14 @@ class AdminPlateformeController extends AbstractController
             'plateforme' => $plateforme,
             'form' => $form->createView(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
         ]);
     }
 
-    /**
+    /**c
      * @Route("/{id}", name="plateforme_delete_admin", methods={"DELETE"})
      */
-    public function delete(Request $request, Plateforme $plateforme, User $user, ServicesRepository $services): Response
+    public function delete(Request $request, Plateforme $plateforme, User $user, ServicesRepository $services, ContactRepository $contacts): Response
     {
         $user = $this->getUser();
         if ($this->isCsrfTokenValid('delete'.$plateforme->getId(), $request->request->get('_token'))) {
@@ -114,6 +123,7 @@ class AdminPlateformeController extends AbstractController
         return $this->redirectToRoute('plateforme_index_admin',[
             'login' => $user->getlogin(),
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             ]);
     }
 }

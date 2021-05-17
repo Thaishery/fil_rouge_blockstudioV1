@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\User;
 use App\Entity\Projet;
 use App\Form\ProjetTypeUser;
 use App\Form\SearchProjetType;
+use App\Repository\ContactRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\ServicesRepository;
 use Symfony\Component\HttpFoundation\File\File;
@@ -34,7 +36,7 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/", name="projet_index_user", methods={"GET"})
      */
-    public function index(ProjetRepository $projetRepository,User $user, string $login,ServicesRepository $services): Response
+    public function index(ProjetRepository $projetRepository,User $user, string $login,ServicesRepository $services, ContactRepository $contacts): Response
     {
          //$id=$this->getUser()->getid();
          $user=$this->getUser();
@@ -43,6 +45,7 @@ class ProjetControllerUser extends AbstractController
              // 'login' => $login,
              'user' => $user,
              'services' => $services->findAll(),
+             'contacts' => $contacts->findAll(),
              'projets' => $projetRepository->findBy(array('createur'=>$user->getid())),
          ]);
      }
@@ -50,7 +53,7 @@ class ProjetControllerUser extends AbstractController
      /**
      * @Route("/new", name="projet_new_user", methods={"GET","POST"})
      */
-     public function new(Request $request, User $user, CoverFileUploader $coverFileUploader,ServicesRepository $services): Response
+     public function new(Request $request, User $user, CoverFileUploader $coverFileUploader,ServicesRepository $services, ContactRepository $contacts): Response
      {
          //GD_ ajout de l'utilisateur
          $user=$this->getUser();
@@ -82,6 +85,7 @@ class ProjetControllerUser extends AbstractController
                  return $this->redirectToRoute('projet_index_user',[
                      'login' => $user->getlogin(),
                      'services' => $services->findAll(),
+                     'contacts' => $contacts->findAll(),
                      ] );
 
              }
@@ -90,6 +94,7 @@ class ProjetControllerUser extends AbstractController
                      'user' => $user,
                      'projet' => $projet,
                      'services' => $services->findAll(),
+                     'contacts' => $contacts->findAll(),
                      'form' => $form->createView(),
                  ]);
      }
@@ -100,7 +105,7 @@ class ProjetControllerUser extends AbstractController
      *  @Route("/search_projet_user", name="projet_search_user")
      */
 
-    public function searchProjet (ProjetRepository $projetRepository, PaginatorInterface $paginator, Request $request,User $user,ServicesRepository $services)
+    public function searchProjet (ProjetRepository $projetRepository, PaginatorInterface $paginator, Request $request,User $user,ServicesRepository $services, ContactRepository $contacts)
     {
         $user= $this->getUser();
         $search_form = $this->createForm(SearchProjetType::class);
@@ -121,6 +126,7 @@ class ProjetControllerUser extends AbstractController
                     // 'login' => $login,
                     'user' => $user,
                     'services' => $services->findAll(),
+                    'contacts' => $contacts->findAll(),
                     'projets' => $projetList,
                 ]);
              }
@@ -130,6 +136,7 @@ class ProjetControllerUser extends AbstractController
             'login' => $user->getlogin(),
             'user' => $user,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             'form' => $search_form -> createView(),
        ]);
 
@@ -138,12 +145,13 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/{id}", name="projet_show_user", methods={"GET"})
      */
-    public function show(Projet $projet,ServicesRepository $services): Response
+    public function show(Projet $projet,ServicesRepository $services, ContactRepository $contacts): Response
     {
         $user=$this->getUser();
         return $this->render('projet/showUser.html.twig', [
             'user' => $user,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             'projet' => $projet,
         ]);
     }
@@ -151,7 +159,7 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/{id}/edit", name="projet_edit_user", methods={"GET","POST"})
      */
-    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader,ServicesRepository $services ): Response
+    public function edit(Request $request, Projet $projet, CoverFileUploader $fileUploader,ServicesRepository $services, ContactRepository $contacts ): Response
     {
         $user = $this ->getUser();
         $form = $this ->createForm(ProjetTypeUser::class, $projet);
@@ -172,6 +180,7 @@ class ProjetControllerUser extends AbstractController
             return $this->redirectToRoute('projet_index_user', [
                 'login' => $user->getlogin(),
                 'services' => $services->findAll(),
+                'contacts' => $contacts->findAll(),
             ]);
              
         }
@@ -179,6 +188,7 @@ class ProjetControllerUser extends AbstractController
         return $this->render('projet/editUser.html.twig', [
             'projet' => $projet,
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
             'form' => $form->createView(),
             
         ]);
@@ -187,7 +197,7 @@ class ProjetControllerUser extends AbstractController
     /**
      * @Route("/{id}", name="projet_delete_user", methods={"DELETE"})
      */
-     public function delete(Request $request, Projet $projet,ServicesRepository $services): Response
+     public function delete(Request $request, Projet $projet,ServicesRepository $services, ContactRepository $contacts): Response
      {
          $user = $this ->getUser();
          if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
@@ -199,6 +209,7 @@ class ProjetControllerUser extends AbstractController
          return $this->redirectToRoute('projet_index_user',[
              'login' => $user->getlogin(),
              'services' => $services->findAll(),
+             'contacts' => $contacts->findAll(),
              ]);
      }
 
