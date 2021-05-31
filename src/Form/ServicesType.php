@@ -18,7 +18,9 @@ class ServicesType extends AbstractType
     {
         $builder
             ->add('carousel_rank')
+
             ->add('title')
+            
             ->add('picture',
                  FileType::class, [
                      'constraints' => [
@@ -32,9 +34,9 @@ class ServicesType extends AbstractType
                                  'image/svg+xml',
                                  'image/tiff',
                                  'image/webp',
-                                 ]
-                             ])
-                             ],
+                             ]
+                        ])
+                     ],
                          'required'   => false,
                          // 'data_class' => null,
                          'mapped' => false,

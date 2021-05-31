@@ -11,65 +11,71 @@
 
      {% block body %}
 
-         <h1 class="h3 mb-3 font-weight-normal"> Gestion des utilisateurs </h1>
+         <div class="example-wrapper">
 
-             <table class="table table-dark table-hover">
+             <h1 class="h3 mb-3 font-weight-normal"> Gestion des utilisateurs </h1>
 
-                 <thead class="thead-light">
+                 <table class="table table-dark table-hover">
 
-                     <tr>
-                         <th> Id </th>       
-                         <th> Pseudo </th>
-                         <th> Nom </th>
-                         <th> Prénom </th>
-                         <th> Addresse </th>
-                         <th> Téléphone </th>
-                         <th> Email </th>
-                         <th> Avatar </th>
-                         <th> Roles </th>
-                         <th> Actions </th>
-                     </tr>
-
-                 </thead>
-
-                 <tbody>
-
-                     {% for user in users %}
+                     <thead class="thead-light">
 
                          <tr>
-                             <td>{{ user.id }}</td>
-                             <td>{{ user.login }}</td>
-                             <td>{{ user.lastname }}</td>
-                             <td>{{ user.firstname }}</td>
-                             <td>{{ user.address }}</td>
-                             <td>{{ user.phone }}</td>
-                             <td>{{ user.email }}</td>     
-                             <td>{{ user.avatar }}</td>
-                             <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-
-                                 <td>
-
-                                     <a class="btn btn-outline-primary" href="{{ path('user_show', {'id': user.id}) }}"> Voir </a>
-                                     <a class="btn btn-outline-primary" href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
-
-                                 </td>
-
+                             <th> Id </th>       
+                             <th> Pseudo </th>
+                             <th> Nom </th>
+                             <th> Prénom </th>
+                             <th> Addresse </th>
+                             <th> Téléphone </th>
+                             <th> Email </th>
+                             <th> Avatar </th>
+                             <th> Roles </th>
+                             <th> Actions </th>
                          </tr>
 
-                     {% else %}
+                     </thead>
 
-                         <tr>
-                             <td colspan="11"> Aucun résultat </td>
-                         </tr>
+                     <tbody>
 
-                     {% endfor %}
+                         {% for user in users %}
 
-                 </tbody>
+                             <tr>
+                                 <td>{{ user.id }}</td>
+                                 <td>{{ user.login }}</td>
+                                 <td>{{ user.lastname }}</td>
+                                 <td>{{ user.firstname }}</td>
+                                 <td>{{ user.address }}</td>
+                                 <td>{{ user.phone }}</td>
+                                 <td>{{ user.email }}</td>     
+                                 <td>{{ user.avatar }}</td>
+                                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
 
-             </table>
+                                     <td>
 
-                 <button class="btn btn-primary btn-lg btn-block">
-                     <a href="{{ path('user_new') }}"> Créer un nouvel utilisateur </a>
-                 </button>
+                                         <a class="btn btn-outline-primary" href="{{ path('user_show', {'id': user.id}) }}"> Voir </a>
+                                         <a class="btn btn-outline-primary" href="{{ path('user_edit', {'id': user.id}) }}"> Modifier </a>
+
+                                     </td>
+
+                             </tr>
+
+                         {% else %}
+
+                             <tr>
+                                 <td colspan="11"> Aucun résultat </td>
+                             </tr>
+
+                         {% endfor %}
+
+                     </tbody>
+
+                 </table>
+
+                     <button class="btn btn-primary btn-lg btn-block">
+                         <a href="{{ path('user_new') }}"> Créer un nouvel utilisateur </a>
+                     </button>
+
+         </div>
+
+         <br/>
 
  {% endblock %}

@@ -9,27 +9,59 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
-class HomeType extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title')
-            ->add('picture')
-            ->add('short_desc')
+     class HomeType extends AbstractType {
+    
+         public function buildForm(FormBuilderInterface $builder, array $options) {
+            $builder
+                ->add('title')
+    
+                 ->add('picture',
+                     FileType::class, [
+                         'constraints' => [
+                             new File([
+                                 'maxSize' => '1024k',
+                                 'mimeTypes' => [
+    
+                                     'image/jpeg',
+                                     'image/bmp',
+                                     'image/gif',
+                                     'image/png',
+                                     'image/svg+xml',
+                                     'image/tiff',
+                                     'image/webp',
+    
+                                 ]
+    
+                             ])
+    
+                         ],
+    
+                             'required'   => false,
+                             // 'data_class' => null,
+                             'mapped' => false,
+                     ]
+                 )
+    
+                 ->add('short_desc')
+    
+                 ->add('long_desc', CKEditorType::class, array (
 
-            ->add('long_desc', CKEditorType::class, array(
-                'label' => 'Description longue',
-             ))
+                     'label' => 'Description longue',
+                     
+                 ))
+    
+                 ->add('is_active');
 
-            ->add('is_active')
-        ;
-    }
+         }
+    
+         public function configureOptions(OptionsResolver $resolver) {
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Home::class,
-        ]);
-    }
-}
+                 $resolver->setDefaults ( [
+
+                     'data_class' => Home::class,
+
+                 ]);
+
+         }
+
+     }
