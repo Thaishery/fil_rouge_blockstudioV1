@@ -38,9 +38,9 @@
                              <tr>                             
                                  <td> {{ service.id }} </td>
                                  <td> {{ service.title }} </td>
-                                 <td> {{ service.picture }} </td>
+                                 <td> {{ service.picture ? 'oui' : 'non' }} </td>
                                  <td> {{ service.shortDesc }} </td>
-                                 <td> {{ service.longDesc }} </td>
+                                 <td> {{ service.longDesc|length > 30 ? service.longDesc|slice(0,30)~'...' : service.longDesc}} </td>
                                  <td> {{ service.carouselRank }} </td>                    
 
                                      <td>
@@ -66,6 +66,10 @@
                          <a href="{{ path('services_new') }}"> Créer un nouveau service </a>
                      </button>
    
+                 
+                 
+
+
          </div>
 
          <br/>

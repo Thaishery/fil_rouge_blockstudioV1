@@ -1,110 +1,127 @@
  {{ form_start(form) }}
 
-     <div class="container">
+     <div class="px-4 py-5 my-5 text-center"> 
+     
+         <div class="container">
+     
+             <div class="row">
+            
+                 {# *** RANK DU SERVICE *** #}
 
-         <div class="row">
-        
-             {# *** RANK DU SERVICE *** #}
-                 <div class="carousel_rank row">
-
-                     <div class="carousel_rankLabel">
-                         {{form_label(form.carousel_rank, 'Position dans le carousel (rank):')}}
+                     <div class="carousel_rank row">
+     
+                         <div class="carousel_rankLabel">
+                             {{form_label(form.carousel_rank, 'Position dans le carousel (rank):')}}
+                         </div>
+     
+                         <div class="carousel_rankInput">
+                             {{form_widget(form.carousel_rank,{
+                                 'attr':{'placeholder':'Entrer le rang de cet élément dans le carousel de la page d\acceuil'}
+                             })}}
+                         </div>
+     
+                         <div class="carousel_rankError">
+                             {{form_errors(form.carousel_rank)}}
+                         </div>
+     
                      </div>
+     
+                 {# *** TITRE DU SERVICE *** #}
 
-                     <div class="carousel_rankInput">
-                         {{form_widget(form.carousel_rank,{
-                             'attr':{'placeholder':'Entrer le rang de cet élément dans le carousel de la page d\acceuil'}
-                         })}}
+                     <div class="title row">
+     
+                         <div class="titleLabel">
+                             {{form_label(form.title, 'Titre du service:')}}
+                         </div>
+     
+                         <div class="titleInput">
+                             {{form_widget(form.title,{
+                                 'attr':{'placeholder':'Entrer le titre du projet'}
+                             })}}
+                         </div>
+     
+                         <div class="titleError">
+                             {{form_errors(form.title)}}
+                         </div>
+     
                      </div>
+     
+                 {# *** IMAGE DU SERVICE *** #}
 
-                     <div class="carousel_rankError">
-                         {{form_errors(form.carousel_rank)}}
-                     </div>
+                     <div class="picture row">
+     
+                         <div class="pictureLabel">
+                             {{form_label(form.picture, 'Image du service:')}}
+                         </div>
+     
+                         <div class="pictureInput">
+                             {{form_widget(form.picture,{
+                                 'attr':{'placeholder':'Veuillez téléverser l\'image du service'}
+                             })}}
+                         </div>
+     
+                         <div class="pictureError">
+                             {{form_errors(form.picture)}}
+                         </div>
+     
+                     </div>  
+     
+                 {# *** DESCRIPTION COURTE DU SERVICE *** #}
 
-                 </div>
-
-             {# *** TITRE DU SERVICE *** #}
-                 <div class="title row">
-
-                     <div class="titleLabel">
-                         {{form_label(form.title, 'Titre du service:')}}
-                     </div>
-
-                     <div class="titleInput">
-                         {{form_widget(form.title,{
-                             'attr':{'placeholder':'Entrer le titre du projet'}
-                         })}}
-                     </div>
-
-                     <div class="titleError">
-                         {{form_errors(form.title)}}
-                     </div>
-
-                 </div>
-
-             {# *** IMAGE DU SERVICE *** #}
-                 <div class="picture row">
-
-                     <div class="pictureLabel">
-                         {{form_label(form.picture, 'Image du service:')}}
-                     </div>
-
-                     <div class="pictureInput">
-                         {{form_widget(form.picture,{
-                             'attr':{'placeholder':'Veuillez téléverser l\'image du service'}
-                         })}}
-                     </div>
-
-                     <div class="pictureError">
-                         {{form_errors(form.picture)}}
-                     </div>
-
-                 </div>  
-
-             {# *** DESCRIPTION COURTE DU SERVICE *** #}
-                <div class="title row">
-
-                    <div class="short_descLabel">
-                        {{form_label(form.short_desc, 'Description courte:')}}
+                    <div class="title row">
+     
+                        <div class="short_descLabel">
+                            {{form_label(form.short_desc, 'Description courte:')}}
+                        </div>
+     
+                        <div class="short_descInput">
+                            {{form_widget(form.short_desc,{
+                                'attr':{'placeholder':'Entrer une description courte du service, elle apparaitra a droite de l\'image'}
+                            })}}
+                        </div>
+     
+                        <div class="short_descError">
+                            {{form_errors(form.short_desc)}}
+                        </div>
+     
                     </div>
+     
+                 {# *** DESCRIPTION LONGUE DU SERVICE  *** #}
 
-                    <div class="short_descInput">
-                        {{form_widget(form.short_desc,{
-                            'attr':{'placeholder':'Entrer une description courte du service, elle apparaitra a droite de l\'image'}
-                        })}}
+                     <div class="long_desc row">
+     
+                         <div class="long_descLabel">
+                             {{form_label(form.long_desc, 'Description longue:')}}
+                         </div>
+     
+                         <div class="long_descInput">
+                             {{form_widget(form.long_desc,{
+                                 'attr':{'placeholder':'Entrer une description longue de service, elle apparaitra en dessous de l\'image '}
+                             })}}
+                         </div>
+     
+                         <div class="long_descError">
+                             {{form_errors(form.long_desc)}}
+                         </div>
+     
                     </div>
-
-                    <div class="short_descError">
-                        {{form_errors(form.short_desc)}}
-                    </div>
-
-                </div>
-
-             {# *** DESCRIPTION LONGUE DU SERVICE  *** #}
-                 <div class="long_desc row">
-
-                     <div class="long_descLabel">
-                         {{form_label(form.long_desc, 'Description longue:')}}
-                     </div>
-
-                     <div class="long_descInput">
-                         {{form_widget(form.long_desc,{
-                             'attr':{'placeholder':'Entrer une description longue de service, elle apparaitra en dessous de l\'image '}
-                         })}}
-                     </div>
-
-                     <div class="long_descError">
-                         {{form_errors(form.long_desc)}}
-                     </div>
-
-                </div>
-
+     
+             </div>
+     
          </div>
+     
+         <button class="btn btn-primary btn-lg btn-block">
+             {{ button_label|default('Sauvegarder') }}
+         </button>
+     
+         <br/>
 
-     </div>
+         <button class="btn btn-primary btn-lg btn-block">
+             <a href="{{ path('services_index') }}"> Revenir à la liste </a>
+         </button>
 
-     <button class="btn btn-primary btn-lg btn-block">
-         {{ button_label|default('Sauvegarder') }}
-     </button>
+     </div>  
 
  {{ form_end(form) }}
+
+ {# !!! J'ai importer le bouton ' revenir à la liste ' sur cette page car Et je l'ai commenté sur le 'services/new.twig', pour pouvoir tout regrouper sur le form à voir si on laisse comme ca #}

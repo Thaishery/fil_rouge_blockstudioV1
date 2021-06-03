@@ -39,15 +39,19 @@
                          {% for user in users %}
 
                              <tr>
-                                 <td>{{ user.id }}</td>
-                                 <td>{{ user.login }}</td>
-                                 <td>{{ user.lastname }}</td>
-                                 <td>{{ user.firstname }}</td>
-                                 <td>{{ user.address }}</td>
-                                 <td>{{ user.phone }}</td>
-                                 <td>{{ user.email }}</td>     
-                                 <td>{{ user.avatar }}</td>
-                                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                 <td> {{ user.id }} </td>
+                                 <td> {{ user.login }} </td>
+                                 <td> {{ user.lastname }} </td>
+                                 <td> {{ user.firstname }} </td>
+                                 <td> {{ user.address }} </td>
+                                 <td> {{ user.phone |length > 10 ? user.phone |slice(0,10)~'...' : user.phone }} </td>
+                                 <td> {{ user.email }} </td>     
+                                 <td> {{ user.avatar ? 'oui' : 'non' }} </td>
+                                 <td>
+                                 {% autoescape false %} 
+                                 {{user.roles|json_encode() ? user.roles|json_encode|replace({',':', <br/>', 'ROLE_USER':'User', 'ROLE_ADMIN':'Admin', '[':'','"':'',']':''}) : ''}}
+                                 {% endautoescape %}
+                                 </td>
 
                                      <td>
 

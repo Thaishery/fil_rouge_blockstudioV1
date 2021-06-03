@@ -14,28 +14,28 @@
 
          <h1> Plateforme </h1>
      
-     <table class="table table-dark table-hover">
+             <table class="table table-dark table-hover">
 
-             <tbody>
+                 <tbody>
 
-                 <tr>
-                     <th> Id </th>
-                     <td> {{ plateforme.id }} </td>
-                 </tr>
+                     <tr>
+                         <th> Id </th>
+                         <td> {{ plateforme.id }} </td>
+                     </tr>
 
-                 <tr>
-                     <th> Nom </th>
-                     <td> {{ plateforme.name }} </td>
-                 </tr>
+                     <tr>
+                         <th> Nom </th>
+                         <td> {{ plateforme.name }} </td>
+                     </tr>
 
-                 <tr>
-                     <th> Lien </th>
-                     <td> {{ plateforme.link }} </td>
-                 </tr>
+                     <tr>
+                         <th> Lien </th>
+                         <td> {{ plateforme.link }} </td>
+                     </tr>
 
-             </tbody>
-             
-         </table>
+                 </tbody>
+                 
+             </table>
           
          <a class="btn btn-primary btn-lg btn-block" href="{{ path('plateforme_edit', {'id': plateforme.id, 'login': app.user.login}) }}"> Modifier </a>
 

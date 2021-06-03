@@ -14,10 +14,12 @@
 
          <h1 class="h3 mb-3 font-weight-normal"> Créer un nouvel utilisateur </h1>
 
-             <button class="btn btn-primary btn-lg btn-block">
-                 <a href="{{ path('user_index') }}"> Retour à la liste </a>                
-             </button> 
-
              {{ include('user/_form.html.twig') }}
+
+             {# <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('user_index') }}"> Retour à la liste </a>                
+             </button>  #}
+
+             <br/>
 
  {% endblock %}

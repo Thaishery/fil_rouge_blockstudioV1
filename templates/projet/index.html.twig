@@ -1,10 +1,8 @@
  {% extends 'base.html.twig' %}
 
-
      {% block metaTitle %}
          " Gestionnaire de projets "
      {% endblock %}
-
 
      {% block title %}
          Gestionnaire de projets
@@ -30,8 +28,7 @@
                          <th> Lien n°3 </th>
                          <th> Cover </th>
                          <th> Description </th>
-                         <th> Actions </th>
-                       
+                         <th> Actions </th>                      
                      </tr>
     
                  </thead>
@@ -40,31 +37,31 @@
 
                      {% for projet in projets %}
 
-                     <tr>
+                         <tr>
 
-                         <td> {{ projet.id }} </td>
-                         <td> {{ projet.createur.id }} </td> 
-                         <td> {{ projet.title }} </td>
-                         <td> {{ projet.years ? projet.years|date('Y-m-d') : '' }} </td>
-                         <td> {{ projet.nbOfTracks }} </td>
-                         <td> {{ projet.sample }} </td>
-                         <td> {{ projet.linkone }} </td>
-                         <td> {{ projet.linktwo }} </td>
-                         <td> {{ projet.linkthree }} </td>
-                         <td> {{ projet.cover }} </td>
-                         <td> {{ projet.description }} </td>
+                             <td> {{ projet.id }} </td>
+                             <td> {{ projet.createur.id }} </td> 
+                             <td> {{ projet.title }} </td>
+                             <td> {{ projet.years ? projet.years|date('Y-m-d') : '' }} </td>
+                             <td> {{ projet.nbOfTracks }} </td>
+                             <td> {{ projet.sample }} </td>
+                             <td> {{ projet.linkone }} </td>
+                             <td> {{ projet.linktwo }} </td>
+                             <td> {{ projet.linkthree }} </td>
+                             <td> {{ projet.cover }} </td>
+                             <td> {{ projet.description }} </td>
 
-                             <td>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_show', {'id': projet.id}) }}"> Voir </a>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_edit', {'id': projet.id}) }}"> Modifier </a>
-                            </td>
+                                 <td>
+                                     <a class="btn btn-outline-primary" href="{{ path('projet_show', {'id': projet.id}) }}"> Voir </a>
+                                     <a class="btn btn-outline-primary" href="{{ path('projet_edit', {'id': projet.id}) }}"> Modifier </a>
+                                </td>
 
-                     </tr>
+                         </tr>
 
                      {% else %}
 
                          <tr>
-                            <td colspan="11"> Aucun résultat </td>
+                             <td colspan="11"> Aucun résultat </td>
                          </tr>
 
                      {% endfor %}
@@ -73,9 +70,11 @@
 
              </table>
 
-
              <button class="btn btn-primary btn-lg btn-block">
                  <a href="{{ path('projet_new') }}"> Créer un nouveau projet </a>
              </button>  
+
+         <br/>
+         <br/>
 
  {% endblock %}

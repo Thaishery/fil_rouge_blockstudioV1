@@ -50,6 +50,9 @@
                      /* width: 640px; */
                  }  
         
+        
+            
+          
              .TextFrame 
                  {
                      margin: 21px;              
@@ -139,7 +142,12 @@
          header
              {
                  background-color: #f8f9fa!important;
+
+                 /* dimension ? pour mobile */
+                 /* width: 375px;
+                 height: 47px; */
              }
+
         .avatarHeader{
             height:32px;
             width:32px;
@@ -349,10 +357,15 @@
 
          .mainsection
              { 
-                 /* margin-left: 20px; */
+                 margin-left: 20px;
                  margin-right: 20px;
                  min-height: 450px;
                  margin-top: 20px;
+
+                 /* position: absolute;
+                 height: 100%;
+                 width: 100%;
+                 display: block; */
              }
          
          .mainFrame
@@ -367,8 +380,10 @@
                  /* height: 613px; */
                  /* height: 853px; */
                  /* height: 690px; */
-                 height: 800px;
-                 background-image: url("../logoGrand.webp");
+                 /* height: 350px; */
+                 height: 100px;
+                 /* background-image: url("../logoGrand.webp"); */
+                 background-image: url("../Logo_md.png");
                  background-repeat: no-repeat;
                  background-position:center;
                  background-color: black;
@@ -883,4 +898,25 @@
 
  /* ************************************************** */ 
 
- 
+ /* style modale */
+ /*
+ .modal-open .modal {
+    margin: auto !important;
+    padding-top: 25% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+ } */
+
+ .modal-dialog{
+     max-width:100%;
+     max-height: 100%;
+     height: 75%;
+ }
+ .modal-content{
+     height: 100%;
+     width: 100%;
+ }
+ #loginStyle{
+     padding-top:8%;
+ }

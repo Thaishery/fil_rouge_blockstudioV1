@@ -64,10 +64,12 @@ class UserEditController extends AbstractController
              'user' => $user,
              'services' => $services->findAll(),
              'form' => $form->createView(),
+             'contacts' => $contacts->findAll(),
          ]);
          }
          return $this->render('user/forbiden.html.twig',[
             'services' => $services->findAll(),
+            'contacts' => $contacts->findAll(),
          ]);
      }
 }

@@ -1,23 +1,15 @@
-{# _GD copier depuis index.html pour fork les liens. lignes:  57,58,75  #}
+ {# _GD copier depuis index.html pour fork les liens. lignes:  57,58,75  #}
  {% extends 'base.html.twig' %}
-
 
      {% block metaTitle %}
          " Gestionnaire de projets "
      {% endblock %}
-
 
      {% block title %}
          Gestionnaire de projets
      {% endblock %}
 
      {% block body %}
-
-
-
-
-
-
 
          <h1 class="h3 mb-3 font-weight-normal"> Gestion des projets </h1>
 
@@ -26,8 +18,7 @@
                  <thead class="thead-light">
     
                      <tr>
-                         <th> Id </th>
-                         
+                         <th> Id </th>                   
                          <th> Titre </th>
                          <th> Année </th>
                          <th> Nombre de tracks  </th>
@@ -37,8 +28,7 @@
                          <th> Lien n°3 </th>
                          <th> Cover </th>
                          <th> Description </th>
-                         <th> Actions </th>
-                       
+                         <th> Actions </th>                    
                      </tr>
     
                  </thead>
@@ -47,25 +37,25 @@
 
                      {% for projet in projets %}
 
-                     <tr>
+                         <tr>
 
-                         <td> {{ projet.id }} </td>
-                         <td> {{ projet.title }} </td>
-                         <td> {{ projet.years ? projet.years|date('Y-m-d') : '' }} </td>
-                         <td> {{ projet.nbOfTracks }} </td>
-                         <td> {{ projet.sample }} </td>
-                         <td> {{ projet.linkone }} </td>
-                         <td> {{ projet.linktwo }} </td>
-                         <td> {{ projet.linkthree }} </td>
-                         <td> {{ projet.cover }} </td>
-                         <td> {{ projet.description }} </td>
+                             <td> {{ projet.id }} </td>
+                             <td> {{ projet.title }} </td>
+                             <td> {{ projet.years ? projet.years|date('Y-m-d') : '' }} </td>
+                             <td> {{ projet.nbOfTracks }} </td>
+                             <td> {{ projet.sample }} </td>
+                             <td> {{ projet.linkone }} </td>
+                             <td> {{ projet.linktwo }} </td>
+                             <td> {{ projet.linkthree }} </td>
+                             <td> {{ projet.cover }} </td>
+                             <td> {{ projet.description }} </td>
 
-                             <td>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_show_user', {'id': projet.id, 'login': app.user.login}) }}"> Voir </a>
-                                 <a class="btn btn-outline-primary" href="{{ path('projet_edit_user', {'id': projet.id, 'login': app.user.login}) }}"> Modifier </a>
-                            </td>
+                                 <td>
+                                     <a class="btn btn-outline-primary" href="{{ path('projet_show_user', {'id': projet.id, 'login': app.user.login}) }}"> Voir </a>
+                                     <a class="btn btn-outline-primary" href="{{ path('projet_edit_user', {'id': projet.id, 'login': app.user.login}) }}"> Modifier </a>
+                                </td>
 
-                     </tr>
+                         </tr>
 
                      {% else %}
 
@@ -79,6 +69,11 @@
 
              </table>
 
-             <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_new_user', {'login': app.user.login}) }}"> Créer un nouveau projet </a>
+             {# <a class="btn btn-primary btn-lg btn-block" href="{{ path('projet_new_user', {'login': app.user.login}) }}"> Créer un nouveau projet </a> #}
+
+             <button class="btn btn-primary btn-lg btn-block">
+                 <a href="{{ path('projet_new_user', {'login': app.user.login}) }}"> Créer un nouveau projet </a>
+             </button>  
+
 
  {% endblock %}

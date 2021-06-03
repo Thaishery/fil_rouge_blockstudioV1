@@ -23,10 +23,7 @@
 
                      {% if app.user %}
 
-                         <div class="d-flex text-muted pt-3">
- 
-                             {# ? _JC : Ont pourrais donner la possibilité au gens de rajouter une photo de profil #}
-                             {# ? qui viendrait s'afficher à la place du carré bleu #}
+                         <div class="d-flex  pt-3">          
 
                              {# <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                                  <title> Placeholder </title>
@@ -43,8 +40,7 @@
                                          <div class="d-flex justify-content-between">
 
                                              <strong class="text-gray-dark">
-                                                 {# Full Name #}
-                                                 {# <i class="bi bi-person-circle"></i> #}
+                                                 {# Full Name #}                                                
                                                  {% if app.user.firstname %}
                                                  {{app.user.firstname}}
                                                  {% else %}
@@ -69,22 +65,11 @@
 
                  </div> 
 
-
-
-
-
-
-
-
-
-
-
-
                      {# prévoir mise en place pour administration (gestion des roles) #}
                      {% if app.user %}
                 
                      {# ***** CONTENEUR ACCORDEON ***** #}
-                     <div class="accordion accordion-flush col-2" id="accordionFlushExample">
+                     <div class="accordion accordion-flush col-4" id="accordionFlushExample">
 
                      {# *** Partie: Interface d'administration *** #}                                          
                         {% if is_granted('ROLE_ADMIN') %} <br/>
@@ -112,27 +97,39 @@
                                                                  <ul>
             
                                                                      <li>
-                                                                         <a href="{{path ("home_index")}}" style="text-decoration:none"> Gestion de l'accueil </a><br/>     
+                                                                         <a href="{{path ("home_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-house-door-fill"></i>
+                                                                             Gestion de l'accueil </a><br/>     
                                                                      </li>  
             
                                                                      <li>
-                                                                        <a href="{{path ("services_index")}}" style="text-decoration:none"> Gestion des services </a> <br/>
+                                                                        <a href="{{path ("services_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-gear"></i>
+                                                                             Gestion des services </a> <br/>
                                                                      </li>
             
                                                                      <li>                                           
-                                                                         <a href="{{path ("user_index")}}" style="text-decoration:none"> Gestion des utilisateurs </a><br/>     
+                                                                         <a href="{{path ("user_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-people"></i>
+                                                                             Gestion des utilisateurs </a><br/>     
                                                                      </li>   
             
                                                                      <li>     
-                                                                         <a href="{{path ("projet_index")}}" style="text-decoration:none"> Gestion des projets </a>
+                                                                         <a href="{{path ("projet_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-folder"></i>
+                                                                             Gestion des projets </a>
                                                                      </li> 
 
                                                                      <li>
-                                                                        <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none"> Gestion des plateformes </a>
+                                                                         <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-globe2"></i>
+                                                                             Gestion des plateformes </a>
                                                                      </li>
 
                                                                      <li>
-                                                                        <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> Gestion des contacts </a>
+                                                                         <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> 
+                                                                             <i class="bi bi-info-square"></i>
+                                                                             Gestion des contacts </a>
                                                                      </li>  
             
                                                                  </ul>                                             

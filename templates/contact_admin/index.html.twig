@@ -1,41 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index{% endblock %}
 
-{% block body %}
-    <h1>Contact index</h1>
+     {% block metaTitle %}
+         " Gestionnaire de page contact  "
+     {% endblock %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Picture</th>
-                <th>Short_desc</th>
-                <th>Long_desc</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.id }}</td>
-                <td>{{ contact.title }}</td>
-                <td>{{ contact.picture }}</td>
-                <td>{{ contact.shortDesc }}</td>
-                <td>{{ contact.longDesc }}</td>
-                <td>
-                    <a href="{{ path('contact_admin_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_admin_edit', {'id': contact.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+     {% block title %}
+         Gestionnaire de page contact 
+     {% endblock %}
 
-    <a href="{{ path('contact_admin_new') }}">Create new</a>
-{% endblock %}
+     {% block body %}
+
+         <div class="example-wrapper">
+
+             <h1 class="h3 mb-3 font-weight-normal"> Gestionnaire de page contact </h1>
+
+                 <table class="table table-dark table-hover">
+
+                     <thead>
+
+                         <tr>
+                              <th> Id </th>
+                              <th> Titre </th>
+                              <th> Photo </th>
+                              <th> Courte description </th>
+                              <th> Longue description </th>
+                              <th> Actions </th>
+                          </tr>
+
+                     </thead>
+
+                     <tbody>
+
+                         {% for contact in contacts %}
+
+                             <tr>
+
+                                 <td> {{ contact.id }} </td>
+                                 <td> {{ contact.title }} </td>
+                                 <td> {{ contact.picture }} </td>
+                                 <td> {{ contact.shortDesc|length > 30 ? contact.shortDesc|slice(0,30)~'...' : contact.shortDesc}} </td>
+                                 <td> {{ contact.longDesc|length > 30 ? contact.longDesc|slice(0,30)~'...' : contact.longDesc}} </td>
+
+                                 <td>
+                                     <a class="btn btn-outline-primary" href="{{ path('contact_admin_show', {'id': contact.id}) }}"> Voir </a> <br/>   
+                                     <a class="btn btn-outline-primary" href="{{ path('contact_admin_edit', {'id': contact.id}) }}"> Modifier </a>
+                                 </td>
+                     
+                             </tr>
+
+                         {% else %}
+
+                             <tr>
+                                 <td colspan="7"> Aucun résultat </td>
+                             </tr>
+                             
+                         {% endfor %}
+
+                     </tbody>
+
+                 </table>
+
+                 <button class="btn btn-primary btn-lg btn-block">
+                     <a href="{{ path('contact_admin_new') }}"> Créer un nouvel article </a>
+                 </button>
+
+ 
+         </div>
+
+     {% endblock %}

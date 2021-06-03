@@ -2,7 +2,7 @@
 
 
      {% block metaTitle %}
-         " Gestionnaire de page d'accueil"
+         " Gestionnaire de page d'accueil "
      {% endblock %}
 
      {% block title %}
@@ -40,8 +40,8 @@
                                  <td> {{ home.id }} </td>
                                  <td> {{ home.title }} </td>
                                  <td> {{ home.picture }} </td>
-                                 <td> {{ home.shortDesc }} </td>
-                                 <td> {{ home.longDesc }} </td>
+                                 <td> {{ home.shortDesc|length > 30 ? home.shortDesc|slice(0,30)~'...' : home.shortDesc}} </td>
+                                 <td> {{ home.longDesc|length > 30 ? home.longDesc|slice(0,30)~'...' : home.longDesc}} </td>
                                  <td> {{ home.isActive ? 'Oui' : 'Non' }} </td>
 
                                      <td>
@@ -66,6 +66,14 @@
                  <button class="btn btn-primary btn-lg btn-block">
                      <a href="{{ path('home_new') }}"> Créer un nouvel article </a>
                  </button>
+
+                 
+                 {# <button class="buttonGlitch">
+                     <a href="{{ path('contact_admin_new') }}"> Créer un nouvel article </a>
+                 </button> #}
+
+                 
+
 
          </div>
 
