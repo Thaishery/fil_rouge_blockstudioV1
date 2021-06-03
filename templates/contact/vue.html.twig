@@ -21,14 +21,18 @@
                              {# <div id="bloc_droite"> #}
                              <section>
     
-                                 <h3> {{ contact.shortDesc }} </h3>
+                                 {# * Description courte * #}
+                                    <div class ="homeShortDesc col-6">
+                                        {% autoescape false %}{{ contact.shortDesc }}{% endautoescape %}
+                                    </div>
                                  
-                                     <div class ="homeShortDesc"> {% autoescape false %}{{ contact.longDesc }}{% endautoescape %} </div>
+                                     <div class ="homeLongDesc"> {% autoescape false %}{{ contact.longDesc }}{% endautoescape %} </div>
                                      {# <p class ="homeShortDesc"> {{ service.shortDesc }} </p> #}
                                       
                              </section>
     
                              {# <div id="bloc_gauche"> #}
+                             {% if contact.picture %}
                              <div>
     
                                  <figure>
@@ -44,6 +48,7 @@
                                  </figure>	
     
                              </div>   
+                             {% endif %}
 
                          </article>
 

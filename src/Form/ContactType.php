@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 // use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
@@ -22,7 +23,11 @@ class ContactType extends AbstractType
             ->add('title')
             ->add('picture')
             ->add('short_desc')
-            ->add('long_desc')
+            ->add('long_desc', CKEditorType::class, array (
+
+                'label' => 'Description longue',
+                
+            ))
         ;
     }
 

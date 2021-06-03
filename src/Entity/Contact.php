@@ -28,7 +28,7 @@ class Contact
     private $picture;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $short_desc;
 

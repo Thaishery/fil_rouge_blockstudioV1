@@ -190,16 +190,16 @@
 
                                                  {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
                                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                     
+{#                                                      
                                                             <li>
                                                                 <a class="dropdown-item" href="/contact/">Contact</a>
-                                                            </li>
+                                                            </li> #}
                                                             
                                                                  {% for contact in contacts %}
 
                                                                      <li>
                                                                          {# <a class="dropdown-item" href="{{path ("contact_show", {'id': contact.id})}}"> {{contact.title}} </a> #}
-                                                                         <a class="dropdown-item" href="{{contact.id}}"> {{contact.title}} </a>
+                                                                         <a class="dropdown-item" href="/contact/{{contact.id}}"> {{contact.title}} </a>
 
                                                                      </li> 
                                                                                                                                

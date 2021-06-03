@@ -30,10 +30,11 @@ class ContactAdminController extends AbstractController
     /**
      * @Route("/new", name="contact_admin_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ServicesRepository $services, ContactRepository $contacts, Contact $contacte): Response
+    public function new(Request $request, ServicesRepository $services, ContactRepository $contacts): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
+        // $form = $this->createForm(ContactType::class, $contacte);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,7 +49,7 @@ class ContactAdminController extends AbstractController
         }
 
         return $this->render('contact_admin/new.html.twig', [
-            'contacte' => $contacte,
+            'contacte' => $contact,
             'form' => $form->createView(),
             'services' =>$services->findAll(),
             'contacts' => $contacts->findAll(),
