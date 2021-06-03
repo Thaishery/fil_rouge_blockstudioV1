@@ -1,0 +1,85 @@
+<button type="button" class="btn btn-primary control-position" data-bs-toggle="modal" data-bs-target="#controlPanel">
+    <i class="bi bi-gear"></i><span class="mobileHide"> Gérer mon compte</span>
+</button>
+<div class="control-box modal fade" id="controlPanel" tabindex="-1" aria-labelledby="controlPanelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="controlPanelLabel">
+                    <i class="bi bi-gear"></i>
+                    Panneau de control
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div>
+                            interface Admin : 
+                            <ul>
+                                <li>
+                                     <a href="{{path ("home_index")}}" style="text-decoration:none">
+                                         <i class="bi bi-house-door-fill"></i>
+                                         Gestion de l'accueil </a><br/>     
+                                </li>  
+                                <li>
+                                    <a href="{{path ("services_index")}}" style="text-decoration:none">
+                                         <i class="bi bi-gear"></i>
+                                         Gestion des services </a> <br/>
+                                </li>
+                                <li>                                           
+                                     <a href="{{path ("user_index")}}" style="text-decoration:none">
+                                         <i class="bi bi-people"></i>
+                                         Gestion des utilisateurs </a><br/>     
+                                </li>   
+                                <li>     
+                                     <a href="{{path ("projet_index")}}" style="text-decoration:none">
+                                         <i class="bi bi-folder"></i>
+                                         Gestion des projets </a>
+                                </li> 
+                                <li>
+                                     <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none">
+                                         <i class="bi bi-globe2"></i>
+                                         Gestion des plateformes </a>
+                                </li>
+                                <li>
+                                     <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> 
+                                         <i class="bi bi-info-square"></i>
+                                         Gestion des contacts </a>
+                                </li>  
+                            </ul>
+                            <hr>
+                        </div>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <div>
+                            Gestion du compte: 
+                            <ul>                 
+                                <li>
+                                     <a href="{{path ('user_edit_current', { 'id': app.user.id })}}" style="text-decoration:none"> 
+                                         Gérer mon compte
+                                     </a> <br/>  
+                                </li>
+                                <li>
+                                     <a href="{{path ('projet_new_user', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                         Gérer mes projets 
+                                     </a> <br/>
+                                </li>  
+                                <li>
+                                     <a href="{{path ('plateforme_index', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                         Gérer mes plateformes 
+                                     </a> <br/>
+                                </li>
+                            </ul>
+                            <hr>
+                        </div>
+                    {% endif %}
+                    <a href="{{ path ('app_logout') }}" style="text-decoration:none"> 
+                        <i class="bi bi-power"></i> Se déconnecter 
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

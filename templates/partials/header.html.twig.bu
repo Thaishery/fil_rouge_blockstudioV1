@@ -1,0 +1,339 @@
+
+
+
+     {% block metaTitle %}
+         {# MENU DE CONNEXION #}
+     {% endblock %}
+
+
+     {% block title %}   
+         {# MENU DE CONNEXION #}
+     {% endblock %}
+
+     
+     {% block body %}
+     <!-- Button trigger modal -->
+
+         <header>   
+         
+             <div class="AcountFrame" style="display:flex; justify-content:space-around;">
+                                    
+                 {# ***** BLOC AUTHENTIFICATION ***** #}
+                 <div class="TextFrame">
+
+                     {% if app.user %}
+
+                         <div class="d-flex  pt-3">          
+
+                             {# <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                 <title> Placeholder </title>
+                                 <rect width="100%" height="100%" fill="#007bff"> </rect>
+                                 <text x="50%" y="50%" fill="#007bff" dy=".3em"> 32x32 </text>                                                      
+                             </svg> #}
+                             
+                             <img class="bd-placeholder-img flex-shrink-0 me-2 rounded avatarHeader" src="{{asset ('uploads/avatar/')}}{{app.user.avatar}}"/>
+
+                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+
+                                     {% if app.user %}
+   
+                                         <div class="d-flex justify-content-between">
+
+                                             <strong class="text-gray-dark">
+                                                 {# Full Name #}                                                
+                                                 {% if app.user.firstname %}
+                                                 {{app.user.firstname}}
+                                                 {% else %}
+                                                 bienvenue
+                                                 {% endif %}
+                                             </strong>
+
+                                         </div>
+
+                                     {# ? Possiblité de rajouter un pseudo en plus éventuellement en dessous du nom classique #}
+                                         <span class="d-block">
+                                             @{{app.user.login}}                                         
+                                         </span>
+
+                                     {% endif %} <br/>
+
+                                 </div>
+
+                         </div>  
+                                  
+                     {% endif %}
+
+                 </div> 
+
+                     {# prévoir mise en place pour administration (gestion des roles) #}
+                     {% if app.user %}
+                
+                     {# ***** CONTENEUR ACCORDEON ***** #}
+                     <div class="accordion accordion-flush col-4" id="accordionFlushExample">
+
+                     {# *** Partie: Interface d'administration *** #}                                          
+                        {% if is_granted('ROLE_ADMIN') %} <br/>
+
+                         {# ***** ELEMENT N°1 ***** #}
+                         <div class="accordion-item">
+                                
+                                             {# *** TITRE DE L'ELEMENT N°1 *** #}
+                                             <h2 class="accordion-header" id="flush-headingOne">
+                                                 
+                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                     Interface d'administration
+                                                 </button>
+                                           
+                                             </h2>
+         
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+         
+                                                     {# *** CONTENU DE L'ELEMENT N°1 *** #}
+                                                     <div class="accordion-body">
+                                                 
+                                                         {# ***** BLOC IDENTIFICATION ***** #}
+                                                         <div class="logFrame">
+                                                                                                                       
+                                                                 <ul>
+            
+                                                                     <li>
+                                                                         <a href="{{path ("home_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-house-door-fill"></i>
+                                                                             Gestion de l'accueil </a><br/>     
+                                                                     </li>  
+            
+                                                                     <li>
+                                                                        <a href="{{path ("services_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-gear"></i>
+                                                                             Gestion des services </a> <br/>
+                                                                     </li>
+            
+                                                                     <li>                                           
+                                                                         <a href="{{path ("user_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-people"></i>
+                                                                             Gestion des utilisateurs </a><br/>     
+                                                                     </li>   
+            
+                                                                     <li>     
+                                                                         <a href="{{path ("projet_index")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-folder"></i>
+                                                                             Gestion des projets </a>
+                                                                     </li> 
+
+                                                                     <li>
+                                                                         <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none">
+                                                                             <i class="bi bi-globe2"></i>
+                                                                             Gestion des plateformes </a>
+                                                                     </li>
+
+                                                                     <li>
+                                                                         <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> 
+                                                                             <i class="bi bi-info-square"></i>
+                                                                             Gestion des contacts </a>
+                                                                     </li>  
+            
+                                                                 </ul>                                             
+         
+                                                            </div>
+         
+                                                         </div>
+         
+                                            </div>
+
+                      {% endif %}
+
+                     {% endif %}
+                     
+                     {# ***** ELEMENT N°2 ***** #}
+
+                         {% if app.user %}
+
+                             {# ***** BLOC GESTION DU COMPTE ***** #}
+                             <div class="accordion-item ">
+         
+                                         {# *** TITRE DE L'ELEMENT N°2 *** #}
+                                         <h2 class="accordion-header" id="flush-headingTwo">      
+         
+                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">                                            
+                                                 Gestion du compte
+                                             </button>      
+         
+                                         </h2>
+         
+                                         {# *** CONTENU DE L'ELEMENT N°2 *** #}
+                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">                                         
+
+                                             <div class="accordion-body">
+                                                 
+                                                 {# *** Partie: Gestion du compte (utilisateur actuel) *** #}
+                                                 {% if is_granted('ROLE_USER') %} 
+                                                     
+                                                     <ul>
+                                                     
+                                                         <li>
+                                                             <a href="{{path ('user_edit_current', { 'id': app.user.id })}}" style="text-decoration:none"> 
+                                                                 Gérer mon compte
+                                                             </a> <br/>  
+                                                         </li>  
+
+                                                         <li>  
+                                                             <a href="{{path ('projet_index_user', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                                                 Gérer mes projets 
+                                                             </a> <br/>
+                                                         </li>  
+
+                                                         <li>  
+                                                             <a href="{{path ('plateforme_index', { 'login': app.user.login})}}" style="text-decoration:none"> 
+                                                                 Gérer mes plateformes 
+                                                             </a> <br/>
+                                                         </li>  
+
+                                                         {# <li>  
+                                                             <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
+                                                         </li>  #}
+
+                                                     </ul>
+
+                                                 {% endif %}
+         
+                                                         <li>  
+                                                             <a href="{{ path ('app_logout') }}" style="text-decoration:none"> 
+                                                                 <i class="bi bi-power"></i> Se déconnecter 
+                                                             </a>
+                                                         </li> 
+
+                                             </div>
+         
+                                         </div>
+                                                 
+                             {% endif %}
+
+                                     {% if not app.user %}
+                               
+                                 {# *** BLOC CONNEXION & CREER UN COMPTE *** #}
+                                        
+                                             {% include 'partials/modal.html.twig' %}
+                                         
+
+                                         {% endif %} 
+         
+                                 </div>
+
+                             </div>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             </div>                             
+         
+                         {# ***** BARRE DE NAVIGATION ***** #}
+                
+                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                
+                             <div class="container-fluid">
+                
+                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                     <span class="navbar-toggler-icon"></span>
+                                 </button>
+                
+                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                
+                                         <ul class="navbar-nav">
+                
+                                             <li class="nav-item active">
+                                                 <a class="nav-link" href="{{path ("home")}}"> Accueil </a>
+                                             </li>
+                
+                                             {# ***** MENU DEROULANT **** #}
+                                             <li class="nav-item dropdown">
+                
+                                                     {# *** SERVICES *** #}
+                                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Services <i id="arrow_drop" class="bi bi-chevron-compact-down"></i>                                                 
+                                                         </a>
+                
+                                                     {# prévoir boucle twig pour récuperer depuis la bdd #}
+                                                     {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
+                
+                                                     {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
+                                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                                            {% for service in services %}
+
+                                                             <li>
+                                                                 <a class="dropdown-item" href="{{path ("service_user", {'id': service.id})}}"> {{service.title}}</a>
+                                                             </li>
+
+                                                             {% endfor %}
+                                                         </ul>
+                           
+                                             </li>               
+
+                                                 {# *** LES PROJETS *** #}
+                                                    <li class="nav-item ">
+                                                         <a class="nav-link" href="{{path ("projets")}}"> Projets </a>
+                                                    </li>
+                                                    
+                                                 {# *** LES ARTISTES *** #}
+                                                     <li class="nav-item ">
+                                                         <a class="nav-link" href="{{path ("artistes")}}"> Artistes </a>
+                                                     </li>
+                
+                                                 {# *** LIVRE D'OR *** #}
+                                                     <li class="nav-item">
+                                                         <a class="nav-link" href="{{path ("livre_dor")}}"> Livre d'or </a>
+                                                     </li>
+                
+                                             {# Todo: Mettre en place menu déroulant #}
+
+                                             {# ***** MENU DEROULANT **** #}
+                                             <li class="nav-item dropdown">
+
+                                                 {# *** CONTACT *** #}
+                                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                         Contact 
+                                                     </a>
+
+                                                 {# prévoir boucle twig pour récuperer depuis la bdd #}
+                                                     {# <li><hr class="dropdown-divider"></li> sert a diviser le menu #}
+
+                                                 {# ***** Liste du Menu déroulant: SERVICES ***** #}                                                   
+                                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                     
+                                                            <li>
+                                                                <a class="dropdown-item" href="/contact/">Contact</a>
+                                                            </li>
+                                                            
+                                                                 {% for contact in contacts %}
+
+                                                                     <li>
+                                                                         {# <a class="dropdown-item" href="{{path ("contact_show", {'id': contact.id})}}"> {{contact.title}} </a> #}
+                                                                         <a class="dropdown-item" href="{{contact.id}}"> {{contact.title}} </a>
+
+                                                                     </li> 
+                                                                                                                               
+                                                                 {% endfor %}
+
+
+                                                     </ul>                                              
+ 
+                                             </li>    
+
+                                         </ul>
+                
+                                 </div>
+                
+                             </div>
+
+                      </div>
+
+              </div>
+            
+                         </nav>   
+    
+         </header>  
+ 
+     {% endblock %}

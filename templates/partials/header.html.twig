@@ -30,37 +30,63 @@
                                  <rect width="100%" height="100%" fill="#007bff"> </rect>
                                  <text x="50%" y="50%" fill="#007bff" dy=".3em"> 32x32 </text>                                                      
                              </svg> #}
-                             
+  
                              <img class="bd-placeholder-img flex-shrink-0 me-2 rounded avatarHeader" src="{{asset ('uploads/avatar/')}}{{app.user.avatar}}"/>
+                             <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            
 
                                  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 
                                      {% if app.user %}
    
-                                         <div class="d-flex justify-content-between">
+                                         <div class="" style="display:flex; justify-content:space-around;">
+                                                      
+                                             {# Gestion de l'utilisateur actuel #}
+                                             <div class="dropdown">
 
-                                             <strong class="text-gray-dark">
-                                                 {# Full Name #}                                                
-                                                 {% if app.user.firstname %}
-                                                 {{app.user.firstname}}
-                                                 {% else %}
-                                                 bienvenue
-                                                 {% endif %}
-                                             </strong>
+                                                 <div class="d-flex justify-content-between">
+                                                    
+                                                     <strong class="text-gray-dark">
+                                                         {# Full Name #}                                                
+                                                         {% if app.user.firstname %}
+                                                         {{app.user.firstname}} 
+                                                         {% else %}
+                                                         Bienvenue
+                                                             <i class="bi bi-caret-down"></i>
+                                                         {% endif %}
+                                                     </strong>
 
-                                         </div>
+                                                 </div>
+                                     
+                                                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                                     <li><a class="dropdown-item" href="{{path ('projet_new_user', { 'login': app.user.login})}}"> Créer un nouveau projet </a></li>
+                                                     <li><a class="dropdown-item" href="{{path ('user_edit_current', { 'id': app.user.id })}}"> Gérer mon profil </a></li>
+                                                     <li><hr class="dropdown-divider">   </li>
+                                                     <li><a class="dropdown-item" href="{{ path ('app_logout') }}"> Se déconnecter </a></li>
+                                                 </ul>
 
-                                     {# ? Possiblité de rajouter un pseudo en plus éventuellement en dessous du nom classique #}
-                                         <span class="d-block">
-                                             @{{app.user.login}}                                         
-                                         </span>
+                                                 {# ? Possiblité de rajouter un pseudo en plus éventuellement en dessous du nom classique #}
+                                                     <span class="d-block">
+                                                         @{{app.user.login}}                                         
+                                                     </span>
+
+                                             </div> 
+                                             
+                                         </div>   
+
+
+
+                                     
 
                                      {% endif %} <br/>
 
                                  </div>
 
                          </div>  
-                                  
+
+                         
+
                      {% endif %}
 
                  </div> 
@@ -68,146 +94,8 @@
                      {# prévoir mise en place pour administration (gestion des roles) #}
                      {% if app.user %}
                 
-                     {# ***** CONTENEUR ACCORDEON ***** #}
-                     <div class="accordion accordion-flush col-4" id="accordionFlushExample">
-
-                     {# *** Partie: Interface d'administration *** #}                                          
-                        {% if is_granted('ROLE_ADMIN') %} <br/>
-
-                         {# ***** ELEMENT N°1 ***** #}
-                         <div class="accordion-item">
-                                
-                                             {# *** TITRE DE L'ELEMENT N°1 *** #}
-                                             <h2 class="accordion-header" id="flush-headingOne">
-                                                 
-                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                     Interface d'administration
-                                                 </button>
-                                           
-                                             </h2>
-         
-                                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-         
-                                                     {# *** CONTENU DE L'ELEMENT N°1 *** #}
-                                                     <div class="accordion-body">
-                                                 
-                                                         {# ***** BLOC IDENTIFICATION ***** #}
-                                                         <div class="logFrame">
-                                                                                                                       
-                                                                 <ul>
-            
-                                                                     <li>
-                                                                         <a href="{{path ("home_index")}}" style="text-decoration:none">
-                                                                             <i class="bi bi-house-door-fill"></i>
-                                                                             Gestion de l'accueil </a><br/>     
-                                                                     </li>  
-            
-                                                                     <li>
-                                                                        <a href="{{path ("services_index")}}" style="text-decoration:none">
-                                                                             <i class="bi bi-gear"></i>
-                                                                             Gestion des services </a> <br/>
-                                                                     </li>
-            
-                                                                     <li>                                           
-                                                                         <a href="{{path ("user_index")}}" style="text-decoration:none">
-                                                                             <i class="bi bi-people"></i>
-                                                                             Gestion des utilisateurs </a><br/>     
-                                                                     </li>   
-            
-                                                                     <li>     
-                                                                         <a href="{{path ("projet_index")}}" style="text-decoration:none">
-                                                                             <i class="bi bi-folder"></i>
-                                                                             Gestion des projets </a>
-                                                                     </li> 
-
-                                                                     <li>
-                                                                         <a href="{{path ("plateforme_index_admin")}}" style="text-decoration:none">
-                                                                             <i class="bi bi-globe2"></i>
-                                                                             Gestion des plateformes </a>
-                                                                     </li>
-
-                                                                     <li>
-                                                                         <a href="{{path ("contact_admin_index")}}" style="text-decoration:none"> 
-                                                                             <i class="bi bi-info-square"></i>
-                                                                             Gestion des contacts </a>
-                                                                     </li>  
-            
-                                                                 </ul>                                             
-         
-                                                            </div>
-         
-                                                         </div>
-         
-                                            </div>
-
-                      {% endif %}
-
+                     {% include 'partials/administrationModal.html.twig' %}
                      {% endif %}
-                     
-                     {# ***** ELEMENT N°2 ***** #}
-
-                         {% if app.user %}
-
-                             {# ***** BLOC GESTION DU COMPTE ***** #}
-                             <div class="accordion-item ">
-         
-                                         {# *** TITRE DE L'ELEMENT N°2 *** #}
-                                         <h2 class="accordion-header" id="flush-headingTwo">      
-         
-                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">                                            
-                                                 Gestion du compte
-                                             </button>      
-         
-                                         </h2>
-         
-                                         {# *** CONTENU DE L'ELEMENT N°2 *** #}
-                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">                                         
-
-                                             <div class="accordion-body">
-                                                 
-                                                 {# *** Partie: Gestion du compte (utilisateur actuel) *** #}
-                                                 {% if is_granted('ROLE_USER') %} 
-                                                     
-                                                     <ul>
-                                                     
-                                                         <li>
-                                                             <a href="{{path ('user_edit_current', { 'id': app.user.id })}}" style="text-decoration:none"> 
-                                                                 Gérer mon compte
-                                                             </a> <br/>  
-                                                         </li>  
-
-                                                         <li>  
-                                                             <a href="{{path ('projet_index_user', { 'login': app.user.login})}}" style="text-decoration:none"> 
-                                                                 Gérer mes projets 
-                                                             </a> <br/>
-                                                         </li>  
-
-                                                         <li>  
-                                                             <a href="{{path ('plateforme_index', { 'login': app.user.login})}}" style="text-decoration:none"> 
-                                                                 Gérer mes plateformes 
-                                                             </a> <br/>
-                                                         </li>  
-
-                                                         {# <li>  
-                                                             <a href="{{ path ('app_logout') }}"> Se déconnecter </a>
-                                                         </li>  #}
-
-                                                     </ul>
-
-                                                 {% endif %}
-         
-                                                         <li>  
-                                                             <a href="{{ path ('app_logout') }}" style="text-decoration:none"> 
-                                                                 <i class="bi bi-power"></i> Se déconnecter 
-                                                             </a>
-                                                         </li> 
-
-                                             </div>
-         
-                                         </div>
-                                                 
-                             {% endif %}
-
                                      {% if not app.user %}
                                
                                  {# *** BLOC CONNEXION & CREER UN COMPTE *** #}
@@ -332,8 +220,9 @@
 
               </div>
             
-                         </nav>   
-    
-         </header>  
- 
+         </nav>   
+
+     </header>  
+
+
      {% endblock %}

@@ -62,7 +62,7 @@
                                          {% if service.getCarouselRank != null %}
                                 
                                              {# *** Vignettes *** #}
-                                                 <div class="column">
+                                                 <div class="column mobileHide">
 
                                                      <img    class="demo cursor" 
                                                              src="/uploads/picture/{{service.Picture}}" 
@@ -160,10 +160,10 @@
                                                              {# * Description longue * #}
                                                                  <div class="col-12">   
 
-                                                                     <div>
-                                                                         <p class ="homeLongDesc"> 
+                                                                     <div class ="homeLongDesc">
+                                                                         
                                                                              {% autoescape false %}{{ home.longDesc }}{% endautoescape %} 
-                                                                         </p>
+                                                                         
                                                                      </div>  
 
                                                                  </div>
